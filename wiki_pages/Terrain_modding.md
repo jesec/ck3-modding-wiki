@@ -1,6 +1,6 @@
 # Terrain modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 Terrain modding allows for the creation or modification of [terrain](https://ck3.paradoxwikis.com/terrain) on the map
@@ -90,10 +90,10 @@ Modifiers can be used in a terrain in the following fields : ``attacker_modifier
 
 Modifiers referenced by a terrain object can be only generic (hardcoded) modifiers, or modifiers generated from the following databases:
 
-* schemes
-* [Holdings modding](Holdings_modding.md)
-* lifestyles
-* regions
+- schemes
+- [Holdings modding](Holdings_modding.md)
+- lifestyles
+- regions
 
 Other generated modifiers are *not* allowed, such as those from other terrains, men_at_arms_types, cultures, or governments.
 
@@ -145,7 +145,7 @@ They can also be used in the terrain itself, without the terrain key before. For
 
 Terrain mapping is defined in ``common/province_terrain/00_province_terrain.txt``. Each province needs a defined terrain. More information on provinces are on the [Map modding#Defining baronies](Map_modding.md#defining-baronies).
 
-**Example**
+  - Example**
 
 ```
 1=biger_plains   #

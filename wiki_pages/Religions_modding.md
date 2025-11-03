@@ -9,8 +9,8 @@ New religions can easily be added into the game using the highly modular design 
 
 Each religion belongs to a family. The three vanilla families are Abrahamic, Eastern and Pagan. For instance:
 
-* Christianity and Islam are part of the Abrahamic Family
-* Slavism and Tengrism are part of the Pagan Family
+- Christianity and Islam are part of the Abrahamic Family
+- Slavism and Tengrism are part of the Pagan Family
 
 Religion families are located in */common/religion/religion_families*. The religion family is defined as a tag with an alphanumerical ID. For example, the Abrahamic family is defined as follows:
 
@@ -175,123 +175,123 @@ Below is a list of all parameters that can be set for faiths.
 ## Localization
 
 The localization clause in both faiths and religions provides key-value pairs for localization. However, this clause does not include object localization for the religion/faith itself and its basic properties. The following localization keys also need defining:
-* <religion/faith_name>
-* <religion/faith_name>_adj
-* <religion/faith_name>_adherent
-* <religion/faith_name>_adherent_plural
-* <religion/faith_name>_desc
+- <religion/faith_name>
+- <religion/faith_name>_adj
+- <religion/faith_name>_adherent
+- <religion/faith_name>_adherent_plural
+- <religion/faith_name>_desc
 
 Below is a list of keys that need to be paired for localization. Although you can use this as a reference, it is also possible to simply copy and paste this list from a vanilla file and add your own keys where needed. Although many items in the list are not relevant to many religions/faiths, they can simply be assigned to a key used by another more relevant item. (e.g. FertilityGodName in Christianity is given as "$christianity_high_god_name$" in the localization file):
-* HighGodName
-* HighGodNamePossessive
-* HighGodNameSheHe
-* HighGodHerselfHimself
-* HighGodHerHis
-* HighGodNameAlternate
-* HighGodNameAlternatePossessive
-* CreatorName
-* CreatorNamePossessive
-* CreatorSheHe
-* CreatorHerHis
-* CreatorHerHim
-* HealthGodName
-* HealthGodNamePossessive
-* HealthGodSheHe
-* HealthGodHerHis
-* HealthGodHerHim
-* FertilityGodName
-* FertilityGodNamePossessive
-* FertilityGodSheHe
-* FertilityGodHerHis
-* FertilityGodHerHim
-* WealthGodName
-* WealthGodNamePossessive
-* WealthGodSheHe
-* WealthGodHerHis
-* WealthGodHerHim
-* HouseholdGodName
-* HouseholdGodNamePossessive
-* HouseholdGodSheHe
-* HouseholdGodHerHis
-* HouseholdGodHerHim
-* FateGodName
-* FateGodNamePossessive
-* FateGodSheHe
-* FateGodHerHis
-* FateGodHerHim
-* KnowledgeGodName
-* KnowledgeGodNamePossessive
-* KnowledgeGodSheHe
-* KnowledgeGodHerHis
-* KnowledgeGodHerHim
-* WarGodName
-* WarGodNamePossessive
-* WarGodSheHe
-* WarGodHerHis
-* WarGodHerHim
-* TricksterGodName
-* TricksterGodNamePossessive
-* TricksterGodSheHe
-* TricksterGodHerHis
-* TricksterGodHerHim
-* NightGodName
-* NightGodNamePossessive
-* NightGodSheHe
-* NightGodHerHis
-* NightGodHerHim
-* WaterGodName
-* WaterGodNamePossessive
-* WaterGodSheHe
-* WaterGodHerHis
-* WaterGodHerHim
-* PantheonTerm
-* PantheonTermHasHave
-* GoodGodNames (list)
-* DevilName
-* DevilNamePossessive
-* DevilSheHe
-* DevilHerHis
-* DevilHerselfHimself
-* EvilGodNames (list)
-* HouseOfWorship
-* HouseOfWorshipPlural
-* ReligiousSymbol
-* ReligiousText
-* ReligiousHeadName
-* ReligiousHeadTitleName
-* DevoteeMale
-* DevoteeMalePlural
-* DevoteeFemalePlural
-* DevoteeNeuter
-* DevoteeNeuterPlural
-* PriestMale
-* PriestMalePlural
-* PriestFemale
-* PriestFemalePlural
-* PriestNeuter
-* PriestNeuterPlural
-* AltPriestTermPlural
-* BishopMale
-* BishopMalePlural
-* BishopFemale
-* BishopFemalePlural
-* BishopNeuter
-* BishopNeuterPlural
-* DivineRealm
-* PositiveAfterLife
-* NegativeAfterLife
-* DeathDeityName
-* DeathDeityNamePossessive
-* DeathDeitySheHe
-* DeathDeityHerHis
-* WitchGodName
-* WitchGodHerHis
-* WitchGodSheHe
-* WitchGodHerHim
-* WitchGodMistressMaster
-* WitchGodMotherFather
-* GHWName
-* GHWNamePlural
+- HighGodName
+- HighGodNamePossessive
+- HighGodNameSheHe
+- HighGodHerselfHimself
+- HighGodHerHis
+- HighGodNameAlternate
+- HighGodNameAlternatePossessive
+- CreatorName
+- CreatorNamePossessive
+- CreatorSheHe
+- CreatorHerHis
+- CreatorHerHim
+- HealthGodName
+- HealthGodNamePossessive
+- HealthGodSheHe
+- HealthGodHerHis
+- HealthGodHerHim
+- FertilityGodName
+- FertilityGodNamePossessive
+- FertilityGodSheHe
+- FertilityGodHerHis
+- FertilityGodHerHim
+- WealthGodName
+- WealthGodNamePossessive
+- WealthGodSheHe
+- WealthGodHerHis
+- WealthGodHerHim
+- HouseholdGodName
+- HouseholdGodNamePossessive
+- HouseholdGodSheHe
+- HouseholdGodHerHis
+- HouseholdGodHerHim
+- FateGodName
+- FateGodNamePossessive
+- FateGodSheHe
+- FateGodHerHis
+- FateGodHerHim
+- KnowledgeGodName
+- KnowledgeGodNamePossessive
+- KnowledgeGodSheHe
+- KnowledgeGodHerHis
+- KnowledgeGodHerHim
+- WarGodName
+- WarGodNamePossessive
+- WarGodSheHe
+- WarGodHerHis
+- WarGodHerHim
+- TricksterGodName
+- TricksterGodNamePossessive
+- TricksterGodSheHe
+- TricksterGodHerHis
+- TricksterGodHerHim
+- NightGodName
+- NightGodNamePossessive
+- NightGodSheHe
+- NightGodHerHis
+- NightGodHerHim
+- WaterGodName
+- WaterGodNamePossessive
+- WaterGodSheHe
+- WaterGodHerHis
+- WaterGodHerHim
+- PantheonTerm
+- PantheonTermHasHave
+- GoodGodNames (list)
+- DevilName
+- DevilNamePossessive
+- DevilSheHe
+- DevilHerHis
+- DevilHerselfHimself
+- EvilGodNames (list)
+- HouseOfWorship
+- HouseOfWorshipPlural
+- ReligiousSymbol
+- ReligiousText
+- ReligiousHeadName
+- ReligiousHeadTitleName
+- DevoteeMale
+- DevoteeMalePlural
+- DevoteeFemalePlural
+- DevoteeNeuter
+- DevoteeNeuterPlural
+- PriestMale
+- PriestMalePlural
+- PriestFemale
+- PriestFemalePlural
+- PriestNeuter
+- PriestNeuterPlural
+- AltPriestTermPlural
+- BishopMale
+- BishopMalePlural
+- BishopFemale
+- BishopFemalePlural
+- BishopNeuter
+- BishopNeuterPlural
+- DivineRealm
+- PositiveAfterLife
+- NegativeAfterLife
+- DeathDeityName
+- DeathDeityNamePossessive
+- DeathDeitySheHe
+- DeathDeityHerHis
+- WitchGodName
+- WitchGodHerHis
+- WitchGodSheHe
+- WitchGodHerHim
+- WitchGodMistressMaster
+- WitchGodMotherFather
+- GHWName
+- GHWNamePlural
 
 
 ## Graphics
@@ -328,9 +328,9 @@ Below are the attributes which can be assigned to a holy site. Only the county i
 
 
 Holy sites also require the following keys in localization:
-* holy_site_<name>_name
-* holy_site_<name>_effect_name
-* holy_site_<name>_effects
+- holy_site_<name>_name
+- holy_site_<name>_effect_name
+- holy_site_<name>_effects
 
 ```
 holy_site_jerusalem_name:0 "Jerusalem"
@@ -342,10 +342,10 @@ holy_site_jerusalem_name:0 "Jerusalem"
 ## Tenet ID
 
 Each tenet has an internal ID used to reference it within the game files. In general, to get the tenet ID from its name:
-# Take the non-variant name (i.e. non-faith specific)
-# Turn all upper case letters into lower case (``A...Z->a...z``)
-# Replace all spaces (`` ``) with underscores (``_``)
-# Add ``tenet_`` to the beginning
+1. Take the non-variant name (i.e. non-faith specific)
+1. Turn all upper case letters into lower case (``A...Z->a...z``)
+1. Replace all spaces (`` ``) with underscores (``_``)
+1. Add ``tenet_`` to the beginning
 
 Tenets that do not fit the pattern above have been listed below:
 

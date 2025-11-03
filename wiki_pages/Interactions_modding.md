@@ -33,8 +33,8 @@ On_accept and other effect blocks don't have a root scope, so we need to tell th
 
 There are scopes provided by game code for us:
 
-***scope:actor** - the character who initiated the interaction
-***scope:recipient** - the recipient of the interaction
+    - scope:actor** - the character who initiated the interaction
+    - scope:recipient** - the recipient of the interaction
 
 Always remember to scope to a character first and then apply the effects.
 

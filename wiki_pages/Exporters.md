@@ -1,6 +1,6 @@
 # Exporters
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 Modders can use the **exporter tools** that Paradox provides 'as-is'. These can be used to export textures from Photoshop and meshes/animations from Maya.
@@ -17,13 +17,13 @@ The exporter can be downloaded from here (requires Paradox account):
 
 [Paradox Plaza - Downloads](https://accounts.paradoxplaza.com/profile/downloads)
 
-# Close Photoshop and Maya
-# Download the exe called "Clausewitz Maya Exporter" (this also includes the Photoshop exporter)
-# Run the Maya Exporter Deploy Wizard, filename 'PdxExporterInstall.exe'. Default settings should be fine
-# Run ExporterInstaller.exe (it should run automatically).
-# You should now have the plugins deployed in the correct places, and a settings file
-# Open the newly-created settings file: 'Documents\Paradox Interactive\PdxExporter\settings\clausewitz.settings'
-# Replace the contents with the following:
+1. Close Photoshop and Maya
+1. Download the exe called "Clausewitz Maya Exporter" (this also includes the Photoshop exporter)
+1. Run the Maya Exporter Deploy Wizard, filename 'PdxExporterInstall.exe'. Default settings should be fine
+1. Run ExporterInstaller.exe (it should run automatically).
+1. You should now have the plugins deployed in the correct places, and a settings file
+1. Open the newly-created settings file: 'Documents\Paradox Interactive\PdxExporter\settings\clausewitz.settings'
+1. Replace the contents with the following:
 
 ```
     {

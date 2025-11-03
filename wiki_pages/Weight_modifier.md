@@ -1,9 +1,9 @@
 # Weight modifier
 
 Weight modifiers are conditional modifiers to a base value, used in:
-* events' ``weight_modifier`` blocks
-* some effects such as ``random`` and ``random_list``
-* AI logic blocks such as ``ai_will_do``
+- events' ``weight_modifier`` blocks
+- some effects such as ``random`` and ``random_list``
+- AI logic blocks such as ``ai_will_do``
 
 For legacy reasons, they are sometimes referred to as MTTH syntax, by opposition to [script math](https://ck3.paradoxwikis.com/script_math) syntax.
 
@@ -12,9 +12,9 @@ For legacy reasons, they are sometimes referred to as MTTH syntax, by opposition
 
 Weight modifiers are script blocks used to sequentially modify a base value.
 They contain:
-* a mathematical operator, either ``add`` or ``factor``
-* triggers, which determine when the weight modifier should apply
-* an optional ``desc`` parameter, which specifies the localization key used in the tooltip, where applicable
+- a mathematical operator, either ``add`` or ``factor``
+- triggers, which determine when the weight modifier should apply
+- an optional ``desc`` parameter, which specifies the localization key used in the tooltip, where applicable
 
 
 ```
@@ -22,7 +22,7 @@ base = 10
 modifier = {
    add = 10
 }
-# total value is 20
+1. total value is 20
 ```
 
 
@@ -40,7 +40,7 @@ modifier = {
 modifier = {
    factor = 2
 }
-# total value is 40
+1. total value is 40
 ```
 
 
@@ -57,10 +57,10 @@ modifier = {
    is_male = yes
    add = 20
 }
-# total value for a male adult is 40
-# total value for a male child is 30
-# total value for a female adult is 20
-# total value for a female child is 10
+1. total value for a male adult is 40
+1. total value for a male child is 30
+1. total value for a female adult is 20
+1. total value for a female child is 10
 ```
 
 

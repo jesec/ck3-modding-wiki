@@ -1,6 +1,6 @@
 # Graphical assets
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 ## Portrait palettes
@@ -15,9 +15,9 @@ gfx/portraits
 ```
  and consist of:
 ```
-* hair_palette.dds
-* skin_palette.dds
-* eye_palette.dds
+- hair_palette.dds
+- skin_palette.dds
+- eye_palette.dds
 
 
 Category:Modding

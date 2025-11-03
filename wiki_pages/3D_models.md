@@ -1,6 +1,6 @@
 # 3D models
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 Crusader Kings III uses 3d models to represent objects in the game such as portraits, units and holdings, as well as map objects such as trees. This guide is intended to help CK3 modders with some existing knowledge of 3d modelling and materials. This guide is similar to other 3d modelling guides for Clausewitz like Imperator: Rome.
@@ -12,14 +12,14 @@ To create a 3d model, you will need modelling software like Autodesk Maya or Ble
 All models and their respective textures and animations can be found in `/Crusader Kings III/game/gfx/models/`
 
 A typical model will have the following files:
-* **<model>.mesh** - The 3d model itself.
-* **<model>.asset** - The script adding the model to the game.
-* **<model>_diffuse.dds** - The diffuse texture for the model.
-* **<model>_normal.dds** - A normal map texture.
-* **<model>_properties.dds** - A joint texture with specular, metalness and roughness.
+- **<model>.mesh** - The 3d model itself.
+- **<model>.asset** - The script adding the model to the game.
+- **<model>_diffuse.dds** - The diffuse texture for the model.
+- **<model>_normal.dds** - A normal map texture.
+- **<model>_properties.dds** - A joint texture with specular, metalness and roughness.
 
 More textures for other 3d models include:
-* **<model>_unique.dds** - Used with the standard_atlas shader. The B channel is the models’ ambient occlusion texture.
+- **<model>_unique.dds** - Used with the standard_atlas shader. The B channel is the models’ ambient occlusion texture.
 
 
 ## Tutorial: Setup
@@ -27,10 +27,10 @@ More textures for other 3d models include:
 
 ### Tools
 
-*Autodesk Maya. A program used to create 3d models and animation. Needs the Clausewitz Maya Exporter installed.
-*[Clausewitz Maya Exporter](https://forum.paradoxplaza.com/forum/threads/information-and-faq.924764/). A Maya plugin from Paradox. Setup models based on installed games and exports model and asset. Installation instructions linked in the forum post and below.
-*[Blender](https://www.blender.org/download/). A free program used to create 3d models and animation.
-*[IO PDX Mesh addon](https://github.com/ross-g/io_pdx_mesh). Addon that can be installed to Blender or Autodesk Maya. Setup models from compatible games. Installation instructions on their page.
+- Autodesk Maya. A program used to create 3d models and animation. Needs the Clausewitz Maya Exporter installed.
+- [Clausewitz Maya Exporter](https://forum.paradoxplaza.com/forum/threads/information-and-faq.924764/). A Maya plugin from Paradox. Setup models based on installed games and exports model and asset. Installation instructions linked in the forum post and below.
+- [Blender](https://www.blender.org/download/). A free program used to create 3d models and animation.
+- [IO PDX Mesh addon](https://github.com/ross-g/io_pdx_mesh). Addon that can be installed to Blender or Autodesk Maya. Setup models from compatible games. Installation instructions on their page.
 
 
 ### Setup Clausewitz Maya exporter
@@ -38,14 +38,14 @@ More textures for other 3d models include:
 There is a full setup guide for the [Exporters](Exporters.md). The below guide is shortened.
 
 To setup CK3 for the exporter, open the clausewitz.settings file using a code editor, edit the folder paths and then save. The folder paths for CK3 are as follows: 
-*"name": "CrusaderKingsIII"
-*"path": "C:/SteamLibrary/steamaps/common/Crusader Kings III/game/tools"
-*"export_path": "Your personal mod’s folder"
-*"target_exe": "C:/SteamLibrary/steamaps/common/Crusader Kings III/binaries/ck3.exe"
+- "name": "CrusaderKingsIII"
+- "path": "C:/SteamLibrary/steamaps/common/Crusader Kings III/game/tools"
+- "export_path": "Your personal mod’s folder"
+- "target_exe": "C:/SteamLibrary/steamaps/common/Crusader Kings III/binaries/ck3.exe"
 Notes: 
-*Your mod’s gfx/models folder can be anywhere on your C drive. You can choose to edit the settings for every mod you edit, or use one folder and copy your models from there to your mod.
-*The / slash (forward slash) is important, Windows Explorer uses \ (backwards slash). If you copy from Windows Explorer, you will need to edit the folder paths to use /.
-*The name must be one word, no spaces.
+- Your mod’s gfx/models folder can be anywhere on your C drive. You can choose to edit the settings for every mod you edit, or use one folder and copy your models from there to your mod.
+- The / slash (forward slash) is important, Windows Explorer uses \ (backwards slash). If you copy from Windows Explorer, you will need to edit the folder paths to use /.
+- The name must be one word, no spaces.
 
 
 ## Making the Model
@@ -57,8 +57,8 @@ Notes:
 #### UVs
 
 Order of UV maps for the standard_atlas shader: 
-#**map1** - uv mapped to AO "<model>_unique"
-# **map2** - uv mapped material atlas
+    - map1** - uv mapped to AO "<model>_unique"
+1. **map2** - uv mapped material atlas
 
 
 #### Issues with UV maps
@@ -66,12 +66,12 @@ Order of UV maps for the standard_atlas shader:
 This can catch you off guard when creating your model, map1 must be above map2, map1 must be the default uv set in Maya. If you’re importing the model from Blender as a .dae file, the uv maps must be in the correct order in Blender too.
 If your uvs are not in the correct order, then use this method to rearrange them. I do not know a method to delete the default uv set in Maya.
 The issue is that map1 is mapped to your material atlas. 
-#UV - UV Set Editor. Copy map1.
-#Select map2 in the UV Set Editor.
-#UV - UV Editor. Then in the UV Editor, UV Sets – Copy UVs to UV Set. Choose map1.
-# In the UV Set Editor delete map2.
-#Rename UVSet1 (originally copied from map1 in step 1) to “map2”.
-#Select map1 and click Update.
+1. UV - UV Set Editor. Copy map1.
+1. Select map2 in the UV Set Editor.
+1. UV - UV Editor. Then in the UV Editor, UV Sets – Copy UVs to UV Set. Choose map1.
+1. In the UV Set Editor delete map2.
+1. Rename UVSet1 (originally copied from map1 in step 1) to “map2”.
+1. Select map1 and click Update.
 
 
 #### Broken normals
@@ -160,11 +160,11 @@ This is how most Vanilla Textures are packed (Kudos to the [stella:Maya_exporter
 
 If you want to create for example a new normal map in gimp, you would do the following: 
 
-#Import your Normal texture into Gimp.
-# Make sure you have no active selection, then go to the menu and click Colors > Components > Decompose
-#In the Decompose menu, leave everything as is and click ok. Gimp will now split your Image's Color channels, and you can then edit them as you would edit layers.
-# After this, you go back to Colors>Components>Compose. In the Compose menu, you select RGBA as Color model and can then decide which layer should represent which channel. In our example, you would set Red to the Red Layer, Green to the Red layer, Blue to a Mask Value of 0 and Alpha to the Green Layer.
-#After you click Ok, Gimp will compose the Image for you, and you should be left with a yellowish Normal map. Which you can export to [texturename]_normal.dds with BC3/DXT5 Compression and generated mipmaps.
+1. Import your Normal texture into Gimp.
+1. Make sure you have no active selection, then go to the menu and click Colors > Components > Decompose
+1. In the Decompose menu, leave everything as is and click ok. Gimp will now split your Image's Color channels, and you can then edit them as you would edit layers.
+1. After this, you go back to Colors>Components>Compose. In the Compose menu, you select RGBA as Color model and can then decide which layer should represent which channel. In our example, you would set Red to the Red Layer, Green to the Red layer, Blue to a Mask Value of 0 and Alpha to the Green Layer.
+1. After you click Ok, Gimp will compose the Image for you, and you should be left with a yellowish Normal map. Which you can export to [texturename]_normal.dds with BC3/DXT5 Compression and generated mipmaps.
 
 
 ## Tutorial: Getting them on the map

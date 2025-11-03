@@ -36,15 +36,15 @@ Below is some general advice that will help solve your issue 80% of the time, fo
 Localization has improved a lot since the epoch of Crusader Kings 2 and it is now easier than ever, but that does not mean it is fool-proof.
 
 The first thing you must make sure of is that your loc file is encoded correctly (the game will tell you if it is not), you should use ``utf8bom``. Here is how you save your loc file with the correct encoding:
-* **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
-* **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
-* **Notepad++**: Encoding → "UTF8 with BOM"
+- **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
+- **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
+- **Notepad++**: Encoding → "UTF8 with BOM"
 
 
 You may also encounter issues with missing keys, unrecognized keys or duplicate hashes:
-* **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
-* **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
-* **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
+- **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
+- **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
+- **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
 
 
 ### Error Spam: Debugging Dynamic Loc and Trigger Conditions
@@ -52,11 +52,11 @@ You may also encounter issues with missing keys, unrecognized keys or duplicate 
 Are you getting thousands of errors every second you run your event? *Don't panic!*
 
 The first thing you want to do is check your dynamic loc, make sure you did not make a mistake when writing it. Here are some common mistakes:
-* Writing ``[ROOT.GetSomething]`` when you meant to do ``[ROOT.Char.GetSomething]``
-* Misspelled a name, it happens. A lot.
-* Used ``[scope:mysavedscopecharacter.GetFirstName]`` instead of ``[mysavedscopecharacter.GetFirstName]``, saved scopes do not need ``scope:`` when using them in dynamic loc.
-* You did not actually save the character you referenced in the scope of the dynamic loc.
-* The name of the scoped character was changed in the script and you forgot to update it in the loc.
+- Writing ``[ROOT.GetSomething]`` when you meant to do ``[ROOT.Char.GetSomething]``
+- Misspelled a name, it happens. A lot.
+- Used ``[scope:mysavedscopecharacter.GetFirstName]`` instead of ``[mysavedscopecharacter.GetFirstName]``, saved scopes do not need ``scope:`` when using them in dynamic loc.
+- You did not actually save the character you referenced in the scope of the dynamic loc.
+- The name of the scoped character was changed in the script and you forgot to update it in the loc.
 
 
 If you did everything correctly but are still getting issues with dynamic loc, then that must be that **you did not meet the conditions for the event fired.**
@@ -96,12 +96,12 @@ However, one should be careful with hot-loading, as making sizable changes can l
 ```
  
 ```
-**Tips For Hot-loading Safety:**
+  - Tips For Hot-loading Safety:**
 
-# If possible, have the event closed when you hot-load a change.
-# Otherwise, you can press the [⟳] icon on the event debug options. Be warned that this will not update saved scopes.
-# Localization can be updated at any time. But new localization keys will usually not hot-load.
-# Use hot-loading to debug and tweak, not to test if the script has any start-up errors.
+1. If possible, have the event closed when you hot-load a change.
+1. Otherwise, you can press the [⟳] icon on the event debug options. Be warned that this will not update saved scopes.
+1. Localization can be updated at any time. But new localization keys will usually not hot-load.
+1. Use hot-loading to debug and tweak, not to test if the script has any start-up errors.
 
 
 ## Automating the Debug Process Through Run Scripts
@@ -114,7 +114,7 @@ From a technical perspective, Run Scripts are `.txt` files stored in `..\Documen
 Here is an example of what the contents of a run script look like:
 
 ```coffeescript
-# Run Script to set up the conditions for restoring the HRE. Recommended to start as King Luis (867).
+1. Run Script to set up the conditions for restoring the HRE. Recommended to start as King Luis (867).
 title:c_cologne = { add_to_list = target_titles }
 title:c_mainz = { add_to_list = target_titles }
 title:c_trier = { add_to_list = target_titles }

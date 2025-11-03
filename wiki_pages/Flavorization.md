@@ -171,7 +171,7 @@ With this, you've successfully added a variation to your title using custom loca
 
 ## Continue Reading
 
-* TheGib770 made an excellent guide (Link: [forum:1449550](https://ck3.paradoxwikis.com/forum:1449550)) on the Paradox Forum which delves deeper into the details and intricacies of flavorization. Feel free to reach out to him.
+- TheGib770 made an excellent guide (Link: [forum:1449550](https://ck3.paradoxwikis.com/forum:1449550)) on the Paradox Forum which delves deeper into the details and intricacies of flavorization. Feel free to reach out to him.
 
 
 Category:Modding

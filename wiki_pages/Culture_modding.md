@@ -162,9 +162,9 @@ Below is a list of all parameters that can be set for cultures.
 ## Culture group ID
 
 Culture groups have an internal ID used within the game files. To get a culture group's ID from its in-game name:
-# Turn all letters into lowercase (``A...Z->a...z``).
-# Replace spaces (`` ``) and hyphens (``-``) with underscores (``_``).
-# Add ``_group`` to the end.
+1. Turn all letters into lowercase (``A...Z->a...z``).
+1. Replace spaces (`` ``) and hyphens (``-``) with underscores (``_``).
+1. Add ``_group`` to the end.
 
 Groups that do not follow the convention above have been listed in this table:
 
@@ -177,8 +177,8 @@ Groups that do not follow the convention above have been listed in this table:
 ## Culture ID
 
 Similar to the above, each culture has an internal ID. To get a culture's ID from its in-game name:
-# Turn all letters into lowercase (``A...Z->a...z``).
-# Remove any diacritics from letters, including accents (``á->a``) and umlauts/diaereses (``ü->u``).
+1. Turn all letters into lowercase (``A...Z->a...z``).
+1. Remove any diacritics from letters, including accents (``á->a``) and umlauts/diaereses (``ü->u``).
 
 Cultures that do not fit this pattern have been listed below:
 

@@ -14,7 +14,7 @@ When a scope has the same relation to multiple others, those can be provided in 
 
 Some code lists have specific parameters that can be used in the list-builders. As those are parameters of the list, and not triggers, they don't go in the limit block.
 
-* even_if_dead
+- even_if_dead
 
 Code lists of character scopes often only access living characters by default, even if the list technically includes dead character, in which case the `even_if_dead` parameter allows accessing dead characters.
 
@@ -28,7 +28,7 @@ every_child = {
 ```
 
 
-* scripted_relations
+- scripted_relations
 
 From a character [scope](Scopes.md), the ``relations`` list provides all scripted_relations of that character.
 The ``type`` parameter specifies which scripted_relations should be in the list.

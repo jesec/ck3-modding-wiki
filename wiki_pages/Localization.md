@@ -11,11 +11,11 @@ Script uses localization keys, like text_example, which is then turned to real t
 
 Localization files:
 
-* use .yml format
-* must use UTF-8 BOM encoding. It is often displayed at the bottom right in text editors. Look also for Select Encoding or Save With Encoding options.
-* are saved to ``localization/`` folder, and the right language subfolder. E.g ``localization/english``
-* must  include ``l_<language>`` in their name. E.g. ``my_locs_l_english.yml`` or ``my_locs_l_french.yml``
-* must start with the same ``l_<language>:`` on the first line. E.g.
+- use .yml format
+- must use UTF-8 BOM encoding. It is often displayed at the bottom right in text editors. Look also for Select Encoding or Save With Encoding options.
+- are saved to ``localization/`` folder, and the right language subfolder. E.g ``localization/english``
+- must  include ``l_<language>`` in their name. E.g. ``my_locs_l_english.yml`` or ``my_locs_l_french.yml``
+- must start with the same ``l_<language>:`` on the first line. E.g.
 
 ```c
 l_english:
@@ -69,10 +69,10 @@ Make sure to add a space before the text!
 
 
 ```
-#<formatting code> <text>#!
+1. <formatting code> <text>#!
 
 Example:
-#P Green#!
+1. P Green#!
 ```
 
 See [Localization]() below for more details.
@@ -302,7 +302,7 @@ Localization strings can link to game concepts as follows:
 ```
 [concept_key|E]
 
-# So for example
+1. So for example
 [faith|E]
 ```
 
@@ -313,7 +313,7 @@ By default the concept starts with first letter in upper case, you can set the f
 ```
 [concept_key|El]
 
-# So for example
+1. So for example
 "The word [faith|El] is now starting by a lower case letter"
 ```
 
@@ -324,7 +324,7 @@ The expression linking to the game concept can be customized as follows:
 ```
 [Concept('concept_key','Customized expression')|E]
 
-# So for example
+1. So for example
 "The game concept link [Concept('faith','religion')|E] is now written as religion."
 ```
 
@@ -370,8 +370,8 @@ This will cause the trait to have a tooltip which shows the trait information. Y
 
 
 ```
-# note that the [trait|E] links to the game concept of a trait, as described above, while the [TRAIT.GetName( Character.Self )|LV] links to the actual trait which will be gained
-# from localization/english/effects_l_english.yml
+1. note that the [trait|E] links to the game concept of a trait, as described above, while the [TRAIT.GetName( Character.Self )|LV] links to the actual trait which will be gained
+1. from localization/english/effects_l_english.yml
 ADD_MY_TRAIT:2 "You gain the [trait|E] [TRAIT.GetName( CHARACTER.Self )|LV]"
 ```
 
@@ -398,10 +398,10 @@ If a numeric value has a decimal portion, it can be rounded by using the desired
 
 
 ```
-# Round to 2 decimals
+1. Round to 2 decimals
 [some_value|2]
 
-# Remove all decimals:
+1. Remove all decimals:
 [some_value|0]
 ```
 

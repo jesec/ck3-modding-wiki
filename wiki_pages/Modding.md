@@ -1,6 +1,6 @@
 # Modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 {{#ev:youtube | id= uu_Zxf4ul2g
@@ -22,63 +22,63 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 
 ## Tips & guidelines
 
-* **Start the game with -debug_mode -develop** launch option to instantly reload files and use the console.
-** On Steam: right-click the game on Steam -> Properties ->  add -debug_mode -develop to Launch Options at the bottom
-** Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode -develop at the end of the Target field
-** Windows Xbox Game Pass: Open 'Command Prompt' and run 'start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode -develop’
-* **Create a mod for your modifications**: use a personal mod even for minor changes, and never directly modify the game files in the CK3 game folder as they may be overwritten without warning.
-* **Use a good text editor** to edit files and search through folders. The following, aside from Intellij IDEA are free:
-**[Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
-**[Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [forum:1593630/#post-29225852](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
-** [Notepad++](https://notepad-plus-plus.org/downloads/). Choose Perl as your language for syntax highlighting. To set it as default, go to Settings, Styler Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
-** [Intellij IDEA](https://www.jetbrains.com/idea/). Has a fan-made Paradox Language Support plugin with syntax highlighting and validation. To install it, go to File -> Settings -> Plugins and search for "Paradox Language Support".
-** [Pulsar](https://pulsar-edit.dev/) (fork of Atom). Doesn't include UTF-8-BOM encoding needed for localization files. Otherwise is very customizable. Choose Perl 6 as your language for highlighting. To set it as default, go to File, Config, find "core:" and add below it: "customFileTypes: "source.perl6": [ "txt" "gui"]", like in [this example](https://discuss.atom.io/t/how-do-i-make-atom-recognize-a-file-with-extension-x-as-language-y/26539).
-* **Always check the error.log file for execution errors**. ``Documents/Paradox Interactive/Crusader Kings III/logs/error.log``
-* **The log folder also contains lists of effects, triggers and scopes.** Use ``script_docs`` and ``dump_data_types`` console commands in the game to generate them.
-* **The directory for the CK3 folder on Linux is** ``~/.local/share/Paradox Interactive/Crusader Kings III``
-* **Communicate key facts about your mod:**
-**List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
-**Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
-* When possible, upload your mod to all platforms, especially if it is popular. Not everybody owns the game on Steam.
-* Backup your work. Either manually or with a source control system like Git. Consider using GitHub and Discord for team collaboration.
-* **Remove your local copy of the mod when you subscribe to the Steam version**, otherwise it will not work in the game. (removing the .mod file or changing its extension is enough)
-* Use a proper merge tool (like [WinMerge](https://winmerge.org/?lang=en)) to merge between folders and update modified files for a new patch.
-* If you're replacing text across dozens or hundreds lines of code, regular expressions may save a lot of time. They are available in all of the text editors above. Learning resources: [RegexOne](https://regexone.com/), [RegExr](https://regexr.com/).
-* Win+V opens your clipboard history. You'll be copying a lot of text while modding, and this lets you access older copied entries without going back to their source.
-* Join [CK3 Modding discord](https://discord.com/invite/apEvxDZ) to ask any questions and help others
-* The [Modding Git Guide](https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls) is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here. Though the examples are HOI4 based, the principles apply equally well to any Paradox game mod.
-*You can change the path where the launcher and the game saves user specific data:
-**The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
-**For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
+- **Start the game with -debug_mode -develop** launch option to instantly reload files and use the console.
+  - On Steam: right-click the game on Steam -> Properties ->  add -debug_mode -develop to Launch Options at the bottom
+  - Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode -develop at the end of the Target field
+  - Windows Xbox Game Pass: Open 'Command Prompt' and run 'start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode -develop’
+- **Create a mod for your modifications**: use a personal mod even for minor changes, and never directly modify the game files in the CK3 game folder as they may be overwritten without warning.
+- **Use a good text editor** to edit files and search through folders. The following, aside from Intellij IDEA are free:
+  - [Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
+  - [Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [forum:1593630/#post-29225852](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
+  - [Notepad++](https://notepad-plus-plus.org/downloads/). Choose Perl as your language for syntax highlighting. To set it as default, go to Settings, Styler Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
+  - [Intellij IDEA](https://www.jetbrains.com/idea/). Has a fan-made Paradox Language Support plugin with syntax highlighting and validation. To install it, go to File -> Settings -> Plugins and search for "Paradox Language Support".
+  - [Pulsar](https://pulsar-edit.dev/) (fork of Atom). Doesn't include UTF-8-BOM encoding needed for localization files. Otherwise is very customizable. Choose Perl 6 as your language for highlighting. To set it as default, go to File, Config, find "core:" and add below it: "customFileTypes: "source.perl6": [ "txt" "gui"]", like in [this example](https://discuss.atom.io/t/how-do-i-make-atom-recognize-a-file-with-extension-x-as-language-y/26539).
+- **Always check the error.log file for execution errors**. ``Documents/Paradox Interactive/Crusader Kings III/logs/error.log``
+- **The log folder also contains lists of effects, triggers and scopes.** Use ``script_docs`` and ``dump_data_types`` console commands in the game to generate them.
+- **The directory for the CK3 folder on Linux is** ``~/.local/share/Paradox Interactive/Crusader Kings III``
+- **Communicate key facts about your mod:**
+  - List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
+  - Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
+- When possible, upload your mod to all platforms, especially if it is popular. Not everybody owns the game on Steam.
+- Backup your work. Either manually or with a source control system like Git. Consider using GitHub and Discord for team collaboration.
+- **Remove your local copy of the mod when you subscribe to the Steam version**, otherwise it will not work in the game. (removing the .mod file or changing its extension is enough)
+- Use a proper merge tool (like [WinMerge](https://winmerge.org/?lang=en)) to merge between folders and update modified files for a new patch.
+- If you're replacing text across dozens or hundreds lines of code, regular expressions may save a lot of time. They are available in all of the text editors above. Learning resources: [RegexOne](https://regexone.com/), [RegExr](https://regexr.com/).
+- Win+V opens your clipboard history. You'll be copying a lot of text while modding, and this lets you access older copied entries without going back to their source.
+- Join [CK3 Modding discord](https://discord.com/invite/apEvxDZ) to ask any questions and help others
+- The [Modding Git Guide](https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls) is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here. Though the examples are HOI4 based, the principles apply equally well to any Paradox game mod.
+- You can change the path where the launcher and the game saves user specific data:
+  - The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
+  - For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
 
 
 ### Localization Files
 
-* *.yml files in the localization folder must be saved with **UTF-8 + BOM** encoding to be read properly by the game.
-*  filenames need to be saved in the form as ***l_<language>.yml** for the game to read the file correctly. For example **council_l_english.yml**.
-** You must use the US spelling of "localization". The Commonwealth spelling of "localisation" *will not work*.
-** Note, l_ is a lower case L, as in **l**anguage, not capital i.
-* To overwrite existing localization values, put your files with changes into a folder named "replace" within the localization folder.
-* If a mod only has English localization, any player using a different language will see unlocalized strings_like_this. It is better to copy your localization for other languages, even if you don't provide a translation. Modding discord [has a tool](https://discord.com/channels/735413460439007241/1161423005830881462/1161423005830881462) to copy all the files and rename their language markers in one click.
+- *.yml files in the localization folder must be saved with **UTF-8 + BOM** encoding to be read properly by the game.
+- filenames need to be saved in the form as ***l_<language>.yml** for the game to read the file correctly. For example **council_l_english.yml**.
+  - You must use the US spelling of "localization". The Commonwealth spelling of "localisation" *will not work*.
+  - Note, l_ is a lower case L, as in **l**anguage, not capital i.
+- To overwrite existing localization values, put your files with changes into a folder named "replace" within the localization folder.
+- If a mod only has English localization, any player using a different language will see unlocalized strings_like_this. It is better to copy your localization for other languages, even if you don't provide a translation. Modding discord [has a tool](https://discord.com/channels/735413460439007241/1161423005830881462/1161423005830881462) to copy all the files and rename their language markers in one click.
 
 
 ### Launch options
 
-**-debug_mode** - enables dev tooltips and interactions
+  - -debug_mode** - enables dev tooltips and interactions
 
-**-develop** - enables hot reload of most files as soon as they are saved
+  - -develop** - enables hot reload of most files as soon as they are saved
 
-**-mapeditor** - opens the map editor
+  - -mapeditor** - opens the map editor
 
-**-debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
+  - -debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
 
-**-nographics** - launches the game without creating a window or rendering anything and starts an observer game
+  - -nographics** - launches the game without creating a window or rendering anything and starts an observer game
 
-**-random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
+  - -random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
 
-**-benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
+  - -benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
 
-**-continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
+  - -continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
 
 
 ## Creating a mod
@@ -88,30 +88,30 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 
 
 It is recommended to use the game launcher to create initial mod files:
-# Open the game launcher. 
-# Go to Mod library on the left.
-# Press Upload Mod in the top right.
-# Press Create a Mod.
-# Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-#* (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+1. Open the game launcher. 
+1. Go to Mod library on the left.
+1. Press Upload Mod in the top right.
+1. Press Create a Mod.
+1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
+  - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
 After this, copy the game files you want to edit to the created mod folder, following the same folder structure. For example, ``mod/my_new_mod/events/test_events.txt``
 
 
 ## Uploading/updating a mod
 
 Uploading and updating follows the same process:
-#Open the game launcher. 
-#Go to Mod library on the left.
-#Press Upload Mod in the top right.
-#Choose your mod from the dropdown menu.
-#Choose what platform to upload it to.
-#Enter any description. (If updating, make sure the launcher copied the most recent one from the site.)
-#Add a thumbnail
-#*For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
-#*For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
-#Press "Upload".
-#*On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
-#*On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
+1. Open the game launcher. 
+1. Go to Mod library on the left.
+1. Press Upload Mod in the top right.
+1. Choose your mod from the dropdown menu.
+1. Choose what platform to upload it to.
+1. Enter any description. (If updating, make sure the launcher copied the most recent one from the site.)
+1. Add a thumbnail
+  - For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
+  - For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
+1. Press "Upload".
+  - On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
+  - On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
 
 
 ## Installing mods manually
@@ -131,25 +131,25 @@ Modders will usually zip both the .mod file and the mod folder. In this case, yo
 ### Installing Paradox Mods
 
 Mods downloaded from Paradox Mods only have the contents of the mod folder and require the following:
-# Create a new folder in your "mod" directory. Give it any name, like "my mod".
-# Unzip the downloaded mod directly to this new folder.
-# Copy descriptor.mod from it and paste to your "mod" folder.
-# Rename the copied descriptor file to anything.
-# Open it with a text editor and add a line ``path="mod/my mod"`` (where "my mod" is the name of the folder you created). Save the file.
-# After this, you should be able to add this mod in the launcher.
+1. Create a new folder in your "mod" directory. Give it any name, like "my mod".
+1. Unzip the downloaded mod directly to this new folder.
+1. Copy descriptor.mod from it and paste to your "mod" folder.
+1. Rename the copied descriptor file to anything.
+1. Open it with a text editor and add a line ``path="mod/my mod"`` (where "my mod" is the name of the folder you created). Save the file.
+1. After this, you should be able to add this mod in the launcher.
 If this didn't work, you can try to create a new mod from the launcher and then copy the downloaded files to its folder (excluding descriptor.mod).
 
 
 ## Extracting files From Microsoft Store version
 
 If you want to read the files using the Microsoft Store version, you can use a program called UWPDumper to extract the files.
-# Download the latest x64 binary of [Modding#Tools & utilities](#tools-&-utilities)
-# Enable Developer Mode (Windows Settings -> Update and Security -> For Developers -> Developer Mode).
-# Run CK3.
-# Run UWPInjector.exe from the program you just downloaded.
-# Enter the number next to ck3.exe : ParadoxInteractive.ProjectTitus_zfnrdv2de78ny as the processID.
-# Check where it is going to store the files (probably somewhere like C:\Users\%USERPROFILE%\AppData\Local\Packages\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny\TempState\DUMP
-# Wait for the program to finish.
+1. Download the latest x64 binary of [Modding#Tools & utilities](#tools-&-utilities)
+1. Enable Developer Mode (Windows Settings -> Update and Security -> For Developers -> Developer Mode).
+1. Run CK3.
+1. Run UWPInjector.exe from the program you just downloaded.
+1. Enter the number next to ck3.exe : ParadoxInteractive.ProjectTitus_zfnrdv2de78ny as the processID.
+1. Check where it is going to store the files (probably somewhere like C:\Users\%USERPROFILE%\AppData\Local\Packages\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny\TempState\DUMP
+1. Wait for the program to finish.
 The files should then be present in the directory specified earlier. If you want to edit the files, create a mod and copy the desired files there.
 
 
@@ -159,7 +159,7 @@ Load order only matters when two or more mods change the same files, this is cal
 
 Mods are loaded in order from top to bottom of the playset.
 
-**The mod lower in the playset will overwrite identical files from above.**
+  - The mod lower in the playset will overwrite identical files from above.**
 
 So if you want to make sure that a mod is not overwritten by anything, put it at the very bottom of the playset.
 
@@ -210,12 +210,12 @@ A single override also cannot remove an object, only change it.
 
 With overrides, it is good practice to add your mod's name to the filename, so you can easily spot if it was loaded in database_conflicts.log.
 
-**More specifics:**
+  - More specifics:**
 
 
 ##### Defines
 
-*common/defines*
+- common/defines*
 
 Include the name of the category you change, for example:
 
@@ -229,7 +229,7 @@ NCharacter = {
 
 ##### On_actions
 
-*common/on_action*
+- common/on_action*
 
 Some parts of on_actions combine rather than override each other.
 
@@ -317,17 +317,17 @@ Make sure that you only use one version of the mod: either from Steam Workshop o
 ### Mods stopped working
 
 For unknown reasons, mods sometime stop working. There are two ways to solve this:
-* Reload from the launcher:
-*# Open the launcher
-*# Go to Mod library on the left
-*# Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
-*# Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
-*# Close the launcher
-*# Resubscribe to the mod.
-*# Open the launcher and add the mod back again.
-* If nothing helps, delete the following files if they are present and restart the launcher:
-*# Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
-*# Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
+- Reload from the launcher:
+  1. Open the launcher
+  1. Go to Mod library on the left
+  1. Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
+  1. Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
+  1. Close the launcher
+  1. Resubscribe to the mod.
+  1. Open the launcher and add the mod back again.
+- If nothing helps, delete the following files if they are present and restart the launcher:
+  1. Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
+  1. Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
 
 
 ### Mods are conflicting
@@ -345,11 +345,11 @@ In VSC you can press Ctrl+Shift+F to search through your whole project or right-
 
 ## Tools & utilities
 
-* [Exporters](Exporters.md) (Maya and Photoshop)
-* [Modding tools](Modding_tools.md)
-* [Clausewitz Maya Exporter](https://forum.paradoxplaza.com/forum/threads/information-and-faq.924764/): a tool to create and export 3D models to use in CK3 and other Clausewitz games.
-* [UWPDumper](https://github.com/Wunkolo/UWPDumper): a tool to extract files from Microsoft Store games.
-* [CK3 triggers, modifiers, effects, event scopes, event targets, on actions, code revisions and setup.log](https://github.com/OldEnt/crusader-kings-3-triggers-modifiers-effects-event-scopes-targets-on-actions-code-revisions-list): List of valid inputs for most game versions since launch. Use GitHub file history feature to compare_versions.
+- [Exporters](Exporters.md) (Maya and Photoshop)
+- [Modding tools](Modding_tools.md)
+- [Clausewitz Maya Exporter](https://forum.paradoxplaza.com/forum/threads/information-and-faq.924764/): a tool to create and export 3D models to use in CK3 and other Clausewitz games.
+- [UWPDumper](https://github.com/Wunkolo/UWPDumper): a tool to extract files from Microsoft Store games.
+- [CK3 triggers, modifiers, effects, event scopes, event targets, on actions, code revisions and setup.log](https://github.com/OldEnt/crusader-kings-3-triggers-modifiers-effects-event-scopes-targets-on-actions-code-revisions-list): List of valid inputs for most game versions since launch. Use GitHub file history feature to compare_versions.
 
 
 ## Save game editing
@@ -357,32 +357,32 @@ In VSC you can press Ctrl+Shift+F to search through your whole project or right-
 > This doesn't seem to work anymore 
 
 Save files are located in:
-* Windows: Documents\Paradox Interactive\Crusader Kings III\save games
-* Linux: ~/.local/share/Paradox Interactive/Crusader Kings III/save games
+- Windows: Documents\Paradox Interactive\Crusader Kings III\save games
+- Linux: ~/.local/share/Paradox Interactive/Crusader Kings III/save games
 
-**First start the game in the debug mode and save**. If it's an ironman game, exit to menu to autosave.
+  - First start the game in the debug mode and save**. If it's an ironman game, exit to menu to autosave.
 
-* On Steam: right-click the game on Steam -> Properties ->  add -debug_mode to Launch Options at the bottom
-* Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode at the end of the Target field
+- On Steam: right-click the game on Steam -> Properties ->  add -debug_mode to Launch Options at the bottom
+- Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode at the end of the Target field
 
 PC:
-# Find the save file in the save games folder.
-# If it was an autosave, skip to the next step. Else:
+1. Find the save file in the save games folder.
+1. If it was an autosave, skip to the next step. Else:
 ## Right-click the save file and extract it like an archive with 7-Zip or WinRar
 ## Rename the extracted 'gamestate' file to have a .ck3 extension.
-# Right-click it and open with a text editor (Windows Notepad is not recommended as the save files are very big).
-# Edit the file and save it.
-#* To remove ironman status, search for "ironman=yes" and change it to "no"
-# Load it in the game.
+1. Right-click it and open with a text editor (Windows Notepad is not recommended as the save files are very big).
+1. Edit the file and save it.
+  - To remove ironman status, search for "ironman=yes" and change it to "no"
+1. Load it in the game.
 
 
 Mac:
-# Open Terminal
-# Ensure that the directory is set to the correct folder
-# Type in "unzip FileName.ck3"
-# Rename the extracted 'gamestate' file to something with a .ck3 extension
-# Edit this plain-text save
-# Load it directly in the game (no need to re-compress)
+1. Open Terminal
+1. Ensure that the directory is set to the correct folder
+1. Type in "unzip FileName.ck3"
+1. Rename the extracted 'gamestate' file to something with a .ck3 extension
+1. Edit this plain-text save
+1. Load it directly in the game (no need to re-compress)
 
 
 | **OS** | **Save type** | **Location** |
@@ -463,23 +463,23 @@ The table below contains the possible first-level blocks in the gamestate file. 
 > **Note:** Wiki pages for modifications are the responsibility of the modification team, not the Paradox wiki team
 
 
-*[Way of Kings](https://ck3.paradoxwikis.com/Way_of_Kings)
-*[Kingdom of Heaven](https://ck3.paradoxwikis.com/Kingdom_of_Heaven)
-*[When the World Stopped Making Sense](https://ck3.paradoxwikis.com/When_the_World_Stopped_Making_Sense)
-*[Princes of Darkness](https://www.princesofdarknessmod.com/wiki/)
-*[Elder Kings II](https://ck3.paradoxwikis.com/Elder_Kings_II)
-*[CK3AGOT](https://ck3.paradoxwikis.com/CK3AGOT)
-*[Nightmare in Britain](https://ck3.paradoxwikis.com/Nightmare_in_Britain)
-*[Rajas of Asia](https://ck3.paradoxwikis.com/Rajas_of_Asia)
-*[LotR: Realms in Exile](https://ck3.paradoxwikis.com/LotR:_Realms_in_Exile)
-*[The Fallen Eagle](https://ck3.paradoxwikis.com/The_Fallen_Eagle)
+- [Way of Kings](https://ck3.paradoxwikis.com/Way_of_Kings)
+- [Kingdom of Heaven](https://ck3.paradoxwikis.com/Kingdom_of_Heaven)
+- [When the World Stopped Making Sense](https://ck3.paradoxwikis.com/When_the_World_Stopped_Making_Sense)
+- [Princes of Darkness](https://www.princesofdarknessmod.com/wiki/)
+- [Elder Kings II](https://ck3.paradoxwikis.com/Elder_Kings_II)
+- [CK3AGOT](https://ck3.paradoxwikis.com/CK3AGOT)
+- [Nightmare in Britain](https://ck3.paradoxwikis.com/Nightmare_in_Britain)
+- [Rajas of Asia](https://ck3.paradoxwikis.com/Rajas_of_Asia)
+- [LotR: Realms in Exile](https://ck3.paradoxwikis.com/LotR:_Realms_in_Exile)
+- [The Fallen Eagle](https://ck3.paradoxwikis.com/The_Fallen_Eagle)
 
 
 ## External links
 
-* [CK3 User Mods](https://forum.paradoxplaza.com/forum/forums/crusader-kings-iii-user-mods.1080/) on the Paradox Forum.
-* [Crusader Kings](https://discord.gg/ck3) official Discord modding channel. Go to the server-roles channel and choose CK3 Modding in the [Channel Access post](https://discordapp.com/channels/616881873506795550/710484698924711976/710490306788982804).
-* [CK3 Mod Coop](https://discord.gg/apEvxDZ) A community Discord server dedicated to modding for CK3.
+- [CK3 User Mods](https://forum.paradoxplaza.com/forum/forums/crusader-kings-iii-user-mods.1080/) on the Paradox Forum.
+- [Crusader Kings](https://discord.gg/ck3) official Discord modding channel. Go to the server-roles channel and choose CK3 Modding in the [Channel Access post](https://discordapp.com/channels/616881873506795550/710484698924711976/710490306788982804).
+- [CK3 Mod Coop](https://discord.gg/apEvxDZ) A community Discord server dedicated to modding for CK3.
 
 
 Category:Modding

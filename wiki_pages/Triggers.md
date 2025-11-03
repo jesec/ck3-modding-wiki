@@ -251,20 +251,20 @@ title:k_france.holder ?= father
 ### Value comparison
 
 A value comparison is a statement with two numerical values on either side of either
-* an equal sign ``=``
-* a comparison symbol
-** strictly greater than ``>``
-** greater than or equal to ``>=``
-** lower than ``<``
-** lower than or equal to ``<=``
+- an equal sign ``=``
+- a comparison symbol
+  - strictly greater than ``>``
+  - greater than or equal to ``>=``
+  - lower than ``<``
+  - lower than or equal to ``<=``
 It is true if the comparison is mathematically correct.
 
 Numerical values in a value comparison can be:
-* a number
-* a named value
-* a [script_value](https://ck3.paradoxwikis.com/script_value)
-* a saved scope value
-* a [variable](Variables.md) storing a number
+- a number
+- a named value
+- a [script_value](https://ck3.paradoxwikis.com/script_value)
+- a saved scope value
+- a [variable](Variables.md) storing a number
 
 Ex: this trigger checks whether the current character scope's gold is strictly greater than 1000.
 
@@ -295,7 +295,7 @@ Simple triggers check whether they are true depending on the argument provided o
 
 The argument is either:
 
-* a scope
+- a scope
 Ex: this trigger checks whether the current character scope is a vassal of the saved scope ``scope:actor``.
 
 
@@ -304,7 +304,7 @@ is_vassal_of = scope:actor
 ```
 
 
-* a database key
+- a database key
 Ex: this trigger checks whether the current character scope has the trait defined with the ``infirm`` key.
 
 

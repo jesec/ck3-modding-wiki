@@ -18,7 +18,7 @@ Next you decide on the selectable special characters and start defining him/her.
 
 
 ```
-# Halfdan Whiteshirt (York) ID: 163112
+1. Halfdan Whiteshirt (York) ID: 163112
 	character = {
 		name = "bookmark_northmen_halfdan_whiteshirt"      #name has to be localized
 		dynasty = 7514                                     #dynasty ID

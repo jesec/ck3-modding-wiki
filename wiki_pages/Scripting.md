@@ -1,23 +1,23 @@
 # Scripting
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
-**Scripting** lets us add and change game content, where allowed by developers, with custom scripting language.
+  - Scripting** lets us add and change game content, where allowed by developers, with custom scripting language.
 
 It is very readable, using names like add_gold or set_variable.
 
-**Script is used in common/ and events/ folders.**
+  - Script is used in common/ and events/ folders.**
 
 This extends to decisions, interactions, activities and also definitions of religions, cultures, legacies and so on.
 
 What isn't script:
 
-* Most of AI or army behavior is done in game code, which is inaccessible to modders. We call such features "hardcoded".
+- Most of AI or army behavior is done in game code, which is inaccessible to modders. We call such features "hardcoded".
 
-* [Interface](Interface.md) is a separate system, and with a few exceptions, we cannot use script in UI or UI functions in script. Use [Interface#Scripted GUIs](Interface.md#scripted-guis) to execute script in UI.
+- [Interface](Interface.md) is a separate system, and with a few exceptions, we cannot use script in UI or UI functions in script. Use [Interface#Scripted GUIs](Interface.md#scripted-guis) to execute script in UI.
 
-* [History modding](History_modding.md) also uses a slightly different static system, but allows to use effects from script.
+- [History modding](History_modding.md) also uses a slightly different static system, but allows to use effects from script.
 
 
 ## Basics
@@ -35,10 +35,10 @@ Especially, look for effects, triggers and event_targets logs.
 
 They list the three common types of functions:
 
-* **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
+- **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
 
-* **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
-* **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
+- **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
+- **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
 
 The logs folder also has error and debug logs, useful to find errors and test your script.
 
@@ -47,13 +47,13 @@ There are also .info files in folders, they describe the syntax of files there.
 
 #### Limitations
 
-* No access to the operating system
+- No access to the operating system
 
-* One-dimensional arrays
+- One-dimensional arrays
 
-* No string manipulation
-* No in-line math
-* Slower than actual game code
+- No string manipulation
+- No in-line math
+- Slower than actual game code
 See [Scripting#Workarounds](#workarounds) below for some solutions.
 
 
@@ -68,13 +68,13 @@ However, some developers have started to call it "Jomini script", after it was w
 #### Testing
 
 There are a few ways to quickly test your script:
-* you can run short scripts in the console, by adding the word effect or trigger in front, like this:
+- you can run short scripts in the console, by adding the word effect or trigger in front, like this:
 
 ``effect add_gold = 100`` or ``trigger is_ai = yes``
 
-* use script runner in the explorer (console command ``explorer``)
-* place your script in a .txt file in the run/ folder and execute it with ``run filename.txt`` console command
-* run the game with ``-develop`` launch option, so your event or decision reloads instantly
+- use script runner in the explorer (console command ``explorer``)
+- place your script in a .txt file in the run/ folder and execute it with ``run filename.txt`` console command
+- run the game with ``-develop`` launch option, so your event or decision reloads instantly
 
 Keep the error log open to see any issues. Run console command ``release_mode`` to show the error tracker in game.
 
@@ -104,10 +104,10 @@ x = {
 ```
 Examples:
 
-* ``is_alive = yes``
-* ``add_gold = 100``
-* ``debug_log = "hello world"``
-* ``player_heir = { marry = root }``
+- ``is_alive = yes``
+- ``add_gold = 100``
+- ``debug_log = "hello world"``
+- ``player_heir = { marry = root }``
 
 Effects and triggers are never used separately, they need to be followed by another parameter, sometimes simply ``= yes``.
 
@@ -133,11 +133,11 @@ Scopes are entities in the game, like a character or county.
 
 Effects and triggers need to be used on the right scopes
 
-* e.g.``age`` trigger only works on a character
+- e.g.``age`` trigger only works on a character
 
 Event targets let us switch from one scope to another, we call that scoping.
 
-* ``primary_heir`` is an event target, only available on a character, returning their primary heir
+- ``primary_heir`` is an event target, only available on a character, returning their primary heir
 
 See logs for information on supported scopes.
 
@@ -184,7 +184,7 @@ However, for readability, each code block should be indented with one more tab. 
 
 Comments are made with # in front of text.
 
-**Exceptions**
+  - Exceptions**
 
 There are some blocks that accept multiple entries without a paired parameter. For example, events in on_actions:
 
@@ -258,13 +258,13 @@ This will return true if the character is AI **OR** if they have more than 100 g
 
 Multiple parameters can be put in a block, and they can be nested, like ``OR = { AND = { NOT = {...``
 
-**AND** is true if **all** conditions are **true**.
+  - AND** is true if **all** conditions are **true**.
 
-**OR** is true if **any** condition is **true**.
+  - OR** is true if **any** condition is **true**.
 
-**NOT** and **NOR** are actually the same: true if **all** conditions are **false**.
+  - NOT** and **NOR** are actually the same: true if **all** conditions are **false**.
 
-**NAND** is true if **any** condition is **false**.
+  - NAND** is true if **any** condition is **false**.
 
 Note that all trigger blocks, like ``limit={}``, work as AND by default and accept multiple parameters.
 
@@ -390,15 +390,15 @@ set_variable = {
 
 There are different types of variables based on how they are stored:
 
-* **normal**, ``set_variable`` - stored on the [Scopes](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
-** accessed with ``var:``. Could be chained like this: ``primary_heir.var:my_sons_birthday``.
-** if stored on a character, will be lost when the character dies! Use dead character variables in that case.
-* **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
-** accessed with ``global_var:``.
-* **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
-** accessed with ``local_var:``. Could be useful as a counter, although rarely used.
-* **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
-** accessed with ``dead_var:``, does not have a ``change_`` effect.
+- **normal**, ``set_variable`` - stored on the [Scopes](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
+  - accessed with ``var:``. Could be chained like this: ``primary_heir.var:my_sons_birthday``.
+  - if stored on a character, will be lost when the character dies! Use dead character variables in that case.
+- **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
+  - accessed with ``global_var:``.
+- **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
+  - accessed with ``local_var:``. Could be useful as a counter, although rarely used.
+- **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
+  - accessed with ``dead_var:``, does not have a ``change_`` effect.
 
 global and local have their own effects for changing and removing:
 
@@ -442,7 +442,7 @@ if = {
   }
   # effect
 }
-# optional
+1. optional
 else_if = {
   limit = { #condition }
   # effect
@@ -568,16 +568,16 @@ Confusingly, a local variable list isn't permanent.
 
 To make a list, we need to add each item to it with one of these commands:
 
-**Temporary:**
+  - Temporary:**
 
-* ``add_to_list`` - adds to a simple list, only exists while the script is executing
-* ``add_to_local_variable_list`` - similar, but supports adding duration for the item after which it is removed from the list
-* ``add_to_temporary_list`` - unlike all others, can be used in a trigger block
+- ``add_to_list`` - adds to a simple list, only exists while the script is executing
+- ``add_to_local_variable_list`` - similar, but supports adding duration for the item after which it is removed from the list
+- ``add_to_temporary_list`` - unlike all others, can be used in a trigger block
 
-**Permanent:**
+  - Permanent:**
 
-* ``add_to_variable_list`` - adds to a list stored on the scope where the effect is executed, supports duration
-* ``add_to_global_variable_list`` - adds to a global permanent list, supports duration
+- ``add_to_variable_list`` - adds to a list stored on the scope where the effect is executed, supports duration
+- ``add_to_global_variable_list`` - adds to a global permanent list, supports duration
 
 If a list doesn't exist yet, one of these commands will create it and add the item.
 
@@ -652,14 +652,14 @@ Be careful not to do something like ``every_living_character = { every_province 
 
 These all run some effect on the item and can only to be used in *effect* blocks:
 
-* ``every_x`` - runs through all items in the order they were added in
-* ``ordered_x`` - orders items by a value, like ``age``. Can go through all or pick one.
-* ``random_x`` - picks one random item, the chance can be manipulated
+- ``every_x`` - runs through all items in the order they were added in
+- ``ordered_x`` - orders items by a value, like ``age``. Can go through all or pick one.
+- ``random_x`` - picks one random item, the chance can be manipulated
 
 
 ##### Trigger iterator
 
-* ``any_x`` - goes through all items in a *trigger* block, returns true if the condition is true for *all* items.
+- ``any_x`` - goes through all items in a *trigger* block, returns true if the condition is true for *all* items.
 
 ``any_x`` can use ``count`` and ``percent`` with ``< <= = != > >=`` to specify how many items should return true.
 
@@ -688,10 +688,10 @@ It will find things ``like every_realm_border_county, every_connected_county, ev
 
 We iterate through our lists with:
 
-* ``every_in_list, every_in_local_list, every_in_global_list``
-* ``ordered_in_list, ordered_in_local_list, ordered_in_global_list``
-* ``random_in_list, random_in_local_list, random_in_global_list``
-* ``any_in_list, any_in_local_list, any_in_global_list``
+- ``every_in_list, every_in_local_list, every_in_global_list``
+- ``ordered_in_list, ordered_in_local_list, ordered_in_global_list``
+- ``random_in_list, random_in_local_list, random_in_global_list``
+- ``any_in_list, any_in_local_list, any_in_global_list``
 
 They are used for both simple and variable lists, specify which with ``list = name`` or ``variable = name``
 
@@ -707,8 +707,8 @@ When it's used, it essentially pastes its contents into script.
 
 They can be defined in:
 
-* common/scripted_effects to be used globally 
-* event files, just for the events there
+- common/scripted_effects to be used globally 
+- event files, just for the events there
 
 In common/scripted_effects:
 
@@ -844,8 +844,8 @@ However, console commands disable achievements, so warn players about it!
 
 We can create a list with "containers" that would hold multiple values for us, using either:
 
-* provinces
-* [Story cycles modding](Story_cycles_modding.md)
+- provinces
+- [Story cycles modding](Story_cycles_modding.md)
 
 Provinces don't require any extra setup and since there are 9000 of them, you can safely create large lists without worrying about running out of "containers".
 
@@ -853,9 +853,9 @@ Story cycles can be created as needed, they can execute effects automatically, s
 
 The basic process is:
 
-# Add a container to a variable list
-# Set variables to that container
-# Use the list and reference the variables in each item
+1. Add a container to a variable list
+1. Set variables to that container
+1. Use the list and reference the variables in each item
 
 
 For more on script syntax see other documentation pages:

@@ -1,18 +1,18 @@
 # Event modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 <!-- Template: Expand‎ -->
 Events are the meat of every well-rounded mod; smaller and larger bits of story that can happen to a player during the campaign.
 
-**Checklist.** Your events must:
+  - Checklist.** Your events must:
 
-* be in ``your_mod\events\`` folder
-* have a .txt extension
-* have a namespace defined on the first line, like ``namespace = my_events``
-* use the namespace as their name + number, like ``my_events.1 = {...``
-* be fired from script in some way, like by an [Event modding#On Actions (on action)](#on-actions-(on-action))
+- be in ``your_mod\events\`` folder
+- have a .txt extension
+- have a namespace defined on the first line, like ``namespace = my_events``
+- use the namespace as their name + number, like ``my_events.1 = {...``
+- be fired from script in some way, like by an [Event modding#On Actions (on action)](#on-actions-(on-action))
 
 Events do not fire automatically otherwise, like in older games. Other ways to fire them are decisions, character interactions, story cycles, etc.
 
@@ -26,9 +26,9 @@ There are various tools capable of helping modders script events with greater ea
 
 [Visual Studio Code](https://code.visualstudio.com/) is considered to be the superior choice for modders due to the fact that it features various extensions that allow it to syntax highlight ParadoxScript.
 
-**Recommended Extensions:**
-* [CWTools - Paradox Language Services by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode)
-* [Paradox Syntax Highlighting by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.paradox-syntax)
+  - Recommended Extensions:**
+- [CWTools - Paradox Language Services by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode)
+- [Paradox Syntax Highlighting by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.paradox-syntax)
 
 | **Snippets For Visual Studio Code&nbsp;** |
 | --- |
@@ -600,7 +600,7 @@ This allows modders to intercept and run their own scripts whenever said On Acti
 
 They are defined in **common/on_action**
 
-**Important:** double-check your path. This is a singular **on_action**, not on_actions. This is a common mistake.
+  - Important:** double-check your path. This is a singular **on_action**, not on_actions. This is a common mistake.
 
 Example (trigger a custom event when a child is born):
 ```c
@@ -621,13 +621,13 @@ Such custom on_actions are useful to group events or effects. We can create new 
 
 ### Common examples
 
-* ``on_birth_child`` - when a child is born
-* ``on_16th_birthday`` - when a child becomes an adult
-* ``random_yearly_playable_pulse`` - once a year, at a random date, for every count+ character who is allowed be played. Useful for rare events.
-* ``quarterly_playable_pulse`` - a more frequent pulse, every three months, for the same kind of characters
-* ``on_game_start`` - when the game starts, but before the player selects a character, so ``every_player`` doesn't work here
-* ``on_game_start_after_lobby`` - after the player has selected a character and confirmed. This is where you can affect player characters
-* ``on_death`` - right before a character dies. Useful to transfer any variables to the primary_heir
+- ``on_birth_child`` - when a child is born
+- ``on_16th_birthday`` - when a child becomes an adult
+- ``random_yearly_playable_pulse`` - once a year, at a random date, for every count+ character who is allowed be played. Useful for rare events.
+- ``quarterly_playable_pulse`` - a more frequent pulse, every three months, for the same kind of characters
+- ``on_game_start`` - when the game starts, but before the player selects a character, so ``every_player`` doesn't work here
+- ``on_game_start_after_lobby`` - after the player has selected a character and confirmed. This is where you can affect player characters
+- ``on_death`` - right before a character dies. Useful to transfer any variables to the primary_heir
 
 Note, there is no monthly on_action. This was done to ensure better performance.
 
@@ -649,12 +649,12 @@ Alternatively, have the on_action call itself with a monthly delay.
 
 Most of the time, we want to add something to on_actions without overwriting them. We call this appending.
 
-**Important:** effects and triggers cannot be appended directly. Only events and other on_actions are appended.
+  - Important:** effects and triggers cannot be appended directly. Only events and other on_actions are appended.
 
 To ensure compatibility and not overwrite vanilla effects, do the following:
 
-# Make a new txt file.
-# Create your own on_action and add it to an existing on_action:
+1. Make a new txt file.
+1. Create your own on_action and add it to an existing on_action:
 
 ```coffee
 on_birth_child = { 
@@ -689,7 +689,7 @@ For example, ``on_game_start`` doesn't have a root scope. It fires once, globall
 
 On the other hand, ``yearly_playable_pulse`` fires for all playable characters, and has the character as the root scope. So we can use character effects directly, like add_gold.
 
-**Important**: Do not use ``every_living_character`` in ``yearly_playable_pulse`` and similar on_actions.
+  - Important**: Do not use ``every_living_character`` in ``yearly_playable_pulse`` and similar on_actions.
 
 That on_action already fires for every character. If you then try to iterate through all characters, that would result in about 20000<sup>2</sup> operations, causing massive lag and repetition of your effects.
 
@@ -818,10 +818,10 @@ This table uses contents from */common/on_action/on_actions.info* file.
 
 <!-- Template: Expand‎ -->Events do not fire automatically, they have to be fired by something in the script, for example:
 
-* [Event modding#On Actions (on action)](#on-actions-(on-action))
-* [Story cycles modding](Story_cycles_modding.md)
-* [Decisions modding](Decisions_modding.md)
-* character interactions
+- [Event modding#On Actions (on action)](#on-actions-(on-action))
+- [Story cycles modding](Story_cycles_modding.md)
+- [Decisions modding](Decisions_modding.md)
+- character interactions
 
 etc.
 
@@ -835,7 +835,7 @@ five_year_playable_pulse = {
 }
 my_five_year_playable_pulse = {
 		random_events = {
-# Your event change name is here.
+1. Your event change name is here.
 	}
 }
 ```

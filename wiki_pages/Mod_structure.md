@@ -4,23 +4,23 @@
 
 
 Mods are located in the folder *~\Paradox Interactive\Crusader Kings III\mod*:
-* Default on Windows: `%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\mod`
-* Default on Linux: `~/.local/share/Paradox Interactive/Crusader Kings III/mod`
+- Default on Windows: `%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\mod`
+- Default on Linux: `~/.local/share/Paradox Interactive/Crusader Kings III/mod`
 Each mod requires two parts. Both must be located in the folder above and share the same name, barring file extensions; otherwise, the game launcher will *not* recognise the mod. Note that folder and file names are case sensitive on Mac and Linux.
-* A .mod file, a plain text file with metadata required to use the mod.
-* A mod folder containing files specific to modding the game, such as events, images, decisions and characters. It may also be a .zip file instead.
+- A .mod file, a plain text file with metadata required to use the mod.
+- A mod folder containing files specific to modding the game, such as events, images, decisions and characters. It may also be a .zip file instead.
 
 
 ## Creating initial files
 
 It is recommended to generate the initial mod files through the game launcher in the interests of speed and avoiding human error.
-# Open the game launcher.
-# Go to All Installed Mods on the left.
-# Press Upload Mod in the top right.
-# Press Create a Mod.
-# Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-#* (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
-#* (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
+1. Open the game launcher.
+1. Go to All Installed Mods on the left.
+1. Press Upload Mod in the top right.
+1. Press Create a Mod.
+1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
+  - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+  - (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
 The tags offered by the launcher include:
 
 |  |  |
@@ -39,9 +39,9 @@ The tags offered by the launcher include:
 
 
 This process will create the following:
-* The mod folder, named after your mod.
-* A *descriptor.mod* file, contained within the mod folder.
-* Another .mod file, this one named after the mod, located alongside the mod folder.
+- The mod folder, named after your mod.
+- A *descriptor.mod* file, contained within the mod folder.
+- Another .mod file, this one named after the mod, located alongside the mod folder.
 
 When [Modding#Uploading/updating a mod](Modding.md#uploading/updating-a-mod), you will be able to change the suggested game version, add thumbnail for Paradox Mods and description.
 
@@ -49,8 +49,8 @@ When [Modding#Uploading/updating a mod](Modding.md#uploading/updating-a-mod), yo
 ## The .mod files
 
 The .mod files used by the game are plain text files that contain metadata about their corresponding mod. There are two .mod files for every mod:
-* *(modname).mod*, located *alongside* the mod's folder. This one is required; without it, the launcher will not recognise the mod.
-* *descriptor.mod*, located *within* the mod folder. It is recommended to keep this file consistent with the other one, excluding the line containing the *path* key which is not needed in the descriptor file.
+- *(modname).mod*, located *alongside* the mod's folder. This one is required; without it, the launcher will not recognise the mod.
+- *descriptor.mod*, located *within* the mod folder. It is recommended to keep this file consistent with the other one, excluding the line containing the *path* key which is not needed in the descriptor file.
 
 
 ### Syntax
@@ -119,10 +119,10 @@ For specifics, either consult the relevant modding page using the navigation box
 
 ## Tips
 
-* When editing your mod folder and .mod file(s), you can reload mods in the launcher to update them without restarting it. In the "Mods" section, press "Manage all mods", then "Reload installed mods". Try this if your mod is not showing up.
-* Once you have created your initial mod structure, it is highly recommended to use some form of backup system (as simple as copying your files to someplace else), or source control such as Git / Github. This will greatly help if you lose your mod files or somehow break your mod and you want to go back to an old version.
-* When creating your .mod file, ensure that you follow the syntax rules correctly, otherwise your mod may not show up at all. For instance, pay attention to using quotation marks (``"``) where needed, especially around values like paths and names.
-* Check spelling everywhere, including the contents and names of files and folders. Even the simplest of errors cause the greatest problems.
+- When editing your mod folder and .mod file(s), you can reload mods in the launcher to update them without restarting it. In the "Mods" section, press "Manage all mods", then "Reload installed mods". Try this if your mod is not showing up.
+- Once you have created your initial mod structure, it is highly recommended to use some form of backup system (as simple as copying your files to someplace else), or source control such as Git / Github. This will greatly help if you lose your mod files or somehow break your mod and you want to go back to an old version.
+- When creating your .mod file, ensure that you follow the syntax rules correctly, otherwise your mod may not show up at all. For instance, pay attention to using quotation marks (``"``) where needed, especially around values like paths and names.
+- Check spelling everywhere, including the contents and names of files and folders. Even the simplest of errors cause the greatest problems.
 
 
 Category:Modding

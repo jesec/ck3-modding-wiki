@@ -61,7 +61,7 @@ release_from_prison = yes
 Simple effects require a single argument, provided on the right hand side of the ``=`` sign.
 
 The argument can be:
-* a scope
+- a scope
 Ex: this effect makes the target scope the spouse of the current character scope
 
 
@@ -69,14 +69,14 @@ Ex: this effect makes the target scope the spouse of the current character scope
 marry = scope:bride
 ```
 
-* a database key
+- a database key
 Ex: this effect changes the prison type of the current character scope
 
 ```
 change_prison_type = house_arrest
 ```
 
-* a numerical value
+- a numerical value
 Ex: this effect adds the specified amount of gold to the current character scope
 
 ```

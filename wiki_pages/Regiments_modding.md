@@ -12,7 +12,7 @@ Regiments are defined in `/Crusader Kings III/game/game/common/men_at_arms_types
 
 For best compatibility, use unique file names.
 
-**Example:**
+  - Example:**
 
 ```
 example_maa = { # maa = Men at arms
@@ -85,7 +85,7 @@ unlock_maa = my_maa # Use the key of maa unit
 Or you can also provide bonuses to the regiment.
 
 
-**Example** (given by CK3 devs):
+  - Example** (given by CK3 devs):
 
 ```
 maa_upgrade = {
@@ -109,13 +109,13 @@ In the tradition (e.g. ``common/culture/traditions/my_traditions.txt``):
 
 ```
 tradition_example = {
-# ...
+1. ...
 	parameters = {
 		# ...
 		unlock_my_maa = yes
 		# ...
 	}
-# ...
+1. ...
 }
 ```
 
@@ -125,11 +125,11 @@ And in the MaA (e.g. ``common/men_at_arms_types/my_maa_types.txt``):
 
 ```
 my_maa = {
-# ...
+1. ...
 	can_recruit = {
 		culture = { has_cultural_parameter = unlock_my_maa }
 	}
-# ...
+1. ...
 }
 ```
 

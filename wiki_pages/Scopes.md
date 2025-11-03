@@ -4,7 +4,7 @@
 
 
 ![CK3 Scope Overview Chart](https://ck3.paradoxwikis.com/File:CK3_Scopes.png)
-**Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
+  - Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
 ![These are the color-coded direct scopes as of 1.8.0, generated via automated export from the game files.](https://ck3.paradoxwikis.com/File:Exportedscopes190.png)
 
 
@@ -22,9 +22,9 @@ Unless specified otherwise, the term scope will always refer to a database scope
 
 A database scope usually has the following three characteristics:
 
-* you can read information from it, using [triggers](Triggers.md)
-* you can write information on it or modify it, using [effects](Effects.md)
-* you can move from one to another
+- you can read information from it, using [triggers](Triggers.md)
+- you can write information on it or modify it, using [effects](Effects.md)
+- you can move from one to another
 
 Some scopes are created on game start, either from `/Crusader Kings III/game/history` files (historical characters, titles), `/Crusader Kings III/game/map data` (provinces), or `/Crusader Kings III/game/common` folders (cultures, faiths, governments, traits...).
 
@@ -267,7 +267,7 @@ In the following sections, all script examples are executed in the context of a 
 every_child = {
    add_gold = 10
 }
-# every child of the current character scope gets 10 gold
+1. every child of the current character scope gets 10 gold
 ```
 
 
@@ -281,7 +281,7 @@ every_child = {
    limit = { is_female = yes }
    add_gold = 10
 }
-# every female child of the current character scope gets 10 gold
+1. every female child of the current character scope gets 10 gold
 ```
 
 
@@ -297,7 +297,7 @@ every_child = {
       add_gold = 10
    }
 }
-# the current character scope gets 10 gold for every female child they have
+1. the current character scope gets 10 gold for every female child they have
 ```
 
 
@@ -325,7 +325,7 @@ scope:female_child = {
 random_child = {
    add_gold = 10
 }
-# one child gets 10 gold
+1. one child gets 10 gold
 ```
 
 
@@ -339,7 +339,7 @@ random_child = {
    limit = { is_female = yes }
    add_gold = 10
 }
-# one female child gets 10 gold
+1. one female child gets 10 gold
 ```
 
 
@@ -373,7 +373,7 @@ ordered_child = {
    order_by = age
    add_gold = 10
 }
-# the eldest child gets 10 gold
+1. the eldest child gets 10 gold
 ```
 
 
@@ -386,7 +386,7 @@ ordered_child = {
    order_by = age
    add_gold = 10
 }
-# the oldest female child gets 10 gold
+1. the oldest female child gets 10 gold
 ```
 
 
@@ -399,7 +399,7 @@ ordered_child = {
    order_by = age
    position = 1
 }
-# the 2nd eldest daughter gets 10 gold
+1. the 2nd eldest daughter gets 10 gold
 ```
 
 
@@ -413,7 +413,7 @@ ordered_child = {
    max = 2
    check_range_bounds = no
 }
-# the 3 elder daughters get 10 gold, starting with the oldest
+1. the 3 elder daughters get 10 gold, starting with the oldest
 ```
 
 
@@ -427,7 +427,7 @@ ordered_child = {
 any_child = {
    age > 10
 }
-# true if any child is strictly older than 10
+1. true if any child is strictly older than 10
 ```
 
 
@@ -439,7 +439,7 @@ any_child = {
    filter = { is_female = yes }
    age > 10
 }
-# true if any female child is strictly older than 10
+1. true if any female child is strictly older than 10
 ```
 
 
@@ -464,7 +464,7 @@ any_child = {
    age > 10
    count >= 2
 }
-# true if at least to female children are strictly older than 10
+1. true if at least to female children are strictly older than 10
 ```
 
 
@@ -477,7 +477,7 @@ any_child = {
    age > 10
    percent >= 0.5
 }
-# true if at least half of the female children are strictly older than 10
+1. true if at least half of the female children are strictly older than 10
 ```
 
 

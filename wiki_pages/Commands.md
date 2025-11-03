@@ -3,11 +3,11 @@
 > **Note:** Last verified for version 1.0
 
 
-**Commands** or **effects** are used in [scripting](Scripting.md) to alter the target that was selected with [scopes](Scopes.md) and [conditions](https://ck3.paradoxwikis.com/conditions).
+  - Commands** or **effects** are used in [scripting](Scripting.md) to alter the target that was selected with [scopes](Scopes.md) and [conditions](https://ck3.paradoxwikis.com/conditions).
 
 They appear in:
-* command blocks (the *immediate* and *option* sections of [events](https://ck3.paradoxwikis.com/events), or similar: effect, creation_effect, gain_effect, success, ...)
-* [scripted effect](Scripted_effects.md)s, which can be used to group commands into re-usable macro.
+- command blocks (the *immediate* and *option* sections of [events](https://ck3.paradoxwikis.com/events), or similar: effect, creation_effect, gain_effect, success, ...)
+- [scripted effect](Scripted_effects.md)s, which can be used to group commands into re-usable macro.
 
 (Scripting) commands are different from [console commands](Console_commands.md), though some console commands have a scripting equivalent.
 

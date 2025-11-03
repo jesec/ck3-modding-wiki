@@ -1,6 +1,6 @@
 # Modding tools
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 Some parts of modding can only be made with dumb, grunt work, that needs to be done just right. Luckily, a few great minds in the community have made automated tools to speed up the process, and let the computer take over the repetitive work. These are made by fellow modders, unlike the [Exporters](Exporters.md) which come from Paradox.

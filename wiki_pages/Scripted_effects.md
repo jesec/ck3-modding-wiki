@@ -1,9 +1,9 @@
 # Scripted effects
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
-**Scripted effects** are a way of reducing necessary code duplication. They work like a macro, and can take particular values to help significantly reduce the amount of code that must be created. 
+  - Scripted effects** are a way of reducing necessary code duplication. They work like a macro, and can take particular values to help significantly reduce the amount of code that must be created. 
 
 Scripted effects are defined in `/Crusader Kings III/game/common/scripted_effects`. 
 

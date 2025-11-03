@@ -1,9 +1,9 @@
 # Coat of arms modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
-**Coat of arms** are images used on shields and flags to identify titles, dynasties, and houses.
+  - Coat of arms** are images used on shields and flags to identify titles, dynasties, and houses.
 
 They are scripted in `/Crusader Kings III/game/common/coat_of_arms/coat_of_arms`. 
 
@@ -110,7 +110,7 @@ a = {
     color1 = "blue"
     sub = { }
 }
-# the above is equal to:
+1. the above is equal to:
 b = {
     sub = {
         pattern = "pattern_solid.tga"
@@ -134,7 +134,7 @@ a = {
         instance = { offset = { 1 1 } } # D
     }
 }
-# the above is equal to:
+1. the above is equal to:
 b = {
     sub = {
         color1 = "blue"
@@ -267,7 +267,7 @@ In addition to the normal coats of arms assigned to any given title, you can als
 
 
 ```
-# Name must match a landed title definition
+1. Name must match a landed title definition
 title_name = {
 	item = { # One or more items
 		trigger = { # Trigger for when this item should be picked, first valid item is picked, root = the title

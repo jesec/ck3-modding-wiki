@@ -19,7 +19,7 @@ set_variable = {
 The name of the variable is a string that can be chosen arbitrarily: setting a variable defines it, and there is no list of existing or predefined variables in the game.
 
 The value of a variable can be:
-* a boolean
+- a boolean
 
 The ``set_variable`` effect also has a simple form that sets a boolean value.
 
@@ -46,7 +46,7 @@ add_character_flag = X
 ```
 
 
-* a number
+- a number
 
 Variables can be set to an arbitrary decimal value:
 
@@ -97,7 +97,7 @@ set_variable = {
 ```
 
 
-* a flag value
+- a flag value
 
 Variables can store flag values:
 
@@ -109,7 +109,7 @@ set_variable = {
 ```
 
 
-* a [Scope#database_scopes](Scopes.md#database_scopes)
+- a [Scope#database_scopes](Scopes.md#database_scopes)
 
 Variables can store scopes:
 
@@ -148,9 +148,9 @@ change_variable = {
 ## Removing a variable
 
 Once set on a scope, a variable remains there until either:
-* it is manually removed in script
-* the scope it is stored on is destroyed
-* if stored on a character, when the character dies
+- it is manually removed in script
+- the scope it is stored on is destroyed
+- if stored on a character, when the character dies
 
 To avoid savegame bloat, amongst other thing, variables should be removed when no longer useful by using the ``remove_variable`` effect.
 
@@ -177,7 +177,7 @@ scope:some_scope.var:some_var
 If the variable stores a scope, valid event targets can be chained off of it:
 
 ```
-# if var:some_var 
+1. if var:some_var 
 scope:some_scope.var:some_var.father
 ```
 
@@ -194,10 +194,10 @@ scope:some_scope.var:some_var.var:other_var
 While variables are set on a scope, and accessible from that scope, global variables are set on the gamestate itself, and as such are accessible from any context.
 
 Aside from that, a global variable works in every respect like a variable:
-* it is set using the ``set_global_variable``effect
-* if it has a numerical value, it can be changed with the ``change_global_variable`` effect
-* it is removed with the ``remove_global_variable`` effect
-* it is accessed using ``global_var:some_global_var``
+- it is set using the ``set_global_variable``effect
+- if it has a numerical value, it can be changed with the ``change_global_variable`` effect
+- it is removed with the ``remove_global_variable`` effect
+- it is accessed using ``global_var:some_global_var``
 
 
 ## Local variables
@@ -210,10 +210,10 @@ In practice, because top scopes are temporary in nature, it means that local var
 
 
 Aside from that, a local variable works in every respect like a variable:
-* it is set using the ``set_local_variable`` effect
-* if it has a numerical value, it can be changed with the ``change_local_variable`` effect
-* it is removed with the ``remove_local_variable`` effect
-* it is accessed using ``local_var:some_local_var``
+- it is set using the ``set_local_variable`` effect
+- if it has a numerical value, it can be changed with the ``change_local_variable`` effect
+- it is removed with the ``remove_local_variable`` effect
+- it is accessed using ``local_var:some_local_var``
 
 
 ## References

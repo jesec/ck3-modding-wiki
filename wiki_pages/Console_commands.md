@@ -14,11 +14,11 @@ TOC
 ## Debug mode
 
 Debug mode is a set of game tools that allow to modify game behavior outside of normal means. It includes:
-* Console Window (accepts console commands)
-* Debug Menus (including the Portrait Editor, GUI Editor, Tweak Menu and others)
-* Debug Character Interactions (user can instantly change opinion, imprison and more)
-* Ctrl + clicking on a portrait takes control of the character, while Alt + click kills them
-* File watcher that automatically reloads changed files (including mods) into memory
+- Console Window (accepts console commands)
+- Debug Menus (including the Portrait Editor, GUI Editor, Tweak Menu and others)
+- Debug Character Interactions (user can instantly change opinion, imprison and more)
+- Ctrl + clicking on a portrait takes control of the character, while Alt + click kills them
+- File watcher that automatically reloads changed files (including mods) into memory
 
 
 ### Enabling debug mode
@@ -38,46 +38,46 @@ They allow to toggle the debug mode on and off, making it convenient to use the 
 #### Launcher
 
 In the game Launcher:
-#Switch to Game Settings on the left
-#Scroll down to "Open game in Debug Mode" section and click Launch
+1. Switch to Game Settings on the left
+1. Scroll down to "Open game in Debug Mode" section and click Launch
 
 
 #### Steam
 
 On Steam:
-#Right-click the game, open Properties
-#Add ``-debug_mode`` to the Launch Options at the bottom
-#Start the game
+1. Right-click the game, open Properties
+1. Add ``-debug_mode`` to the Launch Options at the bottom
+1. Start the game
 
 
 #### Windows
 
 Without Steam, on Windows:
-#Go to your CK3 directory, "binaries" folder
-#Right-click ck3.exe and create a shortcut
-#Right-click the shortcut, open Properties
-#In the Target field add ``-debug_mode`` at the end (so it looks like this ``"...\ck3.exe" -debug_mode``)
-#Launch the game using the shortcut
+1. Go to your CK3 directory, "binaries" folder
+1. Right-click ck3.exe and create a shortcut
+1. Right-click the shortcut, open Properties
+1. In the Target field add ``-debug_mode`` at the end (so it looks like this ``"...\ck3.exe" -debug_mode``)
+1. Launch the game using the shortcut
 Alternatively
 
-# Go to your CK3 directory, "binaries" folder
-# Right click to create a new text file in Notepad
-# Add the following: ``start ck3.exe -debug_mode`` 
-# Go to File and click Save As
-# Save As a batch file (.bat)
-# Launch the game using the batch file
+1. Go to your CK3 directory, "binaries" folder
+1. Right click to create a new text file in Notepad
+1. Add the following: ``start ck3.exe -debug_mode`` 
+1. Go to File and click Save As
+1. Save As a batch file (.bat)
+1. Launch the game using the batch file
 
 
 #### GOG
 
 On GOG:
-# Right-click the game, open Settings
-# Check "Add command line arguments" and enter ``debug_mode``
+1. Right-click the game, open Settings
+1. Check "Add command line arguments" and enter ``debug_mode``
 
 On GOG Galaxy 2.0:
-# In the game page, select Settings (next to the Play button at the top of the page)
-# Open Manage installation and select Configure...
-# Make sure the Launch parameters "Custom executables / arguments" is ticked at the bottom of the page. You can duplicate the "startgame" executable and type ``-debug_mode`` into the Arguments field.
+1. In the game page, select Settings (next to the Play button at the top of the page)
+1. Open Manage installation and select Configure...
+1. Make sure the Launch parameters "Custom executables / arguments" is ticked at the bottom of the page. You can duplicate the "startgame" executable and type ``-debug_mode`` into the Arguments field.
 
 
 #### Xbox Game Pass
@@ -88,12 +88,12 @@ For the Xbox Game Pass / Windows 10 Store edtion it's more complicated, as you c
 
 To simplify it, you can also create a batch (.bat) file with this command and run it from the desktop:
 
-# Right-click on your Desktop, choose New -> Text Document.
-# Rename it to "ck3.bat". Make sure to remove ".txt" from the end. Confirm changes when prompted.
-# Right-click the file and select Edit.
-# Paste the command: ``start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode``
-# Save the file
-# Double-click it to start the game
+1. Right-click on your Desktop, choose New -> Text Document.
+1. Rename it to "ck3.bat". Make sure to remove ".txt" from the end. Confirm changes when prompted.
+1. Right-click the file and select Edit.
+1. Paste the command: ``start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode``
+1. Save the file
+1. Double-click it to start the game
 
 
 ### Disabling debug mode
@@ -125,12 +125,12 @@ The following values are shown for characters under debug mode:
 ### Events
 
 Hovering over event options will show the AI weight for the option. Also, in the top-right corner of the event window, hovering over the question mark (``?``) shows internal details, including the following:
-* [Event ID](https://ck3.paradoxwikis.com/Event_ID)
-* Character for whom the event triggered
-* Root character
-* Saved event targets
-* Saved list targets
-* Descriptions
+- [Event ID](https://ck3.paradoxwikis.com/Event_ID)
+- Character for whom the event triggered
+- Root character
+- Saved event targets
+- Saved list targets
+- Descriptions
 
 
 ### Interactions
@@ -428,9 +428,9 @@ To run the effect on a character other than the player, use either ``effect char
 
 
 All traits have a tag that is referenced internally by the game. They can be found in ``game\common\traits\00_traits.txt``. A trait's tag typically matches its name. To get a trait's tag from its name, perform the following steps:
-*Replace spaces (`` ``) and dashes (``-``) with underscores (``_``)
-*Remove all apostrophes (``'``)
-*Turn all upper case letters into lower case (``A...Z->a...z``)
+- Replace spaces (`` ``) and dashes (``-``) with underscores (``_``)
+- Remove all apostrophes (``'``)
+- Turn all upper case letters into lower case (``A...Z->a...z``)
 
 Traits that do not follow this pattern have been listed below for reference.
 
@@ -596,47 +596,47 @@ All titles have an internal title tag that can be found in ``game\common\landed_
 
 
 Title Tags can also be seen in their respective title lists:
-*[List of baronies](https://ck3.paradoxwikis.com/List_of_baronies)
-*[List of counties](https://ck3.paradoxwikis.com/List_of_counties)
-* [List of duchies](https://ck3.paradoxwikis.com/List_of_duchies)
-*[List of kingdoms](https://ck3.paradoxwikis.com/List_of_kingdoms)
-*[List of empires](https://ck3.paradoxwikis.com/List_of_empires)
+- [List of baronies](https://ck3.paradoxwikis.com/List_of_baronies)
+- [List of counties](https://ck3.paradoxwikis.com/List_of_counties)
+- [List of duchies](https://ck3.paradoxwikis.com/List_of_duchies)
+- [List of kingdoms](https://ck3.paradoxwikis.com/List_of_kingdoms)
+- [List of empires](https://ck3.paradoxwikis.com/List_of_empires)
 
 ### Finding title tags based on in-game name
 
 The title ID may not match the title's name in-game. For example, the player may have their game set to a language other than English or a title has a culture-specific name. Use the following steps to find a title ID purely on its in-game name:
-*Navigate to the file located at ``game\localization\LANGUAGE\titles_l_LANGUAGE.yml``, replacing ``LANGUAGE`` with your game language.
-*Open the file with a text editor like Notepad++ and search for any instances of the in-game name using [CTRL] + [F].
-*If you managed to find a match:
-**The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
-**The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
-* If you could not find a match:
-**Close the file.
-**In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
-**Repeat your search for the title's in-game name in this file.
-**When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
-**Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
-**Close the file.
-**Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
-**Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
-**The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
-**Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
-**The word in place of ``b_london`` is your title ID.
+- Navigate to the file located at ``game\localization\LANGUAGE\titles_l_LANGUAGE.yml``, replacing ``LANGUAGE`` with your game language.
+- Open the file with a text editor like Notepad++ and search for any instances of the in-game name using [CTRL] + [F].
+- If you managed to find a match:
+  - The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
+  - The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
+- If you could not find a match:
+  - Close the file.
+  - In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
+  - Repeat your search for the title's in-game name in this file.
+  - When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
+  - Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
+  - Close the file.
+  - Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
+  - Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
+  - The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
+  - Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
+  - The word in place of ``b_london`` is your title ID.
 
 
 ### Finding custom title tags
 
 Custom titles (i.e. the title of a player created Empire) do not follow the same naming convention. To find the ID:
-*From the debug console use the command ``explorer`` to open Object Browser
-*In Object Browser choose Provider: Landed Titles
-*Enter search term
-*Hover over the Name field to show the title card
+- From the debug console use the command ``explorer`` to open Object Browser
+- In Object Browser choose Provider: Landed Titles
+- Enter search term
+- Hover over the Name field to show the title card
 
 
 ## See also
 
-*[Nickname ID](https://ck3.paradoxwikis.com/Nickname_ID)
-*[Decision ID](https://ck3.paradoxwikis.com/Decision_ID)
+- [Nickname ID](https://ck3.paradoxwikis.com/Nickname_ID)
+- [Decision ID](https://ck3.paradoxwikis.com/Decision_ID)
 
 
 ## References

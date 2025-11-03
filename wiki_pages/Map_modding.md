@@ -10,9 +10,9 @@ In Crusader Kings III, it is possible to mod the game map. This includes editing
 
 To open the map editor:
 
-* Navigate to the Steam Library, right-click on CK3 and open properties.
-* Under the General tab, and within the "LAUNCH OPTIONS" section type -mapeditor in the specified field.
-* Simply open CK3. Do this with a map that functions before you try to use anything you've created. You can import new assets later from within the editor.
+- Navigate to the Steam Library, right-click on CK3 and open properties.
+- Under the General tab, and within the "LAUNCH OPTIONS" section type -mapeditor in the specified field.
+- Simply open CK3. Do this with a map that functions before you try to use anything you've created. You can import new assets later from within the editor.
 
 
 ## Heightmap
@@ -51,7 +51,7 @@ Any time the main heightmap.png is changed, you must "repack" in the map editor 
 ![An example river map of Ireland and part of Britain](https://ck3.paradoxwikis.com/File:Rivermap_example.png)
 The river map is a special file that defines coasts and rivers, which is both used by the terrain engine to paint rivers on your map as well as to define where river crossing are for armies. It is not used for navigable rivers or other bodies of water.
 
-**Improperly created river maps will cause a CTD.** They must be indexed RGB images with a very specific color pallet; the best way to prevent crashes when creating a river map is to start using the game's original river map, found at "[CK3 directory]/game/map_data/rivers.png". Any other colors besides those in the original color index, including antialiases or transparency, will result in a CTD.
+  - Improperly created river maps will cause a CTD.** They must be indexed RGB images with a very specific color pallet; the best way to prevent crashes when creating a river map is to start using the game's original river map, found at "[CK3 directory]/game/map_data/rivers.png". Any other colors besides those in the original color index, including antialiases or transparency, will result in a CTD.
 
 If the river map refuses to export properly when using Gimp, **close Gimp**, copy the base game's river map into your mod folder, and then open it using Gimp. If prompted, ensure that the *colour profile* is retained (select **keep**) and ensure that the "Rendering Intent" is set to "Absolute colorimetric". This will reset any saved export settings that may be causing problems. Once you are done, choose "overwrite rivers.png" as your export option. 
 
@@ -62,11 +62,11 @@ If the river map refuses to export properly when using Gimp, **close Gimp**, cop
 River maps should be color indexed, which means they're saved with special encoding that indicates only certain specific colors can be used.
 
 Each color has a specific meaning, which is translated by the game engine into nice looking rivers.
-* #00ff00 (pure green) indicates the source of a river system
-* #ff0000 (pure red) indicates a tributary joining the main river
-* #fffc00 (pure yellow) indicates a river splitting
-* #ff0080 (magenta) indicates sea, lakes, and navigable rivers.
-* #ffffff (white) indicates land.
+- #00ff00 (pure green) indicates the source of a river system
+- #ff0000 (pure red) indicates a tributary joining the main river
+- #fffc00 (pure yellow) indicates a river splitting
+- #ff0080 (magenta) indicates sea, lakes, and navigable rivers.
+- #ffffff (white) indicates land.
 The rest of the colors are a gradient of light blue to dark blue, where the darker the blue, the wider the river.
 
 
@@ -106,10 +106,10 @@ Make sure to save the provinces.png as an 8 or 24bit RGB file. If you do not sav
 ## Creating titles
 
 Creating titles is done by linking the colors in the province map to definitions of baronies, counties, duchies, kingdoms, and empires. The process includes the following steps:
-# Create a province map to define individual baronies
-# Identify baronies by the RGB found in the province map in "[mod]/map_data/definition.csv"
-# Define your title heirarchy in a new file in "[mod]/common/landed_titles/"
-# Create localisations for your titles in a new file in "[mod]/localization/[language]/"
+1. Create a province map to define individual baronies
+1. Identify baronies by the RGB found in the province map in "[mod]/map_data/definition.csv"
+1. Define your title heirarchy in a new file in "[mod]/common/landed_titles/"
+1. Create localisations for your titles in a new file in "[mod]/localization/[language]/"
 
 
 ### Defining baronies
@@ -123,7 +123,7 @@ The format of barony definitions is:
     2333;128;183;194;PARIS;x;
 ```
 
-**IDs must be sequential, or your game will crash.**
+  - IDs must be sequential, or your game will crash.**
 ```
     # This will work:
     1;42;3;128;CAMELOT;x;
@@ -242,72 +242,72 @@ Entries in "adjacencies.csv" take the format:
     1527;1526;river_large;629;948;2791;-1;-1;London-Southwark
     -1;-1;;-1;-1;-1;-1;-1;
 ```
-* ID From, ID To, and ID Through are all ID
+- ID From, ID To, and ID Through are all ID
 s found in "definition.csv"
-* ID From and ID To are baronies; ID Through is a sea or navigable river.
-* Type is either "sea" or "river_large"
-* start_x start_y are the (x, y) coordinates from which an army 'embarks' in the "ID From" barony.
-* stop_x and stop_y are the (x, y) coordinates to which an army 'lands' in the "ID To" barony.
-* start_x, start_y, stop_x, and stop_y can all use "-1" instead of actual coordinates, which will default to wherever the normal army placement is in that barony.
-* Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
+- ID From and ID To are baronies; ID Through is a sea or navigable river.
+- Type is either "sea" or "river_large"
+- start_x start_y are the (x, y) coordinates from which an army 'embarks' in the "ID From" barony.
+- stop_x and stop_y are the (x, y) coordinates to which an army 'lands' in the "ID To" barony.
+- start_x, start_y, stop_x, and stop_y can all use "-1" instead of actual coordinates, which will default to wherever the normal army placement is in that barony.
+- Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
 
 
 ## Creating a Map with a Custom Resolution
 
-**Note:**
-* Width and height are the new widths and height you are setting for your mod.
-* When you open .dds files such as the surround_mask.dds, check if it has mipmaps. If that is the case, generate new mipmaps for the resized file.
-* There is, as of version 1.9.2.1, a bug that cuts off the northern part of the heightmap and leaves it looking all black. It seems to happen depending on the aspect ratio between width and height. Experiment with different widths until it goes away.
+  - Note:**
+- Width and height are the new widths and height you are setting for your mod.
+- When you open .dds files such as the surround_mask.dds, check if it has mipmaps. If that is the case, generate new mipmaps for the resized file.
+- There is, as of version 1.9.2.1, a bug that cuts off the northern part of the heightmap and leaves it looking all black. It seems to happen depending on the aspect ratio between width and height. Experiment with different widths until it goes away.
 
-* common/defines/00_defines.txt:
+- common/defines/00_defines.txt:
 ```
     WORLD_EXTENTS_X # Should be: map width - 1 
     WORLD_EXTENTS_Z # Shoud be: map height - 1 
     WATERLEVEL # Corresponds to the heights from the heightmap - if too low, no oceans/lakes will appear. If too high, the entire map will be covered with water
 ```
 
-* common/defines/graphic/00_graphics.txt
+- common/defines/graphic/00_graphics.txt
 ```
     PANNING_WIDTH # However far you want the player to be able to pan left to right. Panning to the edge would mean this is equal to map width
     PANNING_HEIGHT # However far you want the player to be able to pan up and down. Panning to the edge would mean this is equal to map height
 ```
-* gfx/map/surround_map/
-** surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
-** surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+- gfx/map/surround_map/
+  - surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+  - surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
 
-* gfx/map/terrain/     # All files in this that have _mask (63 as of 1.3) or .tga (2 as of 1.3) in the name need to be resized TO: (width x height) 
-** flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-** colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-** detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-** detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
-** ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must <= 4096, and the size of it must match detail_index.tga
+- gfx/map/terrain/     # All files in this that have _mask (63 as of 1.3) or .tga (2 as of 1.3) in the name need to be resized TO: (width x height) 
+  - flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+  - colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+  - detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+  - detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
+  - ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must <= 4096, and the size of it must match detail_index.tga
 
-* gfx/map/water/
-** flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-** foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
-** watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+- gfx/map/water/
+  - flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+  - foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+  - watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
 
-* map_data/
-** heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
-** provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
-** rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
-** indirection_heightmap.png     # Size should be: (width x height) * 1/32 
-** heightmap.heightmap
+- map_data/
+  - heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
+  - provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
+  - rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
+  - indirection_heightmap.png     # Size should be: (width x height) * 1/32 
+  - heightmap.heightmap
 ```
     original_heightmap_size # Should be { width height } the width and height here should be the size of heightmap.png
 ```
 
-* content_source/map_objects/masks     # All files in this that have _mask (21 as of 1.0) need to be resized TO: (width x height) * 1/2  Ensure that this has 8-bit depth as other depths like 32 cause errors like misplacing trees or painting large squares of trees.
+- content_source/map_objects/masks     # All files in this that have _mask (21 as of 1.0) need to be resized TO: (width x height) * 1/2  Ensure that this has 8-bit depth as other depths like 32 cause errors like misplacing trees or painting large squares of trees.
 
 ### How to import the heightmap
 
 If you are struggling to get the custom heightmap to load or repack (this can be especially problematic with larger heightmaps) try the following procedure. This works as of 1.1.3:
 
-# Copy the vanilla indirection_heightmap.png and packed_heightmap.png over to the mod's map_data directory
-# Delete indirection_heightmap.png and packed_heightmap.png in the vanilla folder
-# Load the map editor and repack the map. The repacked map files should be in the vanilla map_data directory
-# Copy the new indirection_heightmap.png and packed_heightmap.png from the vanilla directory to the mod's map_data directory
-# For Steam users, verify the integrity of the game cache to redownload the vanilla indirection_heightmap.png and packed_heightmap.png files
+1. Copy the vanilla indirection_heightmap.png and packed_heightmap.png over to the mod's map_data directory
+1. Delete indirection_heightmap.png and packed_heightmap.png in the vanilla folder
+1. Load the map editor and repack the map. The repacked map files should be in the vanilla map_data directory
+1. Copy the new indirection_heightmap.png and packed_heightmap.png from the vanilla directory to the mod's map_data directory
+1. For Steam users, verify the integrity of the game cache to redownload the vanilla indirection_heightmap.png and packed_heightmap.png files
 
 
 ### Repacking terrain masks
@@ -362,7 +362,7 @@ Properties B -> Metalness
 
 Properties A -> Roughness
 
-**Note! - After adding a new texture you will need to re-export the map for the optimized detail maps to be updated. Otherwise the games textures will offset and you'll get snow instead of grass or the like.**
+  - Note! - After adding a new texture you will need to re-export the map for the optimized detail maps to be updated. Otherwise the games textures will offset and you'll get snow instead of grass or the like.**
 
 
 ## Frequently asked questions
@@ -395,7 +395,7 @@ Paste them into:
 Make sure that the map dimensions in common/defines are width - 1 and height - 1 and that the terrain masks are all the correct size.
 
 
-# Creating Custom Map Modes
+1. Creating Custom Map Modes
 
 ![Custom Map Mode that renders where special buildings can be built.](https://ck3.paradoxwikis.com/File:Modding_custom_map_mode_special_buildings_example.jpg)Crusader Kings 3 features the ability to visually filter the map in different ways at the click of a button. This is not intended to be a moddable feature but there are ways to create simple custom map modes nevertheless.
 
@@ -406,7 +406,7 @@ Create a file named ``custom_map_colors_titles.txt`` at ``mod\custom_map_modes_m
 
 
 ```CoffeeScript
-# Here are the titles the baronies get their color from. Uses RGB 255.
+1. Here are the titles the baronies get their color from. Uses RGB 255.
 d_map_base_color = {
 	color = { 84 78 60 }
 	can_create = { always = no }

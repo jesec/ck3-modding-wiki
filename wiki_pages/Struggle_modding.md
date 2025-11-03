@@ -1,6 +1,6 @@
 # Struggle modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 > ⚠️ **This section needs expansion**
@@ -160,7 +160,7 @@ enable_custom_struggle_effect = {
 ```
 Example for on_game_start on_action (the Vanilla file is in: game/common/on_action/game_start.txt):
 ```python3
-# Empty scope
+1. Empty scope
 on_game_start = {
 	enable_custom_struggle_effect = yes
 [...]

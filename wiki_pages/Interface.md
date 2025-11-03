@@ -1,6 +1,6 @@
 # Interface
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 CK3's user interface (UI) is highly moddable, but for this reason UI mods change the checksum, to prevent cheating and desyncing in multiplayer.
@@ -10,19 +10,19 @@ Since the 1.9 patch UI mods do not disable achievements.
 The game includes a GUI editor, but it lacks functionality.
 
 Modders can:
-* change the visual style of the interface*
-* make windows movable and resizable
-* change and remove elements
-* add new buttons
-* show more information from the code
-* add new windows
+- change the visual style of the interface*
+- make windows movable and resizable
+- change and remove elements
+- add new buttons
+- show more information from the code
+- add new windows
 
 Modders can’t:
 
-* *create a new hud skin, the game ignores new .skin files in mods
+- *create a new hud skin, the game ignores new .skin files in mods
 
-* add new hotkeys. We can only reuse existing ones, the game ignores the .shortcuts file if it's in a mod
-* display information from one window in another, unless developers included that possibility.
+- add new hotkeys. We can only reuse existing ones, the game ignores the .shortcuts file if it's in a mod
+- display information from one window in another, unless developers included that possibility.
 
 ## Basics
 
@@ -36,31 +36,31 @@ To edit or save .dds files use either Photoshop with [Intel plugin](https://soft
 
 ![Steam launch options for auto-reloading files](https://ck3.paradoxwikis.com/File:Debug_launch_options.png)
 
-**Launch options**
+  - Launch options**
 
 To auto-reload gui files in the game and use console commands, add ``-debug_mode -develop`` launch options:
-* right-click the game on Steam, choose Properties, in Launch Options at the bottom enter ``-debug_mode -develop``
+- right-click the game on Steam, choose Properties, in Launch Options at the bottom enter ``-debug_mode -develop``
 Every time a .gui file is saved it will be reloaded by the game.
 
-**Important console commands:**
+  - Important console commands:**
 
-* ``dump_data_types`` - lists all available GUI functions in data_types*.log files in your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types)
+- ``dump_data_types`` - lists all available GUI functions in data_types*.log files in your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types)
 You can merge all the log files to make it easier to search through them.
 
 To do it quickly, make and run a .bat file in the data_types folder with this code: ``type *.txt > ALL_DATA_TYPES.txt``
-* ``tweak gui.debug`` - enables highlighting of UI elements. Uncheck all options, check gui.debug. The tooltip will show the exact file and line of the element.
-* ``release_mode`` - shows the error counter on screen. Very useful to quickly spot when you made an error in UI. Can be toggled with a button under the console.
-* ``gui_editor`` - opens the GUI editor, hotkey Control + F8
+- ``tweak gui.debug`` - enables highlighting of UI elements. Uncheck all options, check gui.debug. The tooltip will show the exact file and line of the element.
+- ``release_mode`` - shows the error counter on screen. Very useful to quickly spot when you made an error in UI. Can be toggled with a button under the console.
+- ``gui_editor`` - opens the GUI editor, hotkey Control + F8
 
 ![screenshot of the error counter](https://ck3.paradoxwikis.com/File:Errorhoof.jpg)
 Optional, not usually needed with hot reload:
-* ``reload gui`` - reloads all gui files or a specific file if provided its name: ``reload gui/frontend_main.gui``
-* ``reload texture`` - reloads all texture files or a specific file: ``reload texture flatmap.dds``
+- ``reload gui`` - reloads all gui files or a specific file if provided its name: ``reload gui/frontend_main.gui``
+- ``reload texture`` - reloads all texture files or a specific file: ``reload texture flatmap.dds``
 Other tips:
-* keep the error log open to see if there is a mistake in the code (it's in the same log folder)
-* keep the data types logs open, so your text editor uses it for autocompletion
-* you can use test_gui.gui in gui/debug for testing. To show this window, open the console and click Test Window. To close it, run the ``GUI.ClearWidgets`` command.
-* fold code so it's easier to see its structure. Usual hotkeys are Ctrl+K, Ctrl+1 (where 1 is the level at which to fold the code).
+- keep the error log open to see if there is a mistake in the code (it's in the same log folder)
+- keep the data types logs open, so your text editor uses it for autocompletion
+- you can use test_gui.gui in gui/debug for testing. To show this window, open the console and click Test Window. To close it, run the ``GUI.ClearWidgets`` command.
+- fold code so it's easier to see its structure. Usual hotkeys are Ctrl+K, Ctrl+1 (where 1 is the level at which to fold the code).
 
 
 ## Creating a GUI mod
@@ -71,7 +71,7 @@ Clicking Create will create a new folder and a .mod file in ``Documents/Paradox 
 
 2. Next, create a "gui" folder inside your mod and copy the files you want to mod there from game/gui.
 
-* If you don’t know which file is needed, use the gui.debug console command or the GUI editor and inspect it in the game.
+- If you don’t know which file is needed, use the gui.debug console command or the GUI editor and inspect it in the game.
 
 
 ## Inspecting GUI
@@ -86,11 +86,11 @@ If you don't have a proper text editor, install VSCode or Sublime.
 
 To open gui files from the game:
 
-# Find the .exe file of your text editor, right click it and choose Copy as path.
-# Open pdx_settings.txt in Documents\Paradox Interactive\Crusader Kings III
-# Search for "editor" and in its value paste the path to your text editor, like this: ``value="E:\Program Files\Microsoft VS Code\Code.exe"``
-# In the "editor_postfix" below add ``:$:1`` for its value, like this: ``value=":$:1"``
-# Save the file.
+1. Find the .exe file of your text editor, right click it and choose Copy as path.
+1. Open pdx_settings.txt in Documents\Paradox Interactive\Crusader Kings III
+1. Search for "editor" and in its value paste the path to your text editor, like this: ``value="E:\Program Files\Microsoft VS Code\Code.exe"``
+1. In the "editor_postfix" below add ``:$:1`` for its value, like this: ``value=":$:1"``
+1. Save the file.
 
 The postfix is what tells the editor to jump to the right line.
 
@@ -105,11 +105,11 @@ It shows a tooltip with debug information, allows us to select a gui element, op
 
 To use it:
 
-# launch the game with ``-debug_mode -develop`` options.
-# Open the console with a ` (below Esc)
-# type ``tweak gui.debug`` and press Enter
-# In the tweaker menu uncheck all options and check GUI.Debug
-# After that you can use gui.debug command directly, without opening the tweaker. There is a button under the console for it.
+1. launch the game with ``-debug_mode -develop`` options.
+1. Open the console with a ` (below Esc)
+1. type ``tweak gui.debug`` and press Enter
+1. In the tweaker menu uncheck all options and check GUI.Debug
+1. After that you can use gui.debug command directly, without opening the tweaker. There is a button under the console for it.
 
 (We disable other debug options because they highlight all existing elements and it can be overwhelming)
 
@@ -141,28 +141,28 @@ While it may seem less intimidating then editing raw files, it is also much more
 To use it, launch the game with ``-debug_mode`` and ``-develop`` options.
 
 To open the editor, either:
-* press Ctrl+F8
-* open the console with the ` key (below Esc), click GUI Editor
-* open the console, run gui_editor command
-**Features**
+- press Ctrl+F8
+- open the console with the ` key (below Esc), click GUI Editor
+- open the console, run gui_editor command
+  - Features**
 
 By default the editor starts with the Edit mode enabled. You can disable it in the top window, called Outliner. Hotkey "E".
 
-* The edit mode is similar to the Inspect mode in browsers. While it’s enabled you can’t interact with the game, but it allows you to select parts of the UI and change them in the Properties window below.
-* Scroll with your mouse wheel to change what element the editor should focus on, since hud.gui tends to get on top of other windows.
-* Light blue border indicated the selected element. To hide other borders, uncheck "Show Hierarchy" in the Outliner (Hotkey "L").
-* Holding the right mouse button allows to move the selected element.
-* Alt+right-click opens the file with that element. Be careful, you can accidentally move the element with right click!
-* To undo anything, press Ctrl+Z or the undo button in the Outliner. Redo is next to it, Ctrl+Y.
-* Red stars * in the Outliner indicate unsaved changes. Press Ctrl+S or the save button at the top to save them. Make sure the gui files you're editing are in your mod, otherwise it will write the changes to the game folder. (To reset them, verify integrity from Steam's properties window)
-* You can move any dev windows by dragging them and resize them by dragging the edges.
-* You can drag UI elements in the Outliner's hierarchy to reorder them. Right-click to show the context menu.
-* You can change or add new properties (by clicking the plus symbol) in the Properties window.
+- The edit mode is similar to the Inspect mode in browsers. While it’s enabled you can’t interact with the game, but it allows you to select parts of the UI and change them in the Properties window below.
+- Scroll with your mouse wheel to change what element the editor should focus on, since hud.gui tends to get on top of other windows.
+- Light blue border indicated the selected element. To hide other borders, uncheck "Show Hierarchy" in the Outliner (Hotkey "L").
+- Holding the right mouse button allows to move the selected element.
+- Alt+right-click opens the file with that element. Be careful, you can accidentally move the element with right click!
+- To undo anything, press Ctrl+Z or the undo button in the Outliner. Redo is next to it, Ctrl+Y.
+- Red stars * in the Outliner indicate unsaved changes. Press Ctrl+S or the save button at the top to save them. Make sure the gui files you're editing are in your mod, otherwise it will write the changes to the game folder. (To reset them, verify integrity from Steam's properties window)
+- You can move any dev windows by dragging them and resize them by dragging the edges.
+- You can drag UI elements in the Outliner's hierarchy to reorder them. Right-click to show the context menu.
+- You can change or add new properties (by clicking the plus symbol) in the Properties window.
 
 By clicking "Window" in the Outliner, you can open two more windows: UI components and Registered Data Types.
-* UI Components is like a palette from which you can drag new elements to the UI. gui/shared/standard.gui and gui/defaults.gui contain the most common things, like buttons, icons and text.
-* Registered Data Types may be used to look up what functions are available to display data from the game.
-* Clicking the top right button in the Data Types will dump this data to your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types). You can also use ``dump_data_types`` console command.
+- UI Components is like a palette from which you can drag new elements to the UI. gui/shared/standard.gui and gui/defaults.gui contain the most common things, like buttons, icons and text.
+- Registered Data Types may be used to look up what functions are available to display data from the game.
+- Clicking the top right button in the Data Types will dump this data to your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types). You can also use ``dump_data_types`` console command.
 
 Note: it is often easy to select a template by mistake, changing which will affect *all* instances of it in the UI. Pay attention to what file you have selected in the outliner. If you see in the Properties window a blue header that starts with "type:", it is a template, so be careful not to edit this part (unless you intend to).
 
@@ -227,7 +227,7 @@ This is necessary because some functions and elements require a specific type, f
 
 ##### Casting numbers to strings
 
-*(This is an advanced section. Skip it if you're just learning)*
+- (This is an advanced section. Skip it if you're just learning)*
 
 Currently, there is no vanilla function to turn a number into a string. This may be needed for string comparisons or concatenating numbers with text.
 
@@ -281,94 +281,94 @@ You can preview some of them in the UI Library window. To open it, toggle releas
 
 ``window``
 
-* A movable container. To enable movement, add ``movable = yes`` property.
-* Can be fixed size or resized by its children.
-* In the game the background is set using templates, like ``using = Window_Background`` and ``using = Window_Decoration``.
-* If a child is outside of a window, it won't be clickable and won't show a tooltip. Use ``allow_outside = yes`` to change this. 
-* Clicking a window will bring it to the front of other windows that share the same layer. Use ``PdxGuiWidget.StackTop`` or ``PdxGuiWidget.StackBottom`` to manipulate the order.
+- A movable container. To enable movement, add ``movable = yes`` property.
+- Can be fixed size or resized by its children.
+- In the game the background is set using templates, like ``using = Window_Background`` and ``using = Window_Decoration``.
+- If a child is outside of a window, it won't be clickable and won't show a tooltip. Use ``allow_outside = yes`` to change this. 
+- Clicking a window will bring it to the front of other windows that share the same layer. Use ``PdxGuiWidget.StackTop`` or ``PdxGuiWidget.StackBottom`` to manipulate the order.
 
 ``widget``
 
-* A static container, similar to a window. Clicking it does not bring it to the front.
+- A static container, similar to a window. Clicking it does not bring it to the front.
 
 ``margin_widget``
 
-* Similar to a widget, but can be resized with margins. (This allows us to make windows that resize to screens of different size, by setting height to 100% and margins to ~50 to show the hud)
+- Similar to a widget, but can be resized with margins. (This allows us to make windows that resize to screens of different size, by setting height to 100% and margins to ~50 to show the hud)
 
 ``container``
 
-* Does not have a fixed size (but you can set maximumsize).
-* Resizes automatically to fit all its children, including invisible ones. Use ``ignoreinvisible = yes`` to ignore them.
-* Often used to group multiple elements to move them together.
+- Does not have a fixed size (but you can set maximumsize).
+- Resizes automatically to fit all its children, including invisible ones. Use ``ignoreinvisible = yes`` to ignore them.
+- Often used to group multiple elements to move them together.
 
 ``flowcontainer``
 
-* Arranges all its children in a horizontal row and resizes to fit them. Use ``direction = vertical`` to make it vertical.
-* Doesn't ignore invisible children by default. Use ``ignoreinvisible = yes`` to change it.
-* Can't have fixed size.
-* Its children cannot have positions, as they are set automatically.
-* If you need to adjust position of its child, you can put it inside a container or a widget and then change position relative to this parent.
+- Arranges all its children in a horizontal row and resizes to fit them. Use ``direction = vertical`` to make it vertical.
+- Doesn't ignore invisible children by default. Use ``ignoreinvisible = yes`` to change it.
+- Can't have fixed size.
+- Its children cannot have positions, as they are set automatically.
+- If you need to adjust position of its child, you can put it inside a container or a widget and then change position relative to this parent.
 
 ``hbox``/``vbox``
 
-* Arranges all its children in a horizontal row and spreads them along its width. Vbox is the same but vertical.
-* Can't have fixed size, instead resizes to fit its children or to the size of the parent, depending on the layout policy.
-* Can be limited by minimumsize, maximumsize, min_width, max_width and margins.
-* Ignores invisible children by default. Use ``ignoreinvisible = no`` to change this.
-* Accepts datamodels (to create lists from game data).
+- Arranges all its children in a horizontal row and spreads them along its width. Vbox is the same but vertical.
+- Can't have fixed size, instead resizes to fit its children or to the size of the parent, depending on the layout policy.
+- Can be limited by minimumsize, maximumsize, min_width, max_width and margins.
+- Ignores invisible children by default. Use ``ignoreinvisible = no`` to change this.
+- Accepts datamodels (to create lists from game data).
 
 ``dynamicgridbox``
 
-* Is only used with datamodels.
-* Arranges all the items vertically. Use ``flipdirection = yes`` to make it horizontal.
-* Doesn't ignore invisible items by default. Use ``ignoreinvisible = yes`` to change it.
-* Resized by the content and limited by minimumsize and maximumsize.
-* Items can be of different size.
-* Can become laggy with very long lists.
+- Is only used with datamodels.
+- Arranges all the items vertically. Use ``flipdirection = yes`` to make it horizontal.
+- Doesn't ignore invisible items by default. Use ``ignoreinvisible = yes`` to change it.
+- Resized by the content and limited by minimumsize and maximumsize.
+- Items can be of different size.
+- Can become laggy with very long lists.
 
 ``fixedgridbox``
 
-* Similar to a dynamic box but all its items are of fixed size (it is essentially a table).
-* Is only used with datamodels.
-* Arranges all its items vertically. Use ``flipdirection = yes`` to make it horizontal.
-* Cannot ignore invisible items.
-* Can be fixed size, resized by the content and limited by minimumsize and maximumsize.
-* Much better for performance with long lists.
+- Similar to a dynamic box but all its items are of fixed size (it is essentially a table).
+- Is only used with datamodels.
+- Arranges all its items vertically. Use ``flipdirection = yes`` to make it horizontal.
+- Cannot ignore invisible items.
+- Can be fixed size, resized by the content and limited by minimumsize and maximumsize.
+- Much better for performance with long lists.
 
 ``overlappingitembox``
 
-* Is only used with datamodels.
-* Arranges all its items horizontally and overlaps them if the list is longer that the size of the box. Use ``flipdirection = yes`` to make it horizontal.
-* Can be fixed size or autoresized.
+- Is only used with datamodels.
+- Arranges all its items horizontally and overlaps them if the list is longer that the size of the box. Use ``flipdirection = yes`` to make it horizontal.
+- Can be fixed size or autoresized.
 
 ``scrollarea``
 
-* A widget with scrollbars that appear if the content is bigger than its size.
-* Scrollbars can be disabled with ``scrollbarpolicy_horizontal = always_off`` and ``scrollbarpolicy_vertical = always_off``.
-* Can be fixed size, resized by the content and limited by minimumsize and maximumsize.
-* Game files primarily use a ``scrollbox`` type, which is a scrollarea with a background, scrollbar and margins.
+- A widget with scrollbars that appear if the content is bigger than its size.
+- Scrollbars can be disabled with ``scrollbarpolicy_horizontal = always_off`` and ``scrollbarpolicy_vertical = always_off``.
+- Can be fixed size, resized by the content and limited by minimumsize and maximumsize.
+- Game files primarily use a ``scrollbox`` type, which is a scrollarea with a background, scrollbar and margins.
 
 ``button``
 
-* A clickable object. Accepts ``onclick`` and ``onrightclick``.
-** When adding a right click function, include ``button_ignore = none``.
-* Doesn't have a texture by default.
-* Can be fixed size or resized by its children.
-** A button without size can be used to add invisible hotkeys.
+- A clickable object. Accepts ``onclick`` and ``onrightclick``.
+  - When adding a right click function, include ``button_ignore = none``.
+- Doesn't have a texture by default.
+- Can be fixed size or resized by its children.
+  - A button without size can be used to add invisible hotkeys.
 
 ``icon``
 
-* Displays a texture.
-* Can be used as a widget to store children.
-* Can be flipped with ``mirror = horizontal`` or ``mirror = vertical``.
+- Displays a texture.
+- Can be used as a widget to store children.
+- Can be flipped with ``mirror = horizontal`` or ``mirror = vertical``.
 
 ``textbox``
 
-* Shows text.
-* Can be fixed size or autoresized.
-* Use ``elide = right`` or ``elide = left`` to cut off text that is too long
-* Can be a single line or multiple, with ``multiline = yes``.
-* Game files primarily use types set in gui/shared/text.gui, like ``text_single``. Use them to keep visual consistency and to type less code every time.
+- Shows text.
+- Can be fixed size or autoresized.
+- Use ``elide = right`` or ``elide = left`` to cut off text that is too long
+- Can be a single line or multiple, with ``multiline = yes``.
+- Game files primarily use types set in gui/shared/text.gui, like ``text_single``. Use them to keep visual consistency and to type less code every time.
 
 
 #### hbox/vbox
@@ -379,11 +379,11 @@ They automatically center themselves and their children. Do not use parentanchor
 
 Almost all windows use a vbox to arrange their contents vertically. As a rule of thumb, use expanding policies on a vbox and ``expand={}`` after it. This solves 90% of problems with layout.
 
-**Important:** objects with large size can stretch boxes and mess up the layout. This often happens in vanilla with long text, especially with German and Russian languages.
+  - Important:** objects with large size can stretch boxes and mess up the layout. This often happens in vanilla with long text, especially with German and Russian languages.
 
 Set max_width on your text and test it with very long strings. Use LOREM_IPSUM_TITLE and LOREM_IPSUM_DESCRIPTION localization keys to insert large placeholder text.
 
-**Detailed behavior:**
+  - Detailed behavior:**
 
 On the screenshots below, hboxes have black background. All of the examples are available in the [UI Library mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2579010074).
 
@@ -425,11 +425,11 @@ There are two types, layoutpolicy_horizontal and layoutpolicy_vertical, controll
 
 There are five policies, with fixed applied by default:
 
-#**fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
-#**expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
-#**growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
-#**preferred** - grows or shrinks, depending on available space.
-#**shrinking** - can shrink below its original size, cannot grow past it.
+    - fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
+    - expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
+    - growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
+    - preferred** - grows or shrinks, depending on available space.
+    - shrinking** - can shrink below its original size, cannot grow past it.
 
 Layout policies also respect minimumsize, maximumsize, min_width and max_width.
 
@@ -456,33 +456,33 @@ This state will set the alpha of its object to 50% over 0.5 second when it becom
 
 States can:
 
-* change properties, like size, position, alpha
-* play sounds with ``start_sound = { soundeffect = "event:..." }``
-* execute functions, similar to a button, with ``on_start`` and ``on_finish`` instead of ``onclick``
+- change properties, like size, position, alpha
+- play sounds with ``start_sound = { soundeffect = "event:..." }``
+- execute functions, similar to a button, with ``on_start`` and ``on_finish`` instead of ``onclick``
 
 ``on_start`` triggers at the start of the animation.
 
 ``on_finish`` triggers at the end, if the state has duration set.  If not, it's instant like ``on_start``.
 
-***Known issue:*** ``on_start`` is currently bugged and triggers twice. Use ``on_finish`` whenever possible.
+    - Known issue:*** ``on_start`` is currently bugged and triggers twice. Use ``on_finish`` whenever possible.
 
-**State names**
+  - State names**
 
 There is a number of predefined names that automatically trigger the state:
 
-* _show - triggers when the object becomes visible. Note that this only fires for the widget itself, not any of its children.
-* _hide - when the objects becomes invisible
-* _mouse_hierarchy_enter - when the cursor is placed over this window or button
-* _mouse_hierarchy_leave - when the cursor leaves this window or button
-* _mouse_press - when this button is pressed
-* _mouse_click - when this button is pressed and released
-* _mouse_release - when the button is released
-* daily_tick - triggers every day
-* monthly_tick - triggers every month
+- _show - triggers when the object becomes visible. Note that this only fires for the widget itself, not any of its children.
+- _hide - when the objects becomes invisible
+- _mouse_hierarchy_enter - when the cursor is placed over this window or button
+- _mouse_hierarchy_leave - when the cursor leaves this window or button
+- _mouse_press - when this button is pressed
+- _mouse_click - when this button is pressed and released
+- _mouse_release - when the button is released
+- daily_tick - triggers every day
+- monthly_tick - triggers every month
 
 Some windows have their own specific state names, like ``phase_change`` and ``new_battle_event`` in the combat window.
 
-**State triggers**
+  - State triggers**
 
 States can be given any other name and triggered manually, using it.
 
@@ -498,9 +498,9 @@ Examples:
 
 ``onclick = "[PdxGuiTriggerAllAnimations('my_state')]"`` - triggers all states with this name, even if they are in other (visible) windows.
 
-***Known issue:*** if the state is inside an invisible object when ``TriggerAnimation`` or ``PdxGuiTriggerAllAnimations`` are used, the state will trigger later when the object becomes visible.
+    - Known issue:*** if the state is inside an invisible object when ``TriggerAnimation`` or ``PdxGuiTriggerAllAnimations`` are used, the state will trigger later when the object becomes visible.
 
-**Automatic triggers**
+  - Automatic triggers**
 
 States can also trigger automatically when a condition is met.
 
@@ -510,7 +510,7 @@ States can also trigger automatically when a condition is met.
 
 Note that ``trigger_when`` doesn't prevent the state from firing when triggered manually, it doesn't work like a trigger in an event. It's more like its own on_action.
 ![a curve that starts with a small dip and grows to a large hump](https://ck3.paradoxwikis.com/File:Bezier_curve.png)
-**Bezier**
+  - Bezier**
 
 For states with duration, a bezier curve can be used to control the rate of change of the animation, to add easing.
 
@@ -669,9 +669,9 @@ Many vanilla lists are hardcoded, meaning we can't add other items to them, remo
 
 However, some items in a list can be hidden with ``visible = "[]"`` parameter. Be aware of two issues:
 
-* A fixedgridbox would leave empty gaps, because it doesn't dynamically resize its cells.
+- A fixedgridbox would leave empty gaps, because it doesn't dynamically resize its cells.
 
-* A dynamicgridbox with multiple rows or columns would also have empty gaps.
+- A dynamicgridbox with multiple rows or columns would also have empty gaps.
 
 In order to create custom sorting, we would need to make the same list in script, as a variable list, and then use ordered_in_list to sort it.
 
@@ -931,7 +931,7 @@ etc...
 
 The window can be toggled with [Interface#System Variables](#system-variables), variables or [Interface#Scripted GUIs](#scripted-guis).
 
-**UI system**
+  - UI system**
 
 Hide the window with:
 
@@ -943,7 +943,7 @@ Have a button with:
 
 UI system is the quickest to set up, but all toggles will reset when closing the game, unlike with variables.
 
-**Variables and SGUIs**
+  - Variables and SGUIs**
 
 Hide the window with:
 
@@ -974,7 +974,7 @@ Alternatively, it can be split into two sguis, one to set and one to remove the 
 
 The variable can also be set in an event or a decision.
 
-**SGUI**
+  - SGUI**
 
 A scripted gui can also be used for a more complex trigger.
 
@@ -996,8 +996,8 @@ show_my_window = {
 ```
 Note that here the variable and the scripted gui scope to the player. Another object can be used instead or global variables/sguis, like this:
 
-* ``visible = "[GetGlobalVariable('show_my_window').IsSet]"``
-* ``visible = "[GetScriptedGui('show_my_window').IsShown(GuiScope.End)]"``
+- ``visible = "[GetGlobalVariable('show_my_window').IsSet]"``
+- ``visible = "[GetScriptedGui('show_my_window').IsShown(GuiScope.End)]"``
 
 Remember that this window is created before the player selects the character. So when scopeing to the player, we might need to add a check that the player exists first.
 
@@ -1007,9 +1007,9 @@ Then inside it would be your actual window with the variable or SGUI check.
 
 
 There are a few other methods to create and toggle windows, but they are more cumbersome.
-*[#Toggles_with_PdxGuiWidget](#toggles_with_pdxguiwidget) - straightfoward, but gets complicated with multiple toggles
-*[#Toggles_with_animation](#toggles_with_animation) - longer, but easier to trigger multiple things
-*Console command ``GUI.CreateWidget`` - console commands don't work in multiplayer and disable achievements. 
+- [#Toggles_with_PdxGuiWidget](#toggles_with_pdxguiwidget) - straightfoward, but gets complicated with multiple toggles
+- [#Toggles_with_animation](#toggles_with_animation) - longer, but easier to trigger multiple things
+- Console command ``GUI.CreateWidget`` - console commands don't work in multiplayer and disable achievements. 
 Below are older examples.
 
 
@@ -1018,8 +1018,8 @@ Below are older examples.
 PdxGuiWidget is a simple function used to hide or reveal named elements.
 
 In this example we have a container with a hidden submenu, one button that shows it and another that hides it.
-# when clicked, the first button goes back to its parent, searches in it for the submenu and the other button, reveals them and hides itself
-# the second button searches for the element and the button, reveals them and hides itself
+1. when clicked, the first button goes back to its parent, searches in it for the submenu and the other button, reveals them and hides itself
+1. the second button searches for the element and the button, reveals them and hides itself
 
 
 ```
@@ -1057,12 +1057,12 @@ If the elements are separated by more parents/children, we can repeat AccessPare
 Each button can hide or reveal multiple elements of any type. You only need to provide the name.
 
 Pros:
-* easy to set up for a simple toggle
+- easy to set up for a simple toggle
 
 Cons:
-* the toggles will reset any time the game is restarted
-* If you want to hide multiple things or toggles, the code will get very bloated and hard to manage
-* trying to hide entries in a data list (like a dynamicgridbox) will only hide the first instance
+- the toggles will reset any time the game is restarted
+- If you want to hide multiple things or toggles, the code will get very bloated and hard to manage
+- trying to hide entries in a data list (like a dynamicgridbox) will only hide the first instance
 
 
 ### Toggles with animation
@@ -1122,11 +1122,11 @@ container = {
 it is longer, but animations can be saved as templates and reused with one line, like ``using = hide_animation``. Fullscreen Barbershop uses animations extensively, if you want a better example.
 
 Pros:
-* easier to link many things together, and even open a different window and trigger an animation in it
+- easier to link many things together, and even open a different window and trigger an animation in it
 
 Cons:
-* animation blocks can be quite lengthy
-* all toggles will reset when the game is restarted
+- animation blocks can be quite lengthy
+- all toggles will reset when the game is restarted
 
 
 ### System Variables
@@ -1149,14 +1149,14 @@ onclick = "[VariableSystem.Toggle( 'var_name' )]"
 
 
 The available functions are:
-* Clear - ``Clear( 'var_name' )`` clears the variable
-* ClearIf - ``ClearIf( 'var_name', Condition )`` clears the variable if Condition is true
-* Exists - ``Exists( 'var_name' )`` Boolean, returns true if the variable exists
-* Get - ``Get( 'var_name' )`` CString, returns the string stored in the variable
-* HasValue - ``HasValue( 'var_name', 'string' )`` Boolean, returns true if the variable has the provided string
-* Set - ``Set( 'var_name', 'string' )`` sets the variable to the provided string
-* Toggle - ``Toggle( 'var_name' )`` clears the variable if it exists, creates it if it does not
-* SetOrToggle -  ``SetOrToggle( 'var_name', 'string' )`` clears the variable if it exists and has the same string. If it doesn't, sets it to the provided string
+- Clear - ``Clear( 'var_name' )`` clears the variable
+- ClearIf - ``ClearIf( 'var_name', Condition )`` clears the variable if Condition is true
+- Exists - ``Exists( 'var_name' )`` Boolean, returns true if the variable exists
+- Get - ``Get( 'var_name' )`` CString, returns the string stored in the variable
+- HasValue - ``HasValue( 'var_name', 'string' )`` Boolean, returns true if the variable has the provided string
+- Set - ``Set( 'var_name', 'string' )`` sets the variable to the provided string
+- Toggle - ``Toggle( 'var_name' )`` clears the variable if it exists, creates it if it does not
+- SetOrToggle -  ``SetOrToggle( 'var_name', 'string' )`` clears the variable if it exists and has the same string. If it doesn't, sets it to the provided string
 
 
 #### Toggles with System Variables
@@ -1265,14 +1265,14 @@ container = {
 This is the equivalent of the first example with one of the methods to set a default value.
 
 Pros:
-* simple and easy to remember syntax
-* easier to link many things, even in different windows
-* can be extended with additional commands (see below) to show entirely new windows, avoiding the need to have the widget in hud.gui
+- simple and easy to remember syntax
+- easier to link many things, even in different windows
+- can be extended with additional commands (see below) to show entirely new windows, avoiding the need to have the widget in hud.gui
 
 The downsides:
-* no direct interaction with scripts, they must be set & cleared using the gui
-* can be harder to keep track of
-* all toggles will reset when the game is restarted
+- no direct interaction with scripts, they must be set & cleared using the gui
+- can be harder to keep track of
+- all toggles will reset when the game is restarted
 
 
 ### Creating a new Widget
@@ -1330,9 +1330,9 @@ button = {
 The toggle works by setting a system variable and selecting the command to execute based on it.
 
 ``Select_CString( ... )`` takes three arguments:
-* A Condition
-* A string for true
-* A string for false
+- A Condition
+- A string for true
+- A string for false
 
 If the condition returns true, the first string is used, else the second is.
 In the above toggle, if the system variable exists the window is destroyed, otherwise it is created.
@@ -1386,14 +1386,14 @@ The following names can be used with commands like OpenGameView and IsGameViewOp
 
 ### Known crash reasons
 
-* setting 100% size on hboxes and vboxes
-* setting ``resizeparent = yes`` on multiple children in the same parent
+- setting 100% size on hboxes and vboxes
+- setting ``resizeparent = yes`` on multiple children in the same parent
 
 even if only one of them is visible, this will still crash
 
-* a type that references itself, this will lead to an endless loading screen until you run out of RAM
+- a type that references itself, this will lead to an endless loading screen until you run out of RAM
 
-* syntax errors, like missing brackets or quotation marks
+- syntax errors, like missing brackets or quotation marks
 
 search for ``{`` in your file and then for ``}`` and compare the amounts, they should be the same
 

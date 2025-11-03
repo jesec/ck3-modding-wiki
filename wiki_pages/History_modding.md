@@ -195,12 +195,12 @@ The folder *game/history/cultures* contains the culture files for all culture gr
 
 
 ```
-# Frankish
-# French
-# Occitan
-# Outremer
+1. Frankish
+1. French
+1. Occitan
+1. Outremer
 
-# Norman in separate file
+1. Norman in separate file
 
 867.1.1 = {
 	discover_innovation = innovation_bannus

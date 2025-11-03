@@ -1,6 +1,6 @@
 # Dynasties modding
 
-*This article is timeless and should be accurate for any version of the game.*
+- This article is timeless and should be accurate for any version of the game.*
 
 
 A new feature of Crusader Kings 3 are the improved dynasties, which can be composed by a limitless number of houses. Dynasty modding gives the opportunity to create new dynasties.
@@ -44,11 +44,11 @@ Note that you need to leave a space in the localization string if there is suppo
 
 
 ```
-# In localization/english/my_dynasty_names_l_english.yml
+1. In localization/english/my_dynasty_names_l_english.yml
 dynnp_de:0 "de " # Space after de
 dynnp_d-:0 "d'" # No space after d'
 
-# In common/dynasties/my_dynasties.txt
+1. In common/dynasties/my_dynasties.txt
 200001 = {
   prefix = dynnp_de
   name = dynn_Lyon
@@ -61,8 +61,8 @@ dynnp_d-:0 "d'" # No space after d'
 
 
 Results in:
-* **de Lyon**
-* **d'Oeuvre**
+- **de Lyon**
+- **d'Oeuvre**
 
 
 ## Coat of arms

@@ -188,46 +188,46 @@ In our example the file will be named `/Crusader Kings III/game/example.txt`. An
 }
 ```
 
-* First of all, a character ID is assigned. The ID needs to be unique; going for 900000 and further should be safe. Also it allowed to use chars inside the ID-String like "modChar0". In case of a small mod with a limited number of characters it could be usefull to take the characters name as ID aslong the string itself keep unique for all characters. This ID is used to refer to the character within the game files and is replaced by dynmaic one, when a new game is created.
-* The first name of the character can be set via the use of ``name = "NAME"``. Note that in-game names may change based on culture (see [culture modding](Culture_modding.md)).
-* In the dna-line the path for a specific dna can be inserted. An existing dna from the `/Crusader Kings III/game/00_dna.txt` in `/Crusader Kings III/game/common/dna_data` can be used or an new created by using the portrait editor.
-* To set the character's gender to female, use ``female = yes``.
-* A character can be added to an existing or a new dynasty. Use ``dynasty = DYNASTY_ID`` for dynasties without houses, or ``dynasty_house = HOUSE_ID`` otherwise. The dynasty ID and house ID can be found in `/Crusader Kings III/game/common/dynasties` and `/Crusader Kings III/game/common\dynasty_houses`, respectively. See [dynasties modding](Dynasties_modding.md).
-* Culture and faith must be assigned with ``culture = CULTURE_ID`` and ``religion = FAITH_ID``, respectively. The right names can be found by searching in the corresponding folders `/Crusader Kings III/game/common/culture` and `/Crusader Kings III/game/common/religion`.
-* Attributes can be set freely. Their value caps at 100. If they are not assigned, the game will generate random values. Note that this only adds to the character's *base* attribute values, so the final value may be smaller or larger depending on traits and other factors. The attributes are as follows:
+- First of all, a character ID is assigned. The ID needs to be unique; going for 900000 and further should be safe. Also it allowed to use chars inside the ID-String like "modChar0". In case of a small mod with a limited number of characters it could be usefull to take the characters name as ID aslong the string itself keep unique for all characters. This ID is used to refer to the character within the game files and is replaced by dynmaic one, when a new game is created.
+- The first name of the character can be set via the use of ``name = "NAME"``. Note that in-game names may change based on culture (see [culture modding](Culture_modding.md)).
+- In the dna-line the path for a specific dna can be inserted. An existing dna from the `/Crusader Kings III/game/00_dna.txt` in `/Crusader Kings III/game/common/dna_data` can be used or an new created by using the portrait editor.
+- To set the character's gender to female, use ``female = yes``.
+- A character can be added to an existing or a new dynasty. Use ``dynasty = DYNASTY_ID`` for dynasties without houses, or ``dynasty_house = HOUSE_ID`` otherwise. The dynasty ID and house ID can be found in `/Crusader Kings III/game/common/dynasties` and `/Crusader Kings III/game/common\dynasty_houses`, respectively. See [dynasties modding](Dynasties_modding.md).
+- Culture and faith must be assigned with ``culture = CULTURE_ID`` and ``religion = FAITH_ID``, respectively. The right names can be found by searching in the corresponding folders `/Crusader Kings III/game/common/culture` and `/Crusader Kings III/game/common/religion`.
+- Attributes can be set freely. Their value caps at 100. If they are not assigned, the game will generate random values. Note that this only adds to the character's *base* attribute values, so the final value may be smaller or larger depending on traits and other factors. The attributes are as follows:
 :* ``martial``
 :* ``prowess``
 :* ``diplomacy``
 :* ``intrigue``
 :* ``stewardship``
 :* ``learning``
-* Traits can be added through the use of ``trait = TRAIT_ID``. Replace ``TRAIT_ID`` with the appropriate [trait ID](https://ck3.paradoxwikis.com/trait_ID). An unlimited amount of traits may be added; unless assigned or specified otherwise, the game will generate random traits. To ensure that traits are not changed at the start of the game, use ``disallow_random_traits = yes``.
-* Parents may be optionally assigned by using ``father = CHARACTER_ID`` and ``mother = CHARACTER_ID``. Ensure that one uses the target character's ID, as opposed to their name. This can be useful in creating families.
-* Sexuality can be set through ``sexuality = SEXUALITY_ID``. The following can be used:
+- Traits can be added through the use of ``trait = TRAIT_ID``. Replace ``TRAIT_ID`` with the appropriate [trait ID](https://ck3.paradoxwikis.com/trait_ID). An unlimited amount of traits may be added; unless assigned or specified otherwise, the game will generate random traits. To ensure that traits are not changed at the start of the game, use ``disallow_random_traits = yes``.
+- Parents may be optionally assigned by using ``father = CHARACTER_ID`` and ``mother = CHARACTER_ID``. Ensure that one uses the target character's ID, as opposed to their name. This can be useful in creating families.
+- Sexuality can be set through ``sexuality = SEXUALITY_ID``. The following can be used:
 :* ``asexual``
 :* ``heterosexual``
 :* ``homosexual``
 :* ``bisexual``
-* Set the character's base health through ``health = HEALTH_VALUE``, and fertility with ``fertility = FERTILITY_VALUE``.
+- Set the character's base health through ``health = HEALTH_VALUE``, and fertility with ``fertility = FERTILITY_VALUE``.
 
-* Finally, birth and death of the character have to be defined. Crusader Kings 3 uses ``yyyy.mm.dd`` for date formats. Define a date block using ``DATE = {...}``, replacing ``...`` with ``birth = yes`` or ``death = yes``. Alternatively, replace ``yes`` with the date surrounded by speech marks (``"``). See [#Advanced use of date blocks](#advanced-use-of-date-blocks). 
+- Finally, birth and death of the character have to be defined. Crusader Kings 3 uses ``yyyy.mm.dd`` for date formats. Define a date block using ``DATE = {...}``, replacing ``...`` with ``birth = yes`` or ``death = yes``. Alternatively, replace ``yes`` with the date surrounded by speech marks (``"``). See [#Advanced use of date blocks](#advanced-use-of-date-blocks). 
 
 The same steps work for changing existing characters. Sometimes, like for Charlemagne, there are already most of the possible lines.
 
 
 ### Advanced use of date blocks
 
-* ``add_spouse = CHARACTER_ID``, ``remove_spouse = CHARACTER_ID`` to add/remove spouses.
-* ``give_nickname = NICKNAME_ID`` to add nicknames. Later uses of ``give_nickname`` replace old nicknames. See [nickname ID](https://ck3.paradoxwikis.com/nickname_ID).
-* ``employer = CHARACTER_ID``, similar to ``set_employer = CHARACTER_ID`` effect, moves the scoped character to the specified character's court.
-* ``give_council_position = COUNCILLOR_ID`` to make the character a councillor. The following are accepted:
+- ``add_spouse = CHARACTER_ID``, ``remove_spouse = CHARACTER_ID`` to add/remove spouses.
+- ``give_nickname = NICKNAME_ID`` to add nicknames. Later uses of ``give_nickname`` replace old nicknames. See [nickname ID](https://ck3.paradoxwikis.com/nickname_ID).
+- ``employer = CHARACTER_ID``, similar to ``set_employer = CHARACTER_ID`` effect, moves the scoped character to the specified character's court.
+- ``give_council_position = COUNCILLOR_ID`` to make the character a councillor. The following are accepted:
 :* ``councillor_marshal``
 :* ``councillor_spymaster``
 :* ``councillor_chancellor``
 :* ``councillor_court_chaplain``
 :* ``councillor_steward``
-* Assignments defined in the previous section, like ``trait = TRAIT_ID``, may also be used in date blocks.
-* Various other [effect](Effects.md)s can be used that have a character scope, either directly in the date block or in an ``effect`` sub-block. See the following example from the game files, used to add a character flag and set character sexuality randomly:{{cite file|game\history\characters\danish.txt}}, character <code>101515</code>
+- Assignments defined in the previous section, like ``trait = TRAIT_ID``, may also be used in date blocks.
+- Various other [effect](Effects.md)s can be used that have a character scope, either directly in the date block or in an ``effect`` sub-block. See the following example from the game files, used to add a character flag and set character sexuality randomly:{{cite file|game\history\characters\danish.txt}}, character <code>101515</code>
 
 
 ```
@@ -265,7 +265,7 @@ modifier = {
 
 It is possible for mods to interact with existing pre-defined characters from their scripts, just like other scopes. Use code `/Crusader Kings III/game/character:<id>` to reference to characters. Below is an example from game files: 
 ```text
-# this code can be found in /common/on_action/game_start.txt at line 15 (version 1.5.1.1)
+1. this code can be found in /common/on_action/game_start.txt at line 15 (version 1.5.1.1)
 character:74025 = {
 	if = {
 		limit = {

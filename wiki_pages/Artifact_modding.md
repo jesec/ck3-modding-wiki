@@ -66,16 +66,16 @@ example_template = {
 
 For the can_benefit clause, for example, the following checks can be made for the carry char using **and**, **or**, **not** or **nor**:
 
-* has_faith = faith:<faith_key>
-* culture = culture:<culture_key>
-** has_culture = culture:<culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
-* culture = { any_parent_culture = { this = culture:<culture_key> } }
-* culture = { has_cultural_pillar = <heritage_key> }
-* culture = { has_cultural_tradition = <tradition_key>}
-* has_title = title:<title_key>
-* has_trait = <trait_key>
-* has_religion = religion:<religion_key>
-* dynasty = dynasty:<dynasty_key>
+- has_faith = faith:<faith_key>
+- culture = culture:<culture_key>
+  - has_culture = culture:<culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
+- culture = { any_parent_culture = { this = culture:<culture_key> } }
+- culture = { has_cultural_pillar = <heritage_key> }
+- culture = { has_cultural_tradition = <tradition_key>}
+- has_title = title:<title_key>
+- has_trait = <trait_key>
+- has_religion = religion:<religion_key>
+- dynasty = dynasty:<dynasty_key>
 
 
 Warning: Using 'has_dynasty' doesn't appera wrong at the error log but doesn't work ingame
@@ -134,16 +134,16 @@ The first block starts with the "create_artifact = {...}" keyword. The necessary
 
 The following attributes must be set in the first block:
 
-* name (loc_ref)
-* description (loc_ref)
-* type (artifact type - this decides what kind of artifact it is - e.g. weapon or armor)
-* template (see above)
-* visuals (see above)
-* wealth
-* quality
-* (initial) history
-* modifier (an artifact modifier !)
-* save_scope_as = newly_created_artifact (needed for the second block)
+- name (loc_ref)
+- description (loc_ref)
+- type (artifact type - this decides what kind of artifact it is - e.g. weapon or armor)
+- template (see above)
+- visuals (see above)
+- wealth
+- quality
+- (initial) history
+- modifier (an artifact modifier !)
+- save_scope_as = newly_created_artifact (needed for the second block)
 
 The boolean attribute decaying can also be set - the default value is yes,
 
