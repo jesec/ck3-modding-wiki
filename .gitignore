@@ -1,0 +1,21 @@
+# XML source files (intermediate format, not needed for reading the wiki)
+wiki_exports/
+
+# Conversion tool dependencies
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

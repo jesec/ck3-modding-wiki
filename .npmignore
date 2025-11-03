@@ -1,0 +1,30 @@
+# NPM package should only contain the wiki content
+# Exclude everything except wiki_pages/ and README.md
+
+# Source files and tools
+index.js
+lib/
+.exclude
+
+# Build artifacts and dependencies
+node_modules/
+wiki_exports/
+package-lock.json
+
+# Git and CI
+.git/
+.github/
+.gitignore
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*

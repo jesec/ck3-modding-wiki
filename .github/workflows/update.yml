@@ -1,0 +1,90 @@
+name: update
+
+on:
+  schedule:
+    # Run daily at 3 AM UTC
+    - cron: '0 3 * * *'
+  push:
+    branches:
+      - master
+    paths:
+      - 'lib/**'
+      - 'index.js'
+      - '.exclude'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
+
+      - name: Download wiki content
+        run: npm run download
+
+      - name: Convert to Markdown
+        run: npm run convert
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet wiki_pages/ || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add wiki_pages/
+          git commit -m "chore: update wiki content ($(date +'%Y-%m-%d'))"
+          git push
+
+      - name: Calculate new version (major.YYYYMMDD.patch)
+        if: steps.changes.outputs.changed == 'true'
+        id: version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+          DATE_VERSION=$(date +'%Y%m%d')
+          CURRENT_DATE=$(echo $CURRENT_VERSION | cut -d. -f2)
+
+          if [ "$CURRENT_DATE" = "$DATE_VERSION" ]; then
+            # Same day, increment patch
+            PATCH=$(echo $CURRENT_VERSION | cut -d. -f3)
+            PATCH=$((PATCH + 1))
+          else
+            # New day, reset patch to 0
+            PATCH=0
+          fi
+
+          NEW_VERSION="${MAJOR}.${DATE_VERSION}.${PATCH}"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "Bumping version: $CURRENT_VERSION → $NEW_VERSION"
+
+      - name: Set new version
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          npm version ${{ steps.version.outputs.new_version }} -m "chore: bump version to %s"
+          git push --follow-tags
+
+      - name: Publish to npm
+        if: steps.changes.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
