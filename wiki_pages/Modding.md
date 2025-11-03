@@ -25,8 +25,8 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
     - Windows Xbox Game Pass: Open 'Command Prompt' and run 'start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode -develop’
 - **Create a mod for your modifications**: use a personal mod even for minor changes, and never directly modify the game files in the CK3 game folder as they may be overwritten without warning.
 - **Use a good text editor** to edit files and search through folders. The following, aside from Intellij IDEA are free:
-**[Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
-**[Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [forum:1593630/#post-29225852](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
+    - [Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
+    - [Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [forum:1593630/#post-29225852](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
     - [Notepad++](https://notepad-plus-plus.org/downloads/). Choose Perl as your language for syntax highlighting. To set it as default, go to Settings, Styler Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
     - [Intellij IDEA](https://www.jetbrains.com/idea/). Has a fan-made Paradox Language Support plugin with syntax highlighting and validation. To install it, go to File -> Settings -> Plugins and search for "Paradox Language Support".
     - [Pulsar](https://pulsar-edit.dev/) (fork of Atom). Doesn't include UTF-8-BOM encoding needed for localization files. Otherwise is very customizable. Choose Perl 6 as your language for highlighting. To set it as default, go to File, Config, find "core:" and add below it: "customFileTypes: "source.perl6": [ "txt" "gui"]", like in [this example](https://discuss.atom.io/t/how-do-i-make-atom-recognize-a-file-with-extension-x-as-language-y/26539).
@@ -34,8 +34,8 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 - **The log folder also contains lists of effects, triggers and scopes.** Use ``script_docs`` and ``dump_data_types`` console commands in the game to generate them.
 - **The directory for the CK3 folder on Linux is** ``~/.local/share/Paradox Interactive/Crusader Kings III``
 - **Communicate key facts about your mod:**
-**List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
-**Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
+    - List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
+    - Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
 - When possible, upload your mod to all platforms, especially if it is popular. Not everybody owns the game on Steam.
 - Backup your work. Either manually or with a source control system like Git. Consider using GitHub and Discord for team collaboration.
 - **Remove your local copy of the mod when you subscribe to the Steam version**, otherwise it will not work in the game. (removing the .mod file or changing its extension is enough)
@@ -45,8 +45,8 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 - Join [CK3 Modding discord](https://discord.com/invite/apEvxDZ) to ask any questions and help others
 - The [Modding Git Guide](https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls) is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here. Though the examples are HOI4 based, the principles apply equally well to any Paradox game mod.
 - You can change the path where the launcher and the game saves user specific data:
-**The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
-**For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
+    - The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
+    - For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
 
 
 ### Localization Files
@@ -61,21 +61,21 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 
 ### Launch options
 
-**-debug_mode** - enables dev tooltips and interactions
+    - -debug_mode** - enables dev tooltips and interactions
 
-**-develop** - enables hot reload of most files as soon as they are saved
+    - -develop** - enables hot reload of most files as soon as they are saved
 
-**-mapeditor** - opens the map editor
+    - -mapeditor** - opens the map editor
 
-**-debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
+    - -debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
 
-**-nographics** - launches the game without creating a window or rendering anything and starts an observer game
+    - -nographics** - launches the game without creating a window or rendering anything and starts an observer game
 
-**-random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
+    - -random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
 
-**-benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
+    - -benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
 
-**-continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
+    - -continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
 
 
 ## Creating a mod

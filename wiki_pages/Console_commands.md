@@ -608,20 +608,20 @@ The title ID may not match the title's name in-game. For example, the player may
 - Navigate to the file located at ``game\localization\LANGUAGE\titles_l_LANGUAGE.yml``, replacing ``LANGUAGE`` with your game language.
 - Open the file with a text editor like Notepad++ and search for any instances of the in-game name using [CTRL] + [F].
 - If you managed to find a match:
-**The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
-**The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
+    - The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
+    - The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
 - If you could not find a match:
-**Close the file.
-**In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
-**Repeat your search for the title's in-game name in this file.
-**When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
-**Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
-**Close the file.
-**Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
-**Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
-**The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
-**Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
-**The word in place of ``b_london`` is your title ID.
+    - Close the file.
+    - In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
+    - Repeat your search for the title's in-game name in this file.
+    - When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
+    - Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
+    - Close the file.
+    - Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
+    - Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
+    - The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
+    - Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
+    - The word in place of ``b_london`` is your title ID.
 
 
 ### Finding custom title tags
