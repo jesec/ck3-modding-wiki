@@ -54,28 +54,28 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 - *.yml files in the localization folder must be saved with **UTF-8 + BOM** encoding to be read properly by the game.
 - filenames need to be saved in the form as ***l_<language>.yml** for the game to read the file correctly. For example **council_l_english.yml**.
     - You must use the US spelling of "localization". The Commonwealth spelling of "localisation" *will not work*.
-    - Note, l_ is a lower case L, as in **l**anguage, not capital i.
+** Note, l_ is a lower case L, as in **l**anguage, not capital i.
 - To overwrite existing localization values, put your files with changes into a folder named "replace" within the localization folder.
 - If a mod only has English localization, any player using a different language will see unlocalized strings_like_this. It is better to copy your localization for other languages, even if you don't provide a translation. Modding discord [has a tool](https://discord.com/channels/735413460439007241/1161423005830881462/1161423005830881462) to copy all the files and rename their language markers in one click.
 
 
 ### Launch options
 
-    - -debug_mode** - enables dev tooltips and interactions
+**-debug_mode** - enables dev tooltips and interactions
 
-    - -develop** - enables hot reload of most files as soon as they are saved
+**-develop** - enables hot reload of most files as soon as they are saved
 
-    - -mapeditor** - opens the map editor
+**-mapeditor** - opens the map editor
 
-    - -debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
+**-debug_controller_camera** - adds support for controlling camera with a controller (before 1.9 it was -handle_controller_input)
 
-    - -nographics** - launches the game without creating a window or rendering anything and starts an observer game
+**-nographics** - launches the game without creating a window or rendering anything and starts an observer game
 
-    - -random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
+**-random_seed=42** - launches the game with a fixed RNG seed (in this example 42), works only in combination with -debug_mode
 
-    - -benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
+**-benchmark** - runs an automated test for 1.5 years, moving the camera around and opening various windows. Outputs timer_dump logs showing how much time each tick took to process (convert them to tables and make graphs to analyze)
 
-    - -continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
+**-continuelastsave** - can be used in a shortcut to ck3.exe to automatically load the last save, same as pressing Resume in the launcher
 
 
 ## Creating a mod
@@ -90,7 +90,7 @@ It is recommended to use the game launcher to create initial mod files:
 1. Press Upload Mod in the top right.
 1. Press Create a Mod.
 1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-    - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+1. * (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
 After this, copy the game files you want to edit to the created mod folder, following the same folder structure. For example, ``mod/my_new_mod/events/test_events.txt``
 
 
@@ -104,11 +104,11 @@ Uploading and updating follows the same process:
 1. Choose what platform to upload it to.
 1. Enter any description. (If updating, make sure the launcher copied the most recent one from the site.)
 1. Add a thumbnail
-    - For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
-    - For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
+1. *For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
+1. *For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
 1. Press "Upload".
-    - On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
-    - On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
+1. *On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
+1. *On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
 
 
 ## Installing mods manually
@@ -315,16 +315,16 @@ Make sure that you only use one version of the mod: either from Steam Workshop o
 
 For unknown reasons, mods sometime stop working. There are two ways to solve this:
 - Reload from the launcher:
-    1. Open the launcher
-    1. Go to Mod library on the left
-    1. Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
-    1. Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
-    1. Close the launcher
-    1. Resubscribe to the mod.
-    1. Open the launcher and add the mod back again.
+- # Open the launcher
+- # Go to Mod library on the left
+- # Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
+- # Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
+- # Close the launcher
+- # Resubscribe to the mod.
+- # Open the launcher and add the mod back again.
 - If nothing helps, delete the following files if they are present and restart the launcher:
-    1. Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
-    1. Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
+- # Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
+- # Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
 
 
 ### Mods are conflicting
@@ -369,7 +369,7 @@ PC:
 ## Rename the extracted 'gamestate' file to have a .ck3 extension.
 1. Right-click it and open with a text editor (Windows Notepad is not recommended as the save files are very big).
 1. Edit the file and save it.
-    - To remove ironman status, search for "ironman=yes" and change it to "no"
+1. * To remove ironman status, search for "ironman=yes" and change it to "no"
 1. Load it in the game.
 
 

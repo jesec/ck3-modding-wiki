@@ -425,11 +425,11 @@ There are two types, layoutpolicy_horizontal and layoutpolicy_vertical, controll
 
 There are five policies, with fixed applied by default:
 
-        - fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
-        - expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
-        - growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
-        - preferred** - grows or shrinks, depending on available space.
-        - shrinking** - can shrink below its original size, cannot grow past it.
+1. **fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
+1. **expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
+1. **growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
+1. **preferred** - grows or shrinks, depending on available space.
+1. **shrinking** - can shrink below its original size, cannot grow past it.
 
 Layout policies also respect minimumsize, maximumsize, min_width and max_width.
 

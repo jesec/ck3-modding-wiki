@@ -334,18 +334,18 @@ The expression linking to the game concept can be customized as follows:
 If you want to add custom game concept and show it's description:
 
 ```
-###
+        1. 
 ### common\game_concepts\MY_game_concepts.txt
-###
+        1. 
 my_custom_concept = {
 }
 ```
 
 
 ```
-###
+        1. 
 ### localization\english\MY_l_english.yml
-###
+        1. 
 l_english: 
   game_concept_my_custom_concept:0 "My Name"
   game_concept_my_custom_concept_desc:0 "My Description"

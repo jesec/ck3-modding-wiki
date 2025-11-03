@@ -57,7 +57,7 @@ Notes:
 #### UVs
 
 Order of UV maps for the standard_atlas shader: 
-        - map1** - uv mapped to AO "<model>_unique"
+1. **map1** - uv mapped to AO "<model>_unique"
 1. **map2** - uv mapped material atlas
 
 
