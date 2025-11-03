@@ -253,10 +253,10 @@ title:k_france.holder ?= father
 A value comparison is a statement with two numerical values on either side of either
 - an equal sign ``=``
 - a comparison symbol
-  - strictly greater than ``>``
-  - greater than or equal to ``>=``
-  - lower than ``<``
-  - lower than or equal to ``<=``
+    - strictly greater than ``>``
+    - greater than or equal to ``>=``
+    - lower than ``<``
+    - lower than or equal to ``<=``
 It is true if the comparison is mathematically correct.
 
 Numerical values in a value comparison can be:

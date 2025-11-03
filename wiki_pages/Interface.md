@@ -36,13 +36,13 @@ To edit or save .dds files use either Photoshop with [Intel plugin](https://soft
 
 ![Steam launch options for auto-reloading files](https://ck3.paradoxwikis.com/File:Debug_launch_options.png)
 
-  - Launch options**
+    - Launch options**
 
 To auto-reload gui files in the game and use console commands, add ``-debug_mode -develop`` launch options:
 - right-click the game on Steam, choose Properties, in Launch Options at the bottom enter ``-debug_mode -develop``
 Every time a .gui file is saved it will be reloaded by the game.
 
-  - Important console commands:**
+    - Important console commands:**
 
 - ``dump_data_types`` - lists all available GUI functions in data_types*.log files in your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types)
 You can merge all the log files to make it easier to search through them.
@@ -144,7 +144,7 @@ To open the editor, either:
 - press Ctrl+F8
 - open the console with the ` key (below Esc), click GUI Editor
 - open the console, run gui_editor command
-  - Features**
+    - Features**
 
 By default the editor starts with the Edit mode enabled. You can disable it in the top window, called Outliner. Hotkey "E".
 
@@ -351,10 +351,10 @@ You can preview some of them in the UI Library window. To open it, toggle releas
 ``button``
 
 - A clickable object. Accepts ``onclick`` and ``onrightclick``.
-  - When adding a right click function, include ``button_ignore = none``.
+    - When adding a right click function, include ``button_ignore = none``.
 - Doesn't have a texture by default.
 - Can be fixed size or resized by its children.
-  - A button without size can be used to add invisible hotkeys.
+    - A button without size can be used to add invisible hotkeys.
 
 ``icon``
 
@@ -379,11 +379,11 @@ They automatically center themselves and their children. Do not use parentanchor
 
 Almost all windows use a vbox to arrange their contents vertically. As a rule of thumb, use expanding policies on a vbox and ``expand={}`` after it. This solves 90% of problems with layout.
 
-  - Important:** objects with large size can stretch boxes and mess up the layout. This often happens in vanilla with long text, especially with German and Russian languages.
+    - Important:** objects with large size can stretch boxes and mess up the layout. This often happens in vanilla with long text, especially with German and Russian languages.
 
 Set max_width on your text and test it with very long strings. Use LOREM_IPSUM_TITLE and LOREM_IPSUM_DESCRIPTION localization keys to insert large placeholder text.
 
-  - Detailed behavior:**
+    - Detailed behavior:**
 
 On the screenshots below, hboxes have black background. All of the examples are available in the [UI Library mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2579010074).
 
@@ -425,11 +425,11 @@ There are two types, layoutpolicy_horizontal and layoutpolicy_vertical, controll
 
 There are five policies, with fixed applied by default:
 
-    - fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
-    - expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
-    - growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
-    - preferred** - grows or shrinks, depending on available space.
-    - shrinking** - can shrink below its original size, cannot grow past it.
+        - fixed** - keeps original size. Cannot grow or shrink past it. An hbox/vbox with "fixed" will resize to fit children, like a container.
+        - expanding** - grows to the width/height of the parent, cannot shrink below original size. Has priority over children with other policies. If multiple children are set to "expanding", they split available space equally.
+        - growing** - same as "expanding" but with lower priority. If a child with "expanding" is present, "growing" will not grow. This also means the expand = {} widget would resize to 0, so change its policies if you want to use it with "expanding".
+        - preferred** - grows or shrinks, depending on available space.
+        - shrinking** - can shrink below its original size, cannot grow past it.
 
 Layout policies also respect minimumsize, maximumsize, min_width and max_width.
 
@@ -464,9 +464,9 @@ States can:
 
 ``on_finish`` triggers at the end, if the state has duration set.  If not, it's instant like ``on_start``.
 
-    - Known issue:*** ``on_start`` is currently bugged and triggers twice. Use ``on_finish`` whenever possible.
+        - Known issue:*** ``on_start`` is currently bugged and triggers twice. Use ``on_finish`` whenever possible.
 
-  - State names**
+    - State names**
 
 There is a number of predefined names that automatically trigger the state:
 
@@ -482,7 +482,7 @@ There is a number of predefined names that automatically trigger the state:
 
 Some windows have their own specific state names, like ``phase_change`` and ``new_battle_event`` in the combat window.
 
-  - State triggers**
+    - State triggers**
 
 States can be given any other name and triggered manually, using it.
 
@@ -498,9 +498,9 @@ Examples:
 
 ``onclick = "[PdxGuiTriggerAllAnimations('my_state')]"`` - triggers all states with this name, even if they are in other (visible) windows.
 
-    - Known issue:*** if the state is inside an invisible object when ``TriggerAnimation`` or ``PdxGuiTriggerAllAnimations`` are used, the state will trigger later when the object becomes visible.
+        - Known issue:*** if the state is inside an invisible object when ``TriggerAnimation`` or ``PdxGuiTriggerAllAnimations`` are used, the state will trigger later when the object becomes visible.
 
-  - Automatic triggers**
+    - Automatic triggers**
 
 States can also trigger automatically when a condition is met.
 
@@ -510,7 +510,7 @@ States can also trigger automatically when a condition is met.
 
 Note that ``trigger_when`` doesn't prevent the state from firing when triggered manually, it doesn't work like a trigger in an event. It's more like its own on_action.
 ![a curve that starts with a small dip and grows to a large hump](https://ck3.paradoxwikis.com/File:Bezier_curve.png)
-  - Bezier**
+    - Bezier**
 
 For states with duration, a bezier curve can be used to control the rate of change of the animation, to add easing.
 
@@ -931,7 +931,7 @@ etc...
 
 The window can be toggled with [Interface#System Variables](#system-variables), variables or [Interface#Scripted GUIs](#scripted-guis).
 
-  - UI system**
+    - UI system**
 
 Hide the window with:
 
@@ -943,7 +943,7 @@ Have a button with:
 
 UI system is the quickest to set up, but all toggles will reset when closing the game, unlike with variables.
 
-  - Variables and SGUIs**
+    - Variables and SGUIs**
 
 Hide the window with:
 
@@ -974,7 +974,7 @@ Alternatively, it can be split into two sguis, one to set and one to remove the 
 
 The variable can also be set in an event or a decision.
 
-  - SGUI**
+    - SGUI**
 
 A scripted gui can also be used for a more complex trigger.
 

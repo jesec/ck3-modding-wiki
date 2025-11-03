@@ -96,7 +96,7 @@ However, one should be careful with hot-loading, as making sizable changes can l
 ```
  
 ```
-  - Tips For Hot-loading Safety:**
+    - Tips For Hot-loading Safety:**
 
 1. If possible, have the event closed when you hot-load a change.
 1. Otherwise, you can press the [⟳] icon on the event debug options. Be warned that this will not update saved scopes.

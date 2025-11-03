@@ -51,7 +51,7 @@ Any time the main heightmap.png is changed, you must "repack" in the map editor 
 ![An example river map of Ireland and part of Britain](https://ck3.paradoxwikis.com/File:Rivermap_example.png)
 The river map is a special file that defines coasts and rivers, which is both used by the terrain engine to paint rivers on your map as well as to define where river crossing are for armies. It is not used for navigable rivers or other bodies of water.
 
-  - Improperly created river maps will cause a CTD.** They must be indexed RGB images with a very specific color pallet; the best way to prevent crashes when creating a river map is to start using the game's original river map, found at "[CK3 directory]/game/map_data/rivers.png". Any other colors besides those in the original color index, including antialiases or transparency, will result in a CTD.
+    - Improperly created river maps will cause a CTD.** They must be indexed RGB images with a very specific color pallet; the best way to prevent crashes when creating a river map is to start using the game's original river map, found at "[CK3 directory]/game/map_data/rivers.png". Any other colors besides those in the original color index, including antialiases or transparency, will result in a CTD.
 
 If the river map refuses to export properly when using Gimp, **close Gimp**, copy the base game's river map into your mod folder, and then open it using Gimp. If prompted, ensure that the *colour profile* is retained (select **keep**) and ensure that the "Rendering Intent" is set to "Absolute colorimetric". This will reset any saved export settings that may be causing problems. Once you are done, choose "overwrite rivers.png" as your export option. 
 
@@ -123,7 +123,7 @@ The format of barony definitions is:
     2333;128;183;194;PARIS;x;
 ```
 
-  - IDs must be sequential, or your game will crash.**
+    - IDs must be sequential, or your game will crash.**
 ```
     # This will work:
     1;42;3;128;CAMELOT;x;
@@ -254,7 +254,7 @@ s found in "definition.csv"
 
 ## Creating a Map with a Custom Resolution
 
-  - Note:**
+    - Note:**
 - Width and height are the new widths and height you are setting for your mod.
 - When you open .dds files such as the surround_mask.dds, check if it has mipmaps. If that is the case, generate new mipmaps for the resized file.
 - There is, as of version 1.9.2.1, a bug that cuts off the northern part of the heightmap and leaves it looking all black. It seems to happen depending on the aspect ratio between width and height. Experiment with different widths until it goes away.
@@ -272,27 +272,27 @@ s found in "definition.csv"
     PANNING_HEIGHT # However far you want the player to be able to pan up and down. Panning to the edge would mean this is equal to map height
 ```
 - gfx/map/surround_map/
-  - surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
-  - surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+    - surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+    - surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
 
 - gfx/map/terrain/     # All files in this that have _mask (63 as of 1.3) or .tga (2 as of 1.3) in the name need to be resized TO: (width x height) 
-  - flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-  - colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-  - detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-  - detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
-  - ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must <= 4096, and the size of it must match detail_index.tga
+    - flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+    - colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+    - detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+    - detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
+    - ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must <= 4096, and the size of it must match detail_index.tga
 
 - gfx/map/water/
-  - flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-  - foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
-  - watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+    - flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+    - foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+    - watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
 
 - map_data/
-  - heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
-  - provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
-  - rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
-  - indirection_heightmap.png     # Size should be: (width x height) * 1/32 
-  - heightmap.heightmap
+    - heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
+    - provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
+    - rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
+    - indirection_heightmap.png     # Size should be: (width x height) * 1/32 
+    - heightmap.heightmap
 ```
     original_heightmap_size # Should be { width height } the width and height here should be the size of heightmap.png
 ```
@@ -362,7 +362,7 @@ Properties B -> Metalness
 
 Properties A -> Roughness
 
-  - Note! - After adding a new texture you will need to re-export the map for the optimized detail maps to be updated. Otherwise the games textures will offset and you'll get snow instead of grass or the like.**
+    - Note! - After adding a new texture you will need to re-export the map for the optimized detail maps to be updated. Otherwise the games textures will offset and you'll get snow instead of grass or the like.**
 
 
 ## Frequently asked questions

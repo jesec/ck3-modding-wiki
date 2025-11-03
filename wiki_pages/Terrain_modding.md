@@ -145,7 +145,7 @@ They can also be used in the terrain itself, without the terrain key before. For
 
 Terrain mapping is defined in ``common/province_terrain/00_province_terrain.txt``. Each province needs a defined terrain. More information on provinces are on the [Map modding#Defining baronies](Map_modding.md#defining-baronies).
 
-  - Example**
+    - Example**
 
 ```
 1=biger_plains   #

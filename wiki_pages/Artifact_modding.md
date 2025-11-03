@@ -68,7 +68,7 @@ For the can_benefit clause, for example, the following checks can be made for th
 
 - has_faith = faith:<faith_key>
 - culture = culture:<culture_key>
-  - has_culture = culture:<culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
+    - has_culture = culture:<culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
 - culture = { any_parent_culture = { this = culture:<culture_key> } }
 - culture = { has_cultural_pillar = <heritage_key> }
 - culture = { has_cultural_tradition = <tradition_key>}

@@ -27,25 +27,25 @@ We have an FMOD template where everything is set up for you. This is the easiest
 
 1. Download this [FMOD project template](https://github.com/Agamidae/1.10-FMOD-CK3-template) from Github.
 1. Unzip it, open '1.10 fmod ck3 template.fspro'.
-  - If FMOD asks to recover the file, agree. Re-save it as your own project, so you can always reuse the template.
+    - If FMOD asks to recover the file, agree. Re-save it as your own project, so you can always reuse the template.
 1. Add your sounds to the Assets tab.
-  - It accepts wav, mp3, ogg, aiff, wma and flac.
+    - It accepts wav, mp3, ogg, aiff, wma and flac.
 1. Right-click them and create events (any type, pick 2D if unsure).
-  - You can rename events by double-clicking and change their volume at the bottom of the screen.
+    - You can rename events by double-clicking and change their volume at the bottom of the screen.
 1. Go to Events tab, right-click your events and assign them to the Bank bank.
 1. Go to Banks tab and rename the bank to something unique to avoid conflicts with other mods or game files.
-  - IMPORTANT! The name of your bank should precede "Master Bank". Try A-L range. See below for details.
+    - IMPORTANT! The name of your bank should precede "Master Bank". Try A-L range. See below for details.
 1. Go to Window > Mixer Routing (Ctrl+5).
 1. Right-click your events and assign them to appropriate VCAs, these are game's volume controls. Without it, our sounds would blast players at full volume.
 1. Save and build the project from File > Build (F7). It will create bank files in the project's ``Build/banks`` folder.
 1. Copy the banks to your mod's ``/sound/banks`` folder. You'll have two files, copy both.
-  - Check for typos! That's singular ``sound`` and plural ``banks``.
+    - Check for typos! That's singular ``sound`` and plural ``banks``.
 1. For the future, you can tell FMOD to build right to the mod folder, in Edit -> Preferences -> Build.
-  - if you change the name of your bank, you'll need to remove the old bank files manually
+    - if you change the name of your bank, you'll need to remove the old bank files manually
 1. Launch the game with your mod and test with console command ``Audio.PlayEvent event:/myevent`` 
-  - Note, the console can't play events with spaces in them. This is not an issue for script and UI.
-  - If you put your events into folders in FMOD, then this path would include folder names, eg: ``event:/somefolder/myevent`` 
-  - You do not need to reference the name of the bank here.
+    - Note, the console can't play events with spaces in them. This is not an issue for script and UI.
+    - If you put your events into folders in FMOD, then this path would include folder names, eg: ``event:/somefolder/myevent`` 
+    - You do not need to reference the name of the bank here.
 
 
 ### Bank name and crashing
@@ -85,21 +85,21 @@ To do this on your own, you'll need to create VCAs and replace all the GUIDs of 
 
 1. Create your project and add new events, following the steps from above.
 1. Go to Window > Mixer Routing, VCAs tab. Create a new VCA and name it one of these names, depending on what your sounds are:
-  - Ambience, Music, Sound Effects, UI
+    - Ambience, Music, Sound Effects, UI
 1. In the Routing tab, expand the Master Bus and assign your sounds to the VCA. This will allow players to adjust their volume.
-  - Note, you may need to assign one event to multiple VCAs. UI sounds are also affected by Sound Effects volume, for example.
+    - Note, you may need to assign one event to multiple VCAs. UI sounds are also affected by Sound Effects volume, for example.
 1. Save your project (don't put it in the mod folder yet).
 1. Go to File > Export GUIDs. This will create a text file in your project's Build/ folder.
 1. Go to that folder and open GUIDs.txt.
 1. Find the line ending with ``bus:/`` and another with the name of your VCA and copy the ids to another file somewhere. They might look like this:
-  - ``{767eec3a-3ca8-4ae8-8827-376bf7db4d8f} bus:/``
-  - ``{72d40a2a-0111-4078-8ba7-e84d415b91a2} vca:/UI``
+    - ``{767eec3a-3ca8-4ae8-8827-376bf7db4d8f} bus:/``
+    - ``{72d40a2a-0111-4078-8ba7-e84d415b91a2} vca:/UI``
 1. In CK3 folder, open game/sound/GUIDs.txt and find its ``bus:/`` and vca lines, copy their ids as well. The VCAs are at the bottom. E.g.: 
-  - ``{cb930c67-0464-4d7f-957a-a78b08fc39de} bus:/``
-  - ``{f8bd5083-a8cc-412b-ada4-cdc08a33ce75} vca:/UI``
+    - ``{cb930c67-0464-4d7f-957a-a78b08fc39de} bus:/``
+    - ``{f8bd5083-a8cc-412b-ada4-cdc08a33ce75} vca:/UI``
 1. In your FMOD project folder, search through all the files in the Metadata folder and replace your ids, inside {}, with the ones from the game, for both the bus and vca.
-  - In this example, for the bus, we're replacing ``767...`` with ``cb9...``You will likely see at least 4 results.
-  - If you don't have a proper text editor, install [VSC](https://code.visualstudio.com/). Drop the Metadata folder into it, right-click > Find in Folder.
+    - In this example, for the bus, we're replacing ``767...`` with ``cb9...``You will likely see at least 4 results.
+    - If you don't have a proper text editor, install [VSC](https://code.visualstudio.com/). Drop the Metadata folder into it, right-click > Find in Folder.
 1. Go back to FMOD and restart it, reopen your project.
 1. Select File > Build. This will create our bank files that will be used by the game.
 1. Copy all the bank files created and put them into your mod, in sound/banks folder.
@@ -108,17 +108,17 @@ To do this on your own, you'll need to create VCAs and replace all the GUIDs of 
 
 Sound events can be played from script, UI or from models on the map.
 
-  - Script:** 
+    - Script:** 
 
 ``play_sound_effect = "event:/myevent"``
 
-  - UI buttons:**
+    - UI buttons:**
 
 ``clicksound = "event:/myevent"``
 
 ``oversound = "event:/myevent"`` - this plays when the cursor hovers over a button
 
-  - UI animation states:**
+    - UI animation states:**
 
 ```c
 state = {
@@ -136,7 +136,7 @@ Remember that states don't fire by themselves, see [Interface#Animation states](
 
 You can also use a scripted gui that plays the sound in script and fire it from a button's onclick or a state's on_finish.
 
-  - 3D models:**
+    - 3D models:**
 
 Buildings (common/buildings)
 ```c
