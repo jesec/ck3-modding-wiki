@@ -1,6 +1,6 @@
 # Graphical assets
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
 ## Portrait palettes

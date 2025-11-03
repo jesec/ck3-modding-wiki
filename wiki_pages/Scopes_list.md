@@ -328,7 +328,7 @@ These scope types by default have no direct scope links out of them, though they
 | Flags | flag:some_flag |
 
 
-    - Note: If you give a number more than five decimals, it fails** and the script engine reads the whole number as 0.
+**Note: If you give a number more than five decimals, it fails** and the script engine reads the whole number as 0.
 
 Technical information: the Number type (also called Value) is a signed 64 bit fixed point number with 5 digits after the decimal point. This means it can hold numbers from -92 233 720 368 547.75808 to 92 233 720 368 547.75807 (so about 100 trillion). However, the GUI display of these numbers is limited to values from -2 147 483 648.99999 to 2 147 483 647.99999 (so about 2 billion). In addition, by default the GUI will only print 2 digits after the decimal point. You can change this in ``common/modifier_definition_formats``.
 

@@ -4,7 +4,7 @@
 
 
 ![CK3 Scope Overview Chart](https://ck3.paradoxwikis.com/File:CK3_Scopes.png)
-    - Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
+**Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
 ![These are the color-coded direct scopes as of 1.8.0, generated via automated export from the game files.](https://ck3.paradoxwikis.com/File:Exportedscopes190.png)
 
 

@@ -1,9 +1,9 @@
 # Coat of arms modding
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
-    - Coat of arms** are images used on shields and flags to identify titles, dynasties, and houses.
+**Coat of arms** are images used on shields and flags to identify titles, dynasties, and houses.
 
 They are scripted in `/Crusader Kings III/game/common/coat_of_arms/coat_of_arms`. 
 

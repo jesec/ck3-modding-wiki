@@ -1,6 +1,6 @@
 # Story cycles modding
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
 A story cycle is essentially an event manager that fires events periodically and stores any related values for them.

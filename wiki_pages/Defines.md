@@ -3,7 +3,7 @@
 > **Note:** Last verified for version 1.2
 
 
-    - Defines** are constants that affect certain non-scriptable game behaviors, such as army movement and schemes. They are static and global: they apply to the whole game and cannot be changed dynamically. 
+**Defines** are constants that affect certain non-scriptable game behaviors, such as army movement and schemes. They are static and global: they apply to the whole game and cannot be changed dynamically. 
 
 
 ## Configuration

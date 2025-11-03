@@ -138,7 +138,7 @@ Custom gui widgets can be added to a decision to let the player make an addition
 
 See the widget entry in the .info file for more details.
 
-    - Important!** The default controller doesn't work, try using ``controller = create_holy_order``
+**Important!** The default controller doesn't work, try using ``controller = create_holy_order``
 
 
 ## Testing Decisions

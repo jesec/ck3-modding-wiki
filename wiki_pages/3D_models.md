@@ -1,6 +1,6 @@
 # 3D models
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
 Crusader Kings III uses 3d models to represent objects in the game such as portraits, units and holdings, as well as map objects such as trees. This guide is intended to help CK3 modders with some existing knowledge of 3d modelling and materials. This guide is similar to other 3d modelling guides for Clausewitz like Imperator: Rome.

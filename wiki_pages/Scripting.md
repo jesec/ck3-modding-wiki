@@ -1,13 +1,13 @@
 # Scripting
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
-    - Scripting** lets us add and change game content, where allowed by developers, with custom scripting language.
+**Scripting** lets us add and change game content, where allowed by developers, with custom scripting language.
 
 It is very readable, using names like add_gold or set_variable.
 
-    - Script is used in common/ and events/ folders.**
+**Script is used in common/ and events/ folders.**
 
 This extends to decisions, interactions, activities and also definitions of religions, cultures, legacies and so on.
 
@@ -184,7 +184,7 @@ However, for readability, each code block should be indented with one more tab. 
 
 Comments are made with # in front of text.
 
-    - Exceptions**
+**Exceptions**
 
 There are some blocks that accept multiple entries without a paired parameter. For example, events in on_actions:
 
@@ -258,13 +258,13 @@ This will return true if the character is AI **OR** if they have more than 100 g
 
 Multiple parameters can be put in a block, and they can be nested, like ``OR = { AND = { NOT = {...``
 
-    - AND** is true if **all** conditions are **true**.
+**AND** is true if **all** conditions are **true**.
 
-    - OR** is true if **any** condition is **true**.
+**OR** is true if **any** condition is **true**.
 
-    - NOT** and **NOR** are actually the same: true if **all** conditions are **false**.
+**NOT** and **NOR** are actually the same: true if **all** conditions are **false**.
 
-    - NAND** is true if **any** condition is **false**.
+**NAND** is true if **any** condition is **false**.
 
 Note that all trigger blocks, like ``limit={}``, work as AND by default and accept multiple parameters.
 
@@ -568,13 +568,13 @@ Confusingly, a local variable list isn't permanent.
 
 To make a list, we need to add each item to it with one of these commands:
 
-    - Temporary:**
+**Temporary:**
 
 - ``add_to_list`` - adds to a simple list, only exists while the script is executing
 - ``add_to_local_variable_list`` - similar, but supports adding duration for the item after which it is removed from the list
 - ``add_to_temporary_list`` - unlike all others, can be used in a trigger block
 
-    - Permanent:**
+**Permanent:**
 
 - ``add_to_variable_list`` - adds to a list stored on the scope where the effect is executed, supports duration
 - ``add_to_global_variable_list`` - adds to a global permanent list, supports duration

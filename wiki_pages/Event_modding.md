@@ -1,12 +1,12 @@
 # Event modding
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
 <!-- Template: Expand‎ -->
 Events are the meat of every well-rounded mod; smaller and larger bits of story that can happen to a player during the campaign.
 
-    - Checklist.** Your events must:
+**Checklist.** Your events must:
 
 - be in ``your_mod\events\`` folder
 - have a .txt extension
@@ -26,7 +26,7 @@ There are various tools capable of helping modders script events with greater ea
 
 [Visual Studio Code](https://code.visualstudio.com/) is considered to be the superior choice for modders due to the fact that it features various extensions that allow it to syntax highlight ParadoxScript.
 
-    - Recommended Extensions:**
+**Recommended Extensions:**
 - [CWTools - Paradox Language Services by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode)
 - [Paradox Syntax Highlighting by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.paradox-syntax)
 
@@ -600,7 +600,7 @@ This allows modders to intercept and run their own scripts whenever said On Acti
 
 They are defined in **common/on_action**
 
-    - Important:** double-check your path. This is a singular **on_action**, not on_actions. This is a common mistake.
+**Important:** double-check your path. This is a singular **on_action**, not on_actions. This is a common mistake.
 
 Example (trigger a custom event when a child is born):
 ```c
@@ -649,7 +649,7 @@ Alternatively, have the on_action call itself with a monthly delay.
 
 Most of the time, we want to add something to on_actions without overwriting them. We call this appending.
 
-    - Important:** effects and triggers cannot be appended directly. Only events and other on_actions are appended.
+**Important:** effects and triggers cannot be appended directly. Only events and other on_actions are appended.
 
 To ensure compatibility and not overwrite vanilla effects, do the following:
 
@@ -689,7 +689,7 @@ For example, ``on_game_start`` doesn't have a root scope. It fires once, globall
 
 On the other hand, ``yearly_playable_pulse`` fires for all playable characters, and has the character as the root scope. So we can use character effects directly, like add_gold.
 
-    - Important**: Do not use ``every_living_character`` in ``yearly_playable_pulse`` and similar on_actions.
+**Important**: Do not use ``every_living_character`` in ``yearly_playable_pulse`` and similar on_actions.
 
 That on_action already fires for every character. If you then try to iterate through all characters, that would result in about 20000<sup>2</sup> operations, causing massive lag and repetition of your effects.
 

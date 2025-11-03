@@ -11,7 +11,7 @@ TOC
 Holdings are defined in `/Crusader Kings III/game/common/holdings`
 
 
-    - Example**
+**Example**
 
 ```
 my_holding = {
@@ -94,7 +94,7 @@ my_holding_concept_key:0 "[mine|E]"
 
 Buildings are defined in `/Crusader Kings III/game/game/common/buildings`
 
-    - Building Structure**
+**Building Structure**
 
 ```
 name_of_the_building = {
@@ -276,7 +276,7 @@ name_of_the_building = {
 ```
 
 
-    - Example**
+**Example**
 
 ```
 my_building = {

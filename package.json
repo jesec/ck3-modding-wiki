@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/jesec/ck3-modding-wiki#readme",
   "devDependencies": {
+    "marked": "^16.4.1",
     "playwright": "^1.56.1",
     "wikiparser-node": "^1.29.2"
   }

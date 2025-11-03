@@ -108,17 +108,17 @@ To do this on your own, you'll need to create VCAs and replace all the GUIDs of 
 
 Sound events can be played from script, UI or from models on the map.
 
-    - Script:** 
+**Script:** 
 
 ``play_sound_effect = "event:/myevent"``
 
-    - UI buttons:**
+**UI buttons:**
 
 ``clicksound = "event:/myevent"``
 
 ``oversound = "event:/myevent"`` - this plays when the cursor hovers over a button
 
-    - UI animation states:**
+**UI animation states:**
 
 ```c
 state = {
@@ -136,7 +136,7 @@ Remember that states don't fire by themselves, see [Interface#Animation states](
 
 You can also use a scripted gui that plays the sound in script and fire it from a button's onclick or a state's on_finish.
 
-    - 3D models:**
+**3D models:**
 
 Buildings (common/buildings)
 ```c

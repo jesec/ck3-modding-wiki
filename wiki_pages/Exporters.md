@@ -1,6 +1,6 @@
 # Exporters
 
-- This article is timeless and should be accurate for any version of the game.*
+> *This article is timeless and should be accurate for any version of the game.*
 
 
 Modders can use the **exporter tools** that Paradox provides 'as-is'. These can be used to export textures from Photoshop and meshes/animations from Maya.
