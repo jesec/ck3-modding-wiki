@@ -12,6 +12,16 @@ echo "Creating orphan branch '$ORPHAN_BRANCH'..."
 # Save current branch
 CURRENT_BRANCH=$(git branch --show-current)
 
+# Create temporary directory to store files
+TEMP_DIR=$(mktemp -d)
+echo "Copying files to temp directory..."
+
+# Copy everything we need before switching branches
+cp -r wiki_pages "$TEMP_DIR/"
+cp TABLE_OF_CONTENTS.md "$TEMP_DIR/"
+cp README.md "$TEMP_DIR/"
+cp -r assets "$TEMP_DIR/" 2>/dev/null || true
+
 # Create and checkout orphan branch (no history)
 git checkout --orphan "$ORPHAN_BRANCH" 2>/dev/null || git checkout "$ORPHAN_BRANCH"
 
@@ -20,19 +30,17 @@ git rm -rf . 2>/dev/null || true
 
 # Copy wiki pages to root
 echo "Copying wiki pages..."
-cp wiki_pages/*.md . 2>/dev/null || true
+cp "$TEMP_DIR"/wiki_pages/*.md . 2>/dev/null || true
 
 # Copy TABLE_OF_CONTENTS.md as Home.md (GitHub wiki home page)
-cp TABLE_OF_CONTENTS.md Home.md
+cp "$TEMP_DIR/TABLE_OF_CONTENTS.md" Home.md
 
 # Copy README from main repo
-cp README.md README.md
+cp "$TEMP_DIR/README.md" README.md
 
 # Copy assets
 echo "Copying assets..."
-mkdir -p assets/icons assets/images
-cp assets/icons/*.png assets/icons/ 2>/dev/null || true
-cp assets/images/* assets/images/ 2>/dev/null || true
+cp -r "$TEMP_DIR/assets" . 2>/dev/null || true
 
 # Fix asset paths in markdown files (remove ../ prefix)
 echo "Fixing asset paths..."
@@ -49,6 +57,7 @@ git add .
 if git diff --staged --quiet; then
     echo "✓ No changes to commit"
     git checkout "$CURRENT_BRANCH"
+    rm -rf "$TEMP_DIR"
     exit 0
 fi
 
@@ -68,3 +77,6 @@ echo "✓ Wiki updated successfully at $WIKI_REPO_URL"
 
 # Return to original branch
 git checkout "$CURRENT_BRANCH"
+
+# Clean up temp directory
+rm -rf "$TEMP_DIR"
