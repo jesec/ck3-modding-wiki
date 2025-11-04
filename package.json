@@ -14,6 +14,7 @@
     "download-assets": "node index.js download-assets",
     "convert": "node index.js convert && node lib/generate-master-toc.js",
     "master-toc": "node lib/generate-master-toc.js",
+    "push-wiki": "bash lib/push-to-wiki.sh",
     "update": "node index.js download && node index.js convert && node lib/generate-master-toc.js",
     "publish:npm": "npm publish",
     "publish:all": "npm run update && git add wiki_pages && git commit -m \"chore: update wiki content\" && git push && npm publish"
