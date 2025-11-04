@@ -24,27 +24,71 @@ Modders can’t:
 - add new hotkeys. We can only reuse existing ones, the game ignores the .shortcuts file if it's in a mod
 - display information from one window in another, unless developers included that possibility.
 
+- [Basics](#basics)
+- [Creating a GUI mod](#creating-a-gui-mod)
+- [Inspecting GUI](#inspecting-gui)
+  - [GUI Debug](#gui-debug)
+  - [GUI Editor](#gui-editor)
+- [UI code](#ui-code)
+  - [Promotes and Functions](#promotes-and-functions)
+      - [Type casting](#type-casting)
+      - [Casting numbers to strings](#casting-numbers-to-strings)
+  - [UI Components](#ui-components)
+    - [hbox/vbox](#hboxvbox)
+    - [Layout policies](#layout-policies)
+    - [Animation states](#animation-states)
+  - [Templates](#templates)
+    - [Types](#types)
+    - [Blockoverride](#blockoverride)
+    - [Replacing types](#replacing-types)
+    - [Adding mod compatibility](#adding-mod-compatibility)
+    - [Datamodels](#datamodels)
+- [Scripted GUIs](#scripted-guis)
+  - [Displaying a variable or script value](#displaying-a-variable-or-script-value)
+  - [Displaying data lists](#displaying-data-lists)
+- [New windows and toggles](#new-windows-and-toggles)
+  - [Create a window as a scripted widget](#create-a-window-as-a-scripted-widget)
+  - [Toggle window visibility](#toggle-window-visibility)
+  - [Toggles with PdxGuiWidget](#toggles-with-pdxguiwidget)
+  - [Toggles with animation](#toggles-with-animation)
+  - [System Variables](#system-variables)
+    - [Toggles with System Variables](#toggles-with-system-variables)
+    - [Tabs with System Variables](#tabs-with-system-variables)
+  - [Creating a new Widget](#creating-a-new-widget)
+- [List of existing game views](#list-of-existing-game-views)
+- [Troubleshooting](#troubleshooting)
+  - [Known crash reasons](#known-crash-reasons)
+- [Useful links](#useful-links)
+
+
 ## Basics
 
 The interface in CK3 is created through .gui files in the game/gui folder, which are somewhat similar to html files.
 
-As such, you can edit them with any text editor, like [Modding#Tips_.26_guidelines](Modding.md#tips_.26_guidelines). Choose Python or Perl 6 for syntax highlighting, they fit well.
+As such, you can edit them with any text editor, like [VS Code, Sublime or Pulsar](Modding.md#tips_.26_guidelines). Choose Python or Perl 6 for syntax highlighting, they fit well.
 
 CK3 uses .dds files for textures, which are saved inside the game/gfx/ folder. Although it can also accept .png files in many places.
 
 To edit or save .dds files use either Photoshop with [Intel plugin](https://software.intel.com/en-us/articles/intel-texture-works-plugin) or GIMP with [this plugin](https://code.google.com/archive/p/gimp-dds/downloads).
 
-![Steam launch options for auto-reloading files](https://ck3.paradoxwikis.com/File:Debug_launch_options.png)
+<figure>
+
+![screenshot of launch options in Steam](../assets/images/Debug_launch_options.png)
+<figcaption>Steam launch options for auto-reloading files</figcaption>
+</figure>
+
 
 **Launch options**
 
 To auto-reload gui files in the game and use console commands, add ``-debug_mode -develop`` launch options:
 - right-click the game on Steam, choose Properties, in Launch Options at the bottom enter ``-debug_mode -develop``
+
 Every time a .gui file is saved it will be reloaded by the game.
 
 **Important console commands:**
 
 - ``dump_data_types`` - lists all available GUI functions in data_types*.log files in your log folder (Documents/Paradox Interactive/Crusader Kings III/logs/data_types)
+
 You can merge all the log files to make it easier to search through them.
 
 To do it quickly, make and run a .bat file in the data_types folder with this code: ``type *.txt > ALL_DATA_TYPES.txt``
@@ -52,10 +96,16 @@ To do it quickly, make and run a .bat file in the data_types folder with this co
 - ``release_mode`` - shows the error counter on screen. Very useful to quickly spot when you made an error in UI. Can be toggled with a button under the console.
 - ``gui_editor`` - opens the GUI editor, hotkey Control + F8
 
-![screenshot of the error counter](https://ck3.paradoxwikis.com/File:Errorhoof.jpg)
+<figure>
+
+![screenshot of the error counter](../assets/images/Errorhoof.jpg)
+<figcaption>Error counter</figcaption>
+</figure>
+
 Optional, not usually needed with hot reload:
 - ``reload gui`` - reloads all gui files or a specific file if provided its name: ``reload gui/frontend_main.gui``
 - ``reload texture`` - reloads all texture files or a specific file: ``reload texture flatmap.dds``
+
 Other tips:
 - keep the error log open to see if there is a mistake in the code (it's in the same log folder)
 - keep the data types logs open, so your text editor uses it for autocompletion
@@ -100,7 +150,12 @@ After this you can launch the game and quickly open .gui files. The path can als
 ### GUI Debug
 
 gui.debug is a console command that enables the inspector.
-![a screenshot of the tweaker menu for gui.debug with extra options unchecked except for gui.debug](https://ck3.paradoxwikis.com/File:Tweak_gui.debug.png)
+<figure>
+
+![a screenshot of the tweaker menu for gui.debug with extra options unchecked except for gui.debug](../assets/images/Tweak_gui.debug.png)
+<figcaption>gui.debug tweaker</figcaption>
+</figure>
+
 It shows a tooltip with debug information, allows us to select a gui element, open its .gui file and jump to its exact line.
 
 To use it:
@@ -113,7 +168,12 @@ To use it:
 
 (We disable other debug options because they highlight all existing elements and it can be overwhelming)
 
-![a screenshot of a gui.debug tooltip showing what file the character of the week is defined in](https://ck3.paradoxwikis.com/File:Gui.debug.png)
+<figure>
+
+![a screenshot of a gui.debug tooltip showing what file the character of the week is defined in](../assets/images/Gui.debug.png)
+<figcaption>gui.debug tooltip</figcaption>
+</figure>
+
 With the inspector active, your cursor will highlight a gui element with a green border and the tooltip will show its file. The number afterwards is the line it's on.
 
 Alt + left-click selects other elements above or below.
@@ -133,7 +193,12 @@ You can also make your own button with a hotkey that would fire gui.debug and sp
 
 ### GUI Editor
 
-![a screenshot of GUI Editor showing the structure of the frontend gui file](https://ck3.paradoxwikis.com/File:GUI_editor.png)
+<figure>
+
+![a screenshot of GUI Editor showing the structure of the frontend gui file](../assets/images/GUI_editor.png)
+<figcaption>GUI Editor</figcaption>
+</figure>
+
 GUI Editor is a developer tool for editing the UI in the game.
 
 While it may seem less intimidating then editing raw files, it is also much more limited.
@@ -246,6 +311,7 @@ NumberToString = {
     }
 }
 ```
+
 2. In the gui file, pass the number to it:
 
 ``raw_text = "[GuiScope.AddScope( 'number', MakeScopeValue(IntToFixedPoint( GetPlayer.GetAge ))).Custom( 'NumberToString' )]"`` 
@@ -258,7 +324,8 @@ Note that GetAge returns int32, and MakeScopeValue only accepts fixed-points, so
 l_english:
  number_to_string: "[SCOPE.GetValue('number')|0]"
 ```
-And this will be passed to UI as a string.  Localization number_to_string essentially replaces our whole line in the second step. Read more about [Customizable localization](https://ck3.paradoxwikis.com/Customizable_localization).
+
+And this will be passed to UI as a string.  Localization number_to_string essentially replaces our whole line in the second step. Read more about [customizable localization here](https://ck3.paradoxwikis.com/Customizable_localization).
 
 The function in the second step can be replaced by a macro to make it shorter and easier to reuse.
 
@@ -270,6 +337,7 @@ macro = {
     replace_with = "GuiScope.AddScope( 'number', MakeScopeValue(IntToFixedPoint(Arg0))).Custom('NumberToString')"
 }
 ```
+
 This can be used as ``"[GetString_int32( GetPlayer.GetAge )]"`` or ``"[GetString_int32( '(int32)2' )]"``
 
 
@@ -284,7 +352,7 @@ You can preview some of them in the UI Library window. To open it, toggle releas
 - A movable container. To enable movement, add ``movable = yes`` property.
 - Can be fixed size or resized by its children.
 - In the game the background is set using templates, like ``using = Window_Background`` and ``using = Window_Decoration``.
-- If a child is outside of a window, it won't be clickable and won't show a tooltip. Use ``allow_outside = yes`` to change this. 
+- If a child is outside of a window, it won't be clickable and won't show a tooltip. Use ``allow_outside = yes`` to change this.
 - Clicking a window will bring it to the front of other windows that share the same layer. Use ``PdxGuiWidget.StackTop`` or ``PdxGuiWidget.StackBottom`` to manipulate the order.
 
 ``widget``
@@ -351,10 +419,10 @@ You can preview some of them in the UI Library window. To open it, toggle releas
 ``button``
 
 - A clickable object. Accepts ``onclick`` and ``onrightclick``.
-    - When adding a right click function, include ``button_ignore = none``.
+   - When adding a right click function, include ``button_ignore = none``.
 - Doesn't have a texture by default.
 - Can be fixed size or resized by its children.
-    - A button without size can be used to add invisible hotkeys.
+   - A button without size can be used to add invisible hotkeys.
 
 ``icon``
 
@@ -388,30 +456,13 @@ Set max_width on your text and test it with very long strings. Use LOREM_IPSUM_T
 On the screenshots below, hboxes have black background. All of the examples are available in the [UI Library mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2579010074).
 
 
-| By default, an hbox works similar to a flowcontainer: it orders children horizontally and resizes to fit them.
-<pre><code>hbox = {<br>    button_round = {}<br>    button_round = {}<br>}</code></pre> | ![Simple hbox wide](https://ck3.paradoxwikis.com/File:Simple_hbox_wide.jpg) |
+|    |    |
 | --- | --- |
-| With ``layoutpolicy_horizontal = expanding`<pre><code> it expands to the width of its parent and spreads its chilren out<br></code></pre>hbox = {
-```
-    layoutpolicy_horizontal = expanding
-    button_round = {}
-    button_round = {}
-```
-}` | ![Expanded hbox](https://ck3.paradoxwikis.com/File:Expanded_hbox.jpg) |
-| To group its children, we can use ``expand={}`` to push them to one side. ``expand`<pre><code> is a template widget with layout policies set to "growing" (defined in gui/shared/windows.gui)<br></code></pre>hbox = {
-```
-    layoutpolicy_horizontal = expanding
-    button_round = {}
-    button_round = {}
-    expand = {}
-```
-}` | ![Ordered hbox](https://ck3.paradoxwikis.com/File:Ordered_hbox.jpg) |
-| With "expanding" policy on children, it also resizes them
-
-This is useful for creating tabs, without needing to manually set their size
-<pre><code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>}</code></pre> | ![Tabs hbox 2](https://ck3.paradoxwikis.com/File:Tabs_hbox_2.jpg) |
-| With "expanding" horizontal and vertical policy, the hbox and its children will resize in both directions
-<pre><code>hbox = {<br>    layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>}</code></pre> | ![Big hbox](https://ck3.paradoxwikis.com/File:Big_hbox.png) |
+| By default, an hbox works similar to a flowcontainer: it orders children horizontally and resizes to fit them.<br><code style="white-space: pre">hbox = {<br>    button_round = {}<br>    button_round = {}<br>}</code> | ![simple hbox wide](../assets/images/simple_hbox_wide.jpg) |
+| With ``layoutpolicy_horizontal = expanding`<code style="white-space: pre"> it expands to the width of its parent and spreads its chilren out<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>}` | ![Expanded hbox](../assets/images/Expanded_hbox.jpg) |
+| To group its children, we can use `expand={}` to push them to one side. ``expand`<code style="white-space: pre"> is a template widget with layout policies set to "growing" (defined in gui/shared/windows.gui)<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>    expand = {}<br>}` | ![Ordered hbox](../assets/images/Ordered_hbox.jpg) |
+| With "expanding" policy on children, it also resizes them<br><br>This is useful for creating tabs, without needing to manually set their size<br><code style="white-space: pre">hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>}</code> | ![tabs hbox 2](../assets/images/tabs_hbox_2.jpg) |
+| With "expanding" horizontal and vertical policy, the hbox and its children will resize in both directions<br><code style="white-space: pre">hbox = {<br>    layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>}</code> | ![big hbox](../assets/images/big_hbox.png) |
 
 
 If placed in fixed size parent it will by default expand both horizontally and vertically up to entire size of the parent. But if placed in other vbox/hbox they will not expand to the parent size.
@@ -434,11 +485,10 @@ There are five policies, with fixed applied by default:
 Layout policies also respect minimumsize, maximumsize, min_width and max_width.
 
 
-| "expanding" takes priority over "growing" but will not shrink it smaller than the original (fixed) size
-<pre><code>hbox = {<br>	max_width = 400<br>	layoutpolicy_horizontal = expanding<br><br>	button_standard_small = { layoutpolicy_horizontal = expanding }<br>	button_standard_small = { layoutpolicy_horizontal = growing }<br>}</code></pre> | ![Growing hbox 2](https://ck3.paradoxwikis.com/File:Growing_hbox_2.png) |
+|    |    |
 | --- | --- |
-| "preferred" and "shrinking" can both shrink, when there is little space. You may need to limit your hbox with max_width or "shrinking" policy to see this effect.
-<pre><code>hbox = {<br>	layoutpolicy_horizontal = shrinking<br><br>	button_standard_small = { layoutpolicy_horizontal = growing }<br>	button_standard_small = { layoutpolicy_horizontal = preferred }<br>	button_standard_small = { layoutpolicy_horizontal = shrinking }<br>}</code></pre> | ![Shrinking hbox 2](https://ck3.paradoxwikis.com/File:Shrinking_hbox_2.png) |
+| "expanding" takes priority over "growing" but will not shrink it smaller than the original (fixed) size<br><code style="white-space: pre">hbox = {<br>    max_width = 400<br>    layoutpolicy_horizontal = expanding<br><br>    button_standard_small = { layoutpolicy_horizontal = expanding }<br>    button_standard_small = { layoutpolicy_horizontal = growing }<br>}</code> | ![growing hbox 2](../assets/images/growing_hbox_2.png) |
+| "preferred" and "shrinking" can both shrink, when there is little space. You may need to limit your hbox with max_width or "shrinking" policy to see this effect.<br><code style="white-space: pre">hbox = {<br>    layoutpolicy_horizontal = shrinking<br><br>    button_standard_small = { layoutpolicy_horizontal = growing }<br>    button_standard_small = { layoutpolicy_horizontal = preferred }<br>    button_standard_small = { layoutpolicy_horizontal = shrinking }<br>}</code> | ![shrinking hbox 2](../assets/images/shrinking_hbox_2.png) |
 
 
 #### Animation states
@@ -452,6 +502,7 @@ state = {
     duration = 0.5
 }
 ```
+
 This state will set the alpha of its object to 50% over 0.5 second when it becomes visible, and it's triggered automatically due to its name.
 
 States can:
@@ -509,7 +560,12 @@ States can also trigger automatically when a condition is met.
 ``trigger_when`` - triggers when the condition is met.
 
 Note that ``trigger_when`` doesn't prevent the state from firing when triggered manually, it doesn't work like a trigger in an event. It's more like its own on_action.
-![a curve that starts with a small dip and grows to a large hump](https://ck3.paradoxwikis.com/File:Bezier_curve.png)
+<figure>
+
+![a curve that starts with a small dip and grows to a large hump](../assets/images/Bezier_curve.png)
+<figcaption>Bezier curve of Animation_Curve_Default</figcaption>
+</figure>
+
 **Bezier**
 
 For states with duration, a bezier curve can be used to control the rate of change of the animation, to add easing.
@@ -580,6 +636,7 @@ types Standard_Types
 	}
 }
 ```
+
 The name of the group can be anything, it has no impact.
 
 
@@ -708,14 +765,17 @@ my_sgui = {
   }
 }
 ```
+
 It can be used in the UI, scoping to the player, like this:
 ```
- onclick = "[GetScriptedGui('my_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+onclick = "[GetScriptedGui('my_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 ```
+
 If an sgui uses global effects, like ``every_player = { add_gold = 100 }``, it can be used without scoping:
 ```
- onclick = "[GetScriptedGui('my_sgui').Execute( GuiScope.End )]"
+onclick = "[GetScriptedGui('my_sgui').Execute( GuiScope.End )]"
 ```
+
 Other optional parameters are:
 
 
@@ -769,8 +829,9 @@ Instead of ``GetPlayer.MakeScope`` we can scope to another game object, for exam
 To add another scope to our scripted gui, we use AddScope like this:
 
 ```
- "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).**AddScope( 'target', CharacterWindow.GetCharacter.MakeScope )**.End )]"
+"[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).**AddScope( 'target', CharacterWindow.GetCharacter.MakeScope )**.End )]"
 ```
+
 It's then used as ``scope:target`` in the sgui. You may use any name.
 
 Multiple scopes can be saved this way: ``AddScope().AddScope().AddScope().End``
@@ -781,8 +842,9 @@ We can also pass values, text and booleans from UI to sguis, using ``MakeScopeVa
 
 For example:
 ```
- onclick = "[GetScriptedGui('give_gold').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).**AddScope( 'balance', MakeScopeValue(GetPlayerBalance) )**.End )]"
+onclick = "[GetScriptedGui('give_gold').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).**AddScope( 'balance', MakeScopeValue(GetPlayerBalance) )**.End )]"
 ```
+
 The number is then referenced as any other saved scope: ``add_gold = scope:balance``
 
 MakeScopeValue expects fixed point values, so you may need to convert the value first with IntToFixedPoint.
@@ -878,6 +940,7 @@ dynamicgridbox = {
 	}
 }
 ```
+
 To access the item, we need to use ``Scope`` and the matching function of our object, like ``GetCharacter`` or ``Title``. Check Data Types to see what ``Scope`` functions are available. We can declare it once with a datacontext and then continue to use ``Character``.
 
 Note, your datacontext should not be inside ``item = {}`` itself, but inside the widget used there (be it a button, a text or a flowcontainer like here)
@@ -908,6 +971,7 @@ window = {
 	using = Window_Background_Sidebar
 }
 ```
+
 Make a new folder called "scripted_widgets" in your gui/ folder.
 
 Make a new txt file in it with any name, e.g. ``gui\scripted_widgets\scripted_windows.txt``.
@@ -929,7 +993,7 @@ etc...
 
 ### Toggle window visibility
 
-The window can be toggled with [Interface#System Variables](#system-variables), variables or [Interface#Scripted GUIs](#scripted-guis).
+The window can be toggled with [UI variable system](#system-variables), variables or [scripted guis](#scripted-guis).
 
 **UI system**
 
@@ -970,6 +1034,7 @@ toggle_my_window = {
     }
 }
 ```
+
 Alternatively, it can be split into two sguis, one to set and one to remove the variable.
 
 The variable can also be set in an event or a decision.
@@ -994,6 +1059,7 @@ show_my_window = {
     }
 }
 ```
+
 Note that here the variable and the scripted gui scope to the player. Another object can be used instead or global variables/sguis, like this:
 
 - ``visible = "[GetGlobalVariable('show_my_window').IsSet]"``
@@ -1007,9 +1073,10 @@ Then inside it would be your actual window with the variable or SGUI check.
 
 
 There are a few other methods to create and toggle windows, but they are more cumbersome.
-- [#Toggles_with_PdxGuiWidget](#toggles_with_pdxguiwidget) - straightfoward, but gets complicated with multiple toggles
-- [#Toggles_with_animation](#toggles_with_animation) - longer, but easier to trigger multiple things
-- Console command ``GUI.CreateWidget`` - console commands don't work in multiplayer and disable achievements. 
+- [PdxGuiWidget](#toggles_with_pdxguiwidget) - straightfoward, but gets complicated with multiple toggles
+- [Animations](#toggles_with_animation) - longer, but easier to trigger multiple things
+- Console command ``GUI.CreateWidget`` - console commands don't work in multiplayer and disable achievements.
+
 Below are older examples.
 
 
@@ -1051,7 +1118,7 @@ container = {
 
 If the elements are separated by more parents/children, we can repeat AccessParent like this:
 ```
- onclick = "[PdxGuiWidget.AccessParent.AccessParent.AccessParent.AccessParent.FindChild('submnenu').Show]"
+onclick = "[PdxGuiWidget.AccessParent.AccessParent.AccessParent.AccessParent.FindChild('submnenu').Show]"
 ```
 
 Each button can hide or reveal multiple elements of any type. You only need to provide the name.
@@ -1314,6 +1381,7 @@ button = {
 }
 ```
 
+
 Make sure that there is only one space between gui.ClearWidgets and my_custom_window. If there is more than 1 space, gui.ClearWidgets will clear all widgets created with console, not just my_custom_window.
 
 Or combined into a toggle:
@@ -1342,43 +1410,50 @@ In the above toggle, if the system variable exists the window is destroyed, othe
 
 The following names can be used with commands like OpenGameView and IsGameViewOpen like this: IsGameViewOpen('intrigue_window')
 
-| **Game Views** |  |  |
-| --- | --- | --- |
-| intrigue_window | dynasty_house_view | artifact_kill_list |
-| military | dynasty_house_customization | action_item_handler |
-| men_at_arms | dynasty_tree_view | transfer_vassal |
-| knights | dynasty_legacy_window | title_election |
-| levy | dynasty_customization | court_window |
-| men_at_arms_type | dynasty_house_members | ruler_designer |
-| select_maa_origin_province | factions_window | royal_court |
-| army | succession_event | inventory |
-| holding_view | lineage_view | reforge_artifact |
-| character | religion | appoint_position |
-| character_finder | faith | artifact_details |
-| combat | faith_creation | language |
-| end_of_combat | faith_conversion | memories |
-| siege | culture_window | ruler_designer_save |
-| raid | hybridize_culture | ruler_designer_load |
-| rally_point | diverge_culture | activity_planner |
-| place_rally_point | add_culture_tradition | activity_window |
-| find_title | replace_culture_pillar | activity_list_window |
-| character_focus | great_holy_war | activity_list_detail_host_window |
-| lifestyle | hired_troop_detail_view | activity_list_detail_invite_window |
-| decisions | lease_out_baronies | activity_locale |
-| decision_detail | outliner | activity_guest_list |
-| title_view_window | my_realm | activity_intent_selection |
-| war_overview | succession_law_change | activity_log |
-| struggle | war_declared_overview | travel_planner |
-| struggle_involvement | war_results | travel_option_selection_window |
-| pause_menu | designate_heir | travel_route_edit_window |
-| load_game | change_ghw_target | accolade_view |
-| save_game | barbershop | create_accolade_view |
-| resign_confirmation | concubine_interaction | diarchy |
-| in_front_topbar | title_history | manage_tax_slots |
-| select_commander | title_add_law | tax_slot_appoint_tax_collector |
-| tutorial | title_customization | tax_slot_obligations |
-| council_window | kill_list | tax_slot_vassals |
-|  |  | tax_slot_assign_vassal |
+<details>
+<summary></summary>
+
+
+<table>
+<tr><th colspan="3">Game Views</th></tr>
+<tr><td>intrigue_window</td><td>dynasty_house_view</td><td>artifact_kill_list</td></tr>
+<tr><td>military</td><td>dynasty_house_customization</td><td>action_item_handler</td></tr>
+<tr><td>men_at_arms</td><td>dynasty_tree_view</td><td>transfer_vassal</td></tr>
+<tr><td>knights</td><td>dynasty_legacy_window</td><td>title_election</td></tr>
+<tr><td>levy</td><td>dynasty_customization</td><td>court_window</td></tr>
+<tr><td>men_at_arms_type</td><td>dynasty_house_members</td><td>ruler_designer</td></tr>
+<tr><td>select_maa_origin_province</td><td>factions_window</td><td>royal_court</td></tr>
+<tr><td>army</td><td>succession_event</td><td>inventory</td></tr>
+<tr><td>holding_view</td><td>lineage_view</td><td>reforge_artifact</td></tr>
+<tr><td>character</td><td>religion</td><td>appoint_position</td></tr>
+<tr><td>character_finder</td><td>faith</td><td>artifact_details</td></tr>
+<tr><td>combat</td><td>faith_creation</td><td>language</td></tr>
+<tr><td>end_of_combat</td><td>faith_conversion</td><td>memories</td></tr>
+<tr><td>siege</td><td>culture_window</td><td>ruler_designer_save</td></tr>
+<tr><td>raid</td><td>hybridize_culture</td><td>ruler_designer_load</td></tr>
+<tr><td>rally_point</td><td>diverge_culture</td><td>activity_planner</td></tr>
+<tr><td>place_rally_point</td><td>add_culture_tradition</td><td>activity_window</td></tr>
+<tr><td>find_title</td><td>replace_culture_pillar</td><td>activity_list_window</td></tr>
+<tr><td>character_focus</td><td>great_holy_war</td><td>activity_list_detail_host_window</td></tr>
+<tr><td>lifestyle</td><td>hired_troop_detail_view</td><td>activity_list_detail_invite_window</td></tr>
+<tr><td>decisions</td><td>lease_out_baronies</td><td>activity_locale</td></tr>
+<tr><td>decision_detail</td><td>outliner</td><td>activity_guest_list</td></tr>
+<tr><td>title_view_window</td><td>my_realm</td><td>activity_intent_selection</td></tr>
+<tr><td>war_overview</td><td>succession_law_change</td><td>activity_log</td></tr>
+<tr><td>struggle</td><td>war_declared_overview</td><td>travel_planner</td></tr>
+<tr><td>struggle_involvement</td><td>war_results</td><td>travel_option_selection_window</td></tr>
+<tr><td>pause_menu</td><td>designate_heir</td><td>travel_route_edit_window</td></tr>
+<tr><td>load_game</td><td>change_ghw_target</td><td>accolade_view</td></tr>
+<tr><td>save_game</td><td>barbershop</td><td>create_accolade_view</td></tr>
+<tr><td>resign_confirmation</td><td>concubine_interaction</td><td>diarchy</td></tr>
+<tr><td>in_front_topbar</td><td>title_history</td><td>manage_tax_slots</td></tr>
+<tr><td>select_commander</td><td>title_add_law</td><td>tax_slot_appoint_tax_collector</td></tr>
+<tr><td>tutorial</td><td>title_customization</td><td>tax_slot_obligations</td></tr>
+<tr><td>council_window</td><td>kill_list</td><td>tax_slot_vassals</td></tr>
+<tr><td></td><td></td><td>tax_slot_assign_vassal</td></tr>
+</table>
+
+</details>
 
 
 ## Troubleshooting

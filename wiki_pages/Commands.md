@@ -13,12 +13,14 @@ They appear in:
 
 Available commands depend on the current [scope](Scopes.md) type.
 
+- [List of Commands](#list-of-commands)
+
+
 ## List of Commands
 
 
-|  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- |
 | **Command** | **Used in vanilla** | **Used from scope** | **Value type** | **Description** | **Example** | **Category** |
+| --- | --- | --- | --- | --- | --- | --- |
 | add_dynasty_modifier |  | dynasty |  | Adds a modifier to a dynasty. | add_dynasty_modifier = name<br>add_dynasty_modifier = { modifier = name days/weeks/months/years = int } | Modifiers |
 | add_dynasty_perk |  | dynasty | key | Adds dynasty perk. | add_dynasty_perk = key | Lifestyles |
 | dynasty_prestige [amount] |  | dynasty | int | Adds [amount] dynasty prestige. |  | Dynasty |
@@ -37,7 +39,7 @@ Available commands depend on the current [scope](Scopes.md) type.
 | scheme_freeze_days |  | scheme | int | freezes the scheme for X days (0 unfreezes the scheme) | scheme_freeze_days = X | Schemes |
 | add_county_modifier |  | landed title | modifier/int | Add a modifier to a county. | add_county_modifier = name<br>add_county_modifier = { modifier = name days/weeks/months/years = int } | Modifiers |
 | change_county_control |  | landed title | int | Changes the county control of a title. If the title has higher tier than county, the effect will propagate down to all counties below it. |  | Control |
-| change_de_jure_drift_progress |  | landed title | title/int | Change the progress of de jure drift of a title. | <drifting_title> = { change_de_jure_drift_progress = { target = <drift_target_title>  value = <progress_change_value> } } | Title |
+| change_de_jure_drift_progress |  | landed title | title/int | Change the progress of de jure drift of a title. | &lt;drifting_title> = { change_de_jure_drift_progress = { target = &lt;drift_target_title>  value = &lt;progress_change_value> } } | Title |
 | change_development_level |  | landed title | int | Changes the development level of a title. If the title has higher tier than county, the effect will propagate down to all counties below it. |  | Title |
 | change_development_progress |  | landed title | int | Changes the development progress of a title. If the title has higher tier than county, the effect will propagate down to all counties below it. |  | Development |
 | change_development_progress_with_overflow |  | landed title | int | Changes the development progress of a title. If the title has higher tier than county, the effect will propagate down to all counties below it. Will overflow, so adding +100 to a county with 50 progress left will increase the level by 1 and result in 50 progress towards the next level. |  | Development |
@@ -50,8 +52,8 @@ Available commands depend on the current [scope](Scopes.md) type.
 | reset_title_prefix |  | landed title | bool | Sets the prefix of the scoped title back to being based on its key. Won't cause its adjective or name to change. | reset_title_prefix = yes | Title |
 | revoke_lease |  | landed title | bool | Revoke the lease of the scoped title. | revoke_lease = yes | Title |
 | set_always_follows_primary_heir |  | landed title | bool | Sets if the title should always go to the primary heir in partition succession. | set_always_follows_primary_heir = yes | Title |
-| set_capital_county |  | landed title | title | Sets the capital county of the title to the target county. | set_capital_county = <some county title> | Title |
-| set_color_from_title |  | landed title | title | Sets the color of the title to the same as the target title (shifted very slightly to not be identical). | set_color_from_title = <some title> | Title |
+| set_capital_county |  | landed title | title | Sets the capital county of the title to the target county. | set_capital_county = &lt;some county title&gt; | Title |
+| set_color_from_title |  | landed title | title | Sets the color of the title to the same as the target title (shifted very slightly to not be identical). | set_color_from_title = &lt;some title&gt; | Title |
 | set_county_culture |  | landed title | culture/title | Sets the culture of a county. | set_county_culture = english/root.character_culture | Title |
 | set_county_faith |  | landed title | faith | Changes what faith a county has. |  | Title |
 | set_de_jure_liege_title |  | landed title | title | Set a new DeJure liege title. | set_de_jure_liege_title = new_de_jure_liege | Title |
@@ -69,8 +71,8 @@ Available commands depend on the current [scope](Scopes.md) type.
 | end_story |  | story cycle |  | Ends a story and executes it's on_end effect, the story can no longer be accessed after this. |  | Stories |
 | make_story_owner |  | story cycle | character | Makes the character the new owner of the story. | make_story_owner = character_target | Stories |
 | add_innovation |  | culture | innovation | Add innovation to a culture. |  | Innovations |
-| add_random_innovation |  | culture | innovation/bool | Add random available innovation | <culture> = { add_random_innovation = culture_group_military/culture_group_civic/culture_group_regional/yes } | Innovations |
-| get_all_innovations_from |  | culture | culture | Discover all innovations from the target culture. | get_all_innovations_from = <culture> | Innovations |
+| add_random_innovation |  | culture | innovation/bool | Add random available innovation | &lt;culture> = { add_random_innovation = culture_group_military/culture_group_civic/culture_group_regional/yes } | Innovations |
+| get_all_innovations_from |  | culture | culture | Discover all innovations from the target culture. | get_all_innovations_from = &lt;culture&gt; | Innovations |
 | get_random_innovation_from |  | culture |  | Get random available innovation from another culture. |  | Innovations |
 | add_character_flag |  | character | flag | Adds a character flag. | add_character_flag = X<br>add_character_flag = { flag = X days/weeks/years = Y } X is the name of the flag and Y is a value or value interval "{ min max }". | Flags |
 | add_character_modifier |  | character | modifier/int | Add a modifier to a character. | add_character_modifier = name<br>add_character_modifier = { modifier = name days/weeks/months/years = int } | Modifiers |
@@ -101,7 +103,7 @@ Available commands depend on the current [scope](Scopes.md) type.
 | add_realm_law |  | character |  | Adds the given law to the scoped character. |  | Laws |
 | add_realm_law_skip_effects |  | character |  | Adds the given law to the scoped character. Skips the cost and the pass effect, and the revoke effects of the current law. |  | Laws |
 | add_relation_flag |  | character |  | Adds a flag to an existing relation. | add_relation_flag = { relation = scripted_relation flag = flag_name (declared in the relation's script) target = other_character } | Flags |
-| add_scheme_cooldown |  | character | character/scheme/int | Sets a scheme cooldown for the scoped character. | <scoped_character> = { target=target_character type=scheme_type days/weeks/months/years = duration } | Hooks and Schemes |
+| add_scheme_cooldown |  | character | character/scheme/int | Sets a scheme cooldown for the scoped character. | &lt;scoped_character> = { target=target_character type=scheme_type days/weeks/months/years = duration } | Hooks and Schemes |
 | add_secret |  | character | secret/character | Adds a secret.<br>Note that if you create a Secret in the immediate effect, the tooltips for other effects run in that Secret's scope (such as reveal_to) are likely to be displayed incorrectly, or not to be displayed at all. This is due to the game generating the tooltip before it actually has a Secret that exists to work off of. Test rigorously and use custom tooltips if necessary. Creating a Secret in the immediate and then running effects on it in an event option should produce perfectly normal tooltips. | add_secret = { type = X target = Y } | Hooks and Secrets |
 | add_stewardship_lifestyle_perk_points |  | character | int | Adds lifestyle per points to the given character. |  | Lifestyles |
 | add_stewardship_lifestyle_xp |  | character | int | Adds lifestyle XP to the given character. |  | Lifestyles |
@@ -127,7 +129,7 @@ Available commands depend on the current [scope](Scopes.md) type.
 | cancel_truce_both_ways |  | character | character | Ends the truce against the specified character, and theirs against the scoped character. | cancel_truce_both_ways = scope:character | Relations |
 | cancel_truce_one_way |  | character | character | Ends the truce against the specified character. | cancel_truce_one_way = scope:character | Relations |
 | change_current_weight |  | character | int | Change the current weight of the scoped character | change_current_weight = 20 | Characters |
-| change_first_name |  | character | key/character | Change the first name of a character. | change_first_name = <localization_key><br>change_first_name = scope:name/var:name<br>change_first_name = { template_character = scope:character } | Characters |
+| change_first_name |  | character | key/character | Change the first name of a character. | change_first_name = &lt;localization_key&gt;<br>change_first_name = scope:name/var:name<br>change_first_name = { template_character = scope:character } | Characters |
 | change_government |  | character | key | Changes the government of a character. |  | Characters |
 | change_liege |  | character |  | Adds a liege change. | change_liege = { liege = 'Character that should become the new liege' change = 'previously created title_and_vassal_change'} | Vassalage |
 | change_prison_type |  | character | key | Changes the charater's prison type. Scoped character is the prisoner. Accepts any static modifier (see also improson effect). | change_prison_type = house_arrest | Characters |
@@ -254,7 +256,7 @@ Available commands depend on the current [scope](Scopes.md) type.
 | set_player_character |  | character | character | The scope character's player will now play as the target character. Scope must be player-controlled. Target cannot be player-controlled. |  | Characters |
 | set_pregnancy_assumed_father |  | character | character | Set the assumed father of the pregnancy. |  | Characters |
 | set_primary_spouse |  | character | character | Set the primary spouse of a character. | set_primary_spouse = scope | Characters |
-| set_primary_title_to |  | character | landed title | Sets the primary title for a character. | set_primary_title_to = <title> | Titles |
+| set_primary_title_to |  | character | landed title | Sets the primary title for a character. | set_primary_title_to = &lt;title&gt; | Titles |
 | set_real_father |  | character | character | Changes the real father of the character scope. |  | Characters |
 | set_realm_capital |  | character | landed title | Set a new realm capital | character = { set_realm_capital = new_title } | Realm |
 | set_relation_best_friend |  | character | character | Sets scripted relationship. |  | Relations |
@@ -305,10 +307,10 @@ Available commands depend on the current [scope](Scopes.md) type.
 | remove_participant |  | war | character | Removes the target character from the scope war. |  | Wars |
 | set_called_to |  | war | character | Sets the target character as already called to the scope war. |  | Wars |
 | set_casus_belli |  | war |  | Sets the casus belli of the scope war. |  | Wars |
-| activate_holy_site |  | faith |  | Activate an inactive holy site. | <faith_scope> = { activate_holy_site = <holy_site_name> } | Faiths |
-| add_doctrine |  | faith | doctrines | Add doctrine to faith. | <faith_scope> = { add_doctrine = <doctrine_name> } | Faiths |
+| activate_holy_site |  | faith |  | Activate an inactive holy site. | &lt;faith_scope> = { activate_holy_site = &lt;holy_site_name> } | Faiths |
+| add_doctrine |  | faith | doctrines | Add doctrine to faith. | &lt;faith_scope> = { add_doctrine = &lt;doctrine_name> } | Faiths |
 | change_fervor |  | faith | int | Changes the fervor of the faith by the given value. | change_fervor = script value | Faiths |
-| remove_doctrine |  | faith | doctrines | Remove doctrine from faith. | <faith_scope> = { remove_doctrine = <doctrine_name> } | Faiths |
+| remove_doctrine |  | faith | doctrines | Remove doctrine from faith. | &lt;faith_scope> = { remove_doctrine = &lt;doctrine_name> } | Faiths |
 | remove_religious_head_title |  | faith | bool | Removes the religious head title of the faith. | remove_religious_head_title = yes | Faiths |
 | set_religious_head_title |  | faith | landed title | Sets the religious head title of the faith to the given title. | set_religious_head_title = scope | Faiths |
 | start_great_holy_war |  | faith |  | Starts a great holy war. | start_great_holy_war = {<br>target_character = someone<br>target_title = some<br>titledelay = script value# Number of days until the war should<br>startwar = some war # Optional. Will make this a directed GHW instead of undirected, and tie it to this specific war<br>} | Faiths |

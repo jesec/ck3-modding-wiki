@@ -18,34 +18,69 @@ While music can be added directly as wav files, sounds cannot, we have to import
 We also cannot reload audio files while the game is running, we have to restart.
 
 
+- [Import sounds](#import-sounds)
+  - [With a template](#with-a-template)
+  - [Bank name and crashing](#bank-name-and-crashing)
+  - [Create from scratch](#create-from-scratch)
+- [Playing sounds in the game](#playing-sounds-in-the-game)
+- [Troubleshooting](#troubleshooting)
+- [Random sounds](#random-sounds)
+- [Overlapping sounds](#overlapping-sounds)
+- [3D sound](#3d-sound)
+- [Sound Parameters](#sound-parameters)
+  - [Adding Sound Parameters to Events in FMOD](#adding-sound-parameters-to-events-in-fmod)
+  - [Using the Sound Parameters in In-Game GUI](#using-the-sound-parameters-in-in-game-gui)
+- [Best Practice](#best-practice)
+  - [Organizing your Events in Folders](#organizing-your-events-in-folders)
+
+
 ## Import sounds
 
-We have an FMOD template where everything is set up for you. This is the easiest way to do this.![screenshot of FMOD, creating an event with Windows XP error sound](https://ck3.paradoxwikis.com/File:FMOD_creating_an_event.png)![Screenshot of FMOD, assigning a new Windows XP error event to a Master bank](https://ck3.paradoxwikis.com/File:FMOD_assigning_an_event.png)![Screenshot of FMOD, a Windows XP bank with Windows XP error event](https://ck3.paradoxwikis.com/File:FMOD_bank.png)![Screenshot of a mod with new sound files, with two banks inside sound/banks folder](https://ck3.paradoxwikis.com/File:Sound_mod_files.png)
+We have an FMOD template where everything is set up for you. This is the easiest way to do this.<figure>
+
+![screenshot of FMOD, creating an event with Windows XP error sound](../assets/images/FMOD_creating_an_event.png)
+<figcaption>Creating an event</figcaption>
+</figure>
+<figure>
+
+![Screenshot of FMOD, assigning a new Windows XP error event to a Master bank](../assets/images/FMOD_assigning_an_event.png)
+<figcaption>Assign an Event to a Bank</figcaption>
+</figure>
+<figure>
+
+![Screenshot of FMOD, a Windows XP bank with Windows XP error event](../assets/images/FMOD_bank.png)
+<figcaption>Bank with our event</figcaption>
+</figure>
+<figure>
+
+![Screenshot of a mod with new sound files, with two banks inside sound/banks folder](../assets/images/Sound_mod_files.png)
+<figcaption>Mod file structure</figcaption>
+</figure>
 
 
 ### With a template
 
 1. Download this [FMOD project template](https://github.com/Agamidae/1.10-FMOD-CK3-template) from Github.
 1. Unzip it, open '1.10 fmod ck3 template.fspro'.
-    - If FMOD asks to recover the file, agree. Re-save it as your own project, so you can always reuse the template.
+   - If FMOD asks to recover the file, agree. Re-save it as your own project, so you can always reuse the template.
 1. Add your sounds to the Assets tab.
-    - It accepts wav, mp3, ogg, aiff, wma and flac.
+   - It accepts wav, mp3, ogg, aiff, wma and flac.
 1. Right-click them and create events (any type, pick 2D if unsure).
-    - You can rename events by double-clicking and change their volume at the bottom of the screen.
+   - You can rename events by double-clicking and change their volume at the bottom of the screen.
 1. Go to Events tab, right-click your events and assign them to the Bank bank.
 1. Go to Banks tab and rename the bank to something unique to avoid conflicts with other mods or game files.
-    - IMPORTANT! The name of your bank should precede "Master Bank". Try A-L range. See below for details.
+   - IMPORTANT! The name of your bank should precede "Master Bank". Try A-L range. See below for details.
 1. Go to Window > Mixer Routing (Ctrl+5).
 1. Right-click your events and assign them to appropriate VCAs, these are game's volume controls. Without it, our sounds would blast players at full volume.
 1. Save and build the project from File > Build (F7). It will create bank files in the project's ``Build/banks`` folder.
 1. Copy the banks to your mod's ``/sound/banks`` folder. You'll have two files, copy both.
-    - Check for typos! That's singular ``sound`` and plural ``banks``.
+   - Check for typos! That's singular ``sound`` and plural ``banks``.
 1. For the future, you can tell FMOD to build right to the mod folder, in Edit -> Preferences -> Build.
-    - if you change the name of your bank, you'll need to remove the old bank files manually
-1. Launch the game with your mod and test with console command ``Audio.PlayEvent event:/myevent`` 
-    - Note, the console can't play events with spaces in them. This is not an issue for script and UI.
-    - If you put your events into folders in FMOD, then this path would include folder names, eg: ``event:/somefolder/myevent`` 
-    - You do not need to reference the name of the bank here.
+   - if you change the name of your bank, you'll need to remove the old bank files manually
+1. Launch the game with your mod and test with console command ``Audio.PlayEvent event:/myevent``
+   - Note, the console can't play events with spaces in them. This is not an issue for script and UI.
+   - If you put your events into folders in FMOD, then this path would include folder names, eg: ``event:/somefolder/myevent``
+   - You do not need to reference the name of the bank here.
 
 
 ### Bank name and crashing
@@ -85,21 +120,21 @@ To do this on your own, you'll need to create VCAs and replace all the GUIDs of 
 
 1. Create your project and add new events, following the steps from above.
 1. Go to Window > Mixer Routing, VCAs tab. Create a new VCA and name it one of these names, depending on what your sounds are:
-    - Ambience, Music, Sound Effects, UI
+   - Ambience, Music, Sound Effects, UI
 1. In the Routing tab, expand the Master Bus and assign your sounds to the VCA. This will allow players to adjust their volume.
-    - Note, you may need to assign one event to multiple VCAs. UI sounds are also affected by Sound Effects volume, for example.
+   - Note, you may need to assign one event to multiple VCAs. UI sounds are also affected by Sound Effects volume, for example.
 1. Save your project (don't put it in the mod folder yet).
 1. Go to File > Export GUIDs. This will create a text file in your project's Build/ folder.
 1. Go to that folder and open GUIDs.txt.
 1. Find the line ending with ``bus:/`` and another with the name of your VCA and copy the ids to another file somewhere. They might look like this:
-    - ``{767eec3a-3ca8-4ae8-8827-376bf7db4d8f} bus:/``
-    - ``{72d40a2a-0111-4078-8ba7-e84d415b91a2} vca:/UI``
-1. In CK3 folder, open game/sound/GUIDs.txt and find its ``bus:/`` and vca lines, copy their ids as well. The VCAs are at the bottom. E.g.: 
-    - ``{cb930c67-0464-4d7f-957a-a78b08fc39de} bus:/``
-    - ``{f8bd5083-a8cc-412b-ada4-cdc08a33ce75} vca:/UI``
+   - ``{767eec3a-3ca8-4ae8-8827-376bf7db4d8f} bus:/``
+   - ``{72d40a2a-0111-4078-8ba7-e84d415b91a2} vca:/UI``
+1. In CK3 folder, open game/sound/GUIDs.txt and find its ``bus:/`` and vca lines, copy their ids as well. The VCAs are at the bottom. E.g.:
+   - ``{cb930c67-0464-4d7f-957a-a78b08fc39de} bus:/``
+   - ``{f8bd5083-a8cc-412b-ada4-cdc08a33ce75} vca:/UI``
 1. In your FMOD project folder, search through all the files in the Metadata folder and replace your ids, inside {}, with the ones from the game, for both the bus and vca.
-    - In this example, for the bus, we're replacing ``767...`` with ``cb9...``You will likely see at least 4 results.
-    - If you don't have a proper text editor, install [VSC](https://code.visualstudio.com/). Drop the Metadata folder into it, right-click > Find in Folder.
+   - In this example, for the bus, we're replacing ``767...`` with ``cb9...``You will likely see at least 4 results.
+   - If you don't have a proper text editor, install [VSC](https://code.visualstudio.com/). Drop the Metadata folder into it, right-click > Find in Folder.
 1. Go back to FMOD and restart it, reopen your project.
 1. Select File > Build. This will create our bank files that will be used by the game.
 1. Copy all the bank files created and put them into your mod, in sound/banks folder.
@@ -128,11 +163,12 @@ state = {
   soundparam = { name = parameterName value = 1 }
 }
 ```
+
 end_sound will play at the end of the animation if it has duration. Otherwise, you can simply use start_sound to trigger it immediately.
 
-soundparam is optional, used to modify the event using a parameter set in FMOD. See [Sound modding#Sound Parameters](#sound-parameters) below.
+soundparam is optional, used to modify the event using a parameter set in FMOD. See [Sound Parameters](#sound-parameters) below.
 
-Remember that states don't fire by themselves, see [Interface#Animation states](Interface.md#animation-states)
+Remember that states don't fire by themselves, see [Interface/Animation states](Interface.md#animation-states)
 
 You can also use a scripted gui that plays the sound in script and fire it from a button's onclick or a state's on_finish.
 
@@ -145,6 +181,7 @@ asset = {
   soundeffect = { soundeffect = "event:/eventName" soundparameter = { "parameterName" = 0 } }
 }
 ```
+
 Units (gfx/models/units/infantry)
 ```c
 state = { 
@@ -193,7 +230,12 @@ Below it, Stealing option will determine the behavior. "Oldest" will interrupt t
 
 ## 3D sound
 
-![Distance is a built-in parameter in FMOD that can be used to automate sound effects. (EQ, Volume, Reverb, Delay, etc.)](https://ck3.paradoxwikis.com/File:FMOD_Distance_Automation.png)
+<figure>
+
+![FMOD Distance Automation](../assets/images/FMOD_Distance_Automation.png)
+<figcaption>Distance is a built-in parameter in FMOD that can be used to automate sound effects. (EQ, Volume, Reverb, Delay, etc.)</figcaption>
+</figure>
+
 If you're adding sounds to be played on the map, create an event with 3D Action or 3D Timeline type. They allow for distance falloff.
 
 At the bottom right there is a parameter Min & Max Distance. The default distance is fairly small, the sound emitter will only play when it's pretty much in the center of the screen.
@@ -212,7 +254,12 @@ To automate effects (in this case a Multiband EQ) based on the distance paramete
 
 ## Sound Parameters
 
-![The 'Add Parameter' window in FMOD.](https://ck3.paradoxwikis.com/File:Sound_Parameter.png)
+<figure>
+
+![Sound Parameter](../assets/images/Sound_Parameter.png)
+<figcaption>The 'Add Parameter' window in FMOD.</figcaption>
+</figure>
+
 Sound Parameters can be used in script to modify the sound effect. For example, the soundparam CharacterStressLevel is used to intensify the stress outbreaks in-game at higher levels of stress.
 
 - NOTE: Sound Parameters cannot be used in regular script like:* ``play_sound_effect = "event:/myevent"``
@@ -246,7 +293,11 @@ start_sound = {
 
 ## Best Practice
 
-![Right-click and press 'New Folder' to organize your events.](https://ck3.paradoxwikis.com/File:Event_Folders.png)
+<figure>
+
+![Event Folders](../assets/images/Event_Folders.png)
+<figcaption>Right-click and press 'New Folder' to organize your events.</figcaption>
+</figure>
 
 
 ### Organizing your Events in Folders
@@ -261,6 +312,7 @@ event:/YourModName/SFX/TestSound1
 event:/YourModName/SFX/TestSound2
 event:/YourModName/Ambiance/Ambiance1
 ```
+
 
 Category:Modding
 

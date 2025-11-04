@@ -12,12 +12,35 @@ Both lists are transcribed here, but be aware that this information is outdated.
 Some event targets have been deprecated, and some new scope types and event targets have been added since launch.
 
 
+- [Culture](#culture)
+- [Landed title](#landed-title)
+- [Dynasty house](#dynasty-house)
+- [Dynasty](#dynasty)
+- [Secret](#secret)
+- [Holy order](#holy-order)
+- [Character](#character)
+- [Army](#army)
+- [Province](#province)
+- [Faith](#faith)
+- [Great holy war](#great-holy-war)
+- [Combat side](#combat-side)
+- [Scheme](#scheme)
+- [Council task](#council-task)
+- [Color](#color)
+- [War](#war)
+- [Casus belli](#casus-belli)
+- [Combat](#combat)
+- [Story cycle](#story-cycle)
+- [Faction](#faction)
+- [Activity](#activity)
+- [Primitive scopes](#primitive-scopes)
+
+
 ## Culture
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | culture_head |  | character | 1.0 |
 | culture_group | Usable in culture, landed title, character and province scopes. | culture group | 1.0 |
 
@@ -25,9 +48,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Landed title
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | title:*%title id%* |  | landed title | 1.0 |
 | barony_controller | Usable in landed title and province scopes. | character | 1.0 |
 | county_controller | Usable in landed title and province scopes. | character | 1.0 |
@@ -55,18 +77,16 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Dynasty house
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | house_head |  | character | 1.0 |
 
 
 ## Dynasty
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | dynasty |  | character | 1.0 |
 | dynast | dynasty head | character | 1.0 |
 
@@ -74,9 +94,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Secret
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | secret_owner |  | character | 1.0 |
 | secret_target |  | character | 1.0 |
 
@@ -84,9 +103,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Holy order
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | holy_order_patron |  | character | 1.0 |
 | leader |  | character | 1.0 |
 | title |  | landed title | 1.0 |
@@ -95,9 +113,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Character
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | commanding_army |  | army | 1.0 |
 | knight_army |  | army | 1.0 |
 | betrothed |  | character | 1.0 |
@@ -143,9 +160,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Army
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | army_commander |  | character | 1.0 |
 | army_owner |  | character | 1.0 |
 | #lstScopesLocationScope |  |  |  |
@@ -154,9 +170,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Province
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | #lstScopesBaronyControllerScope |  |  |  |
 | #lstScopesCountyControllerScope |  |  |  |
 | province_owner |  | character | 1.0 |
@@ -174,9 +189,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Faith
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | religious_head |  | character | 1.0 |
 | great_holy_war |  | great holy war | 1.0 |
 | religious_head_title |  | landed title | 1.0 |
@@ -186,13 +200,11 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Great holy war
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | ghw_designated_winner |  | character | 1.0 |
 | ghw_target_character |  | character | 1.0 |
 | ghw_title_recipient |  | character | 1.0 |
-|  |  |  |  |
 | ghw_war_declarer |  | character | 1.0 |
 | #lstScopesFaithScope |  |  |  |
 | ghw_target_title |  | landed title | 1.0 |
@@ -203,9 +215,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Combat side
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | side_commander |  | character | 1.0 |
 | side_primary_participant |  | character | 1.0 |
 | combat |  | combat | 1.0 |
@@ -215,9 +226,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Scheme
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | scheme_defender |  | character | 1.0 |
 | scheme_owner |  | character | 1.0 |
 | scheme_target |  | character | 1.0 |
@@ -226,9 +236,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 ## Council task
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | councillor |  | character | 1.0 |
 
 
@@ -236,9 +245,8 @@ Some event targets have been deprecated, and some new scope types and event targ
 
 The scope "Color" is no longer supported since 1.5. 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | blue |  | value | 1.0 |
 | brightness |  | value | 1.0 |
 | green |  | value | 1.0 |
@@ -250,9 +258,8 @@ The scope "Color" is no longer supported since 1.5.
 ## War
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | casus_belli |  | casus belli | 1.0 |
 | claimant | Usable in war and casus belli scopes. | character | 1.0 |
 | primary_attacker | Usable in war and casus belli scopes. | character | 1.0 |
@@ -262,9 +269,8 @@ The scope "Color" is no longer supported since 1.5.
 ## Casus belli
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | #lstScopesClaimantScope |  |  |  |
 | #lstScopesPrimaryAttackerScope |  |  |  |
 | #lstScopesPrimaryDefenderScope |  |  |  |
@@ -274,9 +280,8 @@ The scope "Color" is no longer supported since 1.5.
 ## Combat
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | combat_attacker |  | combat side | 1.0 |
 | combat_defender |  | combat side | 1.0 |
 | #lstScopesLocationScope |  |  |  |
@@ -286,18 +291,16 @@ The scope "Color" is no longer supported since 1.5.
 ## Story cycle
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | story_owner |  | character | 1.0 |
 
 
 ## Faction
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | faction_leader |  | character | 1.0 |
 | faction_target |  | character | 1.0 |
 | special_character |  | character | 1.0 |
@@ -308,9 +311,8 @@ The scope "Color" is no longer supported since 1.5.
 ## Activity
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Scope** | **Description** | **To scope** | **Version added** |
+| --- | --- | --- | --- |
 | activity_owner |  | character | 1.0 |
 | activity_province |  | province | 1.0 |
 
@@ -320,9 +322,8 @@ The scope "Color" is no longer supported since 1.5.
 These scope types by default have no direct scope links out of them, though they can chain into script values.
 
 
-|  |  |
-| --- | --- |
 | **Scope** | **Example** |
+| --- | --- |
 | Number | -1.0, 42, 69, some_script_value |
 | Bool | yes/no |
 | Flags | flag:some_flag |

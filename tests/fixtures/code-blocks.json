@@ -1,0 +1,45 @@
+{
+  "description": "Test cases for <pre> and <syntaxhighlight> tag rendering",
+  "cases": [
+    {
+      "name": "Single-line pre tag with surrounding text",
+      "wikitext": "Palettes are located at <pre>gfx/portraits</pre> and consist of:",
+      "expected": "Palettes are located at \n```\ngfx/portraits\n```\n\nand consist of:"
+    },
+    {
+      "name": "Single-line pre tag after sentence",
+      "wikitext": "The <code>set_variable</code> effect also has a simple form that sets a boolean value.\n<pre>set_variable = X</pre>\nis the same thing as",
+      "expected": "The ``set_variable`` effect also has a simple form that sets a boolean value.\n\n\n```\nset_variable = X\n```\n\n\nis the same thing as"
+    },
+    {
+      "name": "Single-line pre tag after colon",
+      "wikitext": "When used in a character [[scope]], it is also the same thing as using the confusingly named <code>add_character_flag</code> effect:\n<pre>add_character_flag = X</pre>",
+      "expected": "When used in a character [scope](Scopes.md), it is also the same thing as using the confusingly named ``add_character_flag`` effect:\n\n\n```\nadd_character_flag = X\n```"
+    },
+    {
+      "name": "Single-line pre tag at end of sentence",
+      "wikitext": "To avoid savegame bloat, amongst other thing, variables should be removed when no longer useful by using the <code>remove_variable</code> effect.\n<pre>remove_variable = X</pre>",
+      "expected": "To avoid savegame bloat, amongst other thing, variables should be removed when no longer useful by using the ``remove_variable`` effect.\n\n\n```\nremove_variable = X\n```"
+    },
+    {
+      "name": "Single-line pre tag with scope chaining",
+      "wikitext": "Like event targets, a variable can be chained to the scope it is stored on:\n<pre>scope:some_scope.var:some_var</pre>",
+      "expected": "Like event targets, a variable can be chained to the scope it is stored on:\n\n```\nscope:some_scope.var:some_var\n```\n\n"
+    },
+    {
+      "name": "Multi-line pre tag with text after",
+      "wikitext": "Example:\n<pre>\nmy_maa_name:0 \"My Men at Arms\"\nmy_maa_name_flavor:0 \"#F My Men at Arms are better than yours.#!\"\n</pre>Note that 'my_maa_flavor' is the regiment's description.",
+      "expected": "Example:\n\n```\nmy_maa_name:0 \"My Men at Arms\"\nmy_maa_name_flavor:0 \"#F My Men at Arms are better than yours.#!\"\n```\n\nNote that 'my_maa_flavor' is the regiment's description."
+    },
+    {
+      "name": "Multi-line pre tag with code syntax",
+      "wikitext": "For example, writing the following in a trait will add a ✅ advantage in the <code>forest</code> terrain.\n<pre>\nforest_advantage = 2\n</pre>",
+      "expected": "For example, writing the following in a trait will add a ✅ advantage in the ``forest`` terrain.\n\n\n```\nforest_advantage = 2\n```"
+    },
+    {
+      "name": "Multi-line pre tag with comment",
+      "wikitext": "<pre>\nbase = 10\nmodifier = {\n   add = 10\n}\n# total value is 20\n</pre>",
+      "expected": "```\nbase = 10\nmodifier = {\n   add = 10\n}\n1. total value is 20\n```"
+    }
+  ]
+}

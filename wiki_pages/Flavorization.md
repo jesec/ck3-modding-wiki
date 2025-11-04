@@ -1,6 +1,12 @@
 # Flavorization
 
-FORCETOC
+- [Grammar](#grammar)
+- [Custom Flavor Example](#custom-flavor-example)
+  - [Robots](#robots)
+  - [Robot ###](#robot)
+- [Expanding Functionality Through Customizable Localization](#expanding-functionality-through-customizable-localization)
+  - [Robot ###](#robot)
+- [Continue Reading](#continue-reading)
 
 Flavorization is how the game defines and prioritizes which "title" to display on characters, whom will often qualify for multiple titles. As such, we define the requirements and overall priority of a title in flavorization files to avoid conflicts and inappropriate title placement.
 
@@ -25,26 +31,31 @@ prince_male_roman = {							# The key of your title, this is how the game finds 
 
 | **Entry** | **Required for Characters?** | **Required for Titles?** | **Description & Values** |
 | --- | --- | --- | --- |
-| ``type`` | ✔️ | ✔️ | Can use either ``character`` or ``title``, defines if it applies to a character or a title. Required for all. |
-| ``gender`` | ✔️ | ❌ | Can use either ``male`` or ``female``. Do not use on titles. |
-| ``special`` | ✔️ | ❌ | Can be ``ruler_child`` (for princes or princesses), ``queen_mother``, ``councilor``, ``head_of_faith`` or ``holder``. This has to be defined for character types, ``holder`` is the most prevalent. |
-| ``tier`` | ❌ | ❌ | Can be ``barony``, ``county``,`` duchy``, ``kingdom``, or ``empire``. Not needed, but will apply to every tier listed if left undefined. |
-| ``priority`` | ✔️ | ✔️ | Any numeric value. Try to keep it between 0 and 2147483647. |
-| ``name_lists`` | ❌ | ❌ | Defined by the files inside of ``..game\common\culture\name_lists``. You can make your own. (Example: ``name_list_anglo_saxon``). |
-| ``heritages`` | ❌ | ❌ | Defined by ``..game\common\culture\pillars\00_heritage.txt``. You can make your own. (Example: ``heritage_north_germanic``). |
-| ``religions`` | ❌ | ❌ | Defined by the files inside of ``..game\common\religion\religions``. You can make your own. (Example: ``christianity_religion``). |
-| ``faiths`` | ❌ | ❌ | Defined by the faiths in religions. You can make your own. (Example: ``coptic``). |
-| ``governments`` | ❌ | ❌ | Defined by ``..game\common\governments\00_government_types.txt``. You can make your own. (Example: ``feudal_government``). |
-| ``titles`` | ❌ | ❌ | Uses landed titles. (Example: ``e_byzantium``). |
-| ``council_position`` | ❌ | ❌ | Use any defined council position. Requires ``special = councilor``. Do not use on titles. (Example: ``councillor_court_chaplain``). |
-| ``only_independent`` | ❌ | ❌ | Uses ``yes`` or ``no``. Used for titles such as "Petty Kings". |
-| ``only_holder`` | ❌ | ❌ | Uses ``yes`` or ``no``. Spouse will no longer receive the opposite gender title if set to yes. Good for mayors or female rulers. |
-| ``top_liege`` | ❌ | ❌ | Uses ``yes`` or ``no``. Using ``top_liege = no``, you can allow vassals with different religions/cultures to use their own title. Does not apply to spouse. |
+| `type` | ✔️ | ✔️ | Can use either `character` or `title`, defines if it applies to a character or a title. Required for all. |
+| `gender` | ✔️ | ❌ | Can use either `male` or `female`. Do not use on titles. |
+| `special` | ✔️ | ❌ | Can be `ruler_child` (for princes or princesses), `queen_mother`, `councilor`, `head_of_faith` or `holder`. This has to be defined for character types, `holder` is the most prevalent. |
+| `tier` | ❌ | ❌ | Can be `barony`, `county`,` duchy`, `kingdom`, or `empire`. Not needed, but will apply to every tier listed if left undefined. |
+| `priority` | ✔️ | ✔️ | Any numeric value. Try to keep it between 0 and 2147483647. |
+| `name_lists` | ❌ | ❌ | Defined by the files inside of `..game\common\culture\name_lists`. You can make your own. (Example: `name_list_anglo_saxon`). |
+| `heritages` | ❌ | ❌ | Defined by `..game\common\culture\pillars\00_heritage.txt`. You can make your own. (Example: `heritage_north_germanic`). |
+| `religions` | ❌ | ❌ | Defined by the files inside of `..game\common\religion\religions`. You can make your own. (Example: `christianity_religion`). |
+| `faiths` | ❌ | ❌ | Defined by the faiths in religions. You can make your own. (Example: `coptic`). |
+| `governments` | ❌ | ❌ | Defined by `..game\common\governments\00_government_types.txt`. You can make your own. (Example: `feudal_government`). |
+| `titles` | ❌ | ❌ | Uses landed titles. (Example: `e_byzantium`). |
+| `council_position` | ❌ | ❌ | Use any defined council position. Requires `special = councilor`. Do not use on titles. (Example: `councillor_court_chaplain`). |
+| `only_independent` | ❌ | ❌ | Uses `yes` or `no`. Used for titles such as "Petty Kings". |
+| `only_holder` | ❌ | ❌ | Uses `yes` or `no`. Spouse will no longer receive the opposite gender title if set to yes. Good for mayors or female rulers. |
+| `top_liege` | ❌ | ❌ | Uses `yes` or `no`. Using `top_liege = no`, you can allow vassals with different religions/cultures to use their own title. Does not apply to spouse. |
 
 
 ## Custom Flavor Example
 
-![Modding custom title example roboland](https://ck3.paradoxwikis.com/File:Modding_custom_title_example_roboland.jpg)For this example, let's make a series of robot-themed titles.
+<figure>
+
+![modding custom title example roboland](../assets/images/modding_custom_title_example_roboland.jpg)
+<figcaption>The end result of this example.</figcaption>
+</figure>
+For this example, let's make a series of robot-themed titles.
 
 
 The first step is to recreate the in-game flavorization directory (``game\common\flavorization``) in your mod folder, like this: ``..Documents\Paradox Interactive\Crusader Kings III\mod\FlavourTestMod\common\flavorization``.
@@ -85,6 +96,7 @@ county_robot = { # Roboland
 }
 ```
 
+
 We want to very clearly tell if our new titles are working or not, so we've set some very simple rules: Anyone holding a county title in a feudal government is eligible.
 
 We've also set the priority to 5000, higher values are higher priority. With a value this high, our new title will overwrite all others.
@@ -110,7 +122,12 @@ If you save both your files and open the game with the mod enabled, you should b
 
 ## Expanding Functionality Through Customizable Localization
 
-![End result of this expansion example, showcasing how the same title can vary loc based on gold amount.](https://ck3.paradoxwikis.com/File:Modding_custom_title_example_roboland_custom_localization_example.jpg)Though flavorization is powerful, it is limited in terms of which triggers it can make use of. If we wish to access a greater range of triggers, we can resort to replacing our key with a [customizable localization](https://ck3.paradoxwikis.com/Customizable_localization) key, which are localization keys with scripted behaviors.
+<figure>
+
+![modding custom title example roboland custom localization example](../assets/images/modding_custom_title_example_roboland_custom_localization_example.jpg)
+<figcaption>End result of this expansion example, showcasing how the same title can vary loc based on gold amount.</figcaption>
+</figure>
+Though flavorization is powerful, it is limited in terms of which triggers it can make use of. If we wish to access a greater range of triggers, we can resort to replacing our key with a [customizable localization](https://ck3.paradoxwikis.com/Customizable_localization) key, which are localization keys with scripted behaviors.
 
 For this example, we will take our ``king_robot`` title from the previous section and expand upon it.
 
@@ -125,6 +142,7 @@ We start off by giving it a key and type, in our case, we will use ``king_robot`
 king_robot = {
     type = character
 ```
+
 
 After that, we define all the possible localization keys it can use by creating ``text`` blocks, each ``text`` block should contain within its brackets a trigger and the key of the localization we want it to use if the trigger is successful. The custom loc will then pick the first text block that has a passing trigger. You can use ``fallback = yes`` to set a block as the default if none succeed (or set a ``text`` block at the end with no trigger).
 
@@ -144,6 +162,7 @@ king_robot = {
     }
 }
 ```
+
 
 As you can see, in this example we have set a gold check, replacing the usual "king robot" title with a "golden king robot" title to characters with over 1000 gold.
 

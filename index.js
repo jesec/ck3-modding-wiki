@@ -8,12 +8,43 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { convertXmlToMarkdown } = require('./lib/ast-converter');
+const { downloadAssets } = require('./lib/download-assets');
 
 const OUTPUT_XML_DIR = path.join(__dirname, 'wiki_exports');
 const OUTPUT_MD_DIR = path.join(__dirname, 'wiki_pages');
 const EXCLUDE_FILE = path.join(__dirname, '.exclude');
 const DELAY_MS = 2500; // 2.5 seconds base delay
 const MAX_RETRIES = 3;
+
+// Load wiki configuration
+function loadConfig() {
+  const configPath = path.join(__dirname, '.wikiconfig');
+  const defaults = {
+    WIKI_BASE_URL: 'https://ck3.paradoxwikis.com',
+    WIKI_CATEGORY: 'Category:Modding'
+  };
+
+  if (!fs.existsSync(configPath)) {
+    return defaults;
+  }
+
+  const content = fs.readFileSync(configPath, 'utf-8');
+  const config = { ...defaults };
+
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const [key, value] = trimmed.split('=');
+      if (key && value) {
+        config[key.trim()] = value.trim();
+      }
+    }
+  }
+
+  return config;
+}
+
+const CONFIG = loadConfig();
 
 // Create output directories
 [OUTPUT_XML_DIR, OUTPUT_MD_DIR].forEach(dir => {
@@ -44,11 +75,11 @@ function randomDelay() {
 }
 
 async function getCategoryPages(page) {
-    console.log('Fetching page list from Category:Modding...');
+    console.log(`Fetching page list from ${CONFIG.WIKI_CATEGORY}...`);
 
     for (let retry = 0; retry < MAX_RETRIES; retry++) {
         try {
-            await page.goto('https://ck3.paradoxwikis.com/Category:Modding', {
+            await page.goto(`${CONFIG.WIKI_BASE_URL}/${CONFIG.WIKI_CATEGORY}`, {
                 waitUntil: 'networkidle',
                 timeout: 30000
             });
@@ -104,7 +135,7 @@ async function getCategoryPages(page) {
 }
 
 async function downloadPage(page, pageName, index, total) {
-    const url = `https://ck3.paradoxwikis.com/Special:Export/${pageName}`;
+    const url = `${CONFIG.WIKI_BASE_URL}/Special:Export/${pageName}`;
     const safeFilename = pageName.replace(/\//g, '_');
     const xmlPath = path.join(OUTPUT_XML_DIR, safeFilename + '.xml');
 
@@ -176,12 +207,32 @@ async function commandDownload() {
             }
         }
 
-        console.log(`\n=== Download Complete ===`);
+        console.log(`\n=== Wiki Pages Download Complete ===`);
         console.log(`✓ Successful: ${successful}/${pages.length}`);
         console.log(`✗ Failed: ${failed}/${pages.length}`);
         console.log(`Output: ${OUTPUT_XML_DIR}`);
+
+        // Download assets (icons and images)
+        await downloadAssets(browser);
+
         console.log(`\nTo convert to Markdown, run: node index.js convert`);
 
+    } catch (error) {
+        console.error('Fatal error:', error);
+    } finally {
+        await browser.close();
+    }
+}
+
+async function commandDownloadAssets() {
+    console.log('Starting browser...');
+    const browser = await chromium.launch({
+        headless: false,
+        args: ['--disable-blink-features=AutomationControlled']
+    });
+
+    try {
+        await downloadAssets(browser);
     } catch (error) {
         console.error('Fatal error:', error);
     } finally {
@@ -229,21 +280,31 @@ function showUsage() {
 CK3 Modding Wiki - Downloader and Converter
 
 Usage:
-  node index.js download    Download wiki pages to XML
-  node index.js convert     Convert XML exports to Markdown
+  node index.js download         Download wiki pages to XML and assets
+  node index.js download-assets  Download only assets (icons and images)
+  node index.js convert          Convert XML exports to Markdown
 
 Commands:
-  download    Fetches pages from https://ck3.paradoxwikis.com/Category:Modding
-              Saves XML exports to wiki_exports/
-              (Does NOT convert - run 'convert' afterwards)
+  download         Fetches pages from the configured wiki category
+                   Extracts and downloads all icon and image references
+                   Saves XML exports to wiki_exports/ and assets to assets/
 
-  convert     Reads XML files from wiki_exports/
-              Converts to Markdown in wiki_pages/
-              Useful for re-converting after logic updates
+  download-assets  Downloads only icons and images referenced in XML files
+                   Icons from {{icon|name}} and {{iconify|name}} templates
+                   Images from [[File:name]] and [[Image:name]] links
+                   Skips files that already exist
+
+  convert          Reads XML files from wiki_exports/
+                   Converts to Markdown in wiki_pages/
+                   References local images from assets/
 
 Configuration:
-  .exclude    List pages to exclude from download (one per line)
-              Example: Way_of_Kings, Kingdom_of_Heaven
+  .wikiconfig      Wiki base URL and category
+                   WIKI_BASE_URL=https://ck3.paradoxwikis.com
+                   WIKI_CATEGORY=Category:Modding
+
+  .exclude         Pages to exclude from download (one per line)
+                   Example: Way_of_Kings, Kingdom_of_Heaven
 `);
 }
 
@@ -254,6 +315,9 @@ async function main() {
     switch (command) {
         case 'download':
             await commandDownload();
+            break;
+        case 'download-assets':
+            await commandDownloadAssets();
             break;
         case 'convert':
             commandConvert();

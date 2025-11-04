@@ -17,35 +17,47 @@ coat_of_arms_name = {
     ...
 }
 ```
+
 Is the "coat_of_arms_name" identical to an title, house or dynasty keyname (like "d_leon") the game will automatically using this CoA as default layout at game-start for this. This is also working with modded titles, houses or dynasties. 
+
+
+- [Valid keywords](#valid-keywords)
+- [Examples](#examples)
+- [Inheritance and subs](#inheritance-and-subs)
+- [Dynamic Coats of Arms](#dynamic-coats-of-arms)
+- [Easy going by using the IN-Game Designer](#easy-going-by-using-the-in-game-designer)
+  - [Designer weaknesses](#designer-weaknesses)
+- [Coat of Arms Emblem Modding](#coat-of-arms-emblem-modding)
+  - [.DDS file formatting](#dds-file-formatting)
+  - [Emblem definitions file](#emblem-definitions-file)
 
 
 ## Valid keywords
 
 
-|  |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **Keyword** |  |  | **Comment** | **Example** |
-| ``parent`` |  |  | Used for inheritance, read more below. | ``parent = k_england`` |
-| ``pattern`` |  |  | The path to the file for the background pattern (usually located in `/Crusader Kings III/game/gfx/coat_of_arms/patterns/`.<br>A pattern should be included to avoid graphical issues with the masking textures when using textured emblems. | `pattern = "pattern_vertical_split_01"` |
-| <pre><code>color1<br>color2<br>color3<br>color4<br>color5</code></pre> |  |  | Specifies a color, to be used in the pattern or as a color reference in colored_emblems.<br>Usually refers to a color defined in `/Crusader Kings III/game/common/named_colors`.<br>Can also explicitly define RGB, HSV and 8-Digit Hexadecimal values. | <pre><code>color1 = "white"<br>color2 = hsv { 1.0 1.0 1.0 }<br>color3 = hsv360 { 360 100 100 }<br>color4 = rgb { 255 255 255 }<br>color5 = hex { aabbccdd }</code></pre> |
-| ``textured_emblem`` | --- |  | Multiple textured emblems can be specified. Each is itself a scripting object with the following valid keywords: | --- |
-| ``textured_emblem`` | ``texture`` |  | The path to the file for the emblem (usually located in `/Crusader Kings III/game/gfx/coat_of_arms/textured_emblems/`). | `texture = "te_griffin_01.dds"` |
-| ``textured_emblem`` | ``mask`` |  | The coat of arms' background pattern can be used as a clipping mask for emblems. | `mask = { 1 3 }` |
-| ``textured_emblem`` | ``instance`` | ``scale`` | Given as a 2-dim float, has default value { 1.0 1.0 } | <pre><code>instance = { <br>	scale = { 0.5 0.5 }  <br>	position = { 0.75 0.75 } <br>	rotation = 45<br>	depth = 5  <br>}</code></pre> |
-| ``textured_emblem`` | ``instance`` | ``position`` | Given as a 2-dim float, has default value { 0.0 0.0 } | <pre><code>instance = { <br>	scale = { 0.5 0.5 }  <br>	position = { 0.75 0.75 } <br>	rotation = 45<br>	depth = 5  <br>}</code></pre> |
-| ``textured_emblem`` | ``instance`` | ``rotation`` | Given as float value, has default value 0.0 | <pre><code>instance = { <br>	scale = { 0.5 0.5 }  <br>	position = { 0.75 0.75 } <br>	rotation = 45<br>	depth = 5  <br>}</code></pre> |
-| ``textured_emblem`` | ``instance`` | ``depth`` | Used to order rendering, given as float value with default of 0.0 | <pre><code>instance = { <br>	scale = { 0.5 0.5 }  <br>	position = { 0.75 0.75 } <br>	rotation = 45<br>	depth = 5  <br>}</code></pre> |
-| ``colored_emblem`` | --- |  | Multiple colored emblems can be specified. Each is itself a scripting object with the following keywords: | --- |
-| ``colored_emblem`` | ``texture`` |  | The path to the file for the emblem (usually located in `/Crusader Kings III/game/gfx/coat_of_arms/colored_emblems/`). | `texture = "ce_crown.tga"` |
-| ``colored_emblem`` | " |  | All fields from textured_emblem are valid | --- |
-| ``colored_emblem`` | ``color1`` |  | defines the base colour of the emblem | <pre><code>color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></pre> |
-| ``colored_emblem`` | ``color2`` |  | defines the secondary color of the emblem (the Green channel in the texture) | <pre><code>color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></pre> |
-| ``colored_emblem`` | ``color3`` |  | currently unavailable, will default to white | <pre><code>color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></pre> |
-| ``sub`` | --- |  | Multiple subs can be specified, each is itself a complete coat of arms scripting object, allowing all fields except another sub, i.e. no sub nesting. | --- |
-| ``sub`` | ``instance`` | ``scale`` | Given as a 2-dim float, has default value { 1.0 1.0 } | --- |
-| ``sub`` | ``instance`` | ``offset`` | Given as a 2-dim float, has default value { 0.0 0.0 } | --- |
-| ``sub`` | ``instance`` | ``depth`` | Used to order rendering, given as float value with default of 0.0 | --- |
+<table>
+<tr><th colspan="3">Keyword</th><th>Comment</th><th>Example</th></tr>
+<tr><td colspan="3"><code>parent</code></td><td>Used for inheritance, read more below.</td><td><code>parent = k_england</code></td></tr>
+<tr><td colspan="3"><code>pattern</code></td><td>The path to the file for the background pattern (usually located in <code>/Crusader Kings III/game/gfx/coat_of_arms/patterns/</code>.<br>A pattern should be included to avoid graphical issues with the masking textures when using textured emblems.</td><td><code>pattern = "pattern_vertical_split_01"</code></td></tr>
+<tr><td colspan="3"><code style="white-space: pre">color1<br>color2<br>color3<br>color4<br>color5</code></td><td>Specifies a color, to be used in the pattern or as a color reference in colored_emblems.<br>Usually refers to a color defined in <code>/Crusader Kings III/game/common/named_colors</code>.<br>Can also explicitly define RGB, HSV and 8-Digit Hexadecimal values.</td><td><code style="white-space: pre">color1 = "white"<br>color2 = hsv { 1.0 1.0 1.0 }<br>color3 = hsv360 { 360 100 100 }<br>color4 = rgb { 255 255 255 }<br>color5 = hex { aabbccdd }</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td colspan="2">---</td><td>Multiple textured emblems can be specified. Each is itself a scripting object with the following valid keywords:</td><td>---</td></tr>
+<tr><td><code>textured_emblem</code></td><td colspan="2"><code>texture</code></td><td>The path to the file for the emblem (usually located in <code>/Crusader Kings III/game/gfx/coat_of_arms/textured_emblems/</code>).</td><td><code>texture = "te_griffin_01.dds"</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td colspan="2"><code>mask</code></td><td>The coat of arms' background pattern can be used as a clipping mask for emblems.</td><td><code>mask = { 1 3 }</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td><code>instance</code></td><td><code>scale</code></td><td>Given as a 2-dim float, has default value { 1.0 1.0 }</td><td><code style="white-space: pre">instance = { <br>    scale = { 0.5 0.5 }  <br>    position = { 0.75 0.75 } <br>    rotation = 45<br>    depth = 5  <br>}</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td><code>instance</code></td><td><code>position</code></td><td>Given as a 2-dim float, has default value { 0.0 0.0 }</td><td><code style="white-space: pre">instance = { <br>    scale = { 0.5 0.5 }  <br>    position = { 0.75 0.75 } <br>    rotation = 45<br>    depth = 5  <br>}</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td><code>instance</code></td><td><code>rotation</code></td><td>Given as float value, has default value 0.0</td><td><code style="white-space: pre">instance = { <br>    scale = { 0.5 0.5 }  <br>    position = { 0.75 0.75 } <br>    rotation = 45<br>    depth = 5  <br>}</code></td></tr>
+<tr><td><code>textured_emblem</code></td><td><code>instance</code></td><td><code>depth</code></td><td>Used to order rendering, given as float value with default of 0.0</td><td><code style="white-space: pre">instance = { <br>    scale = { 0.5 0.5 }  <br>    position = { 0.75 0.75 } <br>    rotation = 45<br>    depth = 5  <br>}</code></td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2">---</td><td>Multiple colored emblems can be specified. Each is itself a scripting object with the following keywords:</td><td>---</td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2"><code>texture</code></td><td>The path to the file for the emblem (usually located in <code>/Crusader Kings III/game/gfx/coat_of_arms/colored_emblems/</code>).</td><td><code>texture = "ce_crown.tga"</code></td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2">"</td><td>All fields from textured_emblem are valid</td><td>---</td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2"><code>color1</code></td><td>defines the base colour of the emblem</td><td><code style="white-space: pre">color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2"><code>color2</code></td><td>defines the secondary color of the emblem (the Green channel in the texture)</td><td><code style="white-space: pre">color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></td></tr>
+<tr><td><code>colored_emblem</code></td><td colspan="2"><code>color3</code></td><td>currently unavailable, will default to white</td><td><code style="white-space: pre">color1 = color2<br>color2 = "white"<br>#color3 = hsv360 { 360 50 50 }</code></td></tr>
+<tr><td><code>sub</code></td><td colspan="2">---</td><td>Multiple subs can be specified, each is itself a complete coat of arms scripting object, allowing all fields except another sub, i.e. no sub nesting.</td><td>---</td></tr>
+<tr><td><code>sub</code></td><td><code>instance</code></td><td><code>scale</code></td><td>Given as a 2-dim float, has default value { 1.0 1.0 }</td><td>---</td></tr>
+<tr><td><code>sub</code></td><td><code>instance</code></td><td><code>offset</code></td><td>Given as a 2-dim float, has default value { 0.0 0.0 }</td><td>---</td></tr>
+<tr><td><code>sub</code></td><td><code>instance</code></td><td><code>depth</code></td><td>Used to order rendering, given as float value with default of 0.0</td><td>---</td></tr>
+</table>
 
 
 ## Examples
@@ -58,7 +70,7 @@ flag_with_emblem = {
     pattern = "pattern_vertical_split_01"
     color1 = "lemon_yellow"
     color2 = "sky_blue"
- 
+
     textured_emblem = {
         texture = "te_griffin_01"
     }
@@ -71,7 +83,7 @@ flag_with_culled_emblem = {
     pattern = "pattern_vertical_split_01"
     color1 = "lemon_yellow"
     color2 = "sky_blue"
- 
+
     textured_emblem = {
         texture = "te_griffin_01"
         mask = { 1 }
@@ -85,7 +97,7 @@ two_emblems_scaled_and_positioned = {
     pattern = "pattern_vertical_split_01"
     color1 = "lemon_yellow"
     color2 = "sky_blue"
- 
+
     textured_emblem = {
         texture = "te_griffin_01"
         instance = { position = { 0.75 0.75 } scale = { 0.5 0.5 }  }
@@ -95,7 +107,7 @@ two_emblems_scaled_and_positioned = {
 ```
 
 
-![Emblem examples](https://ck3.paradoxwikis.com/File:Emblem_examples.png)
+![Emblem examples](../assets/images/Emblem_examples.png)
 
 
 ## Inheritance and subs
@@ -173,7 +185,7 @@ daddy = {
         color2 = "rust_brown"
     }
 }
- 
+
 child = {
     parent = "daddy"
     pattern = "pattern_checkers_diagonal_01.tga"
@@ -198,7 +210,7 @@ daddy = {
     sub = { }
     sub = { }
 }
- 
+
 child = {
     parent = "daddy"
     # this implicit sub inherits from the implicit sub in daddy
@@ -221,14 +233,14 @@ grand_dad = {
     pattern = "pattern_solid.tga"
     sub = { }
 }
- 
+
 daddy = {
     parent = "grand_dad"
     # >pattern = "pattern_solid.tga"< inherited
     color1 = "blue"
     # >sub = { }< inherited
 }
- 
+
 child = {
     parent = "daddy"
     # >pattern = "pattern_solid.tga"< inherited
@@ -279,7 +291,7 @@ title_name = {
 ```
 
 
-In order to update the coat of arms, you need to call ``update_dynamic_coa = yes`` within the title scope. This is already called in ``on_character_culture_change`` and ``on_character_faith_change`` for all held titles, but if you want the dynamic coat of arms to be updated under any other circumstance, it's up to you to implement [Event_modding#On_Actions_.28on_action.29](Event_modding.md#on_actions_.28on_action.29) as needed.
+In order to update the coat of arms, you need to call ``update_dynamic_coa = yes`` within the title scope. This is already called in ``on_character_culture_change`` and ``on_character_faith_change`` for all held titles, but if you want the dynamic coat of arms to be updated under any other circumstance, it's up to you to implement [on_actions](Event_modding.md#on_actions_.28on_action.29) as needed.
 
 
 ## Easy going by using the IN-Game Designer
@@ -311,13 +323,14 @@ In addition, you must now create a text file at the same position (as always in 
 ```
 <pic_name>.dds = { colors = <1,2,3> category = <string> }
 ```
+
 In order for the game to correctly recognize the emblems, the name in the text file must exactly match the name of the image file.
 
 You can specify 1, 2, or 3 as the color option. This specifies how many colors the user can set for the chosen emblem. If you set a value in the corresponding file that is larger than the number of colors actually used, the user has one more color option but it will not have any function. However, if the modder specifies too small a number of colors in the text file, the automatic correction will either try to reduce the extra colors to one color if they are similar enough or simply set the unknown color to a reddish-brown hue, which cannot be changed by the user.
 
 The game supports the following default categories: animals, circles_spirals, crosses_and_knots, faiths, manmade, nature, patterns, tribal_seal, writing & figures. If a different string is used, the game will add a new selectable category for the user. As the category name is displayed as text, you should also define a new line in the localization file for each new category as follows: 
 ```
- COA_DESIGNER_CATEGORY_<your_category_string_here>:0 "<What you want to Display as Category Name for the selected language>"
+COA_DESIGNER_CATEGORY_&lt;your_category_string_here&gt;:0 "&lt;What you want to Display as Category Name for the selected language&gt;"
 ```
 
 

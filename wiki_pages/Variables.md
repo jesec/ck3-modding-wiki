@@ -3,6 +3,15 @@
 Variables store information permanently until removed.
 
 
+- [Setting a variable](#setting-a-variable)
+- [Modifying a variable](#modifying-a-variable)
+- [Removing a variable](#removing-a-variable)
+- [Accessing a variable](#accessing-a-variable)
+- [Global variables](#global-variables)
+- [Local variables](#local-variables)
+- [References](#references)
+
+
 ## Setting a variable
 
 A variable is set using the ``set_variable`` [effect](Effects.md), on the [scope](Scopes.md) in the context of which the [effect](Effects.md) is executed.
@@ -27,6 +36,7 @@ The ``set_variable`` effect also has a simple form that sets a boolean value.
 ```
 set_variable = X
 ```
+
 
 is the same thing as
 
@@ -72,7 +82,7 @@ set_variable = {
 ```
 
 
-... or set to a [script_values](https://ck3.paradoxwikis.com/script_values) directly
+... or set to a [script value](https://ck3.paradoxwikis.com/script_values) directly
 
 ```
 set_variable = {
@@ -82,7 +92,7 @@ set_variable = {
 ```
 
 
-Recall that most [triggers](Triggers.md) that compare against a number (i.e. support the <, <=, =, !=, >, >= operators) can also be used as script values:
+Recall that most [triggers](Triggers.md) that compare against a number (i.e. support the &lt;, &lt;=, =, !=, &gt;, &gt;= operators) can also be used as script values:
 
 
 ```
@@ -109,7 +119,7 @@ set_variable = {
 ```
 
 
-- a [Scope#database_scopes](Scopes.md#database_scopes)
+- a [scope](Scopes.md#database_scopes)
 
 Variables can store scopes:
 
@@ -162,7 +172,7 @@ remove_variable = X
 
 ## Accessing a variable
 
-Because variables are set on a specific scope, they can only be accessed from that same scope, using the syntax ``var:<variable name>``.
+Because variables are set on a specific scope, they can only be accessed from that same scope, using the syntax ``var:&lt;variable name&gt;``.
 
 A variable can only be accessed if it has been set, which can be verified from the scope the variable was supposedly set on by using the ``has_variable`` trigger.
 

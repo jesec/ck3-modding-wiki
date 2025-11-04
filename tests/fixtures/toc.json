@@ -1,0 +1,25 @@
+{
+  "description": "Test cases for Table of Contents generation",
+  "cases": [
+    {
+      "name": "TOC with multiple heading levels",
+      "wikitext": "__TOC__\n\n== Section 1 ==\nContent 1\n\n=== Subsection 1.1 ===\nContent 1.1\n\n== Section 2 ==\nContent 2",
+      "expected": "- [Section 1](#section-1)\n  - [Subsection 1.1](#subsection-11)\n- [Section 2](#section-2)\n\n\n## Section 1\n\nContent 1\n\n\n### Subsection 1.1\n\nContent 1.1\n\n\n## Section 2\n\nContent 2"
+    },
+    {
+      "name": "FORCETOC magic word",
+      "wikitext": "__FORCETOC__\n\n== Getting Started ==\n\n== Advanced Topics ==",
+      "expected": "- [Getting Started](#getting-started)\n- [Advanced Topics](#advanced-topics)\n\n\n## Getting Started\n\n\n## Advanced Topics"
+    },
+    {
+      "name": "TOC with special characters in headings",
+      "wikitext": "__TOC__\n\n== Commands & Effects ==\n\n== Scopes (Variables) ==",
+      "expected": "- [Commands & Effects](#commands-effects)\n- [Scopes (Variables)](#scopes-variables)\n\n\n## Commands & Effects\n\n\n## Scopes (Variables)"
+    },
+    {
+      "name": "Automatic TOC generation without placeholder",
+      "wikitext": "Introductory paragraph with some content.\n\n== First Section ==\n\nContent of first section.\n\n== Second Section ==\n\nContent of second section.",
+      "expected": "Introductory paragraph with some content.\n\n\n- [First Section](#first-section)\n- [Second Section](#second-section)\n\n\n## First Section\n\nContent of first section.\n\n\n## Second Section\n\nContent of second section."
+    }
+  ]
+}

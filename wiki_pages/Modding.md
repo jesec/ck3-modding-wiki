@@ -17,44 +17,74 @@ Mods no longer disable achievements since 1.9 patch. Mods also don't invalidate 
 This article is a brief introduction to CK3 modding. To learn more, inspect game files and other mods, experiment on your own and join the [modding discord](https://discord.com/invite/apEvxDZ).
 
 
+- [Tips & guidelines](#tips-guidelines)
+  - [Localization Files](#localization-files)
+  - [Launch options](#launch-options)
+- [Creating a mod](#creating-a-mod)
+- [Uploading/updating a mod](#uploadingupdating-a-mod)
+- [Installing mods manually](#installing-mods-manually)
+  - [Installing Forum mods](#installing-forum-mods)
+  - [Installing Paradox Mods](#installing-paradox-mods)
+- [Extracting files From Microsoft Store version](#extracting-files-from-microsoft-store-version)
+- [Mod load order](#mod-load-order)
+- [Override rules](#override-rules)
+    - [Full file override](#full-file-override)
+    - [Single object override](#single-object-override)
+      - [Defines](#defines)
+      - [On_actions](#on_actions)
+      - [Localization](#localization)
+      - [UI types](#ui-types)
+      - [Common issues](#common-issues)
+- [Troubleshooting](#troubleshooting)
+  - [A mod from Paradox Mods is broken](#a-mod-from-paradox-mods-is-broken)
+  - [The mod you uploaded to Steam doesn't work](#the-mod-you-uploaded-to-steam-doesnt-work)
+  - [Mods stopped working](#mods-stopped-working)
+  - [Mods are conflicting](#mods-are-conflicting)
+- [Tools & utilities](#tools-utilities)
+- [Save game editing](#save-game-editing)
+  - [Contents of the gamestate file](#contents-of-the-gamestate-file)
+- [Mods with wiki pages](#mods-with-wiki-pages)
+- [External links](#external-links)
+
+
 ## Tips & guidelines
 
-* **Start the game with -debug_mode -develop** launch option to instantly reload files and use the console.
-    - On Steam: right-click the game on Steam -> Properties ->  add -debug_mode -develop to Launch Options at the bottom
-    - Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode -develop at the end of the Target field
-    - Windows Xbox Game Pass: Open 'Command Prompt' and run 'start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode -develop’
-* **Create a mod for your modifications**: use a personal mod even for minor changes, and never directly modify the game files in the CK3 game folder as they may be overwritten without warning.
-* **Use a good text editor** to edit files and search through folders. The following, aside from Intellij IDEA are free:
-    - [Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
-    - [Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [forum:1593630/#post-29225852](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
-    - [Notepad++](https://notepad-plus-plus.org/downloads/). Choose Perl as your language for syntax highlighting. To set it as default, go to Settings, Styler Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
-    - [Intellij IDEA](https://www.jetbrains.com/idea/). Has a fan-made Paradox Language Support plugin with syntax highlighting and validation. To install it, go to File -> Settings -> Plugins and search for "Paradox Language Support".
-    - [Pulsar](https://pulsar-edit.dev/) (fork of Atom). Doesn't include UTF-8-BOM encoding needed for localization files. Otherwise is very customizable. Choose Perl 6 as your language for highlighting. To set it as default, go to File, Config, find "core:" and add below it: "customFileTypes: "source.perl6": [ "txt" "gui"]", like in [this example](https://discuss.atom.io/t/how-do-i-make-atom-recognize-a-file-with-extension-x-as-language-y/26539).
-* **Always check the error.log file for execution errors**. ``Documents/Paradox Interactive/Crusader Kings III/logs/error.log``
-* **The log folder also contains lists of effects, triggers and scopes.** Use ``script_docs`` and ``dump_data_types`` console commands in the game to generate them.
-* **The directory for the CK3 folder on Linux is** ``~/.local/share/Paradox Interactive/Crusader Kings III``
-* **Communicate key facts about your mod:**
-    - List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
-    - Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
+- **Start the game with -debug_mode -develop** launch option to instantly reload files and use the console.
+   - On Steam: right-click the game on Steam -> Properties ->  add -debug_mode -develop to Launch Options at the bottom
+   - Windows: Create a shortcut for the .exe file -> right-click it -> Properties -> add -debug_mode -develop at the end of the Target field
+   - Windows Xbox Game Pass: Open 'Command Prompt' and run 'start shell:AppsFolder\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny!App -debug_mode -develop’
+- **Create a mod for your modifications**: use a personal mod even for minor changes, and never directly modify the game files in the CK3 game folder as they may be overwritten without warning.
+- **Use a good text editor** to edit files and search through folders. The following, aside from Intellij IDEA are free:
+   - [Visual Studio Code](https://code.visualstudio.com/). Has fan-made extensions, like [CK3 Tiger](https://marketplace.visualstudio.com/items?itemName=unlomtrois.ck3tiger-for-vscode&ssr=false#overview) to validate code, [Paradox Highlight](https://marketplace.visualstudio.com/items?itemName=dragon-archer.paradox-highlight&ssr=false#overview) for syntax highlighting and [CWTools](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode) which does both and adds autocomplete and tooltips for triggers and effects. To install, use the links or go to Extensions on the left panel of VSC and search for them. (Note: CWTools validation rules are incomplete and will show a lot of false errors)
+   - [Sublime Text](https://www.sublimetext.com/). Often used by developers themselves, and they've released an extension for it: [CK3 Tools](https://ck3.paradoxwikis.com/forum:1593630/#post-29225852) with syntax highlighting and completions. If you want to toggle comments in Sublime, you also need to add [this file](https://cdn.discordapp.com/attachments/563655919892692996/649656191173263370/PDXComments.tmPreference) to the same "User" folder.
+   - [Notepad++](https://notepad-plus-plus.org/downloads/). Choose Perl as your language for syntax highlighting. To set it as default, go to Settings, Styler Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
+   - [Intellij IDEA](https://www.jetbrains.com/idea/). Has a fan-made Paradox Language Support plugin with syntax highlighting and validation. To install it, go to File -> Settings -> Plugins and search for "Paradox Language Support".
+   - [Pulsar](https://pulsar-edit.dev/) (fork of Atom). Doesn't include UTF-8-BOM encoding needed for localization files. Otherwise is very customizable. Choose Perl 6 as your language for highlighting. To set it as default, go to File, Config, find "core:" and add below it: "customFileTypes: "source.perl6": [ "txt" "gui"]", like in [this example](https://discuss.atom.io/t/how-do-i-make-atom-recognize-a-file-with-extension-x-as-language-y/26539).
+- **Always check the error.log file for execution errors**. ``Documents/Paradox Interactive/Crusader Kings III/logs/error.log``
+- **The log folder also contains lists of effects, triggers and scopes.** Use ``script_docs`` and ``dump_data_types`` console commands in the game to generate them.
+- **The directory for the CK3 folder on Linux is** ``~/.local/share/Paradox Interactive/Crusader Kings III``
+- **Communicate key facts about your mod:**
+   - List the main changes and additions at the top of the description. To help with compatibility, you may add a list of changed files at the bottom.
+   - Provide links to your mod on other platforms (Workshop, Paradox Mods, forums).
 - When possible, upload your mod to all platforms, especially if it is popular. Not everybody owns the game on Steam.
 - Backup your work. Either manually or with a source control system like Git. Consider using GitHub and Discord for team collaboration.
-* **Remove your local copy of the mod when you subscribe to the Steam version**, otherwise it will not work in the game. (removing the .mod file or changing its extension is enough)
+- **Remove your local copy of the mod when you subscribe to the Steam version**, otherwise it will not work in the game. (removing the .mod file or changing its extension is enough)
 - Use a proper merge tool (like [WinMerge](https://winmerge.org/?lang=en)) to merge between folders and update modified files for a new patch.
 - If you're replacing text across dozens or hundreds lines of code, regular expressions may save a lot of time. They are available in all of the text editors above. Learning resources: [RegexOne](https://regexone.com/), [RegExr](https://regexr.com/).
 - Win+V opens your clipboard history. You'll be copying a lot of text while modding, and this lets you access older copied entries without going back to their source.
 - Join [CK3 Modding discord](https://discord.com/invite/apEvxDZ) to ask any questions and help others
 - The [Modding Git Guide](https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls) is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here. Though the examples are HOI4 based, the principles apply equally well to any Paradox game mod.
 - You can change the path where the launcher and the game saves user specific data:
-    - The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
-    - For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
+   - The launcher's settings file is ``steamapps\common\Crusader Kings III\launcher\launcher-settings.json``. Edit the ``gameDataPath`` key to change the location.
+   - For the game data you need to create the file ``steamapps\common\Crusader Kings III\game\userdir.txt`` with the content being the absolute path where the game should save it's data. For example: ``C:/Users/username/AppData/Local/Paradox Interactive/Crusader Kings III/``. Note that the path must end with a ``/``.
 
 
 ### Localization Files
 
-* *.yml files in the localization folder must be saved with **UTF-8 + BOM** encoding to be read properly by the game.
-*  filenames need to be saved in the form as ***l_<language>.yml** for the game to read the file correctly. For example **council_l_english.yml**.
-    - You must use the US spelling of "localization". The Commonwealth spelling of "localisation" *will not work*.
-** Note, l_ is a lower case L, as in **l**anguage, not capital i.
+- *.yml files in the localization folder must be saved with **UTF-8 + BOM** encoding to be read properly by the game.
+- filenames need to be saved in the form as **\*l_&lt;language&gt;.yml** for the game to read the file correctly. For example **council_l_english.yml**.
+   - You must use the US spelling of "localization". The Commonwealth spelling of "localisation" *will not work*.
+   - Note, l_ is a lower case L, as in **l**anguage, not capital i.
 - To overwrite existing localization values, put your files with changes into a folder named "replace" within the localization folder.
 - If a mod only has English localization, any player using a different language will see unlocalized strings_like_this. It is better to copy your localization for other languages, even if you don't provide a translation. Modding discord [has a tool](https://discord.com/channels/735413460439007241/1161423005830881462/1161423005830881462) to copy all the files and rename their language markers in one click.
 
@@ -85,30 +115,31 @@ This article is a brief introduction to CK3 modding. To learn more, inspect game
 
 
 It is recommended to use the game launcher to create initial mod files:
-1. Open the game launcher. 
+1. Open the game launcher.
 1. Go to Mod library on the left.
 1. Press Upload Mod in the top right.
 1. Press Create a Mod.
 1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-    - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+   - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+
 After this, copy the game files you want to edit to the created mod folder, following the same folder structure. For example, ``mod/my_new_mod/events/test_events.txt``
 
 
 ## Uploading/updating a mod
 
 Uploading and updating follows the same process:
-1. Open the game launcher. 
+1. Open the game launcher.
 1. Go to Mod library on the left.
 1. Press Upload Mod in the top right.
 1. Choose your mod from the dropdown menu.
 1. Choose what platform to upload it to.
 1. Enter any description. (If updating, make sure the launcher copied the most recent one from the site.)
 1. Add a thumbnail
-    - For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
-    - For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
+   - For the Steam Workshop, put thumbnail.png in the mod folder. Use 1:1 ratio, 1MB max. The biggest thumbnail the Workshop displays is around 600x600 pixels.
+   - For Paradox Mods, drag the thumbnail to the field below the description. Suggested minimum size is 900x500, png or jpg, 1MB max.
 1. Press "Upload".
-    - On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
-    - On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
+   - On Steam, the mod will be uploaded in private mode and appear in your Steam Profile -> Workshop Items. Open it and change visibility on the side bar to Public to actually publish.
+   - On Paradox Mods the mod will be published after the verification process. You may need to edit your description, as the site usually removes line breaks and BBCode formatting.
 
 
 ## Installing mods manually
@@ -134,19 +165,21 @@ Mods downloaded from Paradox Mods only have the contents of the mod folder and r
 1. Rename the copied descriptor file to anything.
 1. Open it with a text editor and add a line ``path="mod/my mod"`` (where "my mod" is the name of the folder you created). Save the file.
 1. After this, you should be able to add this mod in the launcher.
+
 If this didn't work, you can try to create a new mod from the launcher and then copy the downloaded files to its folder (excluding descriptor.mod).
 
 
 ## Extracting files From Microsoft Store version
 
 If you want to read the files using the Microsoft Store version, you can use a program called UWPDumper to extract the files.
-1. Download the latest x64 binary of [Modding#Tools & utilities](#tools-&-utilities)
+1. Download the latest x64 binary of [UWPDumper](#tools-&-utilities)
 1. Enable Developer Mode (Windows Settings -> Update and Security -> For Developers -> Developer Mode).
 1. Run CK3.
 1. Run UWPInjector.exe from the program you just downloaded.
 1. Enter the number next to ck3.exe : ParadoxInteractive.ProjectTitus_zfnrdv2de78ny as the processID.
 1. Check where it is going to store the files (probably somewhere like C:\Users\%USERPROFILE%\AppData\Local\Packages\ParadoxInteractive.ProjectTitus_zfnrdv2de78ny\TempState\DUMP
 1. Wait for the program to finish.
+
 The files should then be present in the directory specified earlier. If you want to edit the files, create a mod and copy the desired files there.
 
 
@@ -187,7 +220,7 @@ Often, we can override a single object, for example, a define or a scripted trig
 
 Put your changes in a new file, with the same path as vanilla.
 
-The name of your file should come **later in [commons:Media:ASCII-Table-wide.svg](https://ck3.paradoxwikis.com/commons:Media:ASCII-Table-wide.svg)** **order**: 01_defines.txt will override 00_defines.txt.
+The name of your file should come **later in [ASCIIbetical](https://ck3.paradoxwikis.com/commons:Media:ASCII-Table-wide.svg)** **order**: 01_defines.txt will override 00_defines.txt.
 
 This has been called Last in Only Served, or LIOS. Most overrides follow this order. Types in UI files use FIOS: First In Only Served.
 
@@ -198,6 +231,7 @@ We can create a file in ``common\scripted_triggers``, call it ``all_can_raid_tri
 ```c
 can_raid_trigger = { always = yes }
 ```
+
 It will override ``can_raid_trigger`` trigger in ``00_scripted_rule_triggers.txt`` and allow anyone to raid.
 
 
@@ -244,12 +278,14 @@ my_mod_on_birth = {
    effect = { add_gold = 100 }
 }
 ```
+
 This *overrides* all of vanilla effects of on_birth:
 ```c
 on_birth = {
    effect = { add_gold = 100 }
 }
 ```
+
 Do not do this, unless you intend to make such drastic changes.
 
 
@@ -276,12 +312,12 @@ If it's a template, just put the template in the file, don't need to add anythin
 
 This redefines the small button to have a different size:
 ```
- types SmallButton {
-   type button_standard_small = button_standard
-     {
-         size = { 40 25 }
-     }
- }
+types SmallButton {
+  type button_standard_small = button_standard
+    {
+        size = { 40 25 }
+    }
+}
 ```
 
 
@@ -301,9 +337,9 @@ New clothes would also need to overwrite genes, animations need to overwrite the
 
 ### A mod from Paradox Mods is broken
 
-Currently, there is [forumdirect:/threads/ck-iii-mods-from-paradox-mods-dont-work-if-they-add-new-files.1531866/](https://ck3.paradoxwikis.com/forumdirect:/threads/ck-iii-mods-from-paradox-mods-dont-work-if-they-add-new-files.1531866/) when adding mods from the Paradox Mods website. If a mod adds new files, the game completely ignores them.
+Currently, there is [a bug](https://ck3.paradoxwikis.com/forumdirect:/threads/ck-iii-mods-from-paradox-mods-dont-work-if-they-add-new-files.1531866/) when adding mods from the Paradox Mods website. If a mod adds new files, the game completely ignores them.
 
-To fix it, remove the mod from the playset, download it and install manually, [Modding#Installing Paradox Mods](#installing-paradox-mods).
+To fix it, remove the mod from the playset, download it and install manually, [following these steps](#installing-paradox-mods).
 
 
 ### The mod you uploaded to Steam doesn't work
@@ -315,16 +351,16 @@ Make sure that you only use one version of the mod: either from Steam Workshop o
 
 For unknown reasons, mods sometime stop working. There are two ways to solve this:
 - Reload from the launcher:
-    1. Open the launcher
-    1. Go to Mod library on the left
-    1. Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
-    1. Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
-    1. Close the launcher
-    1. Resubscribe to the mod.
-    1. Open the launcher and add the mod back again.
+   - Open the launcher
+   - Go to Mod library on the left
+   - Press Reload Mods in the top right and Reload (Clearing cache doesn't seem to be necessary)
+   - Go to Playsets. The mod should have a warning saying the files aren't present on disk. Remove it from the playset.
+   - Close the launcher
+   - Resubscribe to the mod.
+   - Open the launcher and add the mod back again.
 - If nothing helps, delete the following files if they are present and restart the launcher:
-    1. Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
-    1. Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
+   - Documents/Paradox Interactive/Crusader Kings III/mods_registry.json
+   - Documents/Paradox Interactive/Crusader Kings III/launcher-v2.sqlite
 
 
 ### Mods are conflicting
@@ -343,7 +379,7 @@ In VSC you can press Ctrl+Shift+F to search through your whole project or right-
 ## Tools & utilities
 
 - [Exporters](Exporters.md) (Maya and Photoshop)
-- [Modding tools](Modding_tools.md)
+- [Community-made modding tools](Modding_tools.md)
 - [Clausewitz Maya Exporter](https://forum.paradoxplaza.com/forum/threads/information-and-faq.924764/): a tool to create and export 3D models to use in CK3 and other Clausewitz games.
 - [UWPDumper](https://github.com/Wunkolo/UWPDumper): a tool to extract files from Microsoft Store games.
 - [CK3 triggers, modifiers, effects, event scopes, event targets, on actions, code revisions and setup.log](https://github.com/OldEnt/crusader-kings-3-triggers-modifiers-effects-event-scopes-targets-on-actions-code-revisions-list): List of valid inputs for most game versions since launch. Use GitHub file history feature to compare_versions.
@@ -365,11 +401,11 @@ Save files are located in:
 PC:
 1. Find the save file in the save games folder.
 1. If it was an autosave, skip to the next step. Else:
-## Right-click the save file and extract it like an archive with 7-Zip or WinRar
-## Rename the extracted 'gamestate' file to have a .ck3 extension.
+   1. Right-click the save file and extract it like an archive with 7-Zip or WinRar
+   1. Rename the extracted 'gamestate' file to have a .ck3 extension.
 1. Right-click it and open with a text editor (Windows Notepad is not recommended as the save files are very big).
 1. Edit the file and save it.
-    - To remove ironman status, search for "ironman=yes" and change it to "no"
+   - To remove ironman status, search for "ironman=yes" and change it to "no"
 1. Load it in the game.
 
 
@@ -384,62 +420,66 @@ Mac:
 
 | **OS** | **Save type** | **Location** |
 | --- | --- | --- |
-| Windows | Local | ``C:\Users\%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\save games`` |
-| Windows | Steam Cloud | ``C:\Program Files (x86)\Steam\userdata\####\1158310\remote\save games`` |
-| Mac | Local | ``$HOME/Documents/Paradox Interactive/Crusader Kings III/save games`` |
-| Linux | Local | ``$HOME/.local/share/Paradox Interactive/Crusader Kings III/save games`` |
+| Windows | Local | `C:\Users\%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\save games` |
+| Windows | Steam Cloud | `C:\Program Files (x86)\Steam\userdata\####\1158310\remote\save games` |
+| Mac | Local | `$HOME/Documents/Paradox Interactive/Crusader Kings III/save games` |
+| Linux | Local | `$HOME/.local/share/Paradox Interactive/Crusader Kings III/save games` |
 
 
 ### Contents of the gamestate file
 
 The table below contains the possible first-level blocks in the gamestate file. Entries are provided in order of appearance.
 
+<details>
+<summary>Show/Hide</summary>
+
+
 | **Block** | **Description** |
 | --- | --- |
 | meta_data | Contains metadata about the game, such as the game version. Used by the main menu screen. |
-| (various variables) | These variables do not belong in a block.<br><br>\| **Variable** \|<br>\| --- \|<br>\| date \|<br>\| random_seed \|<br>\| random_count \|<br>\| speed \|<br>\| date \|<br>\| bookmark_date \|<br>\| first_start \| |
+| (various variables) | These variables do not belong in a block.<br><br><details><summary>Show details</summary><table><tr><td>date</td></tr><tr><td>random_seed</td></tr><tr><td>random_count</td></tr><tr><td>speed</td></tr><tr><td>date</td></tr><tr><td>bookmark_date</td></tr><tr><td>first_start</td></tr></table></details> |
 | variables | Contains script flags. |
 | traits_lookup | Various traits that can been looked up |
 | provinces | Contains province data, including buildings. |
-| landed_titles | Contains the following sub-blocks:<br><br>\| **Sub-block** \| **Description** \|<br>\| --- \| --- \|<br>\| dynamic_templates \|  \|<br>\| landed_titles<br>*(repetition)* \| *See [Code Block 1](#code-block-1) below* \|<br>\| index=(value)<br>*(variable)* \|  \| |
-| dynasties | Contains the following sub-blocks:<br>* dynasty_house (ends at entry ~6401)<br>* dynasties (ends at entry ~6239)<br>* static_dynasties (list of numbers)<br>* static_dynasty_houses (list of numbers) |
+| landed_titles | Contains the following sub-blocks:<br><br><details><summary>Show details</summary><table><tr><td>dynamic_templates</td><td></td></tr><tr><td>landed_titles<br>*(repetition)*</td><td>Contains an entry for each landed title in the game, in the format:<br><code style="white-space: pre"># Exact formatting in file is different in terms of spaces and lines<br># It is usually more compact.<br># It has been edited here for clarity and demonstration.<br><br><br># Index for titles starts at 0<br>index={<br>    key="(title id)" # The one used in 00_landed_titles.txt, e.g. k_england<br><br>    de_facto_liege=(title index) # Optional<br>    de_jure_liege=(title index) # Optional. The number at the start of a similar block, NOT the title id<br>    de_jure_vassals={ (title index...) } # Optional, list of title indices.<br>    holder="(character id)" # Optional<br><br>    name="..."<br>    adj="..." # Optional<br>    pre="..." # Optional<br>    article="..." # Optional<br><br>    date=2020.10.27 # yyyy.mm.dd<br>    heir={ (character id...) } # Optional. List of character ids.<br>    claim={ (character id...) } # Optional<br>    history = { (...) } # Optional <br>    capital=(province id)<br>    capital_barony=yes # Optional<br>    theocratic_lease=yes # Optional<br>    history_government="(government id)" # Optional<br>    laws={ "(law id)"... } # Optional. List of law ids.<br><br>    # Optional (succession_election).<br>    succession_election={<br>        electors = {  (character id...) }<br>        candidates={ (character id...) }<br>        nominations={<br>            {<br>                elector=(character id)<br>                candidate=(character id)<br>                strength=(value)<br>            }<br>        <br>        }<br>    } # end of succession_election block<br><br>    coat_of_arms_id=(coat of arms id)<br>    localization_key="(localization key)" # Optional<br><br>    # All below is used for mercenary bands<br>    special={<br>        type=mc<br>        identity=(id)<br>    }<br>    color=rgb { (r) (g) (b) }<br>    landless=yes<br>    destroy_if_invalid_heir=yes<br>    no_automatic_claims=yes<br>    definite_form=yes<br>}</code><br>In vanilla CK3, this block ends at entry ~12369.</td></tr><tr><td>index=(value)<br>*(variable)*</td><td></td></tr></table></details> |
+| dynasties | Contains the following sub-blocks:<br>- dynasty_house (ends at entry ~6401)<br>- dynasties (ends at entry ~6239)<br>- static_dynasties (list of numbers)<br>- static_dynasty_houses (list of numbers) |
 | character_lookup |  |
 | deleted_characters |  |
-| living | Contains entries of living characters. The following format is used for each character:<br><br>\| *See [Code Block 2](#code-block-2) below* \|<br>\| --- \| |
+| living | Contains entries of living characters. The following format is used for each character:<br><br><details><summary>Show format</summary><code style="white-space: pre">index={<br>    first_name="..."<br>    birth=(date) # Format: yyy.m.d<br>    female=yes # Optional<br>    was_playable=yes # Optional<br>    nickname="nick_..." # Optional<br>    culture=(culture index) # Optional if dynasty_house is specified, defaults to dynasty_house culture. Required if no dynasty_house, or culture different from that of dynasty_house.<br>    faith=(faith index) # Optional if dynasty_house is specified, defaults to dynasty_house faith.  Required if no dynasty_house or faith different from that of dynasty_house.<br>    dynasty_house=(dynasty house index) # Optional, must specify culture and faith if omitted<br>    skill={ (diplomacy) (stewardship) (martial) (intrigue) (learning) (prowess) } # One value for each skill<br>    prowess_age=(value) # Optional. Negative value.<br>    dna="(dna string)" # Optional<br>    mass=(value) # Optional, exclusive with weight<br>    weight={ # Optional, exclusive with mass<br>        base=(value)<br>        current=(value) # Optional<br>        target=(value) # Optional<br>    }<br><br>    sexuality=(value) # Optional. Defaults to heterosexual. Valid values: ho, bi, as, none. None is for children under 10.<br>    traits={ (trait index...) } # Optional. List of trait indices. Typically omitted for young children.<br>    recessive_traits = { (trait index...) } # Optional. List of trait indices<br>    inactive_traits = { (trait index...) } # Optional. List of trait indices<br>    <br>    # Optional (family_data)<br>    family_data={<br>        real_father=(character id) # Optional<br>        betrothed=(character id) # Optional<br>        primary_spouse=(character id) # Optional. Equal to one of the spouse ids.<br>        spouse=(character id) # Optional. First spouse<br>        spouse=(character id) # Optional. Second spouse<br>        spouse=(character id) # Optional. Third spouse<br>        spouse=(character id) # Optional. Fourth spouse<br>        concubine=(character id) # Optional. First concubine<br>        concubine=(character id) # Optional. Second concubine<br>        concubine=(character id) # Optional. Third concubine<br>        former_spouses={ (character id...) } # Optional. List of character ids<br>        former_concubines={ (character id...) } # Optional. List of character ids<br>        former_concubinists={ (character id...) } # Optional. List of character ids<br>        child = { (character id...) } # Optional. List of character ids<br>    }<br><br>    alive_data={<br><br>        # Optional (variables), contains flags<br>        variables={<br>            data={<br>                # (...)<br>            }<br>        }<br><br>        # Optional (modifiers), various locations in alive_data<br>        modifier={<br>            modifier="(modifier)"<br>            expiration_date=(date)<br>        }<br><br>        gold=(value) # Optional<br>        income=(value) # Optional<br>        location=(landed title index) # Optional<br>        stress=(value) # Optional<br>        fertility=(value)<br>        health=(value)<br>        piety={<br>            currency=(value)<br>            accumulated=(value) # Optional. Devotion<br>        }<br>        prestige={<br>            currency=(value) # Optional<br>            accumulated=(value) # Optional. Fame<br>        }<br>        focus={ # Optional<br>            type="(value)" # Education or lifestyle<br>            date=(date)<br>            changes=(value)<br>            progress=(value)<br>        }<br>        secrets= { (id...) } # Optional. List of ids<br>        targeting_secrets={ (id...) } # Optional. List of ids<br>        schemes={ (id...) } # Optional. List of ids<br>        targeting_schemes={ (id...) } # Optional. List of ids<br>        heir={ (ids...) } # Optional. List of ids<br>        pretender={ (ids...) } # Optional. List of ids<br>        claim={ { # Optional. List of claims<br>            title=(title id)<br>            pressed=yes # Optional<br>            }<br>        }<br>        used_punishments={ # Optional. List of reasons<br>            (value)={<br>                imprisonment_reason=yes # Optional<br>                revoke_title_reason=yes # Optional<br>            }<br>        }<br>        lifestyle_xp={ # Optional<br>            diplomacy_lifestyle=(value) # Optional<br>            martial_lifestyle=(value) # Optional<br>            stewardship_lifestyle=(value) # Optional<br>            intrigue_lifestyle=(value) # Optional<br>            learning_lifestyle=(value) # Optional<br>        }<br>        perk={ ... } # Optional. List of perks<br>        prison_data={ # Optional<br>            imprisoner=(character id)<br>            date=(date)<br>            imprison_type_date=(date)<br>            type="(value)" # house_arrest or dungeon<br>        }<br>        weight_update=(value) # Optional<br>        kills={ (character ids... } # Optional. List of character ids<br>        pool_history=(date) # Optional<br>        wars={ (value) (value) (value) (value) } # Optional<br>    } # End of alive_data block<br><br>    court_data={<br>        # All keys within this block are optional<br>        host=(value)<br>        employer=(character id)<br>        council_task=(council task index)<br>        special_council_tasks={ (value...) }<br>        army=(value)<br>        regiment=(regiment index)<br>        knight=yes<br>        wants_to_leave_court=yes<br>        leave_court_date=(date)<br>    }<br><br>    # Optional (landed_data)<br>    landed_data={<br>        domain={ (landed title index...) } # List of landed title indices<br>        vassal_contracts={ (values) } # List of values<br>        units= { (values...) } # Optional<br>        last_war_finish_date=(date) # Optional<br>        last_raid=(date) # Optional<br>        became_ruler_date=(date)<br>        laws={ "(law id)"... } # List of law ids<br>        strength=(value)<br>        strength_for_liege=(value) # Optional<br>        liege_tax=(value) # Optional<br>        balance=(value)<br>        dread=(value) # Optional<br>        known_schemes={ (ids...) } # Optional. List of ids<br>        succession={ (character id...) } # List of character ids<br>        is_powerful_vassal=yes # Optional<br>        vassal_power_value=(value) # Optional<br>        domain_limit=(value)<br>        vassal_limit=(value) # Optional<br>        vassals_towards_limit=(value) # Optional<br>        government="(government id)"<br>        realm_capital=(value)<br>        ai_allowed_to_marry=yes<br>        council={ (value...) } # List of values<br>        at_peace_penalty=(value)<br>        diplo_centers={ (value...) } # List of values<br>        election_titles={ (landed title index...) } # List of landed title indices<br>        absolute_control=yes # Optional<br>        interaction_cooldowns={ # Optional<br>            (interaction)=(date)<br>        }<br>    } # End of landed_data block<br><br>    # Optional (playable_data)<br>    playable_data={<br>        knights={ (character id...) } # List of character ids<br>        was_player=yes<br>    }<br><br>}</code></details> |
 | dead_unprunable | Contains character entries. |
-| characters | Contains the following sub-blocks:<br>* dead_prunable (contains character entries)<br>* prune_queue<br>* dummy_female (contains a character entry)<br>* dummy_male (contains a character entry)<br>* unborn (contains unborn data entries)<br>* natural_deaths<br>* current_natural_death<br>* sexuality_chances |
+| characters | Contains the following sub-blocks:<br>- dead_prunable (contains character entries)<br>- prune_queue<br>- dummy_female (contains a character entry)<br>- dummy_male (contains a character entry)<br>- unborn (contains unborn data entries)<br>- natural_deaths<br>- current_natural_death<br>- sexuality_chances |
 | units |  |
 | (triggered events) | Each triggered event has its own block, started using triggered_event={ |
-| played_character | Contains the following sub-blocks:<br>* name="..." *(variable)*<br>* character=(character id) *(variable)*<br>* player=(value) *(variable)*<br>* important_decisions<br>* legacy<br>* rally_points |
+| played_character | Contains the following sub-blocks:<br>- name="..." *(variable)*<br>- character=(character id) *(variable)*<br>- player=(value) *(variable)*<br>- important_decisions<br>- legacy<br>- rally_points |
 | currently_played_characters={ (character id...) } | List of character ids. |
-| armies | Contains the following sub-blocks:<br>* regiments<br>* army_regiments<br>* armies |
+| armies | Contains the following sub-blocks:<br>- regiments<br>- army_regiments<br>- armies |
 | activity_manager | database entry |
-| opinions | Contains the following sub-blocks:<br>* active_opinions (contains opinion entries) |
-| relations | Encompasses hooks, alliances, Contains the following sub-blocks:<br>* active_relations |
-| schemes | Contains the following sub-blocks:<br>* active (contains scheme entries) |
-| stories | Contains the following sub-blocks:<br>* active (contains story entries)<br>* next=(date) *(variable)* |
+| opinions | Contains the following sub-blocks:<br>- active_opinions (contains opinion entries) |
+| relations | Encompasses hooks, alliances, Contains the following sub-blocks:<br>- active_relations |
+| schemes | Contains the following sub-blocks:<br>- active (contains scheme entries) |
+| stories | Contains the following sub-blocks:<br>- active (contains story entries)<br>- next=(date) *(variable)* |
 | combats | combat_results ={}<br>combats={} |
-| pending_character_interactions | Contains the following sub-blocks:<br>* data<br>* player |
-| secrets | Contains the following sub-blocks:<br>* secrets (contains entries of secrets) *(repetition)*<br>** indices<br>*** type<br>*** target<br>**** type<br>**** identity=(id)<br>*** owner=(id)<br>*** relation_type<br>*** participants = { (ids)}<br>* known_secrets = {<br>** secret=(id)<br>** owner=(id) |
-| mercenary_company_manager | Contains the following sub-blocks:<br>* mercenary_companies |
+| pending_character_interactions | Contains the following sub-blocks:<br>- data<br>- player |
+| secrets | Contains the following sub-blocks:<br>- secrets (contains entries of secrets) *(repetition)*<br>   - indices<br>      - type<br>      - target<br>         - type<br>         - identity=(id)<br>      - owner=(id)<br>      - relation_type<br>      - participants = { (ids)}<br>- known_secrets = {<br>   - secret=(id)<br>   - owner=(id) |
+| mercenary_company_manager | Contains the following sub-blocks:<br>- mercenary_companies |
 | vassal_contracts | active={<br>id=contract_details<br>} |
-| religion | Contains the following sub-blocks:<br>* religions<br>* faiths<br>* great_holy_wars<br>* holy_sites |
-| wars | Contains the following sub-blocks:<br>* active_wars<br>* names |
-| sieges | Contains the following sub-blocks:<br>* sieges *(repetition)* |
+| religion | Contains the following sub-blocks:<br>- religions<br>- faiths<br>- great_holy_wars<br>- holy_sites |
+| wars | Contains the following sub-blocks:<br>- active_wars<br>- names |
+| sieges | Contains the following sub-blocks:<br>- sieges *(repetition)* |
 | succession |  |
 | holdings |  |
-| county_manager | Contains the following sub-blocks:<br>* counties<br>* monthly_increase (list of values) |
-| fleet_manager | Contains the following sub-blocks:<br>* fleets |
-| council_task_manager | Contains the following sub-blocks:<br>* active |
-| important_action_manager | Contains the following sub-blocks:<br>* active |
-| faction_manager | Contains the following sub-blocks:<br>* factions |
-| culture_manager | Contains the following sub-blocks:<br>* cultures<br>* template_cultures (list of numbers)<br>* era_discovery |
-| holy_orders | Contains the following sub-blocks:<br>* holy_orders<br>* religion_name<br>* faith_name |
-| ai | Contains the following sub-blocks:<br>* war_coordinator_db<br>* war_plan_db<br>* ai_stategies |
+| county_manager | Contains the following sub-blocks:<br>- counties<br>- monthly_increase (list of values) |
+| fleet_manager | Contains the following sub-blocks:<br>- fleets |
+| council_task_manager | Contains the following sub-blocks:<br>- active |
+| important_action_manager | Contains the following sub-blocks:<br>- active |
+| faction_manager | Contains the following sub-blocks:<br>- factions |
+| culture_manager | Contains the following sub-blocks:<br>- cultures<br>- template_cultures (list of numbers)<br>- era_discovery |
+| holy_orders | Contains the following sub-blocks:<br>- holy_orders<br>- religion_name<br>- faith_name |
+| ai | Contains the following sub-blocks:<br>- war_coordinator_db<br>- war_plan_db<br>- ai_stategies |
 | game_rules | Contains the save's current game rules. |
-| raid | Contains the following sub-blocks:<br>* raid *(repetition)* |
+| raid | Contains the following sub-blocks:<br>- raid *(repetition)* |
 | ironman_manager | Related to ironman saving. |
-| coat_of_arms | Contains the following sub-blocks:<br>* coat_of_arms_manager_name_map<br>* coat_of_arms_manager_database (ends at entry ~17278)<br>* next_id=(id) *(variable)* |
+| coat_of_arms | Contains the following sub-blocks:<br>- coat_of_arms_manager_name_map<br>- coat_of_arms_manager_database (ends at entry ~17278)<br>- next_id=(id) *(variable)* |
 | artifacts |  |
 | inspirations_manager |  |
 | court_positions |  |
@@ -452,6 +492,9 @@ The table below contains the possible first-level blocks in the gamestate file. 
 | epidemics |  |
 | legends |  |
 | next_player_event_id=(value) *(variable)* |  |
+
+
+</details>
 
 
 ## Mods with wiki pages
@@ -480,248 +523,6 @@ The table below contains the possible first-level blocks in the gamestate file. 
 
 
 Category:Modding
-
-
----
-
-## Extracted Code Blocks
-
-<a id="code-block-1"></a>
-### Code Block 1
-
-```json
-# Exact formatting in file is different in terms of spaces and lines
-# It is usually more compact.
-# It has been edited here for clarity and demonstration.
-
-
-# Index for titles starts at 0
-index={
-	key="(title id)" # The one used in 00_landed_titles.txt, e.g. k_england
-
-	de_facto_liege=(title index) # Optional
-	de_jure_liege=(title index) # Optional. The number at the start of a similar block, NOT the title id
-	de_jure_vassals={ (title index...) } # Optional, list of title indices.
-	holder="(character id)" # Optional
-
-	name="..."
-	adj="..." # Optional
-	pre="..." # Optional
-	article="..." # Optional
-
-	date=2020.10.27 # yyyy.mm.dd
-	heir={ (character id...) } # Optional. List of character ids.
-	claim={ (character id...) } # Optional
-	history = { (...) } # Optional 
-	capital=(province id)
-	capital_barony=yes # Optional
-	theocratic_lease=yes # Optional
-	history_government="(government id)" # Optional
-	laws={ "(law id)"... } # Optional. List of law ids.
-
-	# Optional (succession_election).
-	succession_election={
-		electors = {  (character id...) }
-		candidates={ (character id...) }
-		nominations={
-			{
-				elector=(character id)
-				candidate=(character id)
-				strength=(value)
-			}
-		
-		}
-	} # end of succession_election block
-
-	coat_of_arms_id=(coat of arms id)
-	localization_key="(localization key)" # Optional
-
-	# All below is used for mercenary bands
-	special={
-		type=mc
-		identity=(id)
-	}
-	color=rgb { (r) (g) (b) }
-	landless=yes
-	destroy_if_invalid_heir=yes
-	no_automatic_claims=yes
-	definite_form=yes
-}
-```
-
-<a id="code-block-2"></a>
-### Code Block 2
-
-```json
-index={
-	first_name="..."
-	birth=(date) # Format: yyy.m.d
-	female=yes # Optional
-	was_playable=yes # Optional
-	nickname="nick_..." # Optional
-	culture=(culture index) # Optional if dynasty_house is specified, defaults to dynasty_house culture. Required if no dynasty_house, or culture different from that of dynasty_house.
-	faith=(faith index) # Optional if dynasty_house is specified, defaults to dynasty_house faith.  Required if no dynasty_house or faith different from that of dynasty_house.
-	dynasty_house=(dynasty house index) # Optional, must specify culture and faith if omitted
-	skill={ (diplomacy) (stewardship) (martial) (intrigue) (learning) (prowess) } # One value for each skill
-	prowess_age=(value) # Optional. Negative value.
-	dna="(dna string)" # Optional
-	mass=(value) # Optional, exclusive with weight
-	weight={ # Optional, exclusive with mass
-		base=(value)
-		current=(value) # Optional
-		target=(value) # Optional
-	}
-
-	sexuality=(value) # Optional. Defaults to heterosexual. Valid values: ho, bi, as, none. None is for children under 10.
-	traits={ (trait index...) } # Optional. List of trait indices. Typically omitted for young children.
-	recessive_traits = { (trait index...) } # Optional. List of trait indices
-	inactive_traits = { (trait index...) } # Optional. List of trait indices
-	
-	# Optional (family_data)
-	family_data={
-		real_father=(character id) # Optional
-		betrothed=(character id) # Optional
-		primary_spouse=(character id) # Optional. Equal to one of the spouse ids.
-		spouse=(character id) # Optional. First spouse
-		spouse=(character id) # Optional. Second spouse
-		spouse=(character id) # Optional. Third spouse
-		spouse=(character id) # Optional. Fourth spouse
-		concubine=(character id) # Optional. First concubine
-		concubine=(character id) # Optional. Second concubine
-		concubine=(character id) # Optional. Third concubine
-		former_spouses={ (character id...) } # Optional. List of character ids
-		former_concubines={ (character id...) } # Optional. List of character ids
-		former_concubinists={ (character id...) } # Optional. List of character ids
-		child = { (character id...) } # Optional. List of character ids
-	}
-
-	alive_data={
-
-		# Optional (variables), contains flags
-		variables={
-			data={
-				# (...)
-			}
-		}
-
-		# Optional (modifiers), various locations in alive_data
-		modifier={
-			modifier="(modifier)"
-			expiration_date=(date)
-		}
-
-		gold=(value) # Optional
-		income=(value) # Optional
-		location=(landed title index) # Optional
-		stress=(value) # Optional
-		fertility=(value)
-		health=(value)
-		piety={
-			currency=(value)
-			accumulated=(value) # Optional. Devotion
-		}
-		prestige={
-			currency=(value) # Optional
-			accumulated=(value) # Optional. Fame
-		}
-		focus={ # Optional
-			type="(value)" # Education or lifestyle
-			date=(date)
-			changes=(value)
-			progress=(value)
-		}
-		secrets= { (id...) } # Optional. List of ids
-		targeting_secrets={ (id...) } # Optional. List of ids
-		schemes={ (id...) } # Optional. List of ids
-		targeting_schemes={ (id...) } # Optional. List of ids
-		heir={ (ids...) } # Optional. List of ids
-		pretender={ (ids...) } # Optional. List of ids
-		claim={ { # Optional. List of claims
-			title=(title id)
-			pressed=yes # Optional
-			}
-		}
-		used_punishments={ # Optional. List of reasons
-			(value)={
-				imprisonment_reason=yes # Optional
-				revoke_title_reason=yes # Optional
-			}
-		}
-		lifestyle_xp={ # Optional
-			diplomacy_lifestyle=(value) # Optional
-			martial_lifestyle=(value) # Optional
-			stewardship_lifestyle=(value) # Optional
-			intrigue_lifestyle=(value) # Optional
-			learning_lifestyle=(value) # Optional
-		}
-		perk={ ... } # Optional. List of perks
-		prison_data={ # Optional
-			imprisoner=(character id)
-			date=(date)
-			imprison_type_date=(date)
-			type="(value)" # house_arrest or dungeon
-		}
-		weight_update=(value) # Optional
-		kills={ (character ids... } # Optional. List of character ids
-		pool_history=(date) # Optional
-		wars={ (value) (value) (value) (value) } # Optional
-	} # End of alive_data block
-
-	court_data={
-		# All keys within this block are optional
-		host=(value)
-		employer=(character id)
-		council_task=(council task index)
-		special_council_tasks={ (value...) }
-		army=(value)
-		regiment=(regiment index)
-		knight=yes
-		wants_to_leave_court=yes
-		leave_court_date=(date)
-	}
-
-	# Optional (landed_data)
-	landed_data={
-		domain={ (landed title index...) } # List of landed title indices
-		vassal_contracts={ (values) } # List of values
-		units= { (values...) } # Optional
-		last_war_finish_date=(date) # Optional
-		last_raid=(date) # Optional
-		became_ruler_date=(date)
-		laws={ "(law id)"... } # List of law ids
-		strength=(value)
-		strength_for_liege=(value) # Optional
-		liege_tax=(value) # Optional
-		balance=(value)
-		dread=(value) # Optional
-		known_schemes={ (ids...) } # Optional. List of ids
-		succession={ (character id...) } # List of character ids
-		is_powerful_vassal=yes # Optional
-		vassal_power_value=(value) # Optional
-		domain_limit=(value)
-		vassal_limit=(value) # Optional
-		vassals_towards_limit=(value) # Optional
-		government="(government id)"
-		realm_capital=(value)
-		ai_allowed_to_marry=yes
-		council={ (value...) } # List of values
-		at_peace_penalty=(value)
-		diplo_centers={ (value...) } # List of values
-		election_titles={ (landed title index...) } # List of landed title indices
-		absolute_control=yes # Optional
-		interaction_cooldowns={ # Optional
-			(interaction)=(date)
-		}
-	} # End of landed_data block
-
-	# Optional (playable_data)
-	playable_data={
-		knights={ (character id...) } # List of character ids
-		was_player=yes
-	}
-
-}
-```
 
 ---
 

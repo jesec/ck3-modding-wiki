@@ -3,12 +3,41 @@
 > **Note:** Last verified for version 1.18
 
 
-![Commands console](https://ck3.paradoxwikis.com/File:Commands_console.png)
-Crusader Kings III offers a debug mode **(disabled by default)** that allows the inputting of console commands. This page lists the codes that may be input into the Console Window, a special debugging window that may be accessed in non-ironman games while in debug mode by pressing Shift+2, ALT+2+1, Shift+3, [§], [~], [^], [°], [²], or [`] (key varies based upon keyboard layout). For QWERTY keyboards, the key is [`]. Otherwise, Shift + Alt + C may work if the prior combinations did not. Press the up or down arrow keys to traverse through previously executed commands. Many codes can be turned off by repeating the command, but sometimes reloading the save or exiting the game is necessary.
+<figure>
+
+![Commands console](../assets/images/Commands_console.png)
+<figcaption>The console</figcaption>
+</figure>
+
+Crusader Kings III offers a debug mode **(disabled by default)** that allows the inputting of console commands. This page lists the codes that may be input into the Console Window, a special debugging window that may be accessed in non-ironman games while in debug mode by pressing Shift+2, ALT+2+1, Shift+3, [§], [~], [^], [°], [²], or [\`] (key varies based upon keyboard layout). For QWERTY keyboards, the key is [\`]. Otherwise, Shift + Alt + C may work if the prior combinations did not. Press the up or down arrow keys to traverse through previously executed commands. Many codes can be turned off by repeating the command, but sometimes reloading the save or exiting the game is necessary.
 
 Character IDs can be seen by hovering the cursor over a character with debug mode enabled.
 
-TOC
+- [Debug mode](#debug-mode)
+  - [Enabling debug mode](#enabling-debug-mode)
+    - [Mods](#mods)
+    - [Launcher](#launcher)
+    - [Steam](#steam)
+    - [Windows](#windows)
+    - [GOG](#gog)
+    - [Xbox Game Pass](#xbox-game-pass)
+  - [Disabling debug mode](#disabling-debug-mode)
+- [Debug info](#debug-info)
+  - [Characters](#characters)
+  - [Events](#events)
+  - [Interactions](#interactions)
+- [Cheats](#cheats)
+  - [Spawning artifacts](#spawning-artifacts)
+  - [Converting commands](#converting-commands)
+  - [Scripting commands](#scripting-commands)
+- [Testing commands](#testing-commands)
+- [Trait tags](#trait-tags)
+- [Innovation tags](#innovation-tags)
+- [Title Tags](#title-tags)
+  - [Finding title tags based on in-game name](#finding-title-tags-based-on-in-game-name)
+  - [Finding custom title tags](#finding-custom-title-tags)
+- [See also](#see-also)
+- [References](#references)
 
 
 ## Debug mode
@@ -58,11 +87,12 @@ Without Steam, on Windows:
 1. Right-click the shortcut, open Properties
 1. In the Target field add ``-debug_mode`` at the end (so it looks like this ``"...\ck3.exe" -debug_mode``)
 1. Launch the game using the shortcut
+
 Alternatively
 
 1. Go to your CK3 directory, "binaries" folder
 1. Right click to create a new text file in Notepad
-1. Add the following: ``start ck3.exe -debug_mode`` 
+1. Add the following: ``start ck3.exe -debug_mode``
 1. Go to File and click Save As
 1. Save As a batch file (.bat)
 1. Launch the game using the batch file
@@ -98,7 +128,7 @@ To simplify it, you can also create a batch (.bat) file with this command and ru
 
 ### Disabling debug mode
 
-To activate achivements again, disable all active mods and remove -debug_mode from launch options. After launching the game, make sure you have the [Patches](https://ck3.paradoxwikis.com/Patches). It can be found in the right corner in the Main Menu.
+To activate achivements again, disable all active mods and remove -debug_mode from launch options. After launching the game, make sure you have the [correct checksum](https://ck3.paradoxwikis.com/Patches). It can be found in the right corner in the Main Menu.
 
 
 ## Debug info
@@ -112,7 +142,7 @@ The following values are shown for characters under debug mode:
 
 | **Name** | **Description** |
 | --- | --- |
-| ID | The [Character ID](https://ck3.paradoxwikis.com/Character_ID). Used to reference them in events and console commands. |
+| ID | The [character's ID](https://ck3.paradoxwikis.com/Character_ID). Used to reference them in events and console commands. |
 | Historical ID |  |
 | Fertility | The character's [fertility](https://ck3.paradoxwikis.com/fertility) as a percentage. |
 | Health | The character's [health](https://ck3.paradoxwikis.com/health) as a number. Values are provided with one decimal place. |
@@ -236,13 +266,13 @@ Cheats are console commands that can be used to give unfair advantages as oppose
 | start_struggle | Starts [struggle id]. Pressing Tab reveals all struggle IDs. | [struggle id] | start_struggle iberian_struggle |
 | yesmen | AI characters accept all proposals. Entering it again disables it. | None | yesmen |
 | yesmen_instant | AI characters accept all proposals instantly. Entering it again disables it. | None | yesmen_instant |
-| **rtp****auh** change_treasury | Adds [amount] of treasury. Negative values lower it. | [amount] | change_treasury 500 |
-| **roc** add_pending_court_event | Adds a pending event to the player character's royal court. | None | add_pending_court_event |
-| **roc** effect change_current_court_grandeur = | Adds [amount] of court grandeur. Negative values lower it. | [amount] | effect change_current_court_grandeur = 10 |
-| **rtp** add_influence | Adds [amount] of influence to the player character. Negative values lower it. Default 1000. | [amount] | add_influence 16000 |
-| **rtp** change_provisions | Adds [amount] of provisions to the player character. Negative values lower it. | [amount] | change_provisions 2500 |
-| **auh** add_merit | Adds [amount] of merit to the player character. Negative values lower it. Default 1000. | [amount] | add_merit 10000 |
-| **auh** barter_goods | Adds [amount] of barter goods to the player character. Negative values lower it. Default 500. | [amount] | barter_goods 1000 |
+| ![rtp](../assets/icons/rtp.png)![auh](../assets/icons/auh.png) change_treasury | Adds [amount] of treasury. Negative values lower it. | [amount] | change_treasury 500 |
+| ![roc](../assets/icons/roc.png) add_pending_court_event | Adds a pending event to the player character's royal court. | None | add_pending_court_event |
+| ![roc](../assets/icons/roc.png) effect change_current_court_grandeur = | Adds [amount] of court grandeur. Negative values lower it. | [amount] | effect change_current_court_grandeur = 10 |
+| ![rtp](../assets/icons/rtp.png) add_influence | Adds [amount] of influence to the player character. Negative values lower it. Default 1000. | [amount] | add_influence 16000 |
+| ![rtp](../assets/icons/rtp.png) change_provisions | Adds [amount] of provisions to the player character. Negative values lower it. | [amount] | change_provisions 2500 |
+| ![auh](../assets/icons/auh.png) add_merit | Adds [amount] of merit to the player character. Negative values lower it. Default 1000. | [amount] | add_merit 10000 |
+| ![auh](../assets/icons/auh.png) barter_goods | Adds [amount] of barter goods to the player character. Negative values lower it. Default 500. | [amount] | barter_goods 1000 |
 
 
 ### Spawning artifacts
@@ -374,8 +404,8 @@ Script commands are typically more involved, and mostly used for setting up even
 
 | **Script** | **Effect** | **Parameters** | **Example** |
 | --- | --- | --- | --- |
-| ``effect title:(county id) = { set_county_faith = faith:(faith id)}`` | Changes the faith to [faith id] for a county [county id] | [title: county id], [faith: faith id] | ``effect title:(c_byzantion) = { set_county_faith = faith:(catholic)}`` |
-| ``effect spawn_army = { men_at_arms = { type = (men at arms type) = (amount) } location = capital_province }`` | Adds special soldiers | (men at arms type), (amount) | ``effect spawn_army = { men_at_arms = { type = huscarl men = 500 } location = capital_province }`` |
+| `effect title:(county id) = { set_county_faith = faith:(faith id)}` | Changes the faith to [faith id] for a county [county id] | [title: county id], [faith: faith id] | `effect title:(c_byzantion) = { set_county_faith = faith:(catholic)}` |
+| `effect spawn_army = { men_at_arms = { type = (men at arms type) = (amount) } location = capital_province }` | Adds special soldiers | (men at arms type), (amount) | `effect spawn_army = { men_at_arms = { type = huscarl men = 500 } location = capital_province }` |
 | effect province:(province_id) = { add_province_modifier = extra_building_slot } | Adds a building slot to the province (stackable) | [title: province id] | effect province:496 = { add_province_modifier = extra_building_slot } |
 | effect add_trait_xp = {trait = [x] value=[y]} | increases one-path leveled lifestyle trait experiences | [x]: leveled trait tag,[y]: experiences | effect add_trait_xp = {trait = lifestyle_blademaster value = 100}<br>leveled trait tag:<br>lifestyle_blademaster,lifestyle_reveler,lifestyle_physician,pilgrim,<br>lifestyle_mystic,lifestyle_hunter,lifestyle_traveler,tourney_participant |
 | effect add_trait_xp = {trait = [x] track=[y] value=[z]} | increases multiple-path leveled lifestyle trait experiences | [x]: leveled trait tag,[y]:trait path name ,[z]: experiences | effect add_trait_xp = {trait = lifestyle_hunter track=venator value=100}<br>lifestyle_hunter path name: venator,falconer<br><br>lifestyle_traveler path name: travel,danger<br><br>tourney_participant path name: bow,foot,horse,wit |
@@ -400,8 +430,7 @@ Testing commands are used for developer, beta tester or modder testing.
 | --- | --- | --- | --- |
 | clear | Clears console history. | None | clear |
 | dump_bookmark_portraits | Creates bookmark portraits of all current bookmark characters, stored in `Documents\Paradox Interactive\Crusader Kings III\common\bookmark_portraits`. Any changes applied through the barbershop will be kept. | None | dump_bookmark_portraits |
-| effect | Executes a scripted effect.
-To run the effect on a character other than the player, use either ``effect character:<character_id> = {<effect_name> = <parameters>}``, or pin the character you want to affect (unpinning all other characters) and use ``effect random_pinned_character = { <effects> }`<pre><code><br><br>Note: It was previously possible to write an effect with an equal sign and curly braces around the entire effect (e.g., </code></pre>`effect = { add_prestige = 100 }``), but this is no longer supported as of v. 1.18.0. You can still use curly braces inside of effects, but you can no longer write effects as ``effect = {}`` and must now write all effects like ``effect add_prestige = 100`` | [effect script] | effect test |
+| effect | Executes a scripted effect.<br>To run the effect on a character other than the player, use either `effect character:&lt;character_id> = {&lt;effect_name> = &lt;parameters&gt;}`, or pin the character you want to affect (unpinning all other characters) and use ``effect random_pinned_character = { &lt;effects> }`<code style="white-space: pre"><br><br>Note: It was previously possible to write an effect with an equal sign and curly braces around the entire effect (e.g., </code>`effect = { add_prestige = 100 }`), but this is no longer supported as of v. 1.18.0. You can still use curly braces inside of effects, but you can no longer write effects as `effect = {}` and must now write all effects like `effect add_prestige = 100`` | [effect script] | effect test |
 | faction_spawn | Spawns [faction type] if there are valid counties or courtiers to create it. | [faction type] | faction_spawn peasant_faction |
 | generate_cadet_coa | Generates a new coat of arms for the player character's house. | None | generate_cadet_coa |
 | guaranteed_scheme_failure | Schemes are never successful. | None | guaranteed_scheme_failure |
@@ -430,122 +459,122 @@ To run the effect on a character other than the player, use either ``effect char
 All traits have a tag that is referenced internally by the game. They can be found in ``game\common\traits\00_traits.txt``. A trait's tag typically matches its name. To get a trait's tag from its name, perform the following steps:
 - Replace spaces (`` ``) and dashes (``-``) with underscores (``_``)
 - Remove all apostrophes (``'``)
-- Turn all upper case letters into lower case (``A...Z->a...z``)
+- Turn all upper case letters into lower case (``A...Z-&gt;a...z``)
 
 Traits that do not follow this pattern have been listed below for reference.
 
 | **Trait (education)** | **Tag** |
 | --- | --- |
-| **Naive Appeaser** | education_diplomacy_1 |
-| **Adequate Bargainer** | education_diplomacy_2 |
-| **Charismatic Negotiator** | education_diplomacy_3 |
-| **Grey Eminence** | education_diplomacy_4 |
-| **Virtuoso Arbitrator** | education_diplomacy_5 |
-| **Misguided Warrior** | education_martial_1 |
-| **Tough Soldier** | education_martial_2 |
-| **Skilled Tactician** | education_martial_3 |
-| **Brilliant Strategist** | education_martial_4 |
-| **Exalted Warlord** | education_martial_5 |
-| **Indulgent Wastrel** | education_stewardship_1 |
-| **Thrifty Clerk** | education_stewardship_2 |
-| **Fortune Builder** | education_stewardship_3 |
-| **Midas Touched** | education_stewardship_4 |
-| **Golden Sovereign** | education_stewardship_5 |
-| **Amateurish Plotter** | education_intrigue_1 |
-| **Flamboyant Trickster** | education_intrigue_2 |
-| **Intricate Webweaver** | education_intrigue_3 |
-| **Elusive Shadow** | education_intrigue_4 |
-| **Conniving Puppetmaster** | education_intrigue_5 |
-| **Conscientious Scribe** | education_learning_1 |
-| **Insightful Thinker** | education_learning_2 |
-| **Astute Intellectual** | education_learning_3 |
-| **Mastermind Philosopher** | education_learning_4 |
-| **Erudite Oracle** | education_learning_5 |
-| **Bumbling Squire** | education_martial_prowess_1 |
-| **Confident Knight** | education_martial_prowess_2 |
-| **Formidable Banneret** | education_martial_prowess_3 |
-| **Famous Champion** | education_martial_prowess_4 |
-| **Town Dweller** | education_republican_knowledge_1 |
-| **Mayor Trainee** | education_republican_knowledge_2 |
-| **Town Maven** | education_republican_knowledge_3 |
-| **Republican Heir** | education_republican_knowledge_4 |
+| ![Naive Appeaser](../assets/icons/Naive_Appeaser.png) | education_diplomacy_1 |
+| ![Adequate Bargainer](../assets/icons/Adequate_Bargainer.png) | education_diplomacy_2 |
+| ![Charismatic Negotiator](../assets/icons/Charismatic_Negotiator.png) | education_diplomacy_3 |
+| ![Grey Eminence](../assets/icons/Grey_Eminence.png) | education_diplomacy_4 |
+| ![Virtuoso Arbitrator](../assets/icons/Virtuoso_Arbitrator.png) | education_diplomacy_5 |
+| ![Misguided Warrior](../assets/icons/Misguided_Warrior.png) | education_martial_1 |
+| ![Tough Soldier](../assets/icons/Tough_Soldier.png) | education_martial_2 |
+| ![Skilled Tactician](../assets/icons/Skilled_Tactician.png) | education_martial_3 |
+| ![Brilliant Strategist](../assets/icons/Brilliant_Strategist.png) | education_martial_4 |
+| ![Exalted Warlord](../assets/icons/Exalted_Warlord.png) | education_martial_5 |
+| ![Indulgent Wastrel](../assets/icons/Indulgent_Wastrel.png) | education_stewardship_1 |
+| ![Thrifty Clerk](../assets/icons/Thrifty_Clerk.png) | education_stewardship_2 |
+| ![Fortune Builder](../assets/icons/Fortune_Builder.png) | education_stewardship_3 |
+| ![Midas Touched](../assets/icons/Midas_Touched.png) | education_stewardship_4 |
+| ![Golden Sovereign](../assets/icons/Golden_Sovereign.png) | education_stewardship_5 |
+| ![Amateurish Plotter](../assets/icons/Amateurish_Plotter.png) | education_intrigue_1 |
+| ![Flamboyant Trickster](../assets/icons/Flamboyant_Trickster.png) | education_intrigue_2 |
+| ![Intricate Webweaver](../assets/icons/Intricate_Webweaver.png) | education_intrigue_3 |
+| ![Elusive Shadow](../assets/icons/Elusive_Shadow.png) | education_intrigue_4 |
+| ![Conniving Puppetmaster](../assets/icons/Conniving_Puppetmaster.png) | education_intrigue_5 |
+| ![Conscientious Scribe](../assets/icons/Conscientious_Scribe.png) | education_learning_1 |
+| ![Insightful Thinker](../assets/icons/Insightful_Thinker.png) | education_learning_2 |
+| ![Astute Intellectual](../assets/icons/Astute_Intellectual.png) | education_learning_3 |
+| ![Mastermind Philosopher](../assets/icons/Mastermind_Philosopher.png) | education_learning_4 |
+| ![Erudite Oracle](../assets/icons/Erudite_Oracle.png) | education_learning_5 |
+| ![Bumbling Squire](../assets/icons/Bumbling_Squire.png) | education_martial_prowess_1 |
+| ![Confident Knight](../assets/icons/Confident_Knight.png) | education_martial_prowess_2 |
+| ![Formidable Banneret](../assets/icons/Formidable_Banneret.png) | education_martial_prowess_3 |
+| ![Famous Champion](../assets/icons/Famous_Champion.png) | education_martial_prowess_4 |
+| ![Town Dweller](../assets/icons/Town_Dweller.png) | education_republican_knowledge_1 |
+| ![Mayor Trainee](../assets/icons/Mayor_Trainee.png) | education_republican_knowledge_2 |
+| ![Town Maven](../assets/icons/Town_Maven.png) | education_republican_knowledge_3 |
+| ![Republican Heir](../assets/icons/Republican_Heir.png) | education_republican_knowledge_4 |
 
 
 | **Trait (congenital)** | **Tag** |
 | --- | --- |
-| **Homely** | beauty_bad_1 |
-| **Ugly** | beauty_bad_2 |
-| **Hideous** | beauty_bad_3 |
-| **Comely** | beauty_good_1 |
-| **Handsome** / Pretty | beauty_good_2 |
-| **Beautiful** | beauty_good_3 |
-| **Slow** | intellect_bad_1 |
-| **Stupid** | intellect_bad_2 |
-| **Imbecile** | intellect_bad_3 |
-| **Quick** | intellect_good_1 |
-| **Intelligent** | intellect_good_2 |
-| **Genius** | intellect_good_3 |
-| **Delicate** | physique_bad_1 |
-| **Frail** | physique_bad_2 |
-| **Feeble** | physique_bad_3 |
-| **Hale** | physique_good_1 |
-| **Robust** | physique_good_2 |
-| **Amazonian** / Herculean | physique_good_3 |
-| **Melancholic** | depressed_1 / depressed_genetic |
-| **Lunatic** | lunatic_1 / lunatic_genetic |
-| **Possessed** | possessed_1 / possessed_genetic |
-| **Sterile** / Barren | infertile |
+| ![Homely](../assets/icons/Homely.png) | beauty_bad_1 |
+| ![Ugly](../assets/icons/Ugly.png) | beauty_bad_2 |
+| ![Hideous](../assets/icons/Hideous.png) | beauty_bad_3 |
+| ![Comely](../assets/icons/Comely.png) | beauty_good_1 |
+| ![Handsome](../assets/icons/Handsome.png) / Pretty | beauty_good_2 |
+| ![Beautiful](../assets/icons/Beautiful.png) | beauty_good_3 |
+| ![Slow](../assets/icons/Slow.png) | intellect_bad_1 |
+| ![Stupid](../assets/icons/Stupid.png) | intellect_bad_2 |
+| ![Imbecile](../assets/icons/Imbecile.png) | intellect_bad_3 |
+| ![Quick](../assets/icons/Quick.png) | intellect_good_1 |
+| ![Intelligent](../assets/icons/Intelligent.png) | intellect_good_2 |
+| ![Genius](../assets/icons/Genius.png) | intellect_good_3 |
+| ![Delicate](../assets/icons/Delicate.png) | physique_bad_1 |
+| ![Frail](../assets/icons/Frail.png) | physique_bad_2 |
+| ![Feeble](../assets/icons/Feeble.png) | physique_bad_3 |
+| ![Hale](../assets/icons/Hale.png) | physique_good_1 |
+| ![Robust](../assets/icons/Robust.png) | physique_good_2 |
+| ![Amazonian](../assets/icons/Amazonian.png) / Herculean | physique_good_3 |
+| ![Melancholic](../assets/icons/Melancholic.png) | depressed_1 / depressed_genetic |
+| ![Lunatic](../assets/icons/Lunatic.png) | lunatic_1 / lunatic_genetic |
+| ![Possessed](../assets/icons/Possessed.png) | possessed_1 / possessed_genetic |
+| ![Sterile](../assets/icons/Sterile.png) / Barren | infertile |
 
 
 | **Trait (other)** | **Tag** |
 | --- | --- |
-| **Blademaster** | lifestyle_blademaster |
-| **Hunter** | lifestyle_hunter |
-| **Wise Man** / Wise Woman | lifestyle_mystic |
-| **Eager Reveler** | lifestyle_reveler |
-| **Novice Physician** | lifestyle_physician |
-| **Herbalist** | lifestyle_herbalist |
-| **Gardener** | lifestyle_gardener |
-| **Patriarch** / Matriarch | family_first |
-| **Dynastic Kinslayer** | kinslayer_1 |
-| **Familial Kinslayer** | kinslayer_2 |
-| **Kinslayer** | kinslayer_3 |
-| **Wounded** | wounded_1 |
-| **Severely Injured** | wounded_2 |
-| **Brutally Mauled** | wounded_3 |
-| **Monk** / Nun | devoted |
-| **Crusader**<br>**Mujahid**<br>**Warrior of the Faith** | faith_warrior |
-| **Holy Monarch** | crusader_king |
-| **Bloody Flux** | dysentery |
-| **Club-footed** | clubfooted |
-| **Holy Fire** | ergotism |
-| **Pneumonia** | pneumonic |
-| **The Savior** | savior |
-| **Raider** / Viking | viking |
-| **Child of Concubine** | child_of_concubine_female |
-| **Child of Consort** | child_of_concubine_male |
-| **Venerated Ancestor** / Saint | saint |
-| ![Trait the wake](https://ck3.paradoxwikis.com/File:Trait_the_wake.png) Exiled | the_wake |
-| **Accused of Decadence** | decadent |
-| **Extolled by House** | extolled |
-| **adventurer** Former Adventurer | adventurer |
-| **Follower** | adventurer_follower |
-| ![Diplomatic court 1](https://ck3.paradoxwikis.com/File:Diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
-| ![Diplomatic court 1](https://ck3.paradoxwikis.com/File:Diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
-| ![Warlike court 1](https://ck3.paradoxwikis.com/File:Warlike_court_1.png) Warlike Courtier | warlike_court_1 |
-| ![Warlike court 1](https://ck3.paradoxwikis.com/File:Warlike_court_1.png) Valued Warlike Courtier | warlike_court_2 |
-| ![Administrative court 1](https://ck3.paradoxwikis.com/File:Administrative_court_1.png) Administrative Courtier | administrative_court_1 |
-| ![Administrative court 1](https://ck3.paradoxwikis.com/File:Administrative_court_1.png) Valued Administrative Courtier | administrative_court_2 |
-| ![Intrigue court 1](https://ck3.paradoxwikis.com/File:Intrigue_court_1.png) Intrigue Courtier | intrigue_court_1 |
-| ![Intrigue court 1](https://ck3.paradoxwikis.com/File:Intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
-| ![Scholarly court 1](https://ck3.paradoxwikis.com/File:Scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
-| ![Scholarly court 1](https://ck3.paradoxwikis.com/File:Scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
-| **Hastiluder** | tourney_participant |
-| **Detractor of the Caliphate** | fp3_struggle_detractor |
-| **Supporter of Caliphal Authority** | fp3_struggle_supporter |
-| **Inspector** | lifestyle_surveyor |
-| **Wayfarer** | lifestyle_wayfarer |
-| **Voyager** | lifestyle_voyager |
+| ![Blademaster](../assets/icons/Blademaster.png) | lifestyle_blademaster |
+| ![Hunter](../assets/icons/Hunter.png) | lifestyle_hunter |
+| ![Wise Man](../assets/icons/Wise_Man.png) / Wise Woman | lifestyle_mystic |
+| ![Eager Reveler](../assets/icons/Eager_Reveler.png) | lifestyle_reveler |
+| ![Novice Physician](../assets/icons/Novice_Physician.png) | lifestyle_physician |
+| ![Herbalist](../assets/icons/Herbalist.png) | lifestyle_herbalist |
+| ![Gardener](../assets/icons/Gardener.png) | lifestyle_gardener |
+| ![Patriarch](../assets/icons/Patriarch.png) / Matriarch | family_first |
+| ![Dynastic Kinslayer](../assets/icons/Dynastic_Kinslayer.png) | kinslayer_1 |
+| ![Familial Kinslayer](../assets/icons/Familial_Kinslayer.png) | kinslayer_2 |
+| ![Kinslayer](../assets/icons/Kinslayer.png) | kinslayer_3 |
+| ![Wounded](../assets/icons/Wounded.png) | wounded_1 |
+| ![Severely Injured](../assets/icons/Severely_Injured.png) | wounded_2 |
+| ![Brutally Mauled](../assets/icons/Brutally_Mauled.png) | wounded_3 |
+| ![Monk](../assets/icons/Monk.png) / Nun | devoted |
+| ![Crusader](../assets/icons/Crusader.png)<br>![Mujahid](../assets/icons/Mujahid.png)<br>![Warrior of the Faith](../assets/icons/Warrior_of_the_Faith.png) | faith_warrior |
+| ![Holy Monarch](../assets/icons/Holy_Monarch.png) | crusader_king |
+| ![Bloody Flux](../assets/icons/Bloody_Flux.png) | dysentery |
+| ![Club-footed](../assets/icons/Club-footed.png) | clubfooted |
+| ![Holy Fire](../assets/icons/Holy_Fire.png) | ergotism |
+| ![Pneumonia](../assets/icons/Pneumonia.png) | pneumonic |
+| ![The Savior](../assets/icons/The_Savior.png) | savior |
+| ![Raider](../assets/icons/Raider.png) / Viking | viking |
+| ![Child of Concubine](../assets/icons/Child_of_Concubine.png) | child_of_concubine_female |
+| ![Child of Consort](../assets/icons/Child_of_Consort.png) | child_of_concubine_male |
+| ![Venerated Ancestor](../assets/icons/Venerated_Ancestor.png) / Saint | saint |
+| ![Trait the wake](../assets/images/Trait_the_wake.png) Exiled | the_wake |
+| ![Accused of Decadence](../assets/icons/Accused_of_Decadence.png) | decadent |
+| ![Extolled by House](../assets/icons/Extolled_by_House.png) | extolled |
+| ![adventurer](../assets/icons/adventurer.png) Former Adventurer | adventurer |
+| ![Follower](../assets/icons/Follower.png) | adventurer_follower |
+| ![Diplomatic court 1](../assets/images/Diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
+| ![Diplomatic court 1](../assets/images/Diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
+| ![Warlike court 1](../assets/images/Warlike_court_1.png) Warlike Courtier | warlike_court_1 |
+| ![Warlike court 1](../assets/images/Warlike_court_1.png) Valued Warlike Courtier | warlike_court_2 |
+| ![Administrative court 1](../assets/images/Administrative_court_1.png) Administrative Courtier | administrative_court_1 |
+| ![Administrative court 1](../assets/images/Administrative_court_1.png) Valued Administrative Courtier | administrative_court_2 |
+| ![Intrigue court 1](../assets/images/Intrigue_court_1.png) Intrigue Courtier | intrigue_court_1 |
+| ![Intrigue court 1](../assets/images/Intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
+| ![Scholarly court 1](../assets/images/Scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
+| ![Scholarly court 1](../assets/images/Scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
+| ![Hastiluder](../assets/icons/Hastiluder.png) | tourney_participant |
+| ![Detractor of the Caliphate](../assets/icons/Detractor_of_the_Caliphate.png) | fp3_struggle_detractor |
+| ![Supporter of Caliphal Authority](../assets/icons/Supporter_of_Caliphal_Authority.png) | fp3_struggle_supporter |
+| ![Inspector](../assets/icons/Inspector.png) | lifestyle_surveyor |
+| ![Wayfarer](../assets/icons/Wayfarer.png) | lifestyle_wayfarer |
+| ![Voyager](../assets/icons/Voyager.png) | lifestyle_voyager |
 
 
 ## Innovation tags
@@ -558,24 +587,24 @@ Innovation IDs usually match their name. The following innovations use a differe
 
 | **Innovation** | **Tag** |
 | --- | --- |
-| ![Innovation majesty 02](https://ck3.paradoxwikis.com/File:Innovation_majesty_02.png) Currency | innovation_currency_01 |
-| ![Innovation civil construction 01](https://ck3.paradoxwikis.com/File:Innovation_civil_construction_01.png) Public Works | innovation_development_01 |
-| ![Innovation siege weapons](https://ck3.paradoxwikis.com/File:Innovation_siege_weapons.png) Onager | innovation_catapult |
-| ![Innovation special maa 02](https://ck3.paradoxwikis.com/File:Innovation_special_maa_02.png) Chu-ko-nu | innovation_repeating_crossbow |
-| ![Innovation special maa 01](https://ck3.paradoxwikis.com/File:Innovation_special_maa_01.png) Defensive Tactics | innovation_mobile_guards |
-| ![Innovation special maa 01](https://ck3.paradoxwikis.com/File:Innovation_special_maa_01.png) Konni Raids | innovation_hussar_raids |
-| ![Innovation misc inventions](https://ck3.paradoxwikis.com/File:Innovation_misc_inventions.png) Longships | innovation_longboats |
-| ![Innovation majesty 01](https://ck3.paradoxwikis.com/File:Innovation_majesty_01.png) West African Canoes | innovation_african_canoes |
-| ![Innovation nobility 01](https://ck3.paradoxwikis.com/File:Innovation_nobility_01.png) Coinage | innovation_currency_02 |
-| ![Innovation nobility 03](https://ck3.paradoxwikis.com/File:Innovation_nobility_03.png) Communal Development | innovation_development_02 |
-| ![Innovation maa 01](https://ck3.paradoxwikis.com/File:Innovation_maa_01.png) Household Soldiers | innovation_house_soldiers |
-| ![Innovation maa 02](https://ck3.paradoxwikis.com/File:Innovation_maa_02.png) Desert Mountain Practices | innovation_desert_mountain_herding |
-| ![Innovation majesty 03](https://ck3.paradoxwikis.com/File:Innovation_majesty_03.png) Stammesherzogtum | innovation_stem_duchies |
-| ![Innovation majesty 02](https://ck3.paradoxwikis.com/File:Innovation_majesty_02.png) Banking | innovation_currency_03 |
-| ![Innovation civil construction 01](https://ck3.paradoxwikis.com/File:Innovation_civil_construction_01.png) Urbanization | innovation_development_03 |
-| ![Innovation misc inventions](https://ck3.paradoxwikis.com/File:Innovation_misc_inventions.png) Ostsiedlung | innovation_east_settling |
-| ![Innovation administration 01](https://ck3.paradoxwikis.com/File:Innovation_administration_01.png) Promissory Notes | innovation_currency_04 |
-| ![Innovation misc inventions](https://ck3.paradoxwikis.com/File:Innovation_misc_inventions.png) Renaissance Thought | innovation_development_04 |
+| ![Innovation majesty 02](../assets/images/Innovation_majesty_02.png) Currency | innovation_currency_01 |
+| ![Innovation civil construction 01](../assets/images/Innovation_civil_construction_01.png) Public Works | innovation_development_01 |
+| ![Innovation siege weapons](../assets/images/Innovation_siege_weapons.png) Onager | innovation_catapult |
+| ![Innovation special maa 02](../assets/images/Innovation_special_maa_02.png) Chu-ko-nu | innovation_repeating_crossbow |
+| ![Innovation special maa 01](../assets/images/Innovation_special_maa_01.png) Defensive Tactics | innovation_mobile_guards |
+| ![Innovation special maa 01](../assets/images/Innovation_special_maa_01.png) Konni Raids | innovation_hussar_raids |
+| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Longships | innovation_longboats |
+| ![Innovation majesty 01](../assets/images/Innovation_majesty_01.png) West African Canoes | innovation_african_canoes |
+| ![Innovation nobility 01](../assets/images/Innovation_nobility_01.png) Coinage | innovation_currency_02 |
+| ![Innovation nobility 03](../assets/images/Innovation_nobility_03.png) Communal Development | innovation_development_02 |
+| ![Innovation maa 01](../assets/images/Innovation_maa_01.png) Household Soldiers | innovation_house_soldiers |
+| ![Innovation maa 02](../assets/images/Innovation_maa_02.png) Desert Mountain Practices | innovation_desert_mountain_herding |
+| ![Innovation majesty 03](../assets/images/Innovation_majesty_03.png) Stammesherzogtum | innovation_stem_duchies |
+| ![Innovation majesty 02](../assets/images/Innovation_majesty_02.png) Banking | innovation_currency_03 |
+| ![Innovation civil construction 01](../assets/images/Innovation_civil_construction_01.png) Urbanization | innovation_development_03 |
+| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Ostsiedlung | innovation_east_settling |
+| ![Innovation administration 01](../assets/images/Innovation_administration_01.png) Promissory Notes | innovation_currency_04 |
+| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Renaissance Thought | innovation_development_04 |
 
 
 ## Title Tags
@@ -588,11 +617,11 @@ All titles have an internal title tag that can be found in ``game\common\landed_
 
 | **Rank** | **Prefix** | **Example** |
 | --- | --- | --- |
-| **Barony** | ``b_`` | ``Wigmore -> b_wigmore`` |
-| **County** | ``c_`` | ``Sundgau -> c_sundgau`` |
-| **Duchy** | ``d_`` | ``Sicily -> d_sicily`` |
-| **Kingdom** | ``k_`` | ``Denmark -> k_denmark`` |
-| **Empire** | ``e_`` | ``Persia -> e_persia`` |
+| ![Barony](../assets/icons/Barony.png) | `b_` | `Wigmore -> b_wigmore` |
+| ![County](../assets/icons/County.png) | `c_` | `Sundgau -> c_sundgau` |
+| ![Duchy](../assets/icons/Duchy.png) | `d_` | `Sicily -> d_sicily` |
+| ![Kingdom](../assets/icons/Kingdom.png) | `k_` | `Denmark -> k_denmark` |
+| ![Empire](../assets/icons/Empire.png) | `e_` | `Persia -> e_persia` |
 
 
 Title Tags can also be seen in their respective title lists:
@@ -606,22 +635,22 @@ Title Tags can also be seen in their respective title lists:
 
 The title ID may not match the title's name in-game. For example, the player may have their game set to a language other than English or a title has a culture-specific name. Use the following steps to find a title ID purely on its in-game name:
 - Navigate to the file located at ``game\localization\LANGUAGE\titles_l_LANGUAGE.yml``, replacing ``LANGUAGE`` with your game language.
-- Open the file with a text editor like Notepad++ and search for any instances of the in-game name using [CTRL] + [F].
+[CTRL][F]- Open the file with a text editor like Notepad++ and search for any instances of the in-game name using  + .
 - If you managed to find a match:
-    - The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
-    - The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
+   - The line should look similar to `` b_my_barony_name:0 "In-game name for barony"``.
+   - The title ID is the word before the ``:0``, therefore being ``b_my_barony_name`` in this example.
 - If you could not find a match:
-    - Close the file.
-    - In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
-    - Repeat your search for the title's in-game name in this file.
-    - When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
-    - Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
-    - Close the file.
-    - Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
-    - Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
-    - The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
-    - Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
-    - The word in place of ``b_london`` is your title ID.
+   - Close the file.
+   - In the same folder as the previous file, open the file ``titles_cultural_names_l_LANGUAGE.yml``, replacing ``LANGUAGE`` appropriately.
+   - Repeat your search for the title's in-game name in this file.
+   - When you find a match, it should look like so: `` cn_lunden:0 "Lunden"``.
+   - Remember/copy the word before the ``:0`` (in this example, ``cn_lunden``); this is a *cultural name key* of the title.
+   - Close the file.
+   - Navigate to the file ``game\common\landed_titles\00_landed_titles.txt`` and open it with your text editor.
+   - Perform a search for the *cultural name key* you found in the previous file (e.g., ``cn_lunden``).
+   - The search query should land within a block named ``cultural_names`` enclosed by curly brackets (``{``, ``}``).
+   - Read the lines above until you reach another start of a block (denoted by ``b_london = {``). Ignore any blocks like ``color = {`` or ``color2 ={``.
+   - The word in place of ``b_london`` is your title ID.
 
 
 ### Finding custom title tags

@@ -14,14 +14,15 @@ Localization files:
 - use .yml format
 - must use UTF-8 BOM encoding. It is often displayed at the bottom right in text editors. Look also for Select Encoding or Save With Encoding options.
 - are saved to ``localization/`` folder, and the right language subfolder. E.g ``localization/english``
-- must  include ``l_<language>`` in their name. E.g. ``my_locs_l_english.yml`` or ``my_locs_l_french.yml``
-- must start with the same ``l_<language>:`` on the first line. E.g.
+- must  include ``l_&lt;language&gt;`` in their name. E.g. ``my_locs_l_english.yml`` or ``my_locs_l_french.yml``
+
 
 ```c
 l_english:
  text_example: "Example text"
 ```
 
+- must start with the same ``l_&lt;language&gt;:`` on the first line. E.g.
 
 Note ``l_`` is a small L, not 1 or capital i. ``localization`` is also spelled with a z, not s.
 
@@ -34,6 +35,7 @@ Hello
 
 World
 ```
+
 ``\n`` only works in localization files, not when put directly in UI.
 
 If a mod doesn't include localization for other languages, the game will display unlocalized keys for those playing in another language. To prevent this, copy all locs to other language folders, replacing l_english in both file names and on the first line. Modding discord has a script to do it quickly.
@@ -52,6 +54,7 @@ murder_successful_roll_tt:0 "[target.GetShortUINameNoTooltip] is killed!"
  murder_become_discovered_roll_tt:0 "#N My involvement is discovered#!"
 ```
 
+
 The number after the: is optional and it does nothing for modders. Paradox used to use those numbers for their translation teams to indicate new versions of localization. This is now completely deprecated, you do not need to add any numbers.
 
 The part between [ ] is code that looks up something in the game (in this case a character's name) and puts it in the text. The ``#N`` and ``#!`` control how the text is displayed; in this case as something "negative" (bad for the player). See the sections below for more details on those.
@@ -61,9 +64,35 @@ Most of the formatting styles can be found in ``gui/preload/textformatting.gui``
 A few more are defined in ``Crusader Kings III/jomini/gui/jomini/basetextformatting.gui``.
 
 
+- [Formatting](#formatting)
+- [Re-use other entries](#re-use-other-entries)
+- [Data Types](#data-types)
+  - [Gender](#gender)
+  - [Character names](#character-names)
+  - [Arguments](#arguments)
+- [Special Characters](#special-characters)
+- [Linking](#linking)
+  - [Game Concepts](#game-concepts)
+  - [Example Custom Game Concept](#example-custom-game-concept)
+  - [common\game_concepts\MY_game_concepts.txt](#commongame_conceptsmy_game_conceptstxt)
+  - [localization\english\MY_l_english.yml](#localizationenglishmy_l_englishyml)
+  - [Traits](#traits)
+  - [Titles](#titles)
+- [Rounding numbers](#rounding-numbers)
+- [Icons](#icons)
+- [Usage of special characters & Line breaks](#usage-of-special-characters-line-breaks)
+- [Chinese punctuation](#chinese-punctuation)
+- [References](#references)
+
+
 ## Formatting
 
-![Example of all formatting styles in the game](https://ck3.paradoxwikis.com/File:Text_formatting_1.11.png)Localization strings can contain formatting directives. Text formatting should begin with a ``#`` character and end with ``#!``.
+<figure>
+
+![Text formatting 1.11](../assets/images/Text_formatting_1.11.png)
+<figcaption>Example of all formatting styles in the game</figcaption>
+</figure>
+Localization strings can contain formatting directives. Text formatting should begin with a ``#`` character and end with ``#!``.
 
 Make sure to add a space before the text!
 
@@ -75,12 +104,13 @@ Example:
 1. P Green#!
 ```
 
-See [Localization]() below for more details.
+
+See [Special Characters]() below for more details.
 
 
 ## Re-use other entries
 
-Insert other localization keys: $<other key>$
+Insert other localization keys: $&lt;other key&gt;$
 
 Example:
 
@@ -99,7 +129,8 @@ The same $ notation is used to refer to special values supplied by the game engi
 tooltip_feudal_elector_anti_vote_ruler_lunatic:1 "I do not trust the judgment of a [GetTrait('lunatic_1').GetName( candidate.Self )] ruler: $VALUE|=+0$"
 ```
 
-Here ``$VALUE$`` is a number supplied by the game, and the <code>|=+0`` part controls how that number is shown (see "Rounding numbers" below for details). Special values like this can only be used in localization entries that are shown in specific contexts; in this case, on the elective title voting screen.
+
+Here ``$VALUE$`` is a number supplied by the game, and the &lt;code>|=+0`` part controls how that number is shown (see "Rounding numbers" below for details). Special values like this can only be used in localization entries that are shown in specific contexts; in this case, on the elective title voting screen.
 
 
 ## Data Types
@@ -112,6 +143,7 @@ Data types need to be scoped, usually to a character. Example:
 ```
 [ROOT.Char.GetLadyLord] [ROOT.Char.GetNamePossessiveRegnal] [ROOT.Char.GetFirstNameNicknamed]
 ```
+
 Use console command ``dump_data_types`` to print out all data types to your logs folder: Documents\Paradox Interactive\Crusader Kings III\logs\data_types.
 
 The logs will show where certain types can be used and what they return: another type, a string, an integer, etc.
@@ -130,9 +162,8 @@ Data types can also be looked up in the game with ``data_types_explorer`` consol
 These functions will show text that vary based on the gender of the character in scope.
 
 
-|  |
-| --- |
 | **Function** |
+| --- |
 | GetHerHim |
 | GetHerHis |
 | GetHerHisMy |
@@ -149,9 +180,12 @@ These functions will show text that vary based on the gender of the character in
 These functions will show some variation of the name of the character. This is not a complete list.
 
 
-|  |
-| --- |
+<details>
+<summary>Show/Hide</summary>
+
+
 | **Function** |
+| --- |
 | GetFirstName |
 | GetFirstNameBase |
 | GetFirstNameNicknamed |
@@ -252,6 +286,9 @@ These functions will show some variation of the name of the character. This is n
 | GetNameRegnal |
 
 
+</details>
+
+
 ### Arguments
 
 Arguments are used to modify the output of a function. They always go at the end of a function.
@@ -259,8 +296,8 @@ Arguments are used to modify the output of a function. They always go at the end
 
 | **Argument** | **Description** | **Example** | **Without Argument** | **With Argument** |
 | --- | --- | --- | --- | --- |
-| <pre>|U</pre> | Sets first letter to uppercase | `Tea is ready, my [ROOT.Char.GetLadyLord\|U].` | Tea is ready, my lady. | Tea is ready, my Lady. |
-| <pre>|L</pre> | Sets first letter to lowecase | `Tea is ready. [ROOT.Char.GetSheHe\|L] said.` | Tea is ready. He said. | Tea is ready. he said. |
+| &lt;pre>|U</pre> | Sets first letter to uppercase | `Tea is ready, my [ROOT.Char.GetLadyLord|U].` | Tea is ready, my lady. | Tea is ready, my Lady. |
+| &lt;pre>|L</pre> | Sets first letter to lowecase | `Tea is ready. [ROOT.Char.GetSheHe|L] said.` | Tea is ready. He said. | Tea is ready. he said. |
 
 
 ## Special Characters
@@ -274,16 +311,16 @@ You can also combine formatting codes with a ``;`` (semicolon), like ``#high;bol
 | **Characters** | **Description** | **Example** |
 | --- | --- | --- |
 | \n | Line break. Works only in certain cases. |  |
-| #P | Formats text green, as "positive" | `#P A very good thing has happened#!` OR `[GetFullName\|P]` |
-| #N | Formats text red, as "negative" | `#N A rather bad thing has happened#!` OR `[GetFullName\|N]` |
-| #help | Text is shown using a help style, with blue gray and italic | `#help If you do not give either Gold or Soldiers to the war effort, your [head_of_faith\|E] will condemn you and you will lose [piety\|E].#!` |
+| #P | Formats text green, as "positive" | `#P A very good thing has happened#!` OR `[GetFullName|P]` |
+| #N | Formats text red, as "negative" | `#N A rather bad thing has happened#!` OR `[GetFullName|N]` |
+| #help | Text is shown using a help style, with blue gray and italic | `#help If you do not give either Gold or Soldiers to the war effort, your [head_of_faith|E] will condemn you and you will lose [piety|E].#!` |
 | #I | Text is displayed in an informational style, green and italic | `#I Click to view your [GetPlayer.GetCouncillorPosition( 'councillor_court_chaplain' ).GetPositionName]#!` |
-| #warning | Text is displayed as a warning, red and italic | `#warning Only your younger children lacks [guardians\|E]#!` |
+| #warning | Text is displayed as a warning, red and italic | `#warning Only your younger children lacks [guardians|E]#!` |
 | #X | Text is displayed as a warning,same as above | `#X Choosing a New Appearance will discard ALL previous changes!#!` |
 | #T | Text is displayed as a title, bold and large | `#T Randomize Dynasty Name#!` |
 | #E | Text is displayed as a game concept, light blue | `#E Randomize#!` |
 | #S | Formats text bold and italic | `#S Occupying Counties:#!` |
-| #V | Formats text white | `#V This text is white #!` OR `[GetFullName\|V]` |
+| #V | Formats text white | `#V This text is white #!` OR `[GetFullName|V]` |
 | #EMP | Text is emphasized, italic | `#EMP Emphasis here #!` |
 | #weak | Text is darker and italic | `#weak footnote or aside #!` |
 | #bold | Text is displayed in bold | `You have #bold NOT #! done this` |
@@ -353,7 +390,8 @@ l_english:
   game_concept_government_desc:2 "[my_custom_concept|E]"
 ```
 
-![Savepiccc](https://ck3.paradoxwikis.com/File:Savepiccc.png)
+
+![Savepiccc](../assets/images/Savepiccc.png)
 
 
 ### Traits
@@ -376,7 +414,7 @@ ADD_MY_TRAIT:2 "You gain the [trait|E] [TRAIT.GetName( CHARACTER.Self )|LV]"
 ```
 
 
-Note that the <code>|LV``, which will cause the trait to be written as lowercase and in a white font (see the above sections on [Localization#Command_Arguments](#command_arguments) and [Localization#Special_Characters](#special_characters), respectively), appears to be idiomatic in the vanilla game files.
+Note that the &lt;code>|LV``, which will cause the trait to be written as lowercase and in a white font (see the above sections on [Command Arguments](#command_arguments) and [Special Characters](#special_characters), respectively), appears to be idiomatic in the vanilla game files.
 
 
 ### Titles
@@ -411,7 +449,7 @@ Note that the value is **always** rounded down.
 
 ## Icons
 
-![This is the resulting output of the example string besides this image](https://ck3.paradoxwikis.com/File:Example_image_for_icons_in_modded_loc.png)Icons can be displayed in loc keys by using `@icon_name!` to render them.
+![Example image for icons in modded loc](../assets/images/Example_image_for_icons_in_modded_loc.png)Icons can be displayed in loc keys by using `@icon_name!` to render them.
 
 
 ```
@@ -419,19 +457,26 @@ Careful! @warning_icon!, you are going to drop all your @gold_icon! gold if you 
 ```
 
 
-| **Icon Addresses** |  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Generic Icons** |  |  |  | **Military Icons** |  |  | **Faith Icons** | **Terrain Icons** |
-| warning_icon | skill_martial_icon | unspent_strong_hook_icon | friend_icon | soldier_icon | heavy_cavalry_icon | pikemen_icon | catholic_icon | plains |
-| gold_icon | skill_stewardship_icon | crime_icon | best_friend_icon | bombard_icon | heavy_infantry_icon | skirmishers_icon | orthodox_icon | forest |
-| prestige_icon | skill_intrigue_icon | intimidated_icon | rival_icon | bondi_icon | horse_archers_icon | trebuchet_icon | custom_faith_1_icon (10) | mountains |
-| time_icon | skill_learning_icon | terrified_icon | nemesis_icon | bowmen_icon | jomsviking_pirates_icon | varangian_veterans_icon | virtue_icon |  |
-| cross_icon | skill_prowess_icon | weak_hook_icon | lover_icon | camel_riders_icon | light_cavalry_icon | vigmen_icon | sin_icon |  |
-| stress_icon | stress_gain_icon | pending_court_events | soulmate_icon | crossbowmen_icon | mangonel_icon | war_elephants_icon | fervor_icon |  |
-| dread_icon | stress_critical_icon | realm_capital_icon |  | danish_huskarls_icon | onager_icon | advantage_icon |  |  |
-| exposed_icon | stress_loss_icon | alliance_icon |  | countered_icon | supply_icon | gathering_icon |  |  |
-| portrait_punishment_icon | death_icon | prestige_level_0_icon (5) |  | fort_icon | garrison_icon | army_quality_icon_1 (5) |  |  |
-| skill_diplomacy_icon | scheme_icon | dynasty_prestige_icon (5) |  | knight_icon | embarked_icon | no_siege_weapon_icon |  |  |
+<details>
+<summary>Show/Hide</summary>
+
+
+<table>
+<tr><th colspan="9">Icon Addresses</th></tr>
+<tr><th colspan="4">Generic Icons</th><th colspan="3">Military Icons</th><th>Faith Icons</th><th>Terrain Icons</th></tr>
+<tr><td>warning_icon</td><td>skill_martial_icon</td><td>unspent_strong_hook_icon</td><td>friend_icon</td><td>soldier_icon</td><td>heavy_cavalry_icon</td><td>pikemen_icon</td><td>catholic_icon</td><td>plains</td></tr>
+<tr><td>gold_icon</td><td>skill_stewardship_icon</td><td>crime_icon</td><td>best_friend_icon</td><td>bombard_icon</td><td>heavy_infantry_icon</td><td>skirmishers_icon</td><td>orthodox_icon</td><td>forest</td></tr>
+<tr><td>prestige_icon</td><td>skill_intrigue_icon</td><td>intimidated_icon</td><td>rival_icon</td><td>bondi_icon</td><td>horse_archers_icon</td><td>trebuchet_icon</td><td>custom_faith_1_icon (10)</td><td>mountains</td></tr>
+<tr><td>time_icon</td><td>skill_learning_icon</td><td>terrified_icon</td><td>nemesis_icon</td><td>bowmen_icon</td><td>jomsviking_pirates_icon</td><td>varangian_veterans_icon</td><td>virtue_icon</td><td></td></tr>
+<tr><td>cross_icon</td><td>skill_prowess_icon</td><td>weak_hook_icon</td><td>lover_icon</td><td>camel_riders_icon</td><td>light_cavalry_icon</td><td>vigmen_icon</td><td>sin_icon</td><td></td></tr>
+<tr><td>stress_icon</td><td>stress_gain_icon</td><td>pending_court_events</td><td>soulmate_icon</td><td>crossbowmen_icon</td><td>mangonel_icon</td><td>war_elephants_icon</td><td>fervor_icon</td><td></td></tr>
+<tr><td>dread_icon</td><td>stress_critical_icon</td><td>realm_capital_icon</td><td></td><td>danish_huskarls_icon</td><td>onager_icon</td><td>advantage_icon</td><td></td><td></td></tr>
+<tr><td>exposed_icon</td><td>stress_loss_icon</td><td>alliance_icon</td><td></td><td>countered_icon</td><td>supply_icon</td><td>gathering_icon</td><td></td><td></td></tr>
+<tr><td>portrait_punishment_icon</td><td>death_icon</td><td>prestige_level_0_icon (5)</td><td></td><td>fort_icon</td><td>garrison_icon</td><td>army_quality_icon_1 (5)</td><td></td><td></td></tr>
+<tr><td>skill_diplomacy_icon</td><td>scheme_icon</td><td>dynasty_prestige_icon (5)</td><td></td><td>knight_icon</td><td>embarked_icon</td><td>no_siege_weapon_icon</td><td></td><td></td></tr>
+</table>
+
+</details>
 
 
 ## Usage of special characters & Line breaks
@@ -443,14 +488,13 @@ Hello, I am \"totally\" not going to stab you!
 Hello, I am #weak\"totally\" not# going to stab you!
 ```
 
-```
-  
-```
+
 If you want to break line, you can use **\n**:
 
 ```
 This is line one, which will show up above,\nWhile this is line two, coming right at you from below.
 ```
+
 
 Avoid adding spaces before or after the line break to preserve the text's alignment.
 
@@ -503,7 +547,7 @@ A common issue with Chinese text in earlier versions of the game is that lines w
 
 Sadly an engine fix was impossible, so to ensure proper line breaking in Chinese text, you need to use a half-width versions of the punctiation, followed by a space. Using the right character substitutions, the visual change should be minimal and the line breaks do end up in the proper places.
 
-![A sample from the CK3 interface, demonstrating the effect of the substitutions. Left uses the original punctuation, right uses the substitutions.](https://ck3.paradoxwikis.com/File:Chinese_text_issue.png)
+![Chinese text issue](../assets/images/Chinese_text_issue.png)
 
 
 | **Original** | **Codepoint** | **Substitution** | **Codepoint** | **Note** |

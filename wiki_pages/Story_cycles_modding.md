@@ -10,6 +10,9 @@ For example, pet events in the game are done through a story cycle that keeps tr
 Story cycles can also be used as simply a storage for variables and variable lists so they can persist after a character's death.
 
 
+- [Creating a story cycle](#creating-a-story-cycle)
+
+
 ## Creating a story cycle
 
 Story cycles are defined in common/story_cycles/ folder, in txt files.
@@ -23,23 +26,24 @@ story_cycle_name = {
 	on_setup = {}
 	on_end = {}
 	on_owner_death = {}
-	
+
 	effect_group = {
 		days/months/years = x
 
 		trigger = {}
-		
+
 		triggered_effect = {
 			trigger = {}
 			effect = {}
 		}
 	}
-	
+
 	effect_group = {}
 	effect_group = {}
 	...
 }
 ```
+
 You can choose any name for the ``story_cycle_name``.
 - ``on_setup`` - performs effects when the story is created
 

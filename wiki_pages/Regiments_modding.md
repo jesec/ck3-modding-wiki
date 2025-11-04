@@ -3,7 +3,11 @@
 > **Note:** Last verified for version 1.3
 
 
-TOC
+- [Creating a Regiment](#creating-a-regiment)
+- [Variables](#variables)
+  - [Regiments in Innovations](#regiments-in-innovations)
+  - [Regiments in Traditions](#regiments-in-traditions)
+  - [Localization](#localization)
 
 
 ### Creating a Regiment
@@ -17,12 +21,12 @@ For best compatibility, use unique file names.
 ```
 example_maa = { # maa = Men at arms
 	type = # Men at arms type of my_maa
-	
+
 	damage = # damage value of unit
 	toughness = # toughness value of unit
 	pursuit = # pursuit value of unit
 	screen = # screen value of unit
-	
+
 	terrain_bonus = { # Terrain bonus
 		forest = { # bonus values, i.e, damage = 10 }
 	}
@@ -34,7 +38,7 @@ example_maa = { # maa = Men at arms
 	buy_cost = { # cost of a unit }
 	low_maintenance_cost = { # unraised maintenance cost of a unit }
 	high_maintenance_cost = { # raised maintenance cost of a unit }
-	
+
 	stack = # Men in one unit
 	ai_quality = { # ai weight value }
 	icon = # name of icon without .dds
@@ -45,11 +49,10 @@ example_maa = { # maa = Men at arms
 ### Variables
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variable** | **Type** | **Description** | **Example** |
+| --- | --- | --- | --- |
 | type | string | Unit type | type = skirmishers |
-| can_recruit | block | Optional [Triggers](Triggers.md) (in character scope) for whether or not one can recruit this MaA unit.  If not specified (or if specified with an empty block), unit is always recruitable.  See "Regiments in Traditions" below. | can_recruit = { always = no } # Never recruitable |
+| can_recruit | block | Optional [trigger](Triggers.md) (in character scope) for whether or not one can recruit this MaA unit.  If not specified (or if specified with an empty block), unit is always recruitable.  See "Regiments in Traditions" below. | can_recruit = { always = no } # Never recruitable |
 | damage | int | Unit's damage value | damage = 10 |
 | toughness | int | Unit's toughness value | toughness = 10 |
 | pursuit | int | Unit's pursuit value | pursuit = 10 |
@@ -142,6 +145,7 @@ Example:
 my_maa_name:0 "My Men at Arms"
 my_maa_name_flavor:0 "#F My Men at Arms are better than yours.#!"
 ```
+
 Note that 'my_maa_flavor' is the regiment's description.
 
 

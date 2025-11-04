@@ -4,6 +4,7 @@ It is possible to mod custom music into the game, as well as script when and whe
 
 To add the Music tracks we wish to put into the Music Player into categories. To do this they must be implemented with the following files structure:
 
+
 ```
 game
 └ music
@@ -40,6 +41,7 @@ category = {
      }
  }
 ```
+
 
 It is important to note that the **id** field in these categories ***must*** be unique.
 

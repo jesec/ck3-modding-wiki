@@ -15,9 +15,46 @@ What isn't script:
 
 - Most of AI or army behavior is done in game code, which is inaccessible to modders. We call such features "hardcoded".
 
-- [Interface](Interface.md) is a separate system, and with a few exceptions, we cannot use script in UI or UI functions in script. Use [Interface#Scripted GUIs](Interface.md#scripted-guis) to execute script in UI.
+- [UI](Interface.md) is a separate system, and with a few exceptions, we cannot use script in UI or UI functions in script. Use [Scripted GUIs](Interface.md#scripted-guis) to execute script in UI.
 
 - [History modding](History_modding.md) also uses a slightly different static system, but allows to use effects from script.
+
+
+- [Basics](#basics)
+    - [Documentation](#documentation)
+    - [Limitations](#limitations)
+    - [Script language name](#script-language-name)
+    - [Testing](#testing)
+- [Basics](#basics)
+  - [Syntax](#syntax)
+  - [Scopes](#scopes)
+  - [Chaining](#chaining)
+  - [Prefixes](#prefixes)
+  - [Formatting](#formatting)
+- [Keywords](#keywords)
+- [Operators](#operators)
+    - [Logic operators](#logic-operators)
+    - [Relational operators](#relational-operators)
+- [Saved scopes](#saved-scopes)
+- [Variables](#variables)
+- [Statements](#statements)
+    - [if / else / else_if](#if-else-else_if)
+    - [switch](#switch)
+    - [while loop](#while-loop)
+    - [trigger_if / trigger_else / trigger_else_if](#trigger_if-trigger_else-trigger_else_if)
+- [Lists / Arrays](#lists-arrays)
+- [Iterators](#iterators)
+      - [Effect iterators](#effect-iterators)
+      - [Trigger iterator](#trigger-iterator)
+      - [List iterators](#list-iterators)
+- [Templates](#templates)
+    - [Scripted effects](#scripted-effects)
+    - [Substitution](#substitution)
+    - [Scripted triggers](#scripted-triggers)
+    - [Script values](#script-values)
+- [Workarounds](#workarounds)
+    - [Exchanging information with other apps](#exchanging-information-with-other-apps)
+    - [Arrays](#arrays)
 
 
 ## Basics
@@ -35,10 +72,10 @@ Especially, look for effects, triggers and event_targets logs.
 
 They list the three common types of functions:
 
-* **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
+- **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
 
-* **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
-* **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
+- **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
+- **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
 
 The logs folder also has error and debug logs, useful to find errors and test your script.
 
@@ -54,14 +91,15 @@ There are also .info files in folders, they describe the syntax of files there.
 - No string manipulation
 - No in-line math
 - Slower than actual game code
-See [Scripting#Workarounds](#workarounds) below for some solutions.
+
+See [Workarounds](#workarounds) below for some solutions.
 
 
 #### Script language name
 
 There is no official name for the language used in script, it's just "Paradox scripting language".
 
-However, some developers have started to call it "Jomini script", after it was was updated with the the creation of [forum:1170261](https://ck3.paradoxwikis.com/forum:1170261) library of tools.
+However, some developers have started to call it "Jomini script", after it was was updated with the the creation of [Jomini](https://ck3.paradoxwikis.com/forum:1170261) library of tools.
 "Clausewitz" is the name of the game engine.
 
 
@@ -102,6 +140,7 @@ x = {
   }
 }
 ```
+
 Examples:
 
 - ``is_alive = yes``
@@ -218,6 +257,7 @@ primary_heir = {
   }
 }
 ```
+
 Here the heir's spouse will become their soulmate.
 
 Note that there is no ``prevprev``, we can only go back one time.
@@ -254,6 +294,7 @@ OR = {
   gold > 100
 }
 ```
+
 This will return true if the character is AI **OR** if they have more than 100 gold.
 
 Multiple parameters can be put in a block, and they can be nested, like ``OR = { AND = { NOT = {...``
@@ -277,7 +318,7 @@ Scopes are compared with ``=``. For example, ``primary_heir = primary_spouse``.
 
 ``!=`` means NOT equal, same as ``NOT = { x = y }``
 
-Values can be compared with ``< <= = != > >=``
+Values can be compared with ``&lt; &lt;= = != > &gt;=``
 
 ``?=`` is a special operator that checks that this object exists and only then compares it or executes some script.
 
@@ -287,6 +328,7 @@ Values can be compared with ``< <= = != > >=``
 exists = capital_county
 capital_county = title:c_byzantion
 ```
+
 This helps avoid errors from unset scopes and makes the script more compact.
 
 
@@ -304,6 +346,7 @@ It saves an object so you can reference it later and exists only temporarily in 
 primary_heir = { save_scope_as = my_son }
 scope:my_son = { death = natural }
 ```
+
 The saved scope persist in other events or scripted effects that are called from the same script, but once the whole script ends execution, the saved scope will be gone too.
 
 ``save_scope_value_as`` can save a value or a string flag, referenced the same way.
@@ -315,6 +358,7 @@ save_scope_value_as = {
 }
 add_gold = scope:cost
 ```
+
 
 ```c
 save_scope_value_as = {
@@ -359,6 +403,7 @@ set_variable = {
   value = 10
 }
 ```
+
 Get its value with ``var:``
 
 ``add_gold = var:test``
@@ -390,15 +435,15 @@ set_variable = {
 
 There are different types of variables based on how they are stored:
 
-* **normal**, ``set_variable`` - stored on the [Scopes](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
-    - accessed with ``var:``. Could be chained like this: ``primary_heir.var:my_sons_birthday``.
-    - if stored on a character, will be lost when the character dies! Use dead character variables in that case.
-* **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
-    - accessed with ``global_var:``.
-* **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
-    - accessed with ``local_var:``. Could be useful as a counter, although rarely used.
-* **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
-    - accessed with ``dead_var:``, does not have a ``change_`` effect.
+- **normal**, ``set_variable`` - stored on the [scope](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
+   - accessed with ``var:``. Could be chained like this: ``primary_heir.var:my_sons_birthday``.
+   - if stored on a character, will be lost when the character dies! Use dead character variables in that case.
+- **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
+   - accessed with ``global_var:``.
+- **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
+   - accessed with ``local_var:``. Could be useful as a counter, although rarely used.
+- **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
+   - accessed with ``dead_var:``, does not have a ``change_`` effect.
 
 global and local have their own effects for changing and removing:
 
@@ -415,7 +460,7 @@ A global variable is displayed like this:
 
 ``"[GetGlobalVariable('test').GetValue]"``
 
-For more see [Variables](Variables.md) and [Interface#Displaying a variable or script value](Interface.md#displaying-a-variable-or-script-value)
+For more see [Variables](Variables.md) and [Displaying a variable in UI](Interface.md#displaying-a-variable-or-script-value)
 
 
 ## Statements
@@ -431,6 +476,7 @@ if = {
   add_gold = 100
 }
 ```
+
 This would add gold only if the character is not an AI.
 
 If the limit is false, a different effect can be executed with ``else`` right after the ``if`` block. To add another condition for that effect, use ``else_if``.
@@ -451,6 +497,7 @@ else = {
   # effect
 }
 ```
+
 Multiple ``else_if`` can be used right after each other.
 
 Notes:
@@ -474,6 +521,7 @@ switch = {
   ...
 }
 ```
+
 Example:
 ```c
 switch = {
@@ -483,6 +531,7 @@ switch = {
   culture:italian = { add_gold = 30 }
 }
 ```
+
 This is identical to:
 ```c
 if = {
@@ -519,6 +568,7 @@ while = {
   remove_short_term_gold = 50
 }
 ```
+
 ``while`` is limited to 1000 iterations by default, to avoid accidental infinite loops.
 
 There is no way to break from a loop.
@@ -530,11 +580,12 @@ There is no way to break from a loop.
 
 Example: if a character is not an AI, check if they are an independent ruler.
 ```
- trigger_if = {
-    limit = { is_ai = no }
-    is_independent_ruler = yes
- }
+trigger_if = {
+   limit = { is_ai = no }
+   is_independent_ruler = yes
+}
 ```
+
 ``trigger_else_if`` can be used after a ``trigger_if`` the same way as if/else are.
 
 ```c
@@ -548,6 +599,7 @@ trigger_else_if = {
 }
 trigger_else = {}
 ```
+
 Note that sometimes the script might expect a trigger_else at the end. Try adding it if something isn't working.
 
 Remember to only use ``trigger_if`` in a trigger block, not in an effect!
@@ -561,7 +613,7 @@ Lists cannot hold other lists.
 
 There are two types of lists: temporary and permanent.
 
-UI can display permanent lists, like variable and global variable lists. See [Interface#Displaying data lists](Interface.md#displaying-data-lists)
+UI can display permanent lists, like variable and global variable lists. See [Interface/Displaying_data_lists](Interface.md#displaying-data-lists)
 
 Confusingly, a local variable list isn't permanent.
 
@@ -641,6 +693,7 @@ every_ruler = {
   add_gold = 100
 }
 ```
+
 This adds 100 gold to every ruler older than 20.
 
 ``limit = {}`` is optional. If it returns false, the effect will not run.
@@ -661,7 +714,7 @@ These all run some effect on the item and can only to be used in *effect* blocks
 
 - ``any_x`` - goes through all items in a *trigger* block, returns true if the condition is true for *all* items.
 
-``any_x`` can use ``count`` and ``percent`` with ``< <= = != > >=`` to specify how many items should return true.
+``any_x`` can use ``count`` and ``percent`` with ``&lt; &lt;= = != > &gt;=`` to specify how many items should return true.
 
 Example:
 
@@ -672,6 +725,7 @@ any_living_character = {
   is_adult = yes
 }
 ```
+
 This checks that there are more than 10 english adults.
 
 Make sure to not use ``limit`` inside an ``any_`` iterator! It is already a trigger. And do not use any effects here.
@@ -707,7 +761,7 @@ When it's used, it essentially pastes its contents into script.
 
 They can be defined in:
 
-- common/scripted_effects to be used globally 
+- common/scripted_effects to be used globally
 - event files, just for the events there
 
 In common/scripted_effects:
@@ -730,6 +784,7 @@ scripted_effect convert_family = {
   }
 }
 ```
+
 Used the same way: ``convert_family = yes``
 
 This will convert all close family to adamatism.
@@ -804,6 +859,7 @@ my_value = {
   divide = 5
 }
 ```
+
 Used: ``add_gold = my_value``
 
 Can be displayed in UI like this:
@@ -826,7 +882,7 @@ Debug and error logs can be used to export information, for example:
 
 ``error_log = "Event fired for [ROOT.Char.GetName]"``
 
-Include an identifier in your string, so it's easy to find, for example ``"<value> [GetPlayer.MakeScope.Var('test').GetValue]"``
+Include an identifier in your string, so it's easy to find, for example ``"&lt;value> [GetPlayer.MakeScope.Var('test').GetValue]"``
 
 Then a 3rd party app can read the logs, search for strings with that identifier and execute some code based on the data.
 
@@ -845,7 +901,7 @@ However, console commands disable achievements, so warn players about it!
 We can create a list with "containers" that would hold multiple values for us, using either:
 
 - provinces
-- [Story cycles modding](Story_cycles_modding.md)
+- [story cycles](Story_cycles_modding.md)
 
 Provinces don't require any extra setup and since there are 9000 of them, you can safely create large lists without worrying about running out of "containers".
 

@@ -9,6 +9,14 @@
 Titles are defined in the */common/landed_titles/* folder
 
 
+- [Basic Titular Title](#basic-titular-title)
+- [Localization](#localization)
+- [Coat of Arms](#coat-of-arms)
+- [List of attributes](#list-of-attributes)
+- [Duchy Capital Building](#duchy-capital-building)
+- [History](#history)
+
+
 ## Basic Titular Title
 
 A simple titular title can be created with very little difficulty. The title prefix defines the tier. 
@@ -32,6 +40,7 @@ k_titular_kingdom_name = {
 	color = { 100 255 200 }
 }
 ```
+
 This is the bare minimum required to create a title, and it can now be granted through the console. However, it will lack localization, meaning that it will appear as "k_titular_kingdom_name" in-game.
 
 Please notice that you cannot add titular barony or county titles, since baronies and counties are more linked to the game map itself (like province id for baronies and duchy capital building for counties). As the result, you cannot add county outside the scope of a defined duchy, nor can you add a barony outside the scope of a defined county. Further more, in the scope of any given county, at least 1 barony needs to be defined there, and in the scope of any given barony, the province id must be assigned. See examples below: 
@@ -84,18 +93,18 @@ d_my_another_duchy = {
 
 A title requires two localization keys to be defined.
 
-- <title_name>
-- <title_name>_adj
+- &lt;title_name&gt;
+- &lt;title_name&gt;_adj
 
 Additionally, a title can have a unique article. For example Byzantium is 'the ' Byzantine Empire.
-- <title_name>_article
+- &lt;title_name&gt;_article
 
-Vanilla title localization can be found in */localization/<language>/titles_l_<language>.yml*.
+Vanilla title localization can be found in */localization/&lt;language&gt;/titles_l_&lt;language&gt;.yml*.
 
 
 ## Coat of Arms
 
-[Coat of arms modding](Coat_of_arms_modding.md)
+[Coat of Arms modding](Coat_of_arms_modding.md)
 
 ## List of attributes
 
@@ -115,7 +124,7 @@ Below is a list of attributes that can be applied to a title.
 | no_automatic_claims | boolean |  | no_automatic_claims = yes |
 | always_follows_primary_heir | boolean | The title will always go to the holder's primary heir | always_follows_primary_heir = yes |
 | de_jure_drift_disabled | boolean | Prevents the title from de jure drifting into a kingdom or empire | de_jure_drift_disabled = yes |
-| male_names/female_names | list<string> | A list of names that can be adopted by the title holder. For example, this allows the Pope to gain a Papal name upon his election. | male_names = { Alexander Anastasius Benedictus Caelestinus Callistus Clemens Eugenius Leo Gregorius Hadrianus Honorius Innocentius Ioannes Lucius Marinus Martinus Nicolaus Sergius Silvester Stephanus Urbanus Victor } |
+| male_names/female_names | list&lt;string&gt; | A list of names that can be adopted by the title holder. For example, this allows the Pope to gain a Papal name upon his election. | male_names = { Alexander Anastasius Benedictus Caelestinus Callistus Clemens Eugenius Leo Gregorius Hadrianus Honorius Innocentius Ioannes Lucius Marinus Martinus Nicolaus Sergius Silvester Stephanus Urbanus Victor } |
 | name_list | clause | If the title is held by somebody with culture X, the title name will use the Y localization key and the adjective will use Y_adj | name_list = { name_list_X = Y} |
 | province | ID | The province ID of a barony | province = 3699 |
 
@@ -127,19 +136,19 @@ To locate the duchy capital building in the defined de jure duchy capital, list 
 
 ## History
 
-The history is definded with textfiles located at: <Mod_root>\history\titles\<filename>.txt
+The history is definded with textfiles located at: &lt;Mod_root&gt;\history\titles\&lt;filename&gt;.txt
 
 Some important attributes can only be set via the history of the titles. 
 
-* **Holder**: The holder is a reference to a char ID (which does not have to be a number in CK3, but can also be a string) - the holder should also be alive, otherwise there is a risk of an error or a crash. Depending on the government or title, errors can also occur - for example, a Muslim cannot be the Catholic Pope. If set to 0 the title is destroyed. This doesn't work for contries or baronies.
-* **Government**: This allows the form of government to be set. Without setting the variables, the government will determine the holding (castle, church, city or tribal). Warning! If you work improperly with history and a person has many titles at different times, strange and undesirable cross effects can happen. If, for example, a few years later a feudal emperor gets a county that was historically a republic, it could happen that the feudal empire becomes a republic. One should work with the government as cautiously.
-* **Liege**: The liege refers to a higher title. If this value is set, this title is a vassal of the other title until the value is reset. This can lead to strange events if you work improperly. If the history of a county states that it is a vassal of an emperor but that county is later conquered by an independent king, this can lead to the king being interpreted as a vassal of the emperor at the start of the game. The liege can be solved by setting it to 0. This corresponds to independence.
-* **De jure Liege**: With this attribute you can carry out a de jure shift of a title. Also works for Counties and results in critical errors if done with Barony. You can also set it to 0 - then the title no longer has a de jure master.
-* **Development**: The development of an area can be stopped here. If the value is applied to a high title (e.g. Kingdom), this is also transferred to titles below it. CK3 reads and executes these commands in the order they appear in the text files. That's why you should do big titles first and then small ones. So you can then set all of Italy to 8 but then Rome to 12. Conversely, Rome would be overwritten by Italy, assuming that time is equal, of course.
-* **Succession Law(s)**: Special succession laws for a title are also set via the title history. Since a title can have several such laws (e.g. only men and elective monarchy), they must be in a {} block.
-* **Court Language**: If you have Royal Court active as DLC, a rank 4 (Kingdom) or 5 (Empire) title can have a court language, although the default is always the language corresponding to the culture of the title holder, so you will probably only need this very rarely. Points to the ID of the language. It is recommended to put a DLC check block in front of it.
-    - Note it is also possible to reduce the royal court requirement in 00_defines.txt, and all ranks can have royal courts if modified in defines.
-* **Capital County**: You may wish for a title's de jure capital to vary with different start dates. This can be done using the effect with set_capital_county in the title history. There is an example of this in the main game - the capital of England is Winchester at the 867 start and London in subsequent start dates. This effect can also move the duchy capital, but doing so will not move the special building slot, so its primary use is cosmetic. You also cannot use this effect to make another barony the capital of a county.
+- **Holder**: The holder is a reference to a char ID (which does not have to be a number in CK3, but can also be a string) - the holder should also be alive, otherwise there is a risk of an error or a crash. Depending on the government or title, errors can also occur - for example, a Muslim cannot be the Catholic Pope. If set to 0 the title is destroyed. This doesn't work for contries or baronies.
+- **Government**: This allows the form of government to be set. Without setting the variables, the government will determine the holding (castle, church, city or tribal). Warning! If you work improperly with history and a person has many titles at different times, strange and undesirable cross effects can happen. If, for example, a few years later a feudal emperor gets a county that was historically a republic, it could happen that the feudal empire becomes a republic. One should work with the government as cautiously.
+- **Liege**: The liege refers to a higher title. If this value is set, this title is a vassal of the other title until the value is reset. This can lead to strange events if you work improperly. If the history of a county states that it is a vassal of an emperor but that county is later conquered by an independent king, this can lead to the king being interpreted as a vassal of the emperor at the start of the game. The liege can be solved by setting it to 0. This corresponds to independence.
+- **De jure Liege**: With this attribute you can carry out a de jure shift of a title. Also works for Counties and results in critical errors if done with Barony. You can also set it to 0 - then the title no longer has a de jure master.
+- **Development**: The development of an area can be stopped here. If the value is applied to a high title (e.g. Kingdom), this is also transferred to titles below it. CK3 reads and executes these commands in the order they appear in the text files. That's why you should do big titles first and then small ones. So you can then set all of Italy to 8 but then Rome to 12. Conversely, Rome would be overwritten by Italy, assuming that time is equal, of course.
+- **Succession Law(s)**: Special succession laws for a title are also set via the title history. Since a title can have several such laws (e.g. only men and elective monarchy), they must be in a {} block.
+- **Court Language**: If you have Royal Court active as DLC, a rank 4 (Kingdom) or 5 (Empire) title can have a court language, although the default is always the language corresponding to the culture of the title holder, so you will probably only need this very rarely. Points to the ID of the language. It is recommended to put a DLC check block in front of it.
+   - Note it is also possible to reduce the royal court requirement in 00_defines.txt, and all ranks can have royal courts if modified in defines.
+- **Capital County**: You may wish for a title's de jure capital to vary with different start dates. This can be done using the effect with set_capital_county in the title history. There is an example of this in the main game - the capital of England is Winchester at the 867 start and London in subsequent start dates. This effect can also move the duchy capital, but doing so will not move the special building slot, so its primary use is cosmetic. You also cannot use this effect to make another barony the capital of a county.
 
 
 The following code box demonstrates the more important attributes.
@@ -161,6 +170,7 @@ d_NAME={
 	}
 }
 ```
+
 You should have an entry for each title at least for the start date. If a title does not have a starting entry, the game will do the following:
 
 If county

@@ -5,6 +5,9 @@ Character interactions are set up in common/character_interactions.
 See _character_interactions.info file in that folder for more details.
 
 
+- [Example](#example)
+
+
 ## Example
 
 The simplest interaction looks like this:
@@ -24,7 +27,8 @@ basic_interaction = {
 }
 ```
 
-![an interaction that gives the player 100 gold and removes 100 gold from the selected character](https://ck3.paradoxwikis.com/File:Basic_interaction.png)
+
+![an interaction that gives the player 100 gold and removes 100 gold from the selected character](../assets/images/Basic_interaction.png)
 Interactions expect the recipient to accept it and then an effect happens. auto_accept makes it instant, which is nice for testing.
 
 We can also use on_send instead, but that won't create a preview of the effects.
@@ -33,8 +37,8 @@ On_accept and other effect blocks don't have a root scope, so we need to tell th
 
 There are scopes provided by game code for us:
 
-***scope:actor** - the character who initiated the interaction
-***scope:recipient** - the recipient of the interaction
+- **scope:actor** - the character who initiated the interaction
+- **scope:recipient** - the recipient of the interaction
 
 Always remember to scope to a character first and then apply the effects.
 

@@ -1,0 +1,10 @@
+{
+  "description": "Test cases for MediaWiki list syntax conversion",
+  "cases": [
+    {
+      "name": "Numbered list with bold formatting",
+      "wikitext": "**Tips For Hot-loading Safety:**\n# If possible, have the event closed when you hot-load a change.\n# Otherwise, you can press the [⟳] icon on the event debug options. Be warned that this will not update saved scopes.",
+      "expected": "- Tips For Hot-loading Safety:**\n1. If possible, have the event closed when you hot-load a change."
+    }
+  ]
+}

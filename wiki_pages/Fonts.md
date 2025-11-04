@@ -29,12 +29,19 @@ But how do you convert your old, rusty n' trusty TrueType font to the new and sh
 
 OpenType inherited the overall structure of TrueType and, as such, converting one file type to the other is as easy as using one of the many, many online font conversion websites.
 
-| [FontConverter](https://www.fontconverter.org/) | [Cloud Convert](https://cloudconvert.com/ttf-to-otf) | [Convertio](https://convertio.co/ttf-otf/) | [Miconv](https://miconv.com/convert-ttf-to-otf/) |
-| --- | --- | --- | --- |
-| In a pinch: renaming the file from ``myfont.ttf`` to ``myfont.otf`` and praying the engine reads it. |  |  |  |
+<table>
+<tr><td><a href="https://www.fontconverter.org/">FontConverter</a></td><td><a href="https://cloudconvert.com/ttf-to-otf">Cloud Convert</a></td><td><a href="https://convertio.co/ttf-otf/">Convertio</a></td><td><a href="https://miconv.com/convert-ttf-to-otf/">Miconv</a></td></tr>
+<tr><td colspan="4">In a pinch: renaming the file from <code>myfont.ttf</code> to <code>myfont.otf</code> and praying the engine reads it.</td></tr>
+</table>
 
 
 Once your font has been converted to the appropriate format, it is ready to be placed in the game files.
+
+
+- [Acquiring and Preparing Fonts](#acquiring-and-preparing-fonts)
+  - [Fantastic Fonts and Where to Find Them](#fantastic-fonts-and-where-to-find-them)
+  - [Converting TrueType Fonts to OpenType Fonts](#converting-truetype-fonts-to-opentype-fonts)
+- [Changing Fonts in Crusader Kings 3](#changing-fonts-in-crusader-kings-3)
 
 
 ## Changing Fonts in Crusader Kings 3
@@ -49,7 +56,11 @@ Once inside our version of the ``mapfont`` folder, we will place our font file i
 
 And, voilà, our map is now in a beautiful, vaguely soviet font.
 
-![Font mod example (secretly) soviet italy](https://ck3.paradoxwikis.com/File:Font_mod_example_(secretly)_soviet_italy.jpg)
+<figure>
+
+![font mod example (secretly) soviet italy](../assets/images/font_mod_example_(secretly)_soviet_italy.jpg)
+<figcaption>World Map after switching fonts.</figcaption>
+</figure>
 
 
 Category:Modding

@@ -1,0 +1,10 @@
+{
+  "description": "Test cases for MediaWiki indented code blocks (lines starting with space)",
+  "cases": [
+    {
+      "name": "Indented code block followed by list",
+      "wikitext": "Entries in \"adjacencies.csv\" take the format:\n    ID From;ID To;Type;ID Through;start_x;start_y;stop_x;stop_y;Comment\n    #For example:\n    1527;1526;river_large;629;948;2791;-1;-1;London-Southwark\n    -1;-1;;-1;-1;-1;-1;-1;\n* ID From, ID To, and ID Through are all ID",
+      "expected": "Entries in \"adjacencies.csv\" take the format:\n```\n   ID From;ID To;Type;ID Through;start_x;start_y;stop_x;stop_y;Comment\n   #For example:\n   1527;1526;river_large;629;948;2791;-1;-1;London-Southwark\n   -1;-1;;-1;-1;-1;-1;-1;\n```"
+    }
+  ]
+}

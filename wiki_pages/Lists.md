@@ -5,6 +5,14 @@ Lists can be accessed using [list-builders](https://ck3.paradoxwikis.com/list-bu
 This article will use the ``every_X`` effect list-builder in its examples.
 
 
+- [Code lists](#code-lists)
+  - [List Parameters](#list-parameters)
+- [scripted_lists](#scripted_lists)
+- [Custom lists](#custom-lists)
+  - [Normal lists](#normal-lists)
+  - [Variable lists](#variable-lists)
+
+
 ## Code lists
 
 When a scope has the same relation to multiple others, those can be provided in a list built in code. For example, in a character scope, code provides the ``child`` list, which contains all children that character ever had.
@@ -46,7 +54,7 @@ every_relation = {
 
 ## scripted_lists
 
-[↑ Back to top](#)
+
 scripted_lists are defined in ``common/scripted_lists`` and are used to customize code lists often used with the same limit conditions.
 
 Ex: list builder for adult unlanded children
@@ -79,7 +87,7 @@ Note: as of 1.4.4, scripted_lists cannot be used in script_values, which is like
 
 ## Custom lists
 
-[↑ Back to top](#)
+
 The ``in_list`` list-builder can be used to access arbitrarily named lists of scopes created in script.
 
 
@@ -133,6 +141,7 @@ every_in_list = {
    < effects >
 }
 ```
+
 .
 
 Like a [variable](Variables.md), a variable list is stored on a specific scope, and can only be accessed from that specific scope.

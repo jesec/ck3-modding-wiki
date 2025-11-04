@@ -4,11 +4,21 @@
 
 
 Mods are located in the folder *~\Paradox Interactive\Crusader Kings III\mod*:
-- Default on Windows: `%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\mod`
-- Default on Linux: `~/.local/share/Paradox Interactive/Crusader Kings III/mod`
+`%USERPROFILE%\Documents\Paradox Interactive\Crusader Kings III\mod`- Default on Windows:
+`~/.local/share/Paradox Interactive/Crusader Kings III/mod`- Default on Linux:
+
 Each mod requires two parts. Both must be located in the folder above and share the same name, barring file extensions; otherwise, the game launcher will *not* recognise the mod. Note that folder and file names are case sensitive on Mac and Linux.
 - A .mod file, a plain text file with metadata required to use the mod.
 - A mod folder containing files specific to modding the game, such as events, images, decisions and characters. It may also be a .zip file instead.
+
+
+- [Creating initial files](#creating-initial-files)
+- [The .mod files](#the-mod-files)
+  - [Syntax](#syntax)
+  - [Keys](#keys)
+  - [Basic example](#basic-example)
+- [Mod folder](#mod-folder)
+- [Tips](#tips)
 
 
 ## Creating initial files
@@ -19,20 +29,21 @@ It is recommended to generate the initial mod files through the game launcher in
 1. Press Upload Mod in the top right.
 1. Press Create a Mod.
 1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-    - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
-    - (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
+   - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+   - (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
+
 The tags offered by the launcher include:
 
-|  |  |
+|    |    |
 | --- | --- |
 | Alternative History | Historical |
-| Balance | [Map modding](Map_modding.md) |
-| [Bookmarks modding](Bookmarks_modding.md) | Portraits |
-| Character Focuses | [Religion modding](https://ck3.paradoxwikis.com/Religion_modding) |
+| Balance | [Map](Map_modding.md) |
+| [Bookmarks](Bookmarks_modding.md) | Portraits |
+| Character Focuses | [Religion](https://ck3.paradoxwikis.com/Religion_modding) |
 | Character Interactions | Schemes |
-| [Culture modding](Culture_modding.md) | [Sound modding](Sound_modding.md) |
-| [Decision modding](https://ck3.paradoxwikis.com/Decision_modding) | Total Conversion |
-| [Event modding](Event_modding.md) | [Localization](Localization.md) |
+| [Culture](Culture_modding.md) | [Sound](Sound_modding.md) |
+| [Decisions](https://ck3.paradoxwikis.com/Decision_modding) | Total Conversion |
+| [Events](Event_modding.md) | [Translation](Localization.md) |
 | Fixes | Utilities |
 | Gameplay | Warfare |
 | Graphics |  |
@@ -43,7 +54,7 @@ This process will create the following:
 - A *descriptor.mod* file, contained within the mod folder.
 - Another .mod file, this one named after the mod, located alongside the mod folder.
 
-When [Modding#Uploading/updating a mod](Modding.md#uploading/updating-a-mod), you will be able to change the suggested game version, add thumbnail for Paradox Mods and description.
+When [uploading](Modding.md#uploading/updating-a-mod), you will be able to change the suggested game version, add thumbnail for Paradox Mods and description.
 
 
 ## The .mod files
@@ -75,10 +86,10 @@ The table below describes the keys available for use within the .mod file.
 | **Keys** | **Required?** | **Description** | **Example** |
 | --- | --- | --- | --- |
 | version | Yes | Allows you to define a version of your mod, defined as a string. | version="0.0.1" |
-| tags | No | Sets the tags that mod is considered part of. Correlates with Steam Workshop categories. | <pre><code>tags={<br>	"Culture"<br>	"Decisions"<br>	"Fixes"<br>}</code></pre> |
+| tags | No | Sets the tags that mod is considered part of. Correlates with Steam Workshop categories. | <code style="white-space: pre">tags={<br>    "Culture"<br>    "Decisions"<br>    "Fixes"<br>}</code> |
 | name | Yes | Determines the name that shows up in the launcher. | name="My Mod" |
-| supported_version | Required for file alongside mod folder; not required for descriptor.mod | Defines the latest game version the mod supports; launcher will show a warning if a mod is outdated. The game uses semantic versioning (MAJOR.MINOR.PATCH). Wildcards (``*``) may be used to define a range of versions. | supported_version="1.1.3" |
-| path | Yes | Sets which folder is the mod's folder. Note that it is no longer relative to the main *Crusader Kings III* folder, but rather to the Crusader Kings III user folder (described above). Alternatively, one can use the entire path. | * ``path="C:/Users/Example/Documents/Paradox Interactive/Crusader Kings III/mod/my_mod"`<pre><code> (Windows)<br>* </code></pre>`path="/home/example/.local/share/Paradox Interactive/Crusader Kings III/mod/my_mod"`<pre><code> (Linux)<br>* </code></pre>`path="mod/my_mod"`` (Relative, any OS) |
+| supported_version | Required for file alongside mod folder; not required for descriptor.mod | Defines the latest game version the mod supports; launcher will show a warning if a mod is outdated. The game uses semantic versioning (MAJOR.MINOR.PATCH). Wildcards (`*`) may be used to define a range of versions. | supported_version="1.1.3" |
+| path | Yes | Sets which folder is the mod's folder. Note that it is no longer relative to the main *Crusader Kings III* folder, but rather to the Crusader Kings III user folder (described above). Alternatively, one can use the entire path. | - ``path="C:/Users/Example/Documents/Paradox Interactive/Crusader Kings III/mod/my_mod"`<code style="white-space: pre"> (Windows)<br>- </code>`path="/home/example/.local/share/Paradox Interactive/Crusader Kings III/mod/my_mod"`<code style="white-space: pre"> (Linux)<br>- </code>`path="mod/my_mod"`` (Relative, any OS) |
 | remote_file_id | Required if uploading and updating your own Steam Workshop mod. Set automatically when mod is uploaded. | Must match the Steam Workshop ID of the mod. Can be found at the end of a Steam Workshop URL, such as "2220762808" in https://steamcommunity.com/sharedfiles/filedetails/?id=2220762808. | remote_file_id="2220762808" |
 | picture | No | The picture shown for your mod in the search view and on the mod's page. Steam ignores this key and always looks for thumbnail.png | picture="thumbnail.png" |
 | replace_path | No | Doesn't load vanilla files for the specified path. | replace_path="history/characters" |

@@ -8,6 +8,13 @@ Modders can use the **exporter tools** that Paradox provides 'as-is'. These can 
 The Maya exporter is only used internally with Maya 2018, though it may also work on other versions. It will not work with Maya LT, which has limitations on plugin usage.
 
 
+- [Setup](#setup)
+  - [Installation](#installation)
+  - [Photoshop Setup](#photoshop-setup)
+  - [Maya Setup](#maya-setup)
+- [Forum](#forum)
+
+
 ## Setup
 
 
@@ -26,16 +33,16 @@ The exporter can be downloaded from here (requires Paradox account):
 1. Replace the contents with the following:
 
 ```
-    {
-        "projects": [{
-            "name":         "CrusaderKingsIII",
-            "path":         "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game/tools/",
-            "export_path":  "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game/",
-            "target_exe":   "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/binaries/ck3.exe"
-        }],
-     
-        "mergetool": "C:/Program Files (x86)/Meld/Meld.exe $1 $2"
-    }
+   {
+       "projects": [{
+           "name":         "CrusaderKingsIII",
+           "path":         "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game/tools/",
+           "export_path":  "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game/",
+           "target_exe":   "C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/binaries/ck3.exe"
+       }],
+
+       "mergetool": "C:/Program Files (x86)/Meld/Meld.exe $1 $2"
+   }
 ```
 
 Make sure it actually pointing to the correct directory where your game has installed. 
@@ -65,8 +72,8 @@ After starting Maya, you go into Plug-in Manager, and activate pdx_exporter.mll
 To open the exporter, run the following MEL script:
 
 ```
-    rehash; source pdx_export_ui.mel; 
-    showPdxExport;
+   rehash; source pdx_export_ui.mel; 
+   showPdxExport;
 ```
 
 You can add this to your shelf using the following process:

@@ -3,9 +3,12 @@
 > *This article is timeless and should be accurate for any version of the game.*
 
 
-Some parts of modding can only be made with dumb, grunt work, that needs to be done just right. Luckily, a few great minds in the community have made automated tools to speed up the process, and let the computer take over the repetitive work. These are made by fellow modders, unlike the [Exporters](Exporters.md) which come from Paradox.
+Some parts of modding can only be made with dumb, grunt work, that needs to be done just right. Luckily, a few great minds in the community have made automated tools to speed up the process, and let the computer take over the repetitive work. These are made by fellow modders, unlike the [exporters](Exporters.md) which come from Paradox.
 
 This page gives an overview of publicly released tools with brief descriptions and links to pages for download and further reading.
+
+
+- [Table](#table)
 
 
 ## Table
@@ -28,7 +31,7 @@ This page gives an overview of publicly released tools with brief descriptions a
 | Music Mod Creation Tool | Music | [Github](https://runite-drill.github.io/music-mod-creation-tool/) | A tool that generates the required files, script and folder structure needed to add music to CK3 and other Paradox Interactive games. |
 | Workshop Crawler | General | [Paradox forum](https://forum.paradoxplaza.com/forum/threads/tool-workshop-crawler.1495112/) | A tool that helps find whether your mod's files have been uploaded elsewhere on the Steam Workshop. |
 | ck3_map_merge_tool | [Map modding](Map_modding.md) | [Github](https://github.com/Iamgoofball/ck3_map_merge_tool) | A Python tool that helps merge changes to the terrain and heightmap, allowing multiple people more easily to collaborate on the same map. |
-| GEDCOM to CK3 converter | [Characters_modding#Adding_new_characters_or_changing_existing](Characters_modding.md#adding_new_characters_or_changing_existing) | [Paradox forum](https://forum.paradoxplaza.com/forum/threads/tool-gedcom-to-ck3-converter.1481724/) | A tool that turns standard genealogy files (GEDCOM) into character history and dynasty files, allowing one to create characters in family tree software and then load them up in CK3. |
+| GEDCOM to CK3 converter | [History modding](Characters_modding.md#adding_new_characters_or_changing_existing) | [Paradox forum](https://forum.paradoxplaza.com/forum/threads/tool-gedcom-to-ck3-converter.1481724/) | A tool that turns standard genealogy files (GEDCOM) into character history and dynasty files, allowing one to create characters in family tree software and then load them up in CK3. |
 | Map Title Colouriser | [Map modding](Map_modding.md) | [Paradox forum](https://forum.paradoxplaza.com/forum/threads/tool-map-title-colouriser-automatically-generate-nice-de-jure-title-gradients-for-custom-maps.1460776/) | A tool that automatically colours titles in the de jure structure following an aesthetically pleasing gradient; bordering titles get similar shades, like in vanilla. |
 | CK3 ColorPicker Gimp Plugin | [Map modding](Map_modding.md) | [Github](https://github.com/IsaBeau-Dev/CK3-ColorPicker-Gimp-Plugin) | A tool that simplifies the process of selecting and applying colors to provinces in your CK3 (Crusader Kings III) map. If you're a modder or map creator, this plugin streamlines the color-picking workflow. |
 

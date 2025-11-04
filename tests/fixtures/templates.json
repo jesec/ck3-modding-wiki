@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for MediaWiki template conversions",
+  "cases": [
+    {
+      "name": "Key press template with backtick",
+      "wikitext": "Press {{key press|`}} to open the console.",
+      "expected": "Press [\\`] to open the console."
+    },
+    {
+      "name": "Multiple key press templates with backticks",
+      "wikitext": "Press {{key press|~}}, {{key press|`}}, or {{key press|`}} (key varies).",
+      "expected": "Press [~], [\\`], or [\\`] (key varies)."
+    },
+    {
+      "name": "Key press template with regular character",
+      "wikitext": "Press {{key press|§}} or {{key press|~}} to open.",
+      "expected": "Press [§] or [~] to open."
+    }
+  ]
+}

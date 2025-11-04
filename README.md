@@ -123,10 +123,15 @@ ck3-modding-wiki/
 │   ├── Modding.md
 │   ├── Event_modding.md
 │   └── ...
+├── assets/              # Images and icons from the wiki
+│   ├── icons/          # Modifier icons (72 files)
+│   └── images/         # Documentation images (65+ files)
 └── wiki_exports/        # Original XML exports (reference only)
     ├── Modding.xml
     └── ...
 ```
+
+All images are bundled locally. Markdown files reference images using relative paths like `![caption](../assets/images/filename.png)`.
 
 ## Versioning
 
@@ -135,6 +140,20 @@ This package uses date-based versioning: `{major}.YYYYMMDD.{patch}`
 Example: `1.20251103.0` = Major version 1, snapshot from November 3, 2025, patch 0
 
 Automatically updated daily via GitHub Actions.
+
+## Development
+
+To update the documentation from the wiki:
+
+```bash
+# Full update (downloads wiki pages + assets, then converts)
+npm run update
+
+# Individual commands
+npm run download         # Download wiki pages and assets
+npm run download-assets  # Download only assets
+npm run convert          # Convert XML to Markdown
+```
 
 ## Contributing
 

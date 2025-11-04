@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for HTML tag conversions",
+  "cases": [
+    {
+      "name": "Strike tag for strikethrough text",
+      "wikitext": "You need additional <strike>pylons</strike> temple",
+      "expected": "You need additional ~~pylons~~ temple"
+    },
+    {
+      "name": "Multiple strike tags",
+      "wikitext": "This is <strike>wrong</strike> and this is also <strike>incorrect</strike> text",
+      "expected": "This is ~~wrong~~ and this is also ~~incorrect~~ text"
+    },
+    {
+      "name": "Strike tag with punctuation",
+      "wikitext": "The <strike>old</strike> method is deprecated.",
+      "expected": "The ~~old~~ method is deprecated."
+    }
+  ]
+}

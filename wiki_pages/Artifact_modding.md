@@ -9,6 +9,15 @@
 [Artifacts](https://ck3.paradoxwikis.com/Artifacts) can be modded into the game.
 
 
+- [Location](#location)
+  - [Templates](#templates)
+    - [Structure](#structure)
+  - [Visuals](#visuals)
+    - [Structure](#structure)
+  - [Creation Effect](#creation-effect)
+  - [Creating starting Artifacts](#creating-starting-artifacts)
+
+
 ## Location
 
 The code for the artifacts is spread over several scripts. Most are in the common/artifacts folder. In contrast to titles, artefacts do not exist at the beginning of the game and generally have no history of their own. Artifacts are created exclusively by a creation effect - for historical artifacts, said effect is performed at the beginning of the game.
@@ -36,7 +45,7 @@ example_template = {
 	can_benefit = {
 		is_christian_trigger = yes
 	}
-	
+
 	# can this character reforge this artifact (turn this artifact into another)
 	can_reforge = {
 		is_christian_trigger = yes
@@ -66,16 +75,16 @@ example_template = {
 
 For the can_benefit clause, for example, the following checks can be made for the carry char using **and**, **or**, **not** or **nor**:
 
-- has_faith = faith:<faith_key>
-- culture = culture:<culture_key>
-    - has_culture = culture:<culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
-- culture = { any_parent_culture = { this = culture:<culture_key> } }
-- culture = { has_cultural_pillar = <heritage_key> }
-- culture = { has_cultural_tradition = <tradition_key>}
-- has_title = title:<title_key>
-- has_trait = <trait_key>
-- has_religion = religion:<religion_key>
-- dynasty = dynasty:<dynasty_key>
+- has_faith = faith:&lt;faith_key&gt;
+- culture = culture:&lt;culture_key&gt;
+   - has_culture = culture:&lt;culture_key>  # is also working correctly but the cultures loc cannot be loaded on this way so using this is not recommended
+- culture = { any_parent_culture = { this = culture:&lt;culture_key> } }
+- culture = { has_cultural_pillar = &lt;heritage_key> }
+- culture = { has_cultural_tradition = &lt;tradition_key&gt;}
+- has_title = title:&lt;title_key&gt;
+- has_trait = &lt;trait_key&gt;
+- has_religion = religion:&lt;religion_key&gt;
+- dynasty = dynasty:&lt;dynasty_key&gt;
 
 
 Warning: Using 'has_dynasty' doesn't appera wrong at the error log but doesn't work ingame
@@ -83,14 +92,18 @@ Warning: Using 'has_dynasty' doesn't appera wrong at the error log but doesn't w
 
 ### Visuals
 
-The visuals bundle the 2d and - if available - 3d references for an artifact. A visual entry is accordingly quite simple and usually consists of 2 to three entries. The first entry is a reference to the icon. The icon is a 240px² dds file located in the folder '<modroot>/gfx/interface/icons/artifact'.
+The visuals bundle the 2d and - if available - 3d references for an artifact. A visual entry is accordingly quite simple and usually consists of 2 to three entries. The first entry is a reference to the icon. The icon is a 240px² dds file located in the folder '&lt;modroot&gt;/gfx/interface/icons/artifact'.
 
 For optical reasons, you should keep about 30 pixels of purely transparent space in each direction from the actual object. For example, if you want to insert a bag as an icon, you should first crop the said bag with an image editing program without borders or surroundings. Then the image of the cut object is set in such a way that the larger value of height and width of the image has the value 180px, and the other is scaled accordingly. Then you increase the image size from the center to 240px for height and width. This can be done relatively easily with the image editing program paint.NET, for example. If you don't keep a 30px border in each direction, the icon of the artefact in the in-game artefact shop would overflow the frame of the icon. This has no effect on the gameplay, but it looks bad.
 
 
 The 3D representation of an artefact is controlled via the asset entry.
 
-![The original "artifact_unique_lance_of_longius.dds" file from CK3 open in paint.net](https://ck3.paradoxwikis.com/File:Artifact_unique_lance_of_longius.png)
+<figure>
+
+![Artifact unique lance of longius](../assets/images/Artifact_unique_lance_of_longius.png)
+<figcaption>The original "artifact_unique_lance_of_longius.dds" file from CK3 open in paint.net</figcaption>
+</figure>
 
 
 #### Structure
@@ -125,7 +138,7 @@ example = {
 
 ### Creation Effect
 
-Artifacts are only created via an effect. The corresponding scripts are located in the "<mod_root>\common\scripted_effects\" folder. The two files of the original game can be used as templates. These are "00_ep1_artifact_creation_effects.txt" & "01_exp1_historical_artifacts_creation_effect.txt".
+Artifacts are only created via an effect. The corresponding scripts are located in the "&lt;mod_root&gt;\common\scripted_effects\" folder. The two files of the original game can be used as templates. These are "00_ep1_artifact_creation_effects.txt" & "01_exp1_historical_artifacts_creation_effect.txt".
 
 
 The actual build effect consists of at least two script blocks.
@@ -210,6 +223,7 @@ on_game_start = {
     }
 }
 ```
+
 This code then calls the event special_art_gen.1 at the beginning of the game. Finally, in the corresponding creation effect, the creation effect for the corresponding effect must be built up. It should also be checked at this point whether the player has the Royal Court DLC, since this brings the first artifact into the game. The following code shows a possible structure to give an historical artifact to an owner of any title.
 ```
 special_art_gen.1 = {

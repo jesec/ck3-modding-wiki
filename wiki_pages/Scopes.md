@@ -3,20 +3,49 @@
 > **Note:** Last verified for version 1.1
 
 
-![CK3 Scope Overview Chart](https://ck3.paradoxwikis.com/File:CK3_Scopes.png)
+<figure>
+
+![CK3 Scopes](../assets/images/CK3_Scopes.png)
+<figcaption>CK3 Scope Overview Chart</figcaption>
+</figure>
+
 **Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
-![These are the color-coded direct scopes as of 1.8.0, generated via automated export from the game files.](https://ck3.paradoxwikis.com/File:Exportedscopes190.png)
+<figure>
+
+![Exportedscopes190](../assets/images/Exportedscopes190.png)
+<figcaption>These are the color-coded direct scopes as of 1.8.0, generated via automated export from the game files.</figcaption>
+</figure>
+
+
+- [Definition](#definition)
+  - [Database scope](#database-scope)
+  - [Primitive scope](#primitive-scope)
+  - [Top scope](#top-scope)
+- [Accessing scopes](#accessing-scopes)
+    - [root](#root)
+  - [Context switch](#context-switch)
+  - [Database access](#database-access)
+  - [Event target](#event-target)
+    - [this](#this)
+    - [prev](#prev)
+  - [Saved scope](#saved-scope)
+  - [List-builder](#list-builder)
+    - [every_X](#every_x)
+    - [random_X](#random_x)
+    - [ordered_X](#ordered_x)
+    - [any_X](#any_x)
+  - [Saved scope value](#saved-scope-value)
+- [References](#references)
 
 
 ## Definition
 
-[↑ Back to top](#)
 
 ### Database scope
 
 Scope most often refers to a database object, and the database itself is referred to as the scope type. Those include for example characters, titles, provinces, etc.
 
-The full list of available scope types an be found in [Scopes_list](Scopes_list.md).
+The full list of available scope types an be found in [event_scopes.log](Scopes_list.md).
 
 Unless specified otherwise, the term scope will always refer to a database scope.
 
@@ -33,19 +62,19 @@ Some scopes can also be created on runtime either in code (ex: naturally born ch
 
 ### Primitive scope
 
-[↑ Back to top](#)
+
 Numbers, booleans (yes/no) and flag values (``flag:some_string``) are so-called primitive scopes. They cannot be modified or accessed, and while "numbers are scopes" can possibly be a confusing statement to beginners, it is useful to know to better understand some advanced functionalities or error logging.
 
 
 ### Top scope
 
-[↑ Back to top](#)
+
 A top scope is a temporary and abstract object created by the game to store information, amongst other things so that it can be retrieved and displayed in localization or GUI.
 
 
 ## Accessing scopes
 
-[↑ Back to top](#)
+
 Unless specified otherwise, the term scope always refers to a database scope.
 
 In script, [effects](Effects.md) and [triggers](Triggers.md) are executed in a context, and most of them work from specific scope types.
@@ -57,7 +86,7 @@ This section explains how to change the context in which script is interpreted. 
 
 #### root
 
-[↑ Back to top](#)
+
 [Trigger](Triggers.md) blocks and [effect](Effects.md) blocks often have a default context provided by code. When such is the case, unless the context is changed, [triggers](Triggers.md) are evaluated and [effects](Effects.md) are executed in the context of that scope.
 
 Ex: in an event's ``immediate`` effect block, the context is the character that receives the event, and by default, all effects in that block are executed in the context of that specific character scope.
@@ -71,7 +100,7 @@ Not all [effect](Effects.md) blocks and [trigger](Triggers.md) blocks have a ``r
 
 ### Context switch
 
-[↑ Back to top](#)
+
 The context of an [effect](Effects.md) block or [trigger](Triggers.md) block can be changed at any time by opening a new script block with the scope you want to set the context to, followed by an equal sign ``=`` and an opening bracket ``{``. The context change is in effect until the corresponding closing bracket ``}`` is found.
 
 Ex: in an event's ``immediate`` effect block
@@ -115,13 +144,14 @@ immediate = {
    title:k_frnace = {
 ```
 
+
 The typo causes a failed context switch because ``k_frnace`` is not defined.
 
 
 ### Database access
 
-[↑ Back to top](#)
-Scopes being database objects, they have a unique key or ID. They are identified using the syntax ``<scope type>:<scope key>``.
+
+Scopes being database objects, they have a unique key or ID. They are identified using the syntax ``&lt;scope type&gt;:&lt;scope key&gt;``.
 
 Ex: ``title:k_france`` is the Kingdom of France, as defined in ``common/landed_titles/``.
 
@@ -139,10 +169,10 @@ Historical IDs are predetermined in the `/Crusader Kings III/game/history` files
 
 ### Event target
 
-[↑ Back to top](#)
+
 Scopes that have a unique relation from one to another can be accessed through event targets. As the game knows the scope type of all event targets, those are not prefixed.
 
-The full list of available event targets can be found in [Scopes_list](Scopes_list.md).
+The full list of available event targets can be found in [event_targets.log](Scopes_list.md).
 
 Ex:
 
@@ -179,13 +209,13 @@ The following event targets have a specific contextual behavior.
 
 #### this
 
-[↑ Back to top](#)
+
 ``this`` is the current scope. It is useful specifically in [scope comparison](https://ck3.paradoxwikis.com/scope_comparison), or to feed the current scope as an argument.
 
 
 #### prev
 
-[↑ Back to top](#)
+
 ``prev`` is the previous scope. Like ``this``, it is often useful in [scope comparison](https://ck3.paradoxwikis.com/scope_comparison) or to feed the previous scope as an argument, but it can also be useful when used in conjunction with list-builders below.
 
 
@@ -202,10 +232,10 @@ Unlike in CK2, ``prev`` cannot be chained to go back several steps.
 
 ### Saved scope
 
-[↑ Back to top](#)
-A saved scope is an arbitrarily-named pointer to a specific scope, using the syntax ``scope:<scope name>``.
 
-Saved scopes can be saved in and provided by code. For example, in [Interactions modding](Interactions_modding.md), ``scope:actor`` is the character sending the interaction, and ``scope:recipient`` the character receiving the interaction.
+A saved scope is an arbitrarily-named pointer to a specific scope, using the syntax ``scope:&lt;scope name&gt;``.
+
+Saved scopes can be saved in and provided by code. For example, in [character interactions](Interactions_modding.md), ``scope:actor`` is the character sending the interaction, and ``scope:recipient`` the character receiving the interaction.
 
 Some on_actions also provide pre-saved scopes. Check the comments in the files to see which scopes are available.
 
@@ -244,7 +274,7 @@ A saved scope name can only be used once at any given time. Saving a scope with 
 
 ### List-builder
 
-[↑ Back to top](#)
+
 Scopes that have a relation from one to multiple others cannot be accessed through event targets.
 
 For example, a character only ever has one mother, accessible using the ``mother`` event target. But the opposite is not true: a mother can have multiple children, and as such there cannot be a ``child`` event target, as that would be ambiguous.
@@ -259,7 +289,7 @@ In the following sections, all script examples are executed in the context of a 
 
 #### every_X
 
-[↑ Back to top](#)
+
 ``every_X`` is an [effect](Effects.md) that accesses all scopes in the list one after the other, and executes the [effects](Effects.md) within for each one of them.
 
 
@@ -317,7 +347,7 @@ scope:female_child = {
 
 #### random_X
 
-[↑ Back to top](#)
+
 ``random_X`` accesses a random scope in the list, and executes the enclosed [effects](Effects.md) only for that one scope.
 
 
@@ -362,7 +392,7 @@ random_child = {
 
 #### ordered_X
 
-[↑ Back to top](#)
+
 ``ordered_X`` sorts the list according to its ``order_by`` parameter, and by default accesses the first scope in the list in descending order, and executes the enclosed [effect](Effects.md) for that scope only. ``order_by`` can either be a named value or a script value, interpreted in the context of each scope in the list.
 
 Warning: in [script math](https://ck3.paradoxwikis.com/script_math), the default behavior of ``ordered_X`` is to iterate through *all* scopes in the list in order. It is unclear whether this is a bug, or working as intended.
@@ -390,7 +420,7 @@ ordered_child = {
 ```
 
 
-The ``position`` parameter enables overriding the default behavior of ``ordered_X`` to access the scope in the list with the specified index< starting at 0. It uses either an integer, or a script value that automatically rounds down to the nearest integer. ``position = 0`` is the first scope in the list.
+The ``position`` parameter enables overriding the default behavior of ``ordered_X`` to access the scope in the list with the specified index&lt; starting at 0. It uses either an integer, or a script value that automatically rounds down to the nearest integer. ``position = 0`` is the first scope in the list.
 
 
 ```
@@ -419,7 +449,7 @@ ordered_child = {
 
 #### any_X
 
-[↑ Back to top](#)
+
 ``any_X`` accesses scopes in the list in an undetermined order until the triggers nested within evaluate to true for one of them, in which case ``any_X`` evaluates as true. If the enclosed triggers evaluate as false for all scopes in the list, or if the list is empty, ``any_X`` evaluates as false.
 
 
@@ -483,8 +513,8 @@ any_child = {
 
 ### Saved scope value
 
-[↑ Back to top](#)
-A saved scope value is an arbitrarily-named pointer to a specific primitive scope, using the syntax ``scope:<scope name>``.
+
+A saved scope value is an arbitrarily-named pointer to a specific primitive scope, using the syntax ``scope:&lt;scope name&gt;``.
 
 Saved scope values can be saved in and provided by code, although it is much rarer than saved scopes. For example, in a [character interaction](https://ck3.paradoxwikis.com/character_interaction) that has an interaction option named ``option_1``, ``scope:option_1`` is provided as a boolean scope value, true if the option is selected, false if it isn't.
 

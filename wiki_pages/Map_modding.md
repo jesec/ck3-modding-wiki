@@ -6,6 +6,38 @@
 In Crusader Kings III, it is possible to mod the game map. This includes editing land, seas, rivers and provinces. For modding titles, see [title modding](Title_modding.md).
 
 
+- [Getting Started](#getting-started)
+- [Heightmap](#heightmap)
+  - [Creating a heightmap](#creating-a-heightmap)
+  - [The main heightmap file](#the-main-heightmap-file)
+  - [Other heightmap files](#other-heightmap-files)
+    - [Repacking](#repacking)
+- [River map](#river-map)
+  - [Understanding river map colors](#understanding-river-map-colors)
+  - [Pixel perfect](#pixel-perfect)
+  - [Draw procedure](#draw-procedure)
+    - [River source](#river-source)
+  - [Underwater river tricks](#underwater-river-tricks)
+- [Province map](#province-map)
+- [Creating titles](#creating-titles)
+  - [Defining baronies](#defining-baronies)
+  - [Defining the holdings, religions, and culture of baronies](#defining-the-holdings-religions-and-culture-of-baronies)
+  - [Landed titles](#landed-titles)
+- [Terrains of provinces](#terrains-of-provinces)
+- [Map locators](#map-locators)
+  - [Auto nudge](#auto-nudge)
+- [Connections](#connections)
+- [Creating a Map with a Custom Resolution](#creating-a-map-with-a-custom-resolution)
+  - [How to import the heightmap](#how-to-import-the-heightmap)
+  - [Repacking terrain masks](#repacking-terrain-masks)
+  - [North part of the hightmap not rendering and shows all black since 1.9](#north-part-of-the-hightmap-not-rendering-and-shows-all-black-since-19)
+- [Creating Custom Terrain Textures](#creating-custom-terrain-textures)
+- [Frequently asked questions](#frequently-asked-questions)
+  - [Why can't I scroll all the way to the right?](#why-cant-i-scroll-all-the-way-to-the-right)
+  - [Why can't I use the auto-nudge (dice) button to place my buildings and locators?](#why-cant-i-use-the-auto-nudge-dice-button-to-place-my-buildings-and-locators)
+  - [Why is there a line across the screen?](#why-is-there-a-line-across-the-screen)
+
+
 ## Getting Started
 
 To open the map editor:
@@ -17,7 +49,12 @@ To open the map editor:
 
 ## Heightmap
 
-![An example heightmap of Ireland and part of Britain](https://ck3.paradoxwikis.com/File:Heightmap_example.png)
+<figure>
+
+![Heightmap example](../assets/images/Heightmap_example.png)
+<figcaption>An example heightmap of Ireland and part of Britain</figcaption>
+</figure>
+
 The heightmap is the base of every map, and defines the overall shape of the non-paper map. Heightmaps are represented as greyscale images, where black is the lowest possible elevation, and white is the highest possible elevation.
 
 
@@ -39,7 +76,7 @@ The heightmap dimensions must match the "original_heightmap_size" definition def
 
 Along with "heightmap.png", there are also two important **automatically generated** heightmap files, "indirection_heightmap.png" and "packed_heightmap.png". These will be created by the CK3 map editor when a heightmap is repacked and saved.
 
-![Repack](https://ck3.paradoxwikis.com/File:Repack.png)
+![Repack](../assets/images/Repack.png)
 
 #### Repacking
 
@@ -48,7 +85,12 @@ Any time the main heightmap.png is changed, you must "repack" in the map editor 
 
 ## River map
 
-![An example river map of Ireland and part of Britain](https://ck3.paradoxwikis.com/File:Rivermap_example.png)
+<figure>
+
+![Rivermap example](../assets/images/Rivermap_example.png)
+<figcaption>An example river map of Ireland and part of Britain</figcaption>
+</figure>
+
 The river map is a special file that defines coasts and rivers, which is both used by the terrain engine to paint rivers on your map as well as to define where river crossing are for armies. It is not used for navigable rivers or other bodies of water.
 
 **Improperly created river maps will cause a CTD.** They must be indexed RGB images with a very specific color pallet; the best way to prevent crashes when creating a river map is to start using the game's original river map, found at "[CK3 directory]/game/map_data/rivers.png". Any other colors besides those in the original color index, including antialiases or transparency, will result in a CTD.
@@ -58,7 +100,7 @@ If the river map refuses to export properly when using Gimp, **close Gimp**, cop
 
 ### Understanding river map colors
 
-![River map color table](https://ck3.paradoxwikis.com/File:River_map_color_table.png)
+![River map color table](../assets/images/River_map_color_table.png)
 River maps should be color indexed, which means they're saved with special encoding that indicates only certain specific colors can be used.
 
 Each color has a specific meaning, which is translated by the game engine into nice looking rivers.
@@ -67,17 +109,18 @@ Each color has a specific meaning, which is translated by the game engine into n
 - #fffc00 (pure yellow) indicates a river splitting
 - #ff0080 (magenta) indicates sea, lakes, and navigable rivers.
 - #ffffff (white) indicates land.
+
 The rest of the colors are a gradient of light blue to dark blue, where the darker the blue, the wider the river.
 
 
 ### Pixel perfect
 
-![River validity](https://ck3.paradoxwikis.com/File:River_validity.png) Each river pixel must be orthogonally adjacent to no more than 2 other river pixels, and splits and joins must be adjacent to no more than 3 other river pixels. Two-pixel wide rivers and rivers connected using only diagonal pixels will fail to render.
+![River validity](../assets/images/River_validity.png) Each river pixel must be orthogonally adjacent to no more than 2 other river pixels, and splits and joins must be adjacent to no more than 3 other river pixels. Two-pixel wide rivers and rivers connected using only diagonal pixels will fail to render.
 
 
 ### Draw procedure
 
-![River special pixels](https://ck3.paradoxwikis.com/File:River_special_pixels.png)
+![River special pixels](../assets/images/River_special_pixels.png)
 You can think of the CK3 river-drawing algorithm as basically taking one of the three special pixel colors (red, yellow, or green) and using those as the starting points to draw river sections, with the green one being the starting point for the whole river system. Each river section should have one of the three pixel types at one end and none at the other. That means a river cannot leave and rejoin its parent, as often happens in real life. Red and yellow pixels on the side of river sections are separate from this limit, as they generate new river sections. Each of the three river types also dictates flow direction for the river section it generates: Green and yellow pixels cause the river to flow away from them, red pixels cause the river to flow towards them.
 
 
@@ -95,7 +138,12 @@ This is also helpful it you have complicated river systems which also go through
 
 ## Province map
 
-![An example province map of Ireland and part of Britain](https://ck3.paradoxwikis.com/File:Province_map_example.png)
+<figure>
+
+![Province map example](../assets/images/Province_map_example.png)
+<figcaption>An example province map of Ireland and part of Britain</figcaption>
+</figure>
+
 The province map defines baronies and sea regions. Each barony/sea region is defined by being of a unique color in the province map. Like the river map, a province map must avoid antialiasing and transparency.
 
 The province map does not define counties, duchies, kingdoms, or empires. To Define Counties, Duchies, Kingdoms and Empires you need to define them in landed_titles folder
@@ -118,22 +166,22 @@ To turn the colors of the province map into usable baronies, you must define the
 
 The format of barony definitions is:
 ```
-    [ID];[RED];[GREEN];[BLUE];[Barony Name];x;
-    # For example:
-    2333;128;183;194;PARIS;x;
+   [ID];[RED];[GREEN];[BLUE];[Barony Name];x;
+   # For example:
+   2333;128;183;194;PARIS;x;
 ```
 
 **IDs must be sequential, or your game will crash.**
 ```
-    # This will work:
-    1;42;3;128;CAMELOT;x;
-    2;84;6;1;AVALON;x;
-    3;126;9;129;TINTAGEL;x;
-    
-    # This will cause a crash:
-    1;42;3;128;CAMELOT;x;
-    4;84;6;1;AVALON;x;
-    19;126;9;129;TINTAGEL;x;
+   # This will work:
+   1;42;3;128;CAMELOT;x;
+   2;84;6;1;AVALON;x;
+   3;126;9;129;TINTAGEL;x;
+
+   # This will cause a crash:
+   1;42;3;128;CAMELOT;x;
+   4;84;6;1;AVALON;x;
+   19;126;9;129;TINTAGEL;x;
 ```
 
 
@@ -151,7 +199,7 @@ church_holding
 
 PLEASE NOTE:
 The first barony in a county (as numerically defined in definition.csv) must be occupied with a holding. The game will fill all county baronies as follows without any explicit instructions: First barony receives a castle. Faith, culture and development are transferred to the entire county. A city and then a church are then placed. The standard culture or belief is always the first entry found by the game.
-This first barony will also determine the default government type of a particular county by attributing it to the main holding. At this stage only clan, tribal, holy order and feudal lords are playable in base game CK3, so make sure this is a "castle_holding", a "tribal_holding" or a "church_holding" if the faits allow it for none theocraty governments. However, it is also possible to force a different government later based on history. In the standard game, this is the case with Venice, for example. The County of Venice only consists of one castle and would therefore always create a feudal government in the standard case. To change this you have to use the title history. You do this with a text file in the title folder (<Mod_root>\history\titles\<filename>.txt). This is also the file where you set the bearer - i.e. the character - and the liege of the title. There you can then force a government with “government = <NAME>_government”. However, you have to be careful if you want to specify multiple start times. By default, the government for the title and therefore also for the bearer is determined by the default value, which is determined from faith and holding type (castle + Christian = feudal...). If there is such an explicit assignment in the history (this can also include the conversion from tribal -> castle), this can also increase the title hierarchy and create strange error effects. For example, if the Doge were to be made Emperor of the HRE, the Government entry in the HRE could be converted into a Republic, even though the entry was only supposed to extend to Venice in the past.
+This first barony will also determine the default government type of a particular county by attributing it to the main holding. At this stage only clan, tribal, holy order and feudal lords are playable in base game CK3, so make sure this is a "castle_holding", a "tribal_holding" or a "church_holding" if the faits allow it for none theocraty governments. However, it is also possible to force a different government later based on history. In the standard game, this is the case with Venice, for example. The County of Venice only consists of one castle and would therefore always create a feudal government in the standard case. To change this you have to use the title history. You do this with a text file in the title folder (&lt;Mod_root&gt;\history\titles\&lt;filename&gt;.txt). This is also the file where you set the bearer - i.e. the character - and the liege of the title. There you can then force a government with “government = &lt;NAME&gt;_government”. However, you have to be careful if you want to specify multiple start times. By default, the government for the title and therefore also for the bearer is determined by the default value, which is determined from faith and holding type (castle + Christian = feudal...). If there is such an explicit assignment in the history (this can also include the conversion from tribal -> castle), this can also increase the title hierarchy and create strange error effects. For example, if the Doge were to be made Emperor of the HRE, the Government entry in the HRE could be converted into a Republic, even though the entry was only supposed to extend to Venice in the past.
 
 The capital of a county is always the first barony mentioned in the title definition. The capital cannot be moved. This should be taken into account when planning two points in time for a county, whereby Barony A should be the capital at the first point in time because Barony B does not yet exist, but then, due to historical development, Barony B overtakes A in importance and becomes the 'more sensible' capital of the county were.
 
@@ -165,29 +213,29 @@ The names (e_empire_tier, k_kingdom_tier, etc.) are just examples. "color" can b
 Baronies appear in the game in the same order as in the file. I.e. the first one will be the default capital. The engine will use the capital barony's culture and religion set in "[mod]\history\provinces@_title.txt" to determine its county's culture and religion at any set date.
 
 ```
-    e_empire_tier = {
-        color = { 0 0 0 }
-        capital = c_county_tier
-    
-        k_kingdom_tier = {
-            color = { 0 0 0 }
-            capital = c_county_tier
-    
-            d_duchy_tier = {
-                color = { 0 0 0 }
-                capital = c_county_tier
-    
-                c_county_tier = {
-                    color = { 0 0 0 }
-    
-                    b_barony_tier = {
-                        color = { 0 0 0 }
-                        province = id (defined in map_data/definition.csv)
-                    }
-                }
-            }
-        }
-    }
+   e_empire_tier = {
+       color = { 0 0 0 }
+       capital = c_county_tier
+
+       k_kingdom_tier = {
+           color = { 0 0 0 }
+           capital = c_county_tier
+
+           d_duchy_tier = {
+               color = { 0 0 0 }
+               capital = c_county_tier
+
+               c_county_tier = {
+                   color = { 0 0 0 }
+
+                   b_barony_tier = {
+                       color = { 0 0 0 }
+                       province = id (defined in map_data/definition.csv)
+                   }
+               }
+           }
+       }
+   }
 ```
 
 
@@ -207,14 +255,14 @@ Once baronies have been defined, the locations (positions) of their four main lo
 Within these files, each barony is represented by an instance where the position, rotation and scale of the map objects can be set.  For example, the following code defines the locator for a single barony with ID = 1 at standard size and co-ordinates of x = 2,000 and y = 1,000 on the map: 
 
 ```
-    instances={
-        {
-            id=0
-            position={ 2000.000000 0.000000 1000.000000 }
-            rotation={ 0.000000 0.000000 0.000000 1.000000 }
-            scale={ 1.000000 1.000000 1.000000 }
-        }
-    }
+   instances={
+       {
+           id=0
+           position={ 2000.000000 0.000000 1000.000000 }
+           rotation={ 0.000000 0.000000 0.000000 1.000000 }
+           scale={ 1.000000 1.000000 1.000000 }
+       }
+   }
 ```
 
 These values, specially raised army's position for both sea and land provinces, are used to define troop movement pathfinding. At any time, the position, rotation and scale of these objects can be finessed using the Map Objects Editor in the in-game map editor.
@@ -237,19 +285,21 @@ Baronies can be connected in two ways: having adjacent pixels, or having a conne
 
 Entries in "adjacencies.csv" take the format:
 ```
-    ID From;ID To;Type;ID Through;start_x;start_y;stop_x;stop_y;Comment
-    #For example:
-    1527;1526;river_large;629;948;2791;-1;-1;London-Southwark
-    -1;-1;;-1;-1;-1;-1;-1;
+   ID From;ID To;Type;ID Through;start_x;start_y;stop_x;stop_y;Comment
+   #For example:
+   1527;1526;river_large;629;948;2791;-1;-1;London-Southwark
+   -1;-1;;-1;-1;-1;-1;-1;
 ```
+
 - ID From, ID To, and ID Through are all ID
+
 s found in "definition.csv"
 - ID From and ID To are baronies; ID Through is a sea or navigable river.
 - Type is either "sea" or "river_large"
 - start_x start_y are the (x, y) coordinates from which an army 'embarks' in the "ID From" barony.
 - stop_x and stop_y are the (x, y) coordinates to which an army 'lands' in the "ID To" barony.
 - start_x, start_y, stop_x, and stop_y can all use "-1" instead of actual coordinates, which will default to wherever the normal army placement is in that barony.
-* Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
+- Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
 
 
 ## Creating a Map with a Custom Resolution
@@ -261,40 +311,41 @@ s found in "definition.csv"
 
 - common/defines/00_defines.txt:
 ```
-    WORLD_EXTENTS_X # Should be: map width - 1 
-    WORLD_EXTENTS_Z # Shoud be: map height - 1 
-    WATERLEVEL # Corresponds to the heights from the heightmap - if too low, no oceans/lakes will appear. If too high, the entire map will be covered with water
+   WORLD_EXTENTS_X # Should be: map width - 1 
+   WORLD_EXTENTS_Z # Shoud be: map height - 1 
+   WATERLEVEL # Corresponds to the heights from the heightmap - if too low, no oceans/lakes will appear. If too high, the entire map will be covered with water
 ```
 
 - common/defines/graphic/00_graphics.txt
 ```
-    PANNING_WIDTH # However far you want the player to be able to pan left to right. Panning to the edge would mean this is equal to map width
-    PANNING_HEIGHT # However far you want the player to be able to pan up and down. Panning to the edge would mean this is equal to map height
+   PANNING_WIDTH # However far you want the player to be able to pan left to right. Panning to the edge would mean this is equal to map width
+   PANNING_HEIGHT # However far you want the player to be able to pan up and down. Panning to the edge would mean this is equal to map height
 ```
-- gfx/map/surround_map/
-    - surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
-    - surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
 
-- gfx/map/terrain/     # All files in this that have _mask (63 as of 1.3) or .tga (2 as of 1.3) in the name need to be resized TO: (width x height) 
-    - flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-    - colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-    - detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
-    - detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
-    - ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must <= 4096, and the size of it must match detail_index.tga
+- gfx/map/surround_map/
+   - surround_mask.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+   - surround_fade.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+
+- gfx/map/terrain/     # All files in this that have _mask (63 as of 1.3) or .tga (2 as of 1.3) in the name need to be resized TO: (width x height)
+   - flatmap.dds     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+   - colormap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+   - detail_intensity.tga     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong
+   - detail_index.tga     # Size should be: (width x height) # Can be altered, but size must match plains_01_mask.png
+   - ..._mask.png     # Size should be: (width x height)     # These files should be saved as 16 or 8 bit greyscale images, game will load even if the color-mode is rgb or rgba, it will convert the image to greyscale. Game will load even if the dimensions on this are wrong. The height of plains_01_mask.png must &lt;= 4096, and the size of it must match detail_index.tga
 
 - gfx/map/water/
-    - flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
-    - foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
-    - watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
+   - flowmap.dds     # Size should be: (width x height) * 1/4 # Note, game will load even if the dimensions on this are wrong
+   - foam_map.dds     # Size should be: (width x height) * 1/8 # Note, game will load even if the dimensions on this are wrong
+   - watercolor_rgb_waterspec_a.dds     # Size should be: (width x height) * 1/2 # Note, game will load even if the dimensions on this are wrong
 
 - map_data/
-    - heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
-    - provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
-    - rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
-    - indirection_heightmap.png     # Size should be: (width x height) * 1/32 
-    - heightmap.heightmap
+   - heightmap.png     # Size should be: (width x height)  Ensure that this is in RGB format and not RGBA. If you get a white fog it might be because the heightmap was exported as RGBA. To fix this, you need to delete the alpha layer
+   - provinces.png     # Size should be: (width x height)  # Note, game will load even if the dimensions on this are wrong. It has to match the size of rivers.png or game will crash
+   - rivers.png     # Size should be: (width x height) # Note, game will load even if the dimensions on this are wrong, It has to match the size of provinces.png or game will crash. If it does not match the actual size of the map, the game will display the map with issues
+   - indirection_heightmap.png     # Size should be: (width x height) * 1/32
+   - heightmap.heightmap
 ```
-    original_heightmap_size # Should be { width height } the width and height here should be the size of heightmap.png
+   original_heightmap_size # Should be { width height } the width and height here should be the size of heightmap.png
 ```
 
 - content_source/map_objects/masks     # All files in this that have _mask (21 as of 1.0) need to be resized TO: (width x height) * 1/2  Ensure that this has 8-bit depth as other depths like 32 cause errors like misplacing trees or painting large squares of trees.
@@ -381,12 +432,12 @@ Due to a bug, you'll need to have those defined *before* you can auto nudge. Luc
 
 Copy all of the files in:
 ```
-    C:\Users\[user]\Documents\Paradox Interactive\Crusader Kings III\generated
+   C:\Users\[user]\Documents\Paradox Interactive\Crusader Kings III\generated
 ```
 
 Paste them into:
 ```
-    \gfx\map\map_object_data
+   \gfx\map\map_object_data
 ```
 
 
@@ -397,7 +448,12 @@ Make sure that the map dimensions in common/defines are width - 1 and height - 1
 
 1. Creating Custom Map Modes
 
-![Custom Map Mode that renders where special buildings can be built.](https://ck3.paradoxwikis.com/File:Modding_custom_map_mode_special_buildings_example.jpg)Crusader Kings 3 features the ability to visually filter the map in different ways at the click of a button. This is not intended to be a moddable feature but there are ways to create simple custom map modes nevertheless.
+<figure>
+
+![modding custom map mode special buildings example](../assets/images/modding_custom_map_mode_special_buildings_example.jpg)
+<figcaption>Custom Map Mode that renders where special buildings can be built.</figcaption>
+</figure>
+Crusader Kings 3 features the ability to visually filter the map in different ways at the click of a button. This is not intended to be a moddable feature but there are ways to create simple custom map modes nevertheless.
 
 Before making a custom map mode you should first evaluate if it will be worth doing. Currently, custom map modes are arduous to script, difficult to maintain and likely to cause compatibility issues with future versions.
 
@@ -527,12 +583,16 @@ highlight_special_buildings_map = {
 }
 ```
 
+
 You'll notice how our script has two variables named ``custom_map_mode`` and ``custom_map_mode_changing``, these variables are used to keep track of which custom map logic is currently overwriting our ``custom_mapmode`` script. When making additional map modes you should rename ``custom_map_mode``'s flag to that map mode's name.
 
 
-| Additional example: ``religion_organization_map`` |
-| --- |
-| <pre><code>religion_organization_map = {<br>	effect = {<br>		if = {<br>			limit = { NOT = { global_var:custom_map_mode = flag:religion_organization_map } }<br>			set_global_variable = {<br>				name = custom_map_mode_changing<br>				value = 1<br>			}<br>			set_global_variable = {<br>				name = custom_map_mode<br>				value = flag:religion_organization_map<br>			}<br>			every_barony = {<br>				if = {<br>					limit = { <br>						title_capital_county = { <br>							faith = {<br>								has_doctrine = unreformed_faith_doctrine<br>							} <br>						}<br>					}<br>					set_color_from_title = title:d_map_color_red				<br>				}<br>				else = {<br>					set_color_from_title = title:d_map_color_blue<br>				}<br>			}<br>			remove_global_variable = custom_map_mode_changing<br>		}<br>	}<br>	is_shown = {<br>		exists = global_var:custom_map_mode<br>		global_var:custom_map_mode = flag:religion_organization_map<br>	}<br>	is_valid = {<br>		NOT = { exists = global_var:custom_map_mode_changing }<br>	}<br>}</code></pre> |
+<details>
+<summary>Additional example: `religion_organization_map`</summary>
+
+<code style="white-space: pre">religion_organization_map = {<br>    effect = {<br>        if = {<br>            limit = { NOT = { global_var:custom_map_mode = flag:religion_organization_map } }<br>            set_global_variable = {<br>                name = custom_map_mode_changing<br>                value = 1<br>            }<br>            set_global_variable = {<br>                name = custom_map_mode<br>                value = flag:religion_organization_map<br>            }<br>            every_barony = {<br>                if = {<br>                    limit = { <br>                        title_capital_county = { <br>                            faith = {<br>                                has_doctrine = unreformed_faith_doctrine<br>                            } <br>                        }<br>                    }<br>                    set_color_from_title = title:d_map_color_red                <br>                }<br>                else = {<br>                    set_color_from_title = title:d_map_color_blue<br>                }<br>            }<br>            remove_global_variable = custom_map_mode_changing<br>        }<br>    }<br>    is_shown = {<br>        exists = global_var:custom_map_mode<br>        global_var:custom_map_mode = flag:religion_organization_map<br>    }<br>    is_valid = {<br>        NOT = { exists = global_var:custom_map_mode_changing }<br>    }<br>}</code>
+
+</details>
 
 
 Now that all the logic is done, it is time to add it to our UI.
@@ -551,6 +611,7 @@ text_single = {
 	max_width = 110
 }
 ```
+
 
 Once located, add the necessary script to create an additional button below it.
 
@@ -572,6 +633,7 @@ button_tertiary = {
 	using = tooltip_ws
 }
 ```
+
 
 In this case, ``custom_mapmode`` is what we are using to render on a per-barony basis and ``highlight_special_buildings_map`` is the specific logic we are running through it. You don't need to make a new ``custom_mapmode`` script each time you change logic.
 

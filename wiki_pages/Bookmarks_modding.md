@@ -6,6 +6,16 @@
 Bookmark modding allows the highlighting of new interesting characters and scenarios on the *Select Start Date* screen.
 
 
+- [Creating the bookmark](#creating-the-bookmark)
+- [Portraits](#portraits)
+- [Bookmark Screen](#bookmark-screen)
+      - [Designing the Selection Screen Map](#designing-the-selection-screen-map)
+      - [Bookmark Coat of Arms](#bookmark-coat-of-arms)
+- [Buttons](#buttons)
+- [Localization](#localization)
+- [References](#references)
+
+
 ## Creating the bookmark
 
 Create a new file or edit a already existing one in the folder mods/yourmod/common/bookmarks with a corresponding name of your choice. Make sure the labeling stays coherent and is referenced in other files with the same ID. For example bm_3000_wotr.
@@ -75,9 +85,8 @@ You use the console via dump_bookmark_portraits. They will get dumped to this fo
 ```
 C:\Users\USERNAME\Documents\Paradox Interactive\Crusader Kings III\common\bookmark_portraits
 ```
-```
- If you instead intend on creating the characters personally, then check out the character modding page.
-```
+
+If you instead intend on creating the characters personally, then check out the character modding page.
 
 
 ## Bookmark Screen

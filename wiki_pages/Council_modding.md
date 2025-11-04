@@ -4,6 +4,9 @@ Councillors are defined in the */common/council_positions/* folder.
 Council tasks are defined in the */common/council_tasks/* folder.
 
 
+- [Council Positions Structure](#council-positions-structure)
+
+
 ## Council Positions Structure
 
 New council positions can be added via the following format:
@@ -33,7 +36,7 @@ name_of_the_position = {
 	# Modifier applied to the liege of the character in this position. Can take a "scale" parameter to scale by (a script value; see _script_values.info). Up to 5 of these can be defined if more than one scale is necessary
 	council_owner_modifier = {
 	}
-	
+
 	# Is this an available position for this council [SCOPE is the CHARACTER owner of the council]
 	valid_position = {
 
@@ -51,7 +54,7 @@ name_of_the_position = {
 
 	# Effect applied when a character lose the position. [SCOPE is the character in the position]
 	on_lose_position = {
-	
+
 	}
 
 	# Effect applied when a character is fired from the position. [SCOPE is the character in the position]
@@ -61,14 +64,15 @@ name_of_the_position = {
 
 	# Max number of positions for this type. For modders. Default 1. Infinite 0 or negative.
 	max_amount = 2
-	
+
 	use_for_scheme_power = yes/no
 	use_for_scheme_resistance = yes/no
-	
+
 	# Which portrait animation should councillors of this type use in the council window
 	portrait_animation = X
 }
 ```
+
 
 Note that the council_positions folder does not include court physician.
 

@@ -6,11 +6,19 @@
 **Defines** are constants that affect certain non-scriptable game behaviors, such as army movement and schemes. They are static and global: they apply to the whole game and cannot be changed dynamically. 
 
 
+- [Configuration](#configuration)
+- [List of defines](#list-of-defines)
+  - [Game](#game)
+  - [Setup](#setup)
+  - [Jomini Map](#jomini-map)
+  - [Characters](#characters)
+
+
 ## Configuration
 
 Vanilla defines are set in *game\common\defines\00_defines.txt*.
 
-To modify defines, it is best not to modify the original file, but rather to use a mod. To do so, [Mod_structure#Creating_initial_files](Mod_structure.md#creating_initial_files), then create a text file in *Documents\Paradox Interactive\mod\[mod name]\common\defines*. To change a define, use the following format in the following example, which changes the end date to 1800:
+To modify defines, it is best not to modify the original file, but rather to use a mod. To do so, [create a mod](Mod_structure.md#creating_initial_files), then create a text file in *Documents\Paradox Interactive\mod\[mod name]\common\defines*. To change a define, use the following format in the following example, which changes the end date to 1800:
 
 
 ```
@@ -18,6 +26,7 @@ NGame = {
     END_DATE = "1800.1.1"
 }
 ```
+
 
 The file only needs to contain the edited defines—ones that are not being changed can be left out.
 
@@ -30,9 +39,8 @@ The following is a (non-exhaustive) list of defines, organized by category.
 ### Game
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Variable** | **Unit** | **Notes/description** |
+| --- | --- | --- |
 | END_DATE = "1453.1.1" |  | YYYY.M.D |
 | GAME_SPEED_TICKS | Seconds | Number of seconds a day should take at every game speed (first value is speed 1, last value is speed 5). |
 | COMBAT_TICK_LIMIT = 1 |  |  |
@@ -48,9 +56,8 @@ The following is a (non-exhaustive) list of defines, organized by category.
 ### Setup
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Variable** | **Unit** | **Notes/description** |
+| --- | --- | --- |
 | COURTLESS_CHARACTER_GUEST_CHANCE = 0.25 |  | Chance that a courtless character is sent to a court as a guest instead of a regular courtier on game start. |
 | GENERATED_POOL_CHARACTERS |  | Random range for number of characters per pool (duchy) generated at the start of the game |
 | GENERATED_POOL_CHARACTER_TEMPLATES |  | Templates used for the pool character. Presumably, the trait-based templates are characters skilled in that trait. |
@@ -62,9 +69,8 @@ The following is a (non-exhaustive) list of defines, organized by category.
 ### Jomini Map
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Variable** | **Unit** | **Notes/description** |
+| --- | --- | --- |
 | WORLD_EXTENTS_X = 8191 |  | How wide the map is. |
 | WORLD_EXTENTS_Y = 51 |  | How deep the map is. |
 | WORLD_EXTENTS_Z = 4095 |  | How tall the map is. |
@@ -74,9 +80,8 @@ The following is a (non-exhaustive) list of defines, organized by category.
 ### Characters
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Variable** | **Unit** | **Notes/description** |
+| --- | --- | --- |
 | MALE_RANDOM_AGE_BASE = 16 | Years | The initial age of randomly-generated male characters. |
 | MALE_RANDOM_AGE_SPAN = 20 | Years | The maximum difference from the base age of male characters. The age of a random character is equal to the base plus a random value within the span. |
 | FEMALE_RANDOM_AGE_BASE = 16 | Years | The initial age of randomly-generated female characters. |
@@ -106,8 +111,8 @@ The following is a (non-exhaustive) list of defines, organized by category.
 | MAX_DREAD = 100 |  |  |
 | BASE_DREAD = 0 |  |  |
 | DREAD_MONTHLY_CHANGE = 0.5 |  | Dread changes monthly by this value until reaching a character's base dread. |
-| BOLD_LEVEL_COWED = 45 |  | The amount of dread above a character's [Attributes#Dread](https://ck3.paradoxwikis.com/Attributes#dread) for them to be terrified. |
-| BOLD_LEVEL_INTIMIDATED = 20 |  | The amount of dread above a character's [Attributes#Dread](https://ck3.paradoxwikis.com/Attributes#dread) for them to be intimidated. |
+| BOLD_LEVEL_COWED = 45 |  | The amount of dread above a character's [boldness value](https://ck3.paradoxwikis.com/Attributes#dread) for them to be terrified. |
+| BOLD_LEVEL_INTIMIDATED = 20 |  | The amount of dread above a character's [boldness value](https://ck3.paradoxwikis.com/Attributes#dread) for them to be intimidated. |
 | MAX_TYRANNY = 1000 |  |  |
 | TYRANNY_MONTHLY_CHANGE = -0.25 |  | Tyranny changes by this amount every month. |
 | BASE_FERTILITY = 0.5 |  |  |
@@ -156,7 +161,7 @@ The following is a (non-exhaustive) list of defines, organized by category.
 | MAX_COUNTIES_IN_REALM_AS_DUKE = 30 |  | As a duke or count, the player (AI characters are unaffected) will begin to suffer penalties if going beyond this number of counties. Kings and emperors do not suffer the penalty. |
 | INCOME_PENALTY_PER_COUNTY_ABOVE_LIMIT = 0.05 |  | Going above the county limit defined in MAX_COUNTIES_IN_REALM_AS_DUKE reduces monthly income by this percentage per county. |
 | FORCED_SUCCESSION_ELECTION_YEARS = 5 | Years | Length of time someone is forced to vote with another elector when a strong hook is used to do so. |
-| MINIMUM_VALUE_FOR_PERSONALITY_DESCRIPTION = 25 |  | [Character#AI_Personality](https://ck3.paradoxwikis.com/Character#ai_personality) values below this are ignored when building personality descriptions. |
+| MINIMUM_VALUE_FOR_PERSONALITY_DESCRIPTION = 25 |  | [AI personality](https://ck3.paradoxwikis.com/Character#ai_personality) values below this are ignored when building personality descriptions. |
 | STRONG_VALUE_FOR_PERSONALITY_DESCRIPTION = 75 |  | AI personality values above this get a stronger version in the personality description. |
 | MINIMUM_TIER_FOR_REGNAL_NUMBERING = 3 |  | Minimum tier in order for regnal numbering to be used. 1 is baron, 5 is emperor. |
 | PERCENTAGE_HOMOSEXUAL = 5.0 |  | Percentage chance of a randomly-created character being homosexual. |

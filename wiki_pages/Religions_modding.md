@@ -5,6 +5,15 @@
 
 New religions can easily be added into the game using the highly modular design which the game offers.
 
+- [Religion family](#religion-family)
+- [Religion structure](#religion-structure)
+- [Faiths](#faiths)
+- [Localization](#localization)
+- [Graphics](#graphics)
+- [Holy sites](#holy-sites)
+- [Tenet ID](#tenet-id)
+
+
 ## Religion family
 
 Each religion belongs to a family. The three vanilla families are Abrahamic, Eastern and Pagan. For instance:
@@ -22,6 +31,7 @@ rf_abrahamic = {
 	doctrine_background_icon = core_tenet_banner_christian.dds
 }
 ```
+
 
 Below is a list of all parameters that can be set for religion families.
 
@@ -44,11 +54,11 @@ Religions are located in the */common/religion/religions* folder. Each religion 
 sea_cults = {
 	family = rf_pagan
 	graphical_faith = pagan_gfx
-	
+
 	doctrine = pagan_hostility_doctrine
-	
+
 	pagan_roots = yes
-	
+
 	#Main Group
 	doctrine = doctrine_spiritual_head
 	doctrine = doctrine_gender_male_dominated
@@ -120,13 +130,13 @@ Below is a list of all parameters that can be set for religions.
 | pagan_roots | boolean | If yes, then faiths without the unreformed doctrine are considered reformed by the interface. | pagan_roots = yes |
 | doctrine | doctrine | Doctrines defined in a religion will be applied to all faiths within it. This is only at game start; it is purely for script convenience, and would be equivalent to putting the doctrine in all the faiths. It can be overridden by putting a different doctrine in the group in the specific faith. Note that doctrines that allow more than one pick can **not** be defined on a religion level, as there's no obvious override system that would work then. Doctrines cannot be defined after the faiths section. | doctrine = doctrine_spiritual_head |
 | traits | clause | Defines which traits are considered virtues and sins by the religion. Notes on virtues and sins: List traits that are virtues for all followers. Trait groups also work. If more than one trait in a group is defined (or the group itself), only the first will be shown in the UI<br>		sins = { ... }					#					  (sins)<br>		# Virtues and sins give an opinion bonus/penalty (see VIRTUOUS_TRAIT and SINFUL_TRAIT defines). For that it is the "viewer's" faith that matters.<br>		# E.g. if generous is a christian virtue, all christian characters will think more highly of all others with that trait, even if the others are not christian.<br>		# Holders of the traits will also get the virtue_owner_modifier/sin_owner_modifier for each matching trait.<br>		# Virtues and sins can optionally have a multiplier to scale the effects (default is 1):<br>		virtues = { brave = 0.5 }		# scales both the opinion effect and the modifier<br>		# And they can specify a custom modifier (default is virtue_owner_modifier/sin_owner_modifier):<br>		sins = { stubborn = { monthly_prestige = -0.1 } }<br>		# When using a custom modifier you can specify a scale as well (default is 1):<br>		sins = { stubborn = { monthly_prestige = -0.1 scale = 2 } }		# scales both the opinion effect and the modifier | virtues = { brave generous } sins = { stubborn = { monthly_prestige = -0.1 scale = 2 } } |
-| reserved_male_names | list<string> | Names listed here will be applied to all faiths that don't define reserved_male_names themselves. These names can be applied to newborn males when selecting a religion-based name. | reserved_male_names = { Rodrigo Johan Paradoxus } |
-| reserved_female_names | list<string> | Same as reserved_male_names, but applied to female characters instead. |  |
-| custom_faith_icons | list<gfx> | When creating a custom faith, these will be the available icons. Path is  "gfx/interface/icons/religion/%s.dds", where %s is the name. Also needs a text icon | custom_faith_icons = { custom_faith_1 custom_faith_2 custom_faith_3 } |
-| localization | list<localization keys> | See localization inside faiths below. |  |
-| holy_order_names | list<clause> | Names and CoAs that can be used by holy orders of this religion. These are used if there are none available for the faith. If there are none left here, it uses "holy_order_default" as name and a randomly generated CoA instead. | <pre><code>holy_order_names = {<br>		{ name = "holy_order_name1" coat_of_arms = "holy_order_coa1" }<br>		{ name = "holy_order_name2" coat_of_arms = "holy_order_coa2" }<br>		...<br>	}</code></pre> |
-| holy_order_maa | list<regiment type> | Men-At-Arms types mostly used for holy orders. The culture of the headquarters of the holy order must have unlocked the required innovation. (It will use the last available type in the list.) | holy_order_maa = { huscarl } |
-| faiths | list<Faiths> | See below |  |
+| reserved_male_names | list&lt;string&gt; | Names listed here will be applied to all faiths that don't define reserved_male_names themselves. These names can be applied to newborn males when selecting a religion-based name. | reserved_male_names = { Rodrigo Johan Paradoxus } |
+| reserved_female_names | list&lt;string&gt; | Same as reserved_male_names, but applied to female characters instead. |  |
+| custom_faith_icons | list&lt;gfx&gt; | When creating a custom faith, these will be the available icons. Path is  "gfx/interface/icons/religion/%s.dds", where %s is the name. Also needs a text icon | custom_faith_icons = { custom_faith_1 custom_faith_2 custom_faith_3 } |
+| localization | list&lt;localization keys&gt; | See localization inside faiths below. |  |
+| holy_order_names | list&lt;clause&gt; | Names and CoAs that can be used by holy orders of this religion. These are used if there are none available for the faith. If there are none left here, it uses "holy_order_default" as name and a randomly generated CoA instead. | <code style="white-space: pre">holy_order_names = {<br>        { name = "holy_order_name1" coat_of_arms = "holy_order_coa1" }<br>        { name = "holy_order_name2" coat_of_arms = "holy_order_coa2" }<br>        ...<br>    }</code> |
+| holy_order_maa | list&lt;regiment type&gt; | Men-At-Arms types mostly used for holy orders. The culture of the headquarters of the holy order must have unlocked the required innovation. (It will use the last available type in the list.) | holy_order_maa = { huscarl } |
+| faiths | list&lt;Faiths&gt; | See below |  |
 
 
 ## Faiths
@@ -150,10 +160,11 @@ faiths = {
 		doctrine = tenet_warmonger
 		doctrine = tenet_human_sacrifice
 		doctrine = tenet_ancestor_worship
-			
+
 	}
 }
 ```
+
 
 Below is a list of all parameters that can be set for faiths.
 
@@ -168,18 +179,18 @@ Below is a list of all parameters that can be set for faiths.
 | religious_head | title | What title should be this faith's religious head. If not set, will not have a religious head (unless created elsewhere in script) | religious_head = d_coptic_papacy |
 | holy_site | holy site | Holy site, as defined in the holy_site folder. You can add any number of these | holy_site = jerusalem |
 | doctrine | doctrine |  |  |
-| reserved_male_names/reserved_female_names | list<string> |  |  |
+| reserved_male_names/reserved_female_names | list&lt;string&gt; |  |  |
 | localization |  |  |  |
 
 
 ## Localization
 
 The localization clause in both faiths and religions provides key-value pairs for localization. However, this clause does not include object localization for the religion/faith itself and its basic properties. The following localization keys also need defining:
-- <religion/faith_name>
-- <religion/faith_name>_adj
-- <religion/faith_name>_adherent
-- <religion/faith_name>_adherent_plural
-- <religion/faith_name>_desc
+- &lt;religion/faith_name&gt;
+- &lt;religion/faith_name&gt;_adj
+- &lt;religion/faith_name&gt;_adherent
+- &lt;religion/faith_name&gt;_adherent_plural
+- &lt;religion/faith_name&gt;_desc
 
 Below is a list of keys that need to be paired for localization. Although you can use this as a reference, it is also possible to simply copy and paste this list from a vanilla file and add your own keys where needed. Although many items in the list are not relevant to many religions/faiths, they can simply be assigned to a key used by another more relevant item. (e.g. FertilityGodName in Christianity is given as "$christianity_high_god_name$" in the localization file):
 - HighGodName
@@ -308,13 +319,14 @@ Custom holy sites can be added in a text document in the */common/religion/holy_
 ```
 jerusalem = {
 	county = c_jerusalem
-	
+
 	character_modifier = {
 		monthly_piety_gain_mult = 0.2
 	}
 	flag = jerusalem_conversion_bonus # +20% County Conversion
 }
 ```
+
 
 Below are the attributes which can be assigned to a holy site. Only the county is necessary.
 
@@ -328,9 +340,9 @@ Below are the attributes which can be assigned to a holy site. Only the county i
 
 
 Holy sites also require the following keys in localization:
-- holy_site_<name>_name
-- holy_site_<name>_effect_name
-- holy_site_<name>_effects
+- holy_site_&lt;name&gt;_name
+- holy_site_&lt;name&gt;_effect_name
+- holy_site_&lt;name&gt;_effects
 
 ```
 holy_site_jerusalem_name:0 "Jerusalem"
@@ -343,15 +355,14 @@ holy_site_jerusalem_name:0 "Jerusalem"
 
 Each tenet has an internal ID used to reference it within the game files. In general, to get the tenet ID from its name:
 1. Take the non-variant name (i.e. non-faith specific)
-1. Turn all upper case letters into lower case (``A...Z->a...z``)
+1. Turn all upper case letters into lower case (``A...Z-&gt;a...z``)
 1. Replace all spaces (`` ``) with underscores (``_``)
 1. Add ``tenet_`` to the beginning
 
 Tenets that do not fit the pattern above have been listed below:
 
-|  |  |
-| --- | --- |
 | **Name** | **Tenet ID** |
+| --- | --- |
 | [Auspicious Birthright](https://ck3.paradoxwikis.com/Auspicious_Birthright) | tenet_mystical_birthright |
 | [Ritual Suicide](https://ck3.paradoxwikis.com/Ritual_Suicide) | tenet_consolamentum |
 | [Ecclesiarchy](https://ck3.paradoxwikis.com/Ecclesiarchy) | tenet_pentarchy |

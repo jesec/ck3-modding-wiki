@@ -3,7 +3,13 @@
 > **Note:** Last verified for version 1.3
 
 
-TOC
+- [Creating a Holding](#creating-a-holding)
+- [Variables](#variables)
+- [Game Concept](#game-concept)
+- [Modifiers](#modifiers)
+    - [List of generated modifiers](#list-of-generated-modifiers)
+- [Localization](#localization)
+- [Adding more buildings](#adding-more-buildings)
 
 
 ### Creating a Holding
@@ -31,9 +37,8 @@ my_holding = {
 ### Variables
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variable** | **Type** | **Description** | **Example** |
+| --- | --- | --- | --- |
 | primary_building | string | The key of the building that is generated at the start. | primary_building = tribe_01 |
 | buildings | block | Assign what buildings are available for this holding type | buildings = {<br>		palisades_01<br><br>		war_camps_01<br><br>		longhouses_01<br><br>		market_villages_01<br><br>	} |
 | flag | string | Optional flags that are assigned to the holding type | flag = tribal |
@@ -70,14 +75,14 @@ my_modifier = {
 
 ##### List of generated modifiers
 
-- <holding_type>_build_speed
-- <holding_type>_build_gold_cost
-- <holding_type>_build_piety_cost
-- <holding_type>_build_prestige_cost
-- <holding_type>_holding_build_speed
-- <holding_type>_holding_build_gold_cost
-- <holding_type>_holding_build_piety_cost
-- <holding_type>_holding_build_prestige_cost
+- &lt;holding_type&gt;_build_speed
+- &lt;holding_type&gt;_build_gold_cost
+- &lt;holding_type&gt;_build_piety_cost
+- &lt;holding_type&gt;_build_prestige_cost
+- &lt;holding_type&gt;_holding_build_speed
+- &lt;holding_type&gt;_holding_build_gold_cost
+- &lt;holding_type&gt;_holding_build_piety_cost
+- &lt;holding_type&gt;_holding_build_prestige_cost
 
 
 ### Localization
@@ -98,21 +103,21 @@ Buildings are defined in `/Crusader Kings III/game/game/common/buildings`
 
 ```
 name_of_the_building = {
-	
+
 	# How many levies does the building give
 	levy = 200
-	
+
 	# How much garrison does the building give
 	max_garrison = 100
 
 	# How much garrison regains a percentage of its maximal garrison equal to the garrison reinforcement rate
 	garrison_reinforcement_factor = 0.01
-	
+
 	# How long does it take to construct the building
 	construction_time = 720
-	
+
 	type = regular/special/duchy_capital	# Specifies whether this is a regular building, a special building, or a duchy capital building. Regular by default
-	
+
 	# Which asset does the building use
 	asset = {
 		# 'pdxmesh' or 'entity', specifies wheter to use a mesh or an entity. Meshes are more performant and should be preferred.
@@ -136,12 +141,12 @@ name_of_the_building = {
 		# Governments that prefer this asset to be shown
 		governments = { tribal_government }
 	}
-	
+
 	# Is the building enabled? Else won't give any effects to holder, and not be constructible (see can_construct* below).
 	# If is_graphical_background = yes, this controls whether the building can be shown in the province.
 	# scopes: root is the province; scope:holder is the holder of the province; county is the county title the province belongs to
 	is_enabled = {}
-	
+
 	# Can the building be constructed.
 	# Use this instead of is_enabled if you want to allow rulers to "use" the building after getting the holding, but to disallow that they construct it.
 	# can_construct_potential controls whether the building appears in the build menu. For upgrades it is identical to can_construct_showing_failures_only.
@@ -152,17 +157,17 @@ name_of_the_building = {
 	can_construct_showing_failures_only = {}
 	can_construct = {}
 	show_disabled = yes/no	# if set to yes, the building will show in the build menu even if disabled (will still use can_construct_potential). No by default
-	
+
 	# How much cost does the building cost
 	cost = { gold = 500 ... }
-	
+
 	# The next building in chain unlocked by this building
 	next_building = castle_02
 
 	# Custom description for effects indirectly provided by building.
 	# The scope root refers to the buildings province.
 	effect_desc = <loc key>
-	
+
 	# A modifier applied to the owner of the holding
 	character_modifier = {
 	}
@@ -181,7 +186,7 @@ name_of_the_building = {
 		# The effect
 		monthly_prestige_gain_mult = 0.2
 	}
-	
+
 	# A modifier applied to the province
 	province_modifier = {
 	}
@@ -214,7 +219,7 @@ name_of_the_building = {
 	county_faith_modifier = {
 		parameter = faith param
 	}
-	
+
 	# A modifier applied to every de jure county in the duchy (if the county has the same de facto liege as this building's county). Can only be used (and only works) for duchy capital buildings.
 	duchy_capital_county_modifier = {
 	}
@@ -242,7 +247,7 @@ name_of_the_building = {
 	county_holder_character_modifier = {
 
 	}
-	
+
 	# Building flags
 	flag = castle
 
@@ -251,12 +256,12 @@ name_of_the_building = {
 	on_complete = {
 		<effects>
 	}
-	
+
 	# How desirable is the building for the AI
 	ai_value = {
 		base = 100
 	}
-	
+
 	# If this is set to yes, the building will be used for figuring out which background asset (walls/no walls etc) should be shown
 	is_graphical_background = no
 

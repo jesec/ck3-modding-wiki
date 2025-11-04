@@ -7,6 +7,13 @@ A new feature of Crusader Kings 3 are the improved dynasties, which can be compo
 It's also possible to change name, coat of arms and houses of any existing dynasty.
 
 
+- [Creating a new dynasty](#creating-a-new-dynasty)
+- [Prefixes](#prefixes)
+- [Coat of arms](#coat-of-arms)
+- [Motto](#motto)
+- [House](#house)
+
+
 ## Creating a new dynasty
 
 A new dynasty is created by adding files to four folders.
@@ -61,13 +68,13 @@ dynnp_d-:0 "d'" # No space after d'
 
 
 Results in:
-* **de Lyon**
-* **d'Oeuvre**
+- **de Lyon**
+- **d'Oeuvre**
 
 
 ## Coat of arms
 
-:*Main article: [Coat of arms modding](Coat_of_arms_modding.md)*
+1. *Main article: [Coat of arms modding](Coat_of_arms_modding.md)*
 
 The next change is made in *common/coat_of_arms/coat_of_arms* to the *90_dynasties.txt* or the empty new file. Here is added the description of the coat of arms. Here any existing or new one can be pasted. The example uses the coat of arms of the county of Saarbrücken in Lotharingia.
 
@@ -102,7 +109,7 @@ Mottos can be added to dynasties or to houses (or both):
 ```
 
 
-You will then need to [Localization](Localization.md) the motto.
+You will then need to [localize](Localization.md) the motto.
 
 
 ## House
@@ -120,7 +127,7 @@ house_lyon = {
 
 
 When every step is done, the final result ingame should look like this:
-![Modded Lyon-Dynasty](https://ck3.paradoxwikis.com/File:Modded_Lyon-Dynasty.jpg)
+![Modded Lyon-Dynasty](../assets/images/Modded_Lyon-Dynasty.jpg)
 
 
 Category:Modding

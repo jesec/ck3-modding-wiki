@@ -3,7 +3,12 @@
 > **Note:** Last verified for version 1.7
 
 
-![a screenshot of the in-game tool to check triggers showing multiple triggers being false or true](https://ck3.paradoxwikis.com/File:Trigger_runner.png)
+<figure>
+
+![a screenshot of the in-game tool to check triggers showing multiple triggers being false or true](../assets/images/Trigger_runner.png)
+<figcaption>trigger runner</figcaption>
+</figure>
+
 
 A trigger is a check that returns **true** or **false** for the scope where it's used.
 
@@ -15,9 +20,34 @@ Triggers that compare values can also return the value itself.
 
 For example, ``add_gold = gold`` would add the same amount of gold that the character currently has.
 
-The full list of available code triggers can be found in [Triggers_list](Triggers_list.md). 
+The full list of available code triggers can be found in [triggers.log](Triggers_list.md). 
 
 Run ``script_docs`` console command in the game and find the log in Documents\Paradox Interactive\Crusader Kings III\logs.
+
+
+- [Trigger blocks](#trigger-blocks)
+  - [Early out](#early-out)
+  - [Logic blocks](#logic-blocks)
+    - [AND](#and)
+    - [OR](#or)
+    - [NOT/NOR/NAND](#notnornand)
+  - [Limit blocks](#limit-blocks)
+    - [if/else_if](#ifelse_if)
+    - [effect list-builders](#effect-list-builders)
+    - [trigger_if/trigger_else_if/trigger_else](#trigger_iftrigger_else_iftrigger_else)
+- [Trigger syntax](#trigger-syntax)
+  - [Scope comparison](#scope-comparison)
+  - [Value comparison](#value-comparison)
+  - [Code triggers](#code-triggers)
+    - [Basic triggers](#basic-triggers)
+    - [Simple triggers](#simple-triggers)
+    - [Complex triggers](#complex-triggers)
+    - [In-line complex triggers](#in-line-complex-triggers)
+  - [scripted_triggers](#scripted_triggers)
+    - [Basic scripted_triggers](#basic-scripted_triggers)
+    - [Complex scripted_triggers](#complex-scripted_triggers)
+- [Logical Operators/Triggers](#logical-operatorstriggers)
+- [References](#references)
 
 
 ## Trigger blocks
@@ -37,6 +67,7 @@ modifier = {
    factor = 0
 }
 ```
+
 
 In this block, ``is_ai = no`` is a trigger, but ``factor = 0`` is an operator.
 
@@ -59,6 +90,7 @@ trigger = {
 }
 ```
 
+
 If ``exists = primary_spouse`` is false, the second trigger is not evaluated.
 
 It is also useful for performance optimization. In a trigger block containing multiple triggers, putting the ones most likely to fail first can significantly reduce the number of triggers checked overall.
@@ -72,6 +104,7 @@ trigger = {
    is_independent_ruler = yes
 }
 ```
+
 
 If this trigger block is evaluated once a year for each character in the game, since most characters in the game are not players, ``is_ai = no`` will almost always be false, and the 2nd trigger will almost never be evaluated at all.
 
@@ -208,6 +241,7 @@ trigger = {
 }
 ```
 
+
 but this would not throw an error, because if the ``limit`` block is false, the trigger is not evaluated.
 
 
@@ -253,10 +287,11 @@ title:k_france.holder ?= father
 A value comparison is a statement with two numerical values on either side of either
 - an equal sign ``=``
 - a comparison symbol
-    - strictly greater than ``>``
-    - greater than or equal to ``>=``
-    - lower than ``<``
-    - lower than or equal to ``<=``
+   - strictly greater than ``&gt;``
+   - greater than or equal to ``&gt;=``
+   - lower than ``&lt;``
+   - lower than or equal to ``&lt;=``
+
 It is true if the comparison is mathematically correct.
 
 Numerical values in a value comparison can be:
@@ -296,6 +331,7 @@ Simple triggers check whether they are true depending on the argument provided o
 The argument is either:
 
 - a scope
+
 Ex: this trigger checks whether the current character scope is a vassal of the saved scope ``scope:actor``.
 
 
@@ -305,6 +341,7 @@ is_vassal_of = scope:actor
 
 
 - a database key
+
 Ex: this trigger checks whether the current character scope has the trait defined with the ``infirm`` key.
 
 
@@ -342,7 +379,8 @@ distance_to_liege_sval = {
   value = "realm_to_title_distance_squared(liege.capital_county)"
 }
 ```
-This feature is not documented and doesn't work with all triggers. From testing, it seems to only support triggers with this line in their description: ``Traits: <, <=, =, !=, >, >=``
+
+This feature is not documented and doesn't work with all triggers. From testing, it seems to only support triggers with this line in their description: ``Traits: &lt;, &lt;=, =, !=, &gt;, &gt;=``
 
 If a trigger has multiple arguments, like ``has_trait_xp`` which requires trait and track, they are added with a |
 
@@ -373,6 +411,7 @@ is_adult = yes
 gold > 1000
 ```
 
+
 instead of repeating the same set of triggers in different places, they can be defined as a scripted_trigger:
 
 ```
@@ -393,6 +432,7 @@ Using the negative version
 ```
 is_rich_adult_independent_ruler = no
 ```
+
 
 is the same as using a ``NOT`` logic block
 
@@ -417,6 +457,7 @@ is_vassal_of = title:k_france.holder
 is_close_family_of = title:k_france.holder
 ```
 
+
 that set of triggers can be defined as a scripted_trigger, but instead of referencing ``title:k_france.holder`` specifically, the scripted_trigger uses an argument defined in uppercase letters wrapped in two ``$`` signs:
 
 
@@ -426,6 +467,7 @@ is_related_vassal_of = {
    is_close_family_of = $TARGET$
 }
 ```
+
 
 When used, the complex form of the scripted_trigger specifies what the expected argument is, by using the same name but without the ``$`` signs:
 
@@ -447,17 +489,17 @@ These triggers provide basic logical functionality.
 | **Name** | **Description** | **Usage** | **Traits** | **Supported Scopes** | **Supported Targets** |
 | --- | --- | --- | --- | --- | --- |
 | always | Always the same value | always = yes | yes/no |  |  |
-| AND | All inside trigger must be true | AND = { <triggers> } |  |  |  |
-| OR | At least one entry inside trigger must be true | OR = { <triggers> } |  |  |  |
-| NOT | Negates content of trigger | NOT = { <triggers> } |  |  |  |
-| NOR | A negated OR trigger | NOR = { <triggers> } |  |  |  |
-| NAND | A negated AND trigger | NAND = { <triggers> } |  |  |  |
-| all_false | True if all children are false (equivalent to NOR) | all_false = { <triggers> } |  |  |  |
-| any_false | True if any child is false (equivalent to NAND) | any_false = { <triggers> } |  |  |  |
-| switch | Switch on a trigger for the evaluation of another trigger with an optional fallback trigger | switch = {<br>trigger = simple_assign_trigger<br><br>case_1 = { <triggers> }<br><br>case_2 = { <triggers> }<br><br>case_n = { <triggers> }<br><br>fallback = { <triggers> }<br><br>} |  |  |  |
-| trigger_if | Evaluates the triggers if the display_triggers of the limit are met | trigger_if = { limit = { <display_triggers> } <triggers> } |  |  |  |
-| trigger_else_if | Evaluates the enclosed triggers if the display_triggers of the preceding `trigger_if` or `trigger_else_if` is not met and its own display_trigger of the limit is met | trigger_if = { limit = { <display_triggers> } <triggers> }<br>trigger_else_if = { limit = { <display_triggers> } <triggers> } |  |  |  |
-| trigger_else | Evaluates the triggers if the display_triggers of preceding 'trigger_if' or 'trigger_else_if' is not met | trigger_if = { limit = { <display_triggers> } <triggers> }<br>trigger_else = { <triggers> } |  |  |  |
+| AND | All inside trigger must be true | AND = { &lt;triggers> } |  |  |  |
+| OR | At least one entry inside trigger must be true | OR = { &lt;triggers> } |  |  |  |
+| NOT | Negates content of trigger | NOT = { &lt;triggers> } |  |  |  |
+| NOR | A negated OR trigger | NOR = { &lt;triggers> } |  |  |  |
+| NAND | A negated AND trigger | NAND = { &lt;triggers> } |  |  |  |
+| all_false | True if all children are false (equivalent to NOR) | all_false = { &lt;triggers> } |  |  |  |
+| any_false | True if any child is false (equivalent to NAND) | any_false = { &lt;triggers> } |  |  |  |
+| switch | Switch on a trigger for the evaluation of another trigger with an optional fallback trigger | switch = {<br>trigger = simple_assign_trigger<br><br>case_1 = { &lt;triggers> }<br><br>case_2 = { &lt;triggers> }<br><br>case_n = { &lt;triggers> }<br><br>fallback = { &lt;triggers> }<br><br>} |  |  |  |
+| trigger_if | Evaluates the triggers if the display_triggers of the limit are met | trigger_if = { limit = { &lt;display_triggers> } &lt;triggers> } |  |  |  |
+| trigger_else_if | Evaluates the enclosed triggers if the display_triggers of the preceding `trigger_if` or `trigger_else_if` is not met and its own display_trigger of the limit is met | trigger_if = { limit = { &lt;display_triggers> } &lt;triggers> }<br>trigger_else_if = { limit = { &lt;display_triggers> } &lt;triggers> } |  |  |  |
+| trigger_else | Evaluates the triggers if the display_triggers of preceding 'trigger_if' or 'trigger_else_if' is not met | trigger_if = { limit = { &lt;display_triggers> } &lt;triggers> }<br>trigger_else = { &lt;triggers> } |  |  |  |
 
 
 ## References

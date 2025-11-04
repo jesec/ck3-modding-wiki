@@ -2,8 +2,13 @@
 
 ## Basics of the Developer Console & Enabling Debugging
 
-![A screenshot of a shortcut created from the CK3 steam build binary.<br><sup>Note: if you are using the Steam version of the game, you can right click on the title in your library, click "properties" and add <code>-debug_mode startup</code> to your launch options.</sup>|x480px](https://ck3.paradoxwikis.com/File:Ck3_debug_shortcut_example.jpg)
-![This is Errorhoof, he is here to tell you that your scripts are broken.](https://ck3.paradoxwikis.com/File:Errorhoof.jpg)
+<figure>
+
+![ck3 debug shortcut example](../assets/images/ck3_debug_shortcut_example.jpg)
+<figcaption>A screenshot of a shortcut created from the CK3 steam build binary.<br><sup>Note: if you are using the Steam version of the game, you can right click on the title in your library, click "properties" and add <code>-debug_mode startup</code> to your launch options.</sup>|x480px</figcaption>
+</figure>
+
+![errorhoof](../assets/images/errorhoof.jpg)
 
 
 Debugging is easy! <sup><span class="plainlinks">[[Citation Needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed)]</span></sup> This page will help you understand how to debug and fix issues with your script.
@@ -17,9 +22,20 @@ The first thing you want to do is enable debug on your game, to do this you must
 ### The Basics of the Developer Console
 
 Below is an image explaining what each button in the debug UI does:
-![Layout of Debugger](https://ck3.paradoxwikis.com/File:Debugger_ui_2021.jpeg)
+![debugger ui 2021](../assets/images/debugger_ui_2021.jpeg)
 To test your event, simply type ``event name.id`` into the command input window and press enter (examples: ``event diplomacy_foreign.1074`` and ``event central_asia.0011``).
 This is the primary way of testing events that have not yet been added to a pulse or otherwise connected to the game in any way a player could naturally encounter. You can also use that same window to execute effects such as ``add_gold = 999999`` and ``add_trait = lunatic_genetic`` to help meet the conditions necessary to properly run the event you are testing.
+
+
+- [Basics of the Developer Console & Enabling Debugging](#basics-of-the-developer-console-enabling-debugging)
+  - [Getting Access to the Debug Tools](#getting-access-to-the-debug-tools)
+  - [The Basics of the Developer Console](#the-basics-of-the-developer-console)
+- [The Art of Debugging](#the-art-of-debugging)
+  - [Localization Debugging](#localization-debugging)
+  - [Error Spam: Debugging Dynamic Loc and Trigger Conditions](#error-spam-debugging-dynamic-loc-and-trigger-conditions)
+  - [Scope Debugging](#scope-debugging)
+  - [Hot-loading](#hot-loading)
+- [Automating the Debug Process Through Run Scripts](#automating-the-debug-process-through-run-scripts)
 
 
 ## The Art of Debugging
@@ -36,15 +52,15 @@ Below is some general advice that will help solve your issue 80% of the time, fo
 Localization has improved a lot since the epoch of Crusader Kings 2 and it is now easier than ever, but that does not mean it is fool-proof.
 
 The first thing you must make sure of is that your loc file is encoded correctly (the game will tell you if it is not), you should use ``utf8bom``. Here is how you save your loc file with the correct encoding:
-* **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
-* **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
-* **Notepad++**: Encoding → "UTF8 with BOM"
+- **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
+- **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
+- **Notepad++**: Encoding → "UTF8 with BOM"
 
 
 You may also encounter issues with missing keys, unrecognized keys or duplicate hashes:
-* **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
-* **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
-* **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
+- **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
+- **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
+- **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
 
 
 ### Error Spam: Debugging Dynamic Loc and Trigger Conditions
@@ -65,7 +81,7 @@ When launching an event via the debug console, the event itself will trigger eve
 
 To find out whether or not you meet the conditions of the event fired via the debug console, hover over the ✔ or ✖ icon at the top right of your event window. This will show you a detailed view of the conditions of your event and whether or not they were met.
 
-![An image depicting a brave content designer investigating why the console is generating 8 gigabytes of debug log spam.](https://ck3.paradoxwikis.com/File:Event_conditions_debug.jpg)
+![event conditions debug](../assets/images/event_conditions_debug.jpg)
 
 
 ### Scope Debugging
@@ -89,13 +105,7 @@ Here is an overview of the most useful files and their contents:
 Hot-loading, in the context of CK3, is the act of updating scripts *while the game is still running*.
 
 This means you can test minor changes in your script and debug it in real-time without the need to restart the game each time.
-```
- 
-```
 However, one should be careful with hot-loading, as making sizable changes can lead to the game behaving unexpectedly. If you make a large set changes (or one that interacts with elements outside of the updated script), it is adviced that you re-start the game to avoid spending hours debugging an error that only exists because the changes were hot-loaded improperly.
-```
- 
-```
 **Tips For Hot-loading Safety:**
 
 1. If possible, have the event closed when you hot-load a change.

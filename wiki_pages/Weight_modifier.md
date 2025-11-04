@@ -8,6 +8,13 @@ Weight modifiers are conditional modifiers to a base value, used in:
 For legacy reasons, they are sometimes referred to as MTTH syntax, by opposition to [script math](https://ck3.paradoxwikis.com/script_math) syntax.
 
 
+- [Syntax](#syntax)
+- [scripted_modifiers](#scripted_modifiers)
+  - [Simple form](#simple-form)
+  - [Complex form](#complex-form)
+- [References](#references)
+
+
 ## Syntax
 
 Weight modifiers are script blocks used to sequentially modify a base value.
