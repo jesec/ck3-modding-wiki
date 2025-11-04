@@ -41,8 +41,8 @@ sed -i 's|](wiki_pages/\([^)]*\)\.md|](\1|g' TABLE_OF_CONTENTS.md
 cp "$TEMP_DIR/README.md" Home.md
 # Fix wiki_pages/ links in Home.md (remove directory and .md extension)
 sed -i 's|](wiki_pages/\([^)]*\)\.md|](\1|g' Home.md
-# Fix TABLE_OF_CONTENTS.md link (remove .md extension)
-sed -i 's|](TABLE_OF_CONTENTS\.md)|](TABLE_OF_CONTENTS)|g' Home.md
+# Strip .md extension from all remaining internal links (not external URLs)
+sed -i 's|](\([^):]*\)\.md\([)#]\)|](\1\2|g' Home.md
 
 # Copy assets
 echo "Copying assets..."
