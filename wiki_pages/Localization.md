@@ -391,9 +391,6 @@ l_english:
 ```
 
 
-![Savepiccc](../assets/images/Savepiccc.png)
-
-
 ### Traits
 
 Similarly, you can link to a trait with:

@@ -291,9 +291,8 @@ Entries in "adjacencies.csv" take the format:
    -1;-1;;-1;-1;-1;-1;-1;
 ```
 
-- ID From, ID To, and ID Through are all ID
+- ID From, ID To, and ID Through are all IDs found in "definition.csv"
 
-s found in "definition.csv"
 - ID From and ID To are baronies; ID Through is a sea or navigable river.
 - Type is either "sea" or "river_large"
 - start_x start_y are the (x, y) coordinates from which an army 'embarks' in the "ID From" barony.
