@@ -4,9 +4,7 @@
   "description": "Complete Crusader Kings 3 modding documentation from Paradox Wiki in Markdown format",
   "files": [
     "wiki_pages/**/*.md",
-    "assets/**/*.png",
-    "assets/**/*.jpg",
-    "assets/**/*.jpeg",
+    "assets/**/*",
     "TABLE_OF_CONTENTS.md",
     "README.md"
   ],
