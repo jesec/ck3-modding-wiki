@@ -1,6 +1,6 @@
 {
   "name": "ck3-modding-wiki",
-  "version": "1.20251104.2",
+  "version": "1.20251104.3",
   "description": "Complete Crusader Kings 3 modding documentation from Paradox Wiki in Markdown format",
   "files": [
     "wiki_pages/**/*.md",
