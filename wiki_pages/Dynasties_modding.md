@@ -61,8 +61,8 @@ dynnp_d-:0 "d'" # No space after d'
 
 
 Results in:
-- **de Lyon**
-- **d'Oeuvre**
+* **de Lyon**
+* **d'Oeuvre**
 
 
 ## Coat of arms

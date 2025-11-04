@@ -12,14 +12,14 @@ To create a 3d model, you will need modelling software like Autodesk Maya or Ble
 All models and their respective textures and animations can be found in `/Crusader Kings III/game/gfx/models/`
 
 A typical model will have the following files:
-- **<model>.mesh** - The 3d model itself.
-- **<model>.asset** - The script adding the model to the game.
-- **<model>_diffuse.dds** - The diffuse texture for the model.
-- **<model>_normal.dds** - A normal map texture.
-- **<model>_properties.dds** - A joint texture with specular, metalness and roughness.
+* **<model>.mesh** - The 3d model itself.
+* **<model>.asset** - The script adding the model to the game.
+* **<model>_diffuse.dds** - The diffuse texture for the model.
+* **<model>_normal.dds** - A normal map texture.
+* **<model>_properties.dds** - A joint texture with specular, metalness and roughness.
 
 More textures for other 3d models include:
-- **<model>_unique.dds** - Used with the standard_atlas shader. The B channel is the models’ ambient occlusion texture.
+* **<model>_unique.dds** - Used with the standard_atlas shader. The B channel is the models’ ambient occlusion texture.
 
 
 ## Tutorial: Setup

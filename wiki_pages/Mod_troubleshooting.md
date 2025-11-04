@@ -36,15 +36,15 @@ Below is some general advice that will help solve your issue 80% of the time, fo
 Localization has improved a lot since the epoch of Crusader Kings 2 and it is now easier than ever, but that does not mean it is fool-proof.
 
 The first thing you must make sure of is that your loc file is encoded correctly (the game will tell you if it is not), you should use ``utf8bom``. Here is how you save your loc file with the correct encoding:
-- **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
-- **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
-- **Notepad++**: Encoding → "UTF8 with BOM"
+* **Sublime Text**: File → "Save With Encoding..." → "UTF8 with BOM"
+* **Visual Studio Code**: At the bottom of the window (bottom-most right) is the encoding and syntax highlight tab, select UTF8 (or whatever else it is set to) → "Save with Encoding" → "UTF8 with BOM"
+* **Notepad++**: Encoding → "UTF8 with BOM"
 
 
 You may also encounter issues with missing keys, unrecognized keys or duplicate hashes:
-- **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
-- **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
-- **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
+* **Missing Key**: You probably misspelled the loc key or forgot to save (it happens to the best of us), make sure to save, double-check and re-type your loc key.
+* **Unrecognized Key**: Same solution as above, but this also happens when you use a string in your script (using "my text here" instead of a loc key). To solve the issue simply make a key with the contents of your string.
+* **Duplicate Key or Hash**: Somewhere either in or outside your file there is a key with the same name or content as another key. Search and destroy/replace.
 
 
 ### Error Spam: Debugging Dynamic Loc and Trigger Conditions

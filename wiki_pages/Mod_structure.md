@@ -19,8 +19,8 @@ It is recommended to generate the initial mod files through the game launcher in
 1. Press Upload Mod in the top right.
 1. Press Create a Mod.
 1. Enter a name, version of the mod (not the game), directory (the launcher will create it) and at least one tag. All of these must be completed before you can press Create at the bottom.
-1. * (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
-1. * (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
+    - (Name must be at least 3 symbols long. DIrectory can include spaces, but cannot end with one.)
+    - (Directory cannot include non English characters. If your Windows account name have such characters you must use a directory outside your Documents folder.)
 The tags offered by the launcher include:
 
 |  |  |

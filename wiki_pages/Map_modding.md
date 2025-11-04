@@ -249,7 +249,7 @@ s found in "definition.csv"
 - start_x start_y are the (x, y) coordinates from which an army 'embarks' in the "ID From" barony.
 - stop_x and stop_y are the (x, y) coordinates to which an army 'lands' in the "ID To" barony.
 - start_x, start_y, stop_x, and stop_y can all use "-1" instead of actual coordinates, which will default to wherever the normal army placement is in that barony.
-- Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
+* Preserve the "-1;-1;;-1;-1;-1;-1;-1;" at the end of the file, **even if the rest of the file is blank**. Doing otherwise will result in an infinite loading screen.
 
 
 ## Creating a Map with a Custom Resolution

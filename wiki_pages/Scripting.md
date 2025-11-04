@@ -35,10 +35,10 @@ Especially, look for effects, triggers and event_targets logs.
 
 They list the three common types of functions:
 
-- **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
+* **effects** - they do something, like ``add_gold``. Used in effect blocks, like ``immediate = {}, effect = {}, on_accept = {}``
 
-- **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
-- **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
+* **triggers** - check for something and return true or false, like ``is_ai = yes``. Can also return values. Used in trigger blocks, like ``limit = {}, trigger={}``, etc
+* **event targets** - select another game object, like ``primary_heir`` selects  your heir. We call such objects "scopes" and switching between them "scoping".
 
 The logs folder also has error and debug logs, useful to find errors and test your script.
 
@@ -390,14 +390,14 @@ set_variable = {
 
 There are different types of variables based on how they are stored:
 
-- **normal**, ``set_variable`` - stored on the [Scopes](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
+* **normal**, ``set_variable`` - stored on the [Scopes](Scopes.md) where the effect was used. To access it, you need to scope to that object first.
     - accessed with ``var:``. Could be chained like this: ``primary_heir.var:my_sons_birthday``.
     - if stored on a character, will be lost when the character dies! Use dead character variables in that case.
-- **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
+* **global**, ``set_global_variable`` - stored globally and accessible from anywhere. Of course, only one global variable with a unique name can exist.
     - accessed with ``global_var:``.
-- **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
+* **local**, ``set_local_variable`` - a temporary variable that only exists while the script is executed, not stored on any object.
     - accessed with ``local_var:``. Could be useful as a counter, although rarely used.
-- **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
+* **dead**, ``set_dead_character_variable`` - stored on a dead character, requires a duration after which it is removed. This is for performance reasons.
     - accessed with ``dead_var:``, does not have a ``change_`` effect.
 
 global and local have their own effects for changing and removing:
