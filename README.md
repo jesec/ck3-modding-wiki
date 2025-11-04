@@ -5,6 +5,8 @@ A git-versioned archive of the official Crusader Kings 3 modding documentation f
 [![npm version](https://badge.fury.io/js/ck3-modding-wiki.svg)](https://www.npmjs.com/package/ck3-modding-wiki)
 [![update](https://github.com/jesec/ck3-modding-wiki/actions/workflows/update.yml/badge.svg)](https://github.com/jesec/ck3-modding-wiki/actions/workflows/update.yml)
 
+📚 **[Complete Table of Contents](TABLE_OF_CONTENTS.md)** - Comprehensive index of all pages and sections
+
 ## About This Repository
 
 This repository contains complete modding documentation for Crusader Kings 3, converted to Markdown format for easy reading, searching, and offline access. All content is sourced from the official Paradox Wiki and is maintained as a reference for mod developers.

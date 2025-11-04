@@ -32,15 +32,17 @@ git rm -rf . 2>/dev/null || true
 echo "Copying wiki pages..."
 cp "$TEMP_DIR"/wiki_pages/*.md . 2>/dev/null || true
 
-# Copy TABLE_OF_CONTENTS.md as Home.md (GitHub wiki home page)
-cp "$TEMP_DIR/TABLE_OF_CONTENTS.md" Home.md
+# Copy TABLE_OF_CONTENTS.md as regular wiki page
+cp "$TEMP_DIR/TABLE_OF_CONTENTS.md" TABLE_OF_CONTENTS.md
+# Fix wiki_pages/ links in TOC (remove directory and .md extension)
+sed -i 's|](wiki_pages/\([^)]*\)\.md|](\1|g' TABLE_OF_CONTENTS.md
+
+# Copy README as Home.md (GitHub wiki home page)
+cp "$TEMP_DIR/README.md" Home.md
 # Fix wiki_pages/ links in Home.md (remove directory and .md extension)
 sed -i 's|](wiki_pages/\([^)]*\)\.md|](\1|g' Home.md
-
-# Copy README from main repo
-cp "$TEMP_DIR/README.md" README.md
-# Fix wiki_pages/ links in README.md (remove directory and .md extension)
-sed -i 's|](wiki_pages/\([^)]*\)\.md|](\1|g' README.md
+# Fix TABLE_OF_CONTENTS.md link (remove .md extension)
+sed -i 's|](TABLE_OF_CONTENTS\.md)|](TABLE_OF_CONTENTS)|g' Home.md
 
 # Copy assets
 echo "Copying assets..."
