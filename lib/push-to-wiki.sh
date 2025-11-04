@@ -34,9 +34,13 @@ cp "$TEMP_DIR"/wiki_pages/*.md . 2>/dev/null || true
 
 # Copy TABLE_OF_CONTENTS.md as Home.md (GitHub wiki home page)
 cp "$TEMP_DIR/TABLE_OF_CONTENTS.md" Home.md
+# Fix wiki_pages/ links in Home.md (files are now in root)
+sed -i 's|](wiki_pages/|](|g' Home.md
 
 # Copy README from main repo
 cp "$TEMP_DIR/README.md" README.md
+# Fix wiki_pages/ links in README.md (files are now in root)
+sed -i 's|](wiki_pages/|](|g' README.md
 
 # Copy assets
 echo "Copying assets..."
