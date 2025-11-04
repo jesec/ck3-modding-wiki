@@ -172,7 +172,7 @@ async function downloadPage(page, pageName, index, total) {
 async function commandDownload() {
     console.log('Starting browser...');
     const browser = await chromium.launch({
-        headless: false,
+        headless: true, // Always use headless mode (works in CI and locally)
         args: ['--disable-blink-features=AutomationControlled'] // Look more like a real browser
     });
     const page = await browser.newPage();
@@ -212,6 +212,11 @@ async function commandDownload() {
         console.log(`✗ Failed: ${failed}/${pages.length}`);
         console.log(`Output: ${OUTPUT_XML_DIR}`);
 
+        // Exit with error if no pages were downloaded
+        if (successful === 0) {
+            throw new Error('Failed to download any pages');
+        }
+
         // Download assets (icons and images)
         await downloadAssets(browser);
 
@@ -219,6 +224,8 @@ async function commandDownload() {
 
     } catch (error) {
         console.error('Fatal error:', error);
+        await browser.close();
+        process.exit(1); // Exit with error code
     } finally {
         await browser.close();
     }
@@ -227,7 +234,7 @@ async function commandDownload() {
 async function commandDownloadAssets() {
     console.log('Starting browser...');
     const browser = await chromium.launch({
-        headless: false,
+        headless: true, // Always use headless mode (works in CI and locally)
         args: ['--disable-blink-features=AutomationControlled']
     });
 
@@ -235,6 +242,8 @@ async function commandDownloadAssets() {
         await downloadAssets(browser);
     } catch (error) {
         console.error('Fatal error:', error);
+        await browser.close();
+        process.exit(1); // Exit with error code
     } finally {
         await browser.close();
     }

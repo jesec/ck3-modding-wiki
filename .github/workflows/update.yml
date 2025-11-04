@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install system dependencies for Sharp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libvips-dev
+
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
@@ -44,14 +49,14 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          git diff --quiet wiki_pages/ || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet wiki_pages/ TABLE_OF_CONTENTS.md assets/ || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add wiki_pages/
+          git add wiki_pages/ TABLE_OF_CONTENTS.md assets/
           git commit -m "chore: update wiki content ($(date +'%Y-%m-%d'))"
           git push
 
