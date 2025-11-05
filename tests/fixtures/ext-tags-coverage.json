@@ -1,0 +1,25 @@
+{
+  "description": "Coverage tests for ext tags (ref, references, nowiki, section)",
+  "cases": [
+    {
+      "name": "ref tag with content",
+      "wikitext": "Test <ref>Reference content here</ref> text",
+      "expected": "Test Reference content here text"
+    },
+    {
+      "name": "references tag",
+      "wikitext": "Article text<references />",
+      "expected": "Article text"
+    },
+    {
+      "name": "nowiki tag preserves content",
+      "wikitext": "Text with <nowiki>[[unformatted]] content</nowiki> here",
+      "expected": "Text with [[unformatted]] content here"
+    },
+    {
+      "name": "code ext tag inline",
+      "wikitext": "Use <code>variable_name</code> for this",
+      "expected": "Use ``variable_name`` for this"
+    }
+  ]
+}

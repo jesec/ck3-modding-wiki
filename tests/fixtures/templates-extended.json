@@ -1,0 +1,130 @@
+{
+  "description": "Extended test cases for all template types",
+  "cases": [
+    {
+      "name": "Path template with game path",
+      "wikitext": "Files are in {{path|game|events/mymod.txt}}",
+      "expected": "Files are in `/Crusader Kings III/game/events/mymod.txt`"
+    },
+    {
+      "name": "Path template with user documents path",
+      "wikitext": "Mods are in {{path|user|Documents/Paradox Interactive/Crusader Kings III/mod}}",
+      "expected": "Mods are in `Documents/Paradox Interactive/Crusader Kings III/mod`"
+    },
+    {
+      "name": "Version template with timeless",
+      "wikitext": "{{Version|timeless}}",
+      "expected": "> *This article is timeless and should be accurate for any version of the game.*"
+    },
+    {
+      "name": "Version template with version number",
+      "wikitext": "{{Version|1.11}}",
+      "expected": "> **Note:** Last verified for version 1.11"
+    },
+    {
+      "name": "Icon template",
+      "wikitext": "You get {{icon|gold}} from taxes.",
+      "expected": "You get ![gold](../assets/icons/gold.png) from taxes."
+    },
+    {
+      "name": "Iconify template",
+      "wikitext": "Gain {{iconify|prestige|100}} prestige.",
+      "expected": "Gain ![prestige](../assets/icons/prestige.png) prestige."
+    },
+    {
+      "name": "Icon with spaces in name",
+      "wikitext": "The {{icon|Skilled Tactician}} trait",
+      "expected": "The ![Skilled Tactician](../assets/icons/Skilled_Tactician.png) trait"
+    },
+    {
+      "name": "Hatnote template",
+      "wikitext": "{{hatnote|This article is about the game mechanic. For the character trait, see Genius.}}",
+      "expected": "> **Note:** This article is about the game mechanic. For the character trait, see Genius."
+    },
+    {
+      "name": "Expand template with parameter",
+      "wikitext": "{{expand|examples and screenshots}}",
+      "expected": "> ⚠️ **This section needs expansion with examples and screenshots**"
+    },
+    {
+      "name": "Expand template without parameter",
+      "wikitext": "{{expand}}",
+      "expected": "> ⚠️ **This section needs expansion**"
+    },
+    {
+      "name": "Red color indicator",
+      "wikitext": "{{red}} Negative modifier",
+      "expected": "🔴 Negative modifier"
+    },
+    {
+      "name": "Green color indicator",
+      "wikitext": "{{green}} Positive modifier",
+      "expected": "✅ Positive modifier"
+    },
+    {
+      "name": "See also template",
+      "wikitext": "{{see also}}",
+      "expected": "> **See also:**"
+    },
+    {
+      "name": "Go to top template removed",
+      "wikitext": "Some text{{go to top}}More text",
+      "expected": "Some textMore text"
+    },
+    {
+      "name": "Modding navbox removed",
+      "wikitext": "Content{{modding navbox}}",
+      "expected": "Content"
+    },
+    {
+      "name": "Mechanics navbox removed",
+      "wikitext": "Content{{mechanics navbox}}",
+      "expected": "Content"
+    },
+    {
+      "name": "Clear template removed",
+      "wikitext": "Text{{clear}}More",
+      "expected": "TextMore"
+    },
+    {
+      "name": "Unknown template becomes comment",
+      "wikitext": "{{unknown_template|param}}",
+      "expected": "<!-- Template: unknown_template -->"
+    },
+    {
+      "name": "Path template without args",
+      "wikitext": "Check {{path}}",
+      "expected": "Check "
+    },
+    {
+      "name": "Version template without args",
+      "wikitext": "{{Version}}",
+      "expected": ""
+    },
+    {
+      "name": "Main template without args",
+      "wikitext": "{{Main}}",
+      "expected": ""
+    },
+    {
+      "name": "Key press template without args",
+      "wikitext": "Press {{key press}}",
+      "expected": "Press "
+    },
+    {
+      "name": "Icon template without args",
+      "wikitext": "Icon: {{icon}}",
+      "expected": "Icon: "
+    },
+    {
+      "name": "Hatnote template without args",
+      "wikitext": "{{hatnote}}",
+      "expected": ""
+    },
+    {
+      "name": "Path template with Documents path",
+      "wikitext": "{{path|Documents/Paradox Interactive/file.txt}}",
+      "expected": "`Documents/Paradox Interactive/file.txt`"
+    }
+  ]
+}

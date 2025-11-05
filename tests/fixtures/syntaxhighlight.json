@@ -1,0 +1,25 @@
+{
+  "description": "Test cases for syntaxhighlight tag variations",
+  "cases": [
+    {
+      "name": "Syntaxhighlight with language",
+      "wikitext": "Example code:\n<syntaxhighlight lang=\"javascript\">\nfunction test() {\n  return 42;\n}\n</syntaxhighlight>",
+      "expected": "Example code:\n\n```javascript\nfunction test() {\n  return 42;\n}\n```\n\n"
+    },
+    {
+      "name": "Inline syntaxhighlight with enclose=none",
+      "wikitext": "Use <syntaxhighlight lang=\"js\" enclose=\"none\">console.log()</syntaxhighlight> to debug.",
+      "expected": "Use `console.log()` to debug."
+    },
+    {
+      "name": "Syntaxhighlight in table cell",
+      "wikitext": "{|\n| <syntaxhighlight lang=\"python\">print('hello')</syntaxhighlight>\n|}",
+      "expected": "|    |\n| --- |\n| `print('hello')` |"
+    },
+    {
+      "name": "Pre tag in table cell",
+      "wikitext": "{|\n| <pre>code here</pre>\n|}",
+      "expected": "|    |\n| --- |\n| `code here` |"
+    }
+  ]
+}

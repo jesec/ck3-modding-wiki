@@ -1,0 +1,40 @@
+{
+  "description": "Test cases for table conversion",
+  "cases": [
+    {
+      "name": "Simple two-column table",
+      "wikitext": "{|\n! Header 1\n! Header 2\n|-\n| Cell 1\n| Cell 2\n|}",
+      "expected": "| **Header 1** | **Header 2** |\n| --- | --- |\n| Cell 1 | Cell 2 |"
+    },
+    {
+      "name": "Table with caption",
+      "wikitext": "{|\n|+ Table Caption\n! Name\n! Value\n|-\n| Item 1\n| 100\n|}",
+      "expected": "| **Name** | **Value** |\n| --- | --- |\n| Item 1 | 100 |"
+    },
+    {
+      "name": "Single cell table",
+      "wikitext": "{|\n| Single cell content\n|}",
+      "expected": "|    |\n| --- |\n| Single cell content |"
+    },
+    {
+      "name": "Table with rowspan",
+      "wikitext": "{|\n! Header\n|-\n| rowspan=2 | Spanning\n| Normal\n|-\n| Another\n|}",
+      "expected": "| **Header** |  |\n| --- | --- |\n| Spanning | Normal |\n| Spanning | Another |"
+    },
+    {
+      "name": "Table with colspan",
+      "wikitext": "{|\n| colspan=2 | Wide cell\n|-\n| Cell 1\n| Cell 2\n|}",
+      "expected": "<table>\n<tr><td colspan=\"2\">Wide cell</td></tr>\n<tr><td>Cell 1</td><td>Cell 2</td></tr>\n</table>"
+    },
+    {
+      "name": "Collapsible table",
+      "wikitext": "{| class=\"mw-collapsible\"\n| Content inside collapsible\n|}",
+      "expected": "<details>\n<summary>Content inside collapsible</summary>\n\n\n</details>"
+    },
+    {
+      "name": "Table inside table cell",
+      "wikitext": "{|\n| Outer\n| {|\n| Inner\n|}\n|}",
+      "expected": "|    |    |    |\n| --- | --- | --- |\n| Outer |  | Inner |\n\n\n|}"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "description": "Edge cases to achieve 100% coverage - synthetic tests for code paths not in real wiki data",
+  "cases": [
+    {
+      "name": "Image with HTML in unnamed caption parameter",
+      "wikitext": "[[File:Example.png|thumb|<b>Bold caption</b>]]",
+      "expected": "<figure>\n\n![Example](../assets/images/Example.png)\n<figcaption><b>Bold caption</b></figcaption>\n</figure>"
+    },
+    {
+      "name": "Standalone list marker",
+      "wikitext": "Text before\n*\nText after",
+      "expected": "Text before\n- \n\nText after"
+    },
+    {
+      "name": "BR in table cell",
+      "wikitext": "{|\n| Line 1<br>Line 2\n|}",
+      "expected": "|    |\n| --- |\n| Line 1<br>Line 2 |"
+    },
+    {
+      "name": "Code in table with HTML entities",
+      "wikitext": "{|\n| <code>&amp;text</code>\n|}",
+      "expected": "|    |\n| --- |\n| `&amp;text` |"
+    }
+  ]
+}

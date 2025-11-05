@@ -10,6 +10,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { convertXmlToMarkdown } from './lib/ast-converter.ts';
 import { downloadAssets } from './lib/download-assets.ts';
+import { loadAvailablePages } from './lib/page-loader.ts';
 
 const OUTPUT_XML_DIR = path.join(import.meta.dirname, 'wiki_exports');
 const OUTPUT_MD_DIR = path.join(import.meta.dirname, 'wiki_pages');
@@ -280,6 +281,9 @@ function commandConvert(): void {
 
   console.log(`Converting ${xmlFiles.length} XML files to Markdown...\n`);
 
+  // Load available pages once for link resolution
+  const availablePagesMap = loadAvailablePages();
+
   let successful = 0;
   let failed = 0;
 
@@ -292,8 +296,8 @@ function commandConvert(): void {
       const xmlContent = fs.readFileSync(xmlPath, 'utf-8');
       const pageName = xmlFile.replace('.xml', '').replace(/_/g, ' ');
 
-      // Convert using shared logic
-      const markdown = convertXmlToMarkdown(xmlContent, pageName);
+      // Convert using shared logic, passing available pages map
+      const markdown = convertXmlToMarkdown(xmlContent, pageName, availablePagesMap);
       fs.writeFileSync(mdPath, markdown, 'utf-8');
 
       successful++;

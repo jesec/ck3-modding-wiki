@@ -1,0 +1,30 @@
+{
+  "description": "Test cases for wiki formatting (bold, italic, quotes)",
+  "cases": [
+    {
+      "name": "Triple quote bold",
+      "wikitext": "This is '''bold''' text.",
+      "expected": "This is **bold** text."
+    },
+    {
+      "name": "Double quote italic",
+      "wikitext": "This is ''italic'' text.",
+      "expected": "This is *italic* text."
+    },
+    {
+      "name": "Bold and italic combined",
+      "wikitext": "This is '''''bold italic''''' text.",
+      "expected": "This is ***bold italic*** text."
+    },
+    {
+      "name": "Multiple bold sections",
+      "wikitext": "'''First''' normal '''second''' text.",
+      "expected": "**First** normal **second** text."
+    },
+    {
+      "name": "Nested formatting",
+      "wikitext": "'''Bold with ''italic'' inside'''",
+      "expected": "**Bold with *italic* inside**"
+    }
+  ]
+}

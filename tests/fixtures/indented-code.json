@@ -1,0 +1,25 @@
+{
+  "description": "MediaWiki indented code blocks (space-prefixed lines)",
+  "cases": [
+    {
+      "name": "Basic indented code block",
+      "wikitext": "Text before\n\n indented line 1\n indented line 2\n\nText after",
+      "expected": "Text before\n\n```\nindented line 1\nindented line 2\n```\n\nText after"
+    },
+    {
+      "name": "Indented code with blank lines",
+      "wikitext": "Text before\n\n indented line 1\n\n indented line 2\n\nText after",
+      "expected": "Text before\n\n```\nindented line 1\n\nindented line 2\n```\n\nText after"
+    },
+    {
+      "name": "Indented code interrupted by list item",
+      "wikitext": "Text before\n\n indented line 1\n indented line 2\n* List item here\n more indented",
+      "expected": "Text before\n\n```\nindented line 1\nindented line 2\n```\n\n- List item here\n```\nmore indented\n```"
+    },
+    {
+      "name": "Indented code ending with normal text (no blank line)",
+      "wikitext": "Text before\n\n indented line 1\n indented line 2\nNormal text after",
+      "expected": "Text before\n\n```\nindented line 1\nindented line 2\n```\n\nNormal text after"
+    }
+  ]
+}

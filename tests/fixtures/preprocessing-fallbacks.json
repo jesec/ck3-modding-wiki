@@ -1,0 +1,15 @@
+{
+  "description": "Final edge cases for remaining uncovered code",
+  "cases": [
+    {
+      "name": "YouTube embed without valid id format",
+      "wikitext": "Watch {{#ev:youtube|invalid_format}}",
+      "expected": "Watch {{#ev:youtube|invalid_format}}"
+    },
+    {
+      "name": "Operator in File link parameters",
+      "wikitext": "See [[File:Test.png|width<=|100]]",
+      "expected": "See ![Test](../assets/images/Test.png)"
+    }
+  ]
+}

@@ -15,6 +15,26 @@
       "name": "Strike tag with punctuation",
       "wikitext": "The <strike>old</strike> method is deprecated.",
       "expected": "The ~~old~~ method is deprecated."
+    },
+    {
+      "name": "BR tag converted to newline",
+      "wikitext": "Line one<br>Line two",
+      "expected": "Line one\nLine two"
+    },
+    {
+      "name": "Code tag for inline code",
+      "wikitext": "Use <code>variable_name</code> in your script.",
+      "expected": "Use ``variable_name`` in your script."
+    },
+    {
+      "name": "HTML comment removed",
+      "wikitext": "Visible text<!-- This is a comment -->More visible",
+      "expected": "Visible textMore visible"
+    },
+    {
+      "name": "Code tag with angle brackets",
+      "wikitext": "Use <code>&lt;tag&gt;</code> syntax.",
+      "expected": "Use ``&lt;tag&gt;`` syntax."
     }
   ]
 }

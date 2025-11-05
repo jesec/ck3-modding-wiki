@@ -1,0 +1,20 @@
+{
+  "description": "Defensive code edge cases and fallback paths",
+  "cases": [
+    {
+      "name": "File link with Image: prefix",
+      "wikitext": "See [[Image:Test.png]] for details",
+      "expected": "See ![Image:Test](../assets/images/Image:Test.png) for details"
+    },
+    {
+      "name": "File link with File: prefix",
+      "wikitext": "Check [[File:Example.png]] here",
+      "expected": "Check ![Example](../assets/images/Example.png) here"
+    },
+    {
+      "name": "Multiple cells presentation table",
+      "wikitext": "{| role=\"presentation\"\n|Cell 1\n|Cell 2\n|}",
+      "expected": "|    |    |\n| --- | --- |\n| Cell 1 | Cell 2 |"
+    }
+  ]
+}

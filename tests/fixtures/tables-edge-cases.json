@@ -1,0 +1,40 @@
+{
+  "description": "Edge cases for table handling",
+  "cases": [
+    {
+      "name": "Collapsible table with caption",
+      "wikitext": "{| class=\"wikitable mw-collapsible\"\n|+ Table Caption Here\n! Header\n|-\n| Data\n|}",
+      "expected": "<details>\n<summary>Table Caption Here</summary>\n\n\n| **Header** |\n| --- |\n| Data |\n\n\n</details>"
+    },
+    {
+      "name": "Single cell non-collapsible table",
+      "wikitext": "{| class=\"wikitable\"\n|Single cell content only\n|}",
+      "expected": "|    |\n| --- |\n| Single cell content only |"
+    },
+    {
+      "name": "Single cell collapsible table",
+      "wikitext": "{| class=\"wikitable mw-collapsible\"\n|Only one cell\n|}",
+      "expected": "<details>\n<summary>Only one cell</summary>\n\n\n</details>"
+    },
+    {
+      "name": "Table with multi-line code in cell",
+      "wikitext": "{| class=\"wikitable\"\n|-\n| <code>line1\nline2\nline3</code>\n|}",
+      "expected": "|    |\n| --- |\n| `<code style=\"white-space: pre\">line1<br>line2<br>line3</code>` |"
+    },
+    {
+      "name": "Table cell with list items",
+      "wikitext": "{| class=\"wikitable\"\n|-\n| * Item 1\n* Item 2",
+      "expected": "|    |\n| --- |\n| * Item 1<br>- Item 2 |"
+    },
+    {
+      "name": "Table with inline multiline code",
+      "wikitext": "{| class=\"wikitable\"\n|-\n| `code line1\ncode line2`\n|}",
+      "expected": "|    |\n| --- |\n| <code style=\"white-space: pre\">code line1<br>code line2</code> |"
+    },
+    {
+      "name": "Table with multiline code containing HTML and tabs",
+      "wikitext": "{| class=\"wikitable\"\n|-\n| `<div>\n\ttab line\n&ampersand\n</div>`\n|}",
+      "expected": "|    |\n| --- |\n| <code style=\"white-space: pre\">&lt;div&gt;<br>    tab line<br>&amp;ampersand<br>&lt;/div&gt;</code> |"
+    }
+  ]
+}

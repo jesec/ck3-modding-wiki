@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for external links",
+  "cases": [
+    {
+      "name": "External link with text",
+      "wikitext": "Visit [https://example.com Example Site] for more info.",
+      "expected": "Visit [Example Site](https://example.com) for more info."
+    },
+    {
+      "name": "External link without text (bare URL)",
+      "wikitext": "See [https://example.com] for details.",
+      "expected": "See [https://example.com](https://example.com) for details."
+    },
+    {
+      "name": "External link in sentence",
+      "wikitext": "The [https://paradoxwikis.com/Crusader_Kings_3 CK3 Wiki] has guides.",
+      "expected": "The [CK3 Wiki](https://paradoxwikis.com/Crusader_Kings_3) has guides."
+    }
+  ]
+}

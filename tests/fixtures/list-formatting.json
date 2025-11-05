@@ -1,0 +1,31 @@
+{
+  "description": "Test cases using actual wiki content with lists",
+  "cases": [
+    {
+      "name": "List with bold from 3D_models wiki page",
+      "wikitext": "A typical model will have the following files:\n* '''<model>.mesh''' - The 3d model itself.\n* '''<model>.asset''' - The script adding the model to the game.\n* '''<model>_diffuse.dds''' - The diffuse texture for the model.\n* '''<model>_normal.dds''' - A normal map texture.\n* '''<model>_properties.dds''' - A joint texture with specular, metalness and roughness.\n\nMore textures for other 3d models include:",
+      "expected": "A typical model will have the following files:\n- **&lt;model&gt;.mesh** - The 3d model itself.\n- **&lt;model&gt;.asset** - The script adding the model to the game.\n- **&lt;model&gt;_diffuse.dds** - The diffuse texture for the model.\n- **&lt;model&gt;_normal.dds** - A normal map texture.\n- **&lt;model&gt;_properties.dds** - A joint texture with specular, metalness and roughness.\n\nMore textures for other 3d models include:"
+    },
+    {
+      "name": "List with italic from Mod_structure wiki page",
+      "wikitext": "The .mod files used by the game are plain text files that contain metadata about their corresponding mod. There are two .mod files for every mod:\n* ''(modname).mod'', located ''alongside'' the mod's folder. This one is required; without it, the launcher will not recognise the mod.\n* ''descriptor.mod'', located ''within'' the mod folder. It is recommended to keep this file consistent with the other one, excluding the line containing the ''path'' key which is not needed in the descriptor file.\n\n=== Syntax ===",
+      "expected": "The .mod files used by the game are plain text files that contain metadata about their corresponding mod. There are two .mod files for every mod:\n- *(modname).mod*, located *alongside* the mod's folder. This one is required; without it, the launcher will not recognise the mod.\n- *descriptor.mod*, located *within* the mod folder. It is recommended to keep this file consistent with the other one, excluding the line containing the *path* key which is not needed in the descriptor file.\n\n\n### Syntax"
+    },
+    {
+      "name": "List with internal links from Event_modding wiki page",
+      "wikitext": "See also:\n* [[Event modding#On Actions (on action)|on_actions]]\n* [[Story cycles modding|story cycles]]\n\nNext section",
+      "expected": "See also:\n- [on_actions](Event_modding.md#on-actions-(on-action))\n- [story cycles](Story_cycles_modding.md)\n\nNext section",
+      "availablePages": ["Event_modding", "Story_cycles_modding"]
+    },
+    {
+      "name": "List with external links from Event_modding wiki page",
+      "wikitext": "'''Recommended Extensions:'''\n* [https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode CWTools - Paradox Language Services by Thomas Boby]\n* [https://marketplace.visualstudio.com/items?itemName=tboby.paradox-syntax Paradox Syntax Highlighting by Thomas Boby]\n\nNext section",
+      "expected": "**Recommended Extensions:**\n- [CWTools - Paradox Language Services by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.cwtools-vscode)\n- [Paradox Syntax Highlighting by Thomas Boby](https://marketplace.visualstudio.com/items?itemName=tboby.paradox-syntax)\n\nNext section"
+    },
+    {
+      "name": "List with inline code from Characters_modding wiki page",
+      "wikitext": "Character properties:\n* The first name of the character can be set via the use of <code>name = \"NAME\"</code>. Note that in-game names may change based on culture.\n* To set the character's gender to female, use <code>female = yes</code>.\n* Culture and faith must be assigned with <code>culture = CULTURE_ID</code> and <code>religion = FAITH_ID</code>, respectively.\n\nNext section",
+      "expected": "Character properties:\n- The first name of the character can be set via the use of ``name = \"NAME\"``. Note that in-game names may change based on culture.\n- To set the character's gender to female, use ``female = yes``.\n- Culture and faith must be assigned with ``culture = CULTURE_ID`` and ``religion = FAITH_ID``, respectively.\n\nNext section"
+    }
+  ]
+}

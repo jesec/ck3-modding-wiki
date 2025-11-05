@@ -1,0 +1,29 @@
+{
+  "description": "Test cases for internal wiki links with edge cases",
+  "cases": [
+    {
+      "name": "Link with anchor",
+      "wikitext": "See [[Scopes#character]] for details.",
+      "expected": "See [Scopes#character](Scopes.md#character) for details.",
+      "availablePages": ["Scopes"]
+    },
+    {
+      "name": "Self-reference anchor only",
+      "wikitext": "Jump to [[#section-name|this section]].",
+      "expected": "Jump to [this section](#section-name).",
+      "availablePages": []
+    },
+    {
+      "name": "File namespace becomes image",
+      "wikitext": "Image: [[File:Example.png]]",
+      "expected": "Image: ![Example](../assets/images/Example.png)",
+      "availablePages": []
+    },
+    {
+      "name": "Self-reference to current page",
+      "wikitext": "See [[TestPage|this page]] for more.",
+      "expected": "See [this page]() for more.",
+      "availablePages": ["TestPage"]
+    }
+  ]
+}

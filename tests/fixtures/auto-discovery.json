@@ -1,0 +1,11 @@
+{
+  "description": "Test auto-discovery of available pages without providing availablePagesMap",
+  "cases": [
+    {
+      "name": "Link with empty availablePages map",
+      "wikitext": "Check [[NonExistentPage]] here.",
+      "expected": "Check [NonExistentPage](https://ck3.paradoxwikis.com/NonExistentPage) here.",
+      "availablePages": null
+    }
+  ]
+}

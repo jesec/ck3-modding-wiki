@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for tables with colspan and rowspan - based on real wiki examples",
+  "cases": [
+    {
+      "name": "Table with colspan in header",
+      "wikitext": "{| class=\"wikitable\"\n! rowspan=\"2\" |File\n! colspan=\"4\" |Channel\n! rowspan=\"2\" |Notes\n|-\n!R\n!G\n!B\n!A\n|-\n|file_diffuse.dds\n|DiffuseR\n|DiffuseG\n|DiffuseB\n|OpacityR\n|OpacityGB are ignored\n|}",
+      "expected": "\n<table>\n<tr><th>File</th><th colspan=\"4\">Channel</th><th>Notes</th></tr>\n<tr><th>File</th><th>R</th><th>G</th><th>B</th><th>A</th><th>Notes</th></tr>\n<tr><td>file_diffuse.dds</td><td>DiffuseR</td><td>DiffuseG</td><td>DiffuseB</td><td>OpacityR</td><td>OpacityGB are ignored</td></tr>\n</table>"
+    },
+    {
+      "name": "Simple table with colspan",
+      "wikitext": "{| class=\"wikitable\"\n|-\n! colspan=\"2\" | Header\n|-\n| Cell 1\n| Cell 2\n|}",
+      "expected": "\n<table>\n<tr><th colspan=\"2\">Header</th></tr>\n<tr><td>Cell 1</td><td>Cell 2</td></tr>\n</table>"
+    },
+    {
+      "name": "Table with rowspan (renders as markdown since no colspan)",
+      "wikitext": "{| class=\"wikitable\"\n|-\n! rowspan=\"2\" | Name\n! Value 1\n|-\n! Value 2\n|-\n| Test\n| 123\n|}",
+      "expected": "\n| **Name** | **Value 1** |\n| --- | --- |\n| **Name** | Value 2 |\n| Test | 123 |"
+    }
+  ]
+}

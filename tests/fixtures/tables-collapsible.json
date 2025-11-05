@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for collapsible tables (mw-collapsible class)",
+  "cases": [
+    {
+      "name": "Collapsible table with header (data table)",
+      "wikitext": "{| class=\"mw-collapsible mw-collapsed wikitable\"\n! Snippets For Visual Studio Code\n|-\n| VSCode snippets are templates\n|}",
+      "expected": "<details>\n<summary>Show/Hide</summary>\n\n\n| **Snippets For Visual Studio Code** |\n| --- |\n| VSCode snippets are templates |\n\n\n</details>"
+    },
+    {
+      "name": "Collapsible table with role=presentation (not data table)",
+      "wikitext": "{| role=\"presentation\" class=\"wikitable mw-collapsible mw-collapsed\"\n| Additional example: <code>religion_organization_map</code>\n|-\n| Content here\n|}",
+      "expected": "<details>\n<summary>Additional example: `religion_organization_map`</summary>\n\nContent here\n\n</details>"
+    },
+    {
+      "name": "Collapsible presentational table with syntaxhighlight",
+      "wikitext": "{| role=\"presentation\" class=\"mw-collapsible\"\n| Summary text\n|-\n| <syntaxhighlight lang=\"json\">{ \"key\": \"value\" }</syntaxhighlight>\n|}",
+      "expected": "<details>\n<summary>Summary text</summary>\n\n`{ \"key\": \"value\" }`\n\n</details>"
+    }
+  ]
+}

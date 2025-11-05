@@ -1,0 +1,25 @@
+{
+  "description": "Real wiki examples for template handling from actual wiki pages",
+  "cases": [
+    {
+      "name": "cite file template",
+      "wikitext": "Create a file in {{cite file|gfx/portraits/portrait_modifiers}} with any filename",
+      "expected": "Create a file in `/Crusader Kings III/game/gfx/portraits/portrait_modifiers` with any filename"
+    },
+    {
+      "name": "path template",
+      "wikitext": "All models can be found in {{path|gfx/models/}}",
+      "expected": "All models can be found in `/Crusader Kings III/game/gfx/models/`"
+    },
+    {
+      "name": "version template",
+      "wikitext": "{{version|1.8}}",
+      "expected": "> **Note:** Last verified for version 1.8"
+    },
+    {
+      "name": "expand template",
+      "wikitext": "{{expand|with=examples, advanced uses}}",
+      "expected": "> ⚠️ **This section needs expansion with examples, advanced uses**"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Special MediaWiki syntax and preprocessing",
+  "cases": [
+    {
+      "name": "YouTube embed with description",
+      "wikitext": "See this video: {{#ev:youtube|id=abc123|description=Tutorial Video}}",
+      "expected": "See this video: \n> 🎥 **YouTube Video**: [Tutorial Video](https://www.youtube.com/watch?v=abc123)"
+    },
+    {
+      "name": "YouTube embed without description",
+      "wikitext": "Watch {{#ev:youtube|id=xyz789}}",
+      "expected": "Watch \n> 🎥 **YouTube Video**: https://www.youtube.com/watch?v=xyz789"
+    },
+    {
+      "name": "Comparison operators with pipes",
+      "wikitext": "Check if value <=| or >=| or ==|",
+      "expected": "Check if value <=| or >=| or ==|"
+    }
+  ]
+}

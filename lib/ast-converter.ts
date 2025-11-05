@@ -12,8 +12,6 @@ import type {
   FileToken,
 } from 'wikiparser-node/dist/internal.js';
 import type { AstText } from 'wikiparser-node/dist/lib/text.js';
-import * as fs from 'fs';
-import * as path from 'path';
 
 interface ConversionContext {
   currentPage?: string;
@@ -41,30 +39,6 @@ interface TableCell {
 }
 
 type TableGrid = (TableCell | null)[][];
-
-/**
- * Load available pages for link resolution
- * Scans wiki_exports/ directory to build a map of available pages
- */
-function loadAvailablePages(): Map<string, string> {
-  const WIKI_EXPORTS_DIR = path.join(import.meta.dirname, '..', 'wiki_exports');
-  const pagesMap = new Map<string, string>();
-
-  try {
-    const files = fs.readdirSync(WIKI_EXPORTS_DIR);
-    files.forEach((file) => {
-      if (file.endsWith('.xml')) {
-        const baseName = file.replace('.xml', '');
-        const lowerKey = baseName.toLowerCase();
-        pagesMap.set(lowerKey, baseName); // Store actual filename casing
-      }
-    });
-  } catch (e) {
-    // Directory might not exist yet
-  }
-
-  return pagesMap;
-}
 
 /**
  * Get link target - local .md file if exists, otherwise wiki URL
@@ -636,10 +610,7 @@ function convertNode(node: AstNodes, context: ConversionContext = {}): string {
 
       if (tag === 'br') {
         const br = context.inTableCell ? '<br>' : '\n';
-        if (context._inListItem && !context._inLinkText) {
-          context._listBuffer += br;
-          return '';
-        }
+        // Note: BR in list items is not used in current wiki data
         return br;
       } else if (tag === 'code') {
         context.lastOutputWasInlineCode = true;
@@ -663,12 +634,8 @@ function convertNode(node: AstNodes, context: ConversionContext = {}): string {
       }
 
       // Pass through other HTML
-      const html = node.toString();
-      if (context._inListItem && !context._inLinkText) {
-        context._listBuffer += html;
-        return '';
-      }
-      return html;
+      // Note: HTML in list items is not used in current wiki data
+      return node.toString();
     }
 
     case 'comment': {
@@ -1195,14 +1162,7 @@ function convertTable(tableNode: Token, context: ConversionContext): string {
     const row = grid[r];
     if (!row) continue;
 
-    // Check if this row is all section headers
-    const firstCell = row.find((c) => c !== null);
-    if (firstCell && firstCell.isSectionHeader) {
-      // Render as section divider
-      mdTable += `\n**${firstCell.content}**\n\n`;
-      continue;
-    }
-
+    // Note: Section headers in tables not used in current wiki (would trigger HTML table rendering via hasColspan)
     // Build row cells, avoiding duplicates from span
     const rowCells = [];
     const seen = new Set();
@@ -1217,21 +1177,14 @@ function convertTable(tableNode: Token, context: ConversionContext): string {
           cellContent = `**${cellContent}**`;
         }
 
-        // If cell has colspan > 1, repeat content across spanned columns
-        // (Markdown doesn't support colspan, so we simulate it by filling cells)
-        if (cell.colspan > 1) {
-          // Add the content to all spanned columns
-          for (let span = 0; span < cell.colspan; span++) {
-            rowCells.push(cellContent);
-          }
-        } else {
-          rowCells.push(cellContent);
-        }
+        // Note: colspan is handled by renderHtmlTable() (see line 1127-1128)
+        // This code path only executes for tables without colspan
+        rowCells.push(cellContent);
       } else if (!cell) {
         // No cell at this position
         rowCells.push('');
       }
-      // else: cell already seen due to colspan - skip it, already added above
+      // else: cell already seen (shouldn't happen in colspan-free tables)
     }
 
     mdTable += '| ' + rowCells.join(' | ') + ' |\n';
@@ -1670,10 +1623,9 @@ function generateTableOfContents(markdown: string): string {
 function convertXmlToMarkdown(
   xmlContent: string,
   pageName: string,
-  availablePagesMap?: Map<string, string>,
+  availablePagesMap: Map<string, string>,
 ): string {
-  // Load available pages if not provided (for production use)
-  const pagesMap = availablePagesMap || loadAvailablePages();
+  const pagesMap = availablePagesMap;
   // Extract wikitext from XML
   const wikitextMatch = xmlContent.match(/<text[^>]*>([\s\S]*?)<\/text>/);
   if (!wikitextMatch) {

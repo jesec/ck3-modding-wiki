@@ -1,0 +1,20 @@
+{
+  "description": "Test cases for tables nested inside table cells - based on real wiki examples",
+  "cases": [
+    {
+      "name": "Collapsible table nested in table cell from Modding page",
+      "wikitext": "{| class=\"wikitable\"\n|-\n! Block\n! Description\n|-\n| (various variables)\n| These variables do not belong in a block.\n{| class=\"wikitable mw-collapsible mw-collapsed\"\n! Variable\n|-\n| date\n|-\n| random_seed\n|-\n| speed\n|}\n|-\n| variables\n| Contains script flags.\n|}",
+      "expected": "\n| **Block** | **Description** |\n| --- | --- |\n| (various variables) | These variables do not belong in a block.<br><br><details><summary>Show details</summary><table><tr><td>date</td></tr><tr><td>random_seed</td></tr><tr><td>speed</td></tr></table></details> |\n| variables | Contains script flags. |"
+    },
+    {
+      "name": "Single-cell collapsible nested table from Modding/living",
+      "wikitext": "{| class=\"wikitable\"\n|-\n! Block\n! Description\n|-\n| living\n| Contains entries. The format is:\n{| class=\"wikitable mw-collapsible mw-collapsed\"\n|+\n| Format content here\n|}\n|}",
+      "expected": "\n| **Block** | **Description** |\n| --- | --- |\n| living | Contains entries. The format is:<br><br><details><summary>Show format</summary>Format content here</details> |"
+    },
+    {
+      "name": "Non-collapsible nested table from Culture_modding",
+      "wikitext": "{| class=\"wikitable\"\n|-\n! Attribute\n! Type\n! Description\n|-\n| mercenary_names\n| List\n| List of names.\n{|\n|-\n| name\n| localization key\n| Localization key\n|-\n| coat_of_arms\n| coat of arm\n| Optional CoA\n|}\n|}",
+      "expected": "\n| **Attribute** | **Type** | **Description** |\n| --- | --- | --- |\n| mercenary_names | List | List of names.<br><table><tr><td>name</td><td>localization key</td><td>Localization key</td></tr><tr><td>coat_of_arms</td><td>coat of arm</td><td>Optional CoA</td></tr></table> |"
+    }
+  ]
+}
