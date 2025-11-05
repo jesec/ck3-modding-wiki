@@ -1,0 +1,65 @@
+{
+  "description": "Test cases for internal link resolution (local .md vs wiki URLs)",
+  "cases": [
+    {
+      "name": "Link to available page uses local .md",
+      "wikitext": "See the [[Scopes]] page for details.",
+      "expected": "See the [Scopes](Scopes.md) page for details.",
+      "availablePages": ["Scopes"]
+    },
+    {
+      "name": "Link to unavailable page uses wiki URL",
+      "wikitext": "See the [[NonExistentPage]] for details.",
+      "expected": "See the [NonExistentPage](https://ck3.paradoxwikis.com/NonExistentPage) for details.",
+      "availablePages": []
+    },
+    {
+      "name": "Link with anchor to available page",
+      "wikitext": "See [[Scopes#Character]] for more info.",
+      "expected": "See [Scopes#Character](Scopes.md#character) for more info.",
+      "availablePages": ["Scopes"]
+    },
+    {
+      "name": "Link with anchor to unavailable page",
+      "wikitext": "See [[Unknown#Section]] for more info.",
+      "expected": "See [Unknown#Section](https://ck3.paradoxwikis.com/Unknown#section) for more info.",
+      "availablePages": []
+    },
+    {
+      "name": "Pluralization: singular link finds plural page",
+      "wikitext": "Use [[trigger]] to check conditions.",
+      "expected": "Use [trigger](Triggers.md) to check conditions.",
+      "availablePages": ["Triggers"]
+    },
+    {
+      "name": "Pluralization: plural link finds singular page",
+      "wikitext": "Use [[scopes]] in your script.",
+      "expected": "Use [scopes](Scope.md) in your script.",
+      "availablePages": ["Scope"]
+    },
+    {
+      "name": "Case preservation in link target",
+      "wikitext": "The [[AI]] system is complex.",
+      "expected": "The [AI](AI.md) system is complex.",
+      "availablePages": ["AI"]
+    },
+    {
+      "name": "Link with display text to available page",
+      "wikitext": "Check the [[Scopes|scope documentation]].",
+      "expected": "Check the [scope documentation](Scopes.md).",
+      "availablePages": ["Scopes"]
+    },
+    {
+      "name": "Main template with available page",
+      "wikitext": "{{Main|Scopes}}",
+      "expected": "> **Main article:** [Scopes](Scopes.md)",
+      "availablePages": ["Scopes"]
+    },
+    {
+      "name": "Main template with unavailable page",
+      "wikitext": "{{Main|Unknown}}",
+      "expected": "> **Main article:** [Unknown](https://ck3.paradoxwikis.com/Unknown)",
+      "availablePages": []
+    }
+  ]
+}

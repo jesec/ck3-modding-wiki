@@ -8,6 +8,7 @@ interface TestCase {
   name: string;
   wikitext: string;
   expected: string;
+  availablePages?: string[];
 }
 
 interface Fixture {
@@ -58,14 +59,18 @@ function loadFixtures(): Fixture[] {
 // Run tests for each fixture category
 const fixtures = loadFixtures();
 
-// Mock available pages map for testing
-// Empty map means all links will resolve to wiki URLs
-const mockPagesMap = new Map<string, string>();
-
 fixtures.forEach((fixture) => {
   describe(`${fixture.category}: ${fixture.description}`, () => {
     fixture.cases.forEach((testCase) => {
       it(testCase.name, () => {
+        // Create mock pages map from test case's availablePages list
+        const mockPagesMap = new Map<string, string>();
+        if (testCase.availablePages) {
+          testCase.availablePages.forEach((page) => {
+            mockPagesMap.set(page.toLowerCase(), page);
+          });
+        }
+
         const xml = createTestXml(testCase.wikitext);
         const fullMarkdown = convertXmlToMarkdown(xml, 'TestPage', mockPagesMap);
         const actualMarkdown = extractBody(fullMarkdown);
