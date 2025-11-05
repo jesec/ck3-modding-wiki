@@ -1,17 +1,43 @@
 // Download all wiki assets (modifier icons and images)
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import * as fs from 'fs';
+import * as path from 'path';
+import sharp from 'sharp';
+import type { Browser, Page } from 'playwright';
 
-const ICONS_DIR = path.join(__dirname, '..', 'assets', 'icons');
-const IMAGES_DIR = path.join(__dirname, '..', 'assets', 'images');
-const XML_DIR = path.join(__dirname, '..', 'wiki_exports');
+const ICONS_DIR = path.join(import.meta.dirname, '..', 'assets', 'icons');
+const IMAGES_DIR = path.join(import.meta.dirname, '..', 'assets', 'images');
+const XML_DIR = path.join(import.meta.dirname, '..', 'wiki_exports');
+
+interface WikiConfig {
+  WIKI_BASE_URL: string;
+}
+
+interface ImageReference {
+  filename: string;
+  size: number | null;
+}
+
+interface IconMapping {
+  identifier: string;
+  url: string;
+}
+
+interface IconifyMapping {
+  iconifyName: string;
+  imageUrl: string;
+}
+
+interface DownloadResult {
+  success: boolean;
+  status?: number;
+  resized?: boolean;
+}
 
 // Load wiki configuration
-function loadConfig() {
-  const configPath = path.join(__dirname, '..', '.wikiconfig');
-  const defaults = {
-    WIKI_BASE_URL: 'https://ck3.paradoxwikis.com'
+function loadConfig(): WikiConfig {
+  const configPath = path.join(import.meta.dirname, '..', '.wikiconfig');
+  const defaults: WikiConfig = {
+    WIKI_BASE_URL: 'https://ck3.paradoxwikis.com',
   };
 
   if (!fs.existsSync(configPath)) {
@@ -19,14 +45,15 @@ function loadConfig() {
   }
 
   const content = fs.readFileSync(configPath, 'utf-8');
-  const config = { ...defaults };
+  const config: WikiConfig = { ...defaults };
 
   for (const line of content.split('\n')) {
     const trimmed = line.trim();
     if (trimmed && !trimmed.startsWith('#')) {
       const [key, value] = trimmed.split('=');
       if (key && value) {
-        config[key.trim()] = value.trim();
+        const trimmedKey = key.trim() as keyof WikiConfig;
+        config[trimmedKey] = value.trim();
       }
     }
   }
@@ -38,8 +65,13 @@ const CONFIG = loadConfig();
 
 // Helper function: Download image and resize to target size if needed
 // Try target size first, fallback to original and resize
-async function downloadAndResize(page, originalUrl, filepath, targetSize = 48) {
-  let thumbnailUrl;
+async function downloadAndResize(
+  page: Page,
+  originalUrl: string,
+  filepath: string,
+  targetSize = 48
+): Promise<DownloadResult> {
+  let thumbnailUrl: string;
 
   // Check if originalUrl is already a thumbnail or full image
   if (originalUrl.includes('/thumb/')) {
@@ -48,8 +80,9 @@ async function downloadAndResize(page, originalUrl, filepath, targetSize = 48) {
   } else {
     // Full image URL - construct thumbnail URL
     // Convert: /images/path/filename.ext -> /images/thumb/path/filename.ext/SIZEpx-filename.ext
-    const filename = originalUrl.split('/').pop();
-    thumbnailUrl = originalUrl.replace('/images/', '/images/thumb/') + `/${targetSize}px-${filename}`;
+    const filename = originalUrl.split('/').pop() || '';
+    thumbnailUrl =
+      originalUrl.replace('/images/', '/images/thumb/') + `/${targetSize}px-${filename}`;
   }
 
   let response;
@@ -70,14 +103,17 @@ async function downloadAndResize(page, originalUrl, filepath, targetSize = 48) {
 
   // Check if we need to resize
   const metadata = await sharp(buffer).metadata();
-  const needsResize = metadata.width < targetSize || metadata.height < targetSize;
+  const needsResize = Boolean(
+    (metadata.width && metadata.width < targetSize) ||
+      (metadata.height && metadata.height < targetSize)
+  );
 
   if (needsResize) {
     // Resize to target size (minimum 48px)
     const resized = await sharp(buffer)
       .resize(targetSize, targetSize, {
         fit: 'contain',
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
       })
       .png()
       .toBuffer();
@@ -91,15 +127,15 @@ async function downloadAndResize(page, originalUrl, filepath, targetSize = 48) {
 }
 
 // Extract all File: and Image: references from XML exports with size parameters
-function extractImageReferences() {
-  const imagesMap = new Map(); // Map filename -> size (or null if full size)
+function extractImageReferences(): ImageReference[] {
+  const imagesMap = new Map<string, number | null>(); // Map filename -> size (or null if full size)
 
   if (!fs.existsSync(XML_DIR)) {
     console.log('Warning: wiki_exports/ directory not found. Run download first.');
     return [];
   }
 
-  const xmlFiles = fs.readdirSync(XML_DIR).filter(f => f.endsWith('.xml'));
+  const xmlFiles = fs.readdirSync(XML_DIR).filter((f) => f.endsWith('.xml'));
 
   for (const xmlFile of xmlFiles) {
     const xmlPath = path.join(XML_DIR, xmlFile);
@@ -119,7 +155,7 @@ function extractImageReferences() {
       }
 
       // Extract size parameter (like "24px", "400px", etc.)
-      let size = null;
+      let size: number | null = null;
       if (params) {
         // Look for patterns like "24px", "400px" in the parameters
         const sizeMatch = params.match(/(\d+)px/);
@@ -129,7 +165,8 @@ function extractImageReferences() {
       }
 
       // Store filename with its size (prefer smaller size if multiple references exist)
-      if (!imagesMap.has(filename) || (size && (!imagesMap.get(filename) || size < imagesMap.get(filename)))) {
+      const existingSize = imagesMap.get(filename);
+      if (!existingSize || (size && size < existingSize)) {
         imagesMap.set(filename, size);
       }
     }
@@ -142,15 +179,15 @@ function extractImageReferences() {
 }
 
 // Extract all icon references from XML exports ({{icon|name}} and {{iconify|name}})
-function extractIconReferences() {
-  const icons = new Set();
+function extractIconReferences(): string[] {
+  const icons = new Set<string>();
 
   if (!fs.existsSync(XML_DIR)) {
     console.log('Warning: wiki_exports/ directory not found. Run download first.');
     return [];
   }
 
-  const xmlFiles = fs.readdirSync(XML_DIR).filter(f => f.endsWith('.xml'));
+  const xmlFiles = fs.readdirSync(XML_DIR).filter((f) => f.endsWith('.xml'));
 
   for (const xmlFile of xmlFiles) {
     const xmlPath = path.join(XML_DIR, xmlFile);
@@ -175,15 +212,15 @@ function extractIconReferences() {
 }
 
 // Scrape iconify→image file mappings via MediaWiki API
-async function scrapeIconifyMappings(page) {
-  const iconifyNames = [];
+async function scrapeIconifyMappings(page: Page): Promise<IconifyMapping[]> {
+  const iconifyNames: string[] = [];
 
   // Extract iconify names from XML
   if (!fs.existsSync(XML_DIR)) {
     return [];
   }
 
-  const xmlFiles = fs.readdirSync(XML_DIR).filter(f => f.endsWith('.xml'));
+  const xmlFiles = fs.readdirSync(XML_DIR).filter((f) => f.endsWith('.xml'));
 
   for (const xmlFile of xmlFiles) {
     const xmlPath = path.join(XML_DIR, xmlFile);
@@ -199,7 +236,7 @@ async function scrapeIconifyMappings(page) {
     }
   }
 
-  const mappings = [];
+  const mappings: IconifyMapping[] = [];
 
   // Process in batches
   const batchSize = 20;
@@ -207,7 +244,7 @@ async function scrapeIconifyMappings(page) {
     const batch = iconifyNames.slice(i, Math.min(i + batchSize, iconifyNames.length));
 
     // Create wikitext with iconify templates
-    const wikitext = batch.map(name => `{{iconify|${name}}}`).join('\n\n');
+    const wikitext = batch.map((name) => `{{iconify|${name}}}`).join('\n\n');
 
     // Use MediaWiki API to parse and get rendered HTML with image URLs
     const apiUrl = `${CONFIG.WIKI_BASE_URL}/api.php?action=parse&format=json&text=${encodeURIComponent(wikitext)}&prop=text&disablelimitreport=1`;
@@ -223,7 +260,7 @@ async function scrapeIconifyMappings(page) {
       // Parse HTML to extract image URLs (thumbnails, not full size)
       // Extract img src attributes - use as provided by wiki
       const imgRegex = /<img[^>]+src="([^"]+)"[^>]*>/gi;
-      const urls = [];
+      const urls: string[] = [];
       let imgMatch;
       while ((imgMatch = imgRegex.exec(html)) !== null) {
         urls.push(imgMatch[1].trim());
@@ -233,20 +270,21 @@ async function scrapeIconifyMappings(page) {
       for (let j = 0; j < batch.length && j < urls.length; j++) {
         mappings.push({
           iconifyName: batch[j],
-          imageUrl: urls[j]
+          imageUrl: urls[j],
         });
       }
 
       await page.waitForTimeout(500);
     } catch (error) {
-      console.error(`  Error processing batch: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(`  Error processing batch: ${errorMessage}`);
     }
   }
 
   return mappings;
 }
 
-async function downloadModifierIcons(page) {
+async function downloadModifierIcons(page: Page): Promise<void> {
   console.log('\n=== Downloading Icons ===');
 
   // Create icons directory
@@ -254,18 +292,18 @@ async function downloadModifierIcons(page) {
     fs.mkdirSync(ICONS_DIR, { recursive: true });
   }
 
-  const allIconMappings = [];
+  const allIconMappings: IconMapping[] = [];
 
   // Source 1: Scrape Template:Icon for general icons (1211+ identifiers)
   console.log('Fetching icon mappings from Template:Icon...');
   await page.goto(`${CONFIG.WIKI_BASE_URL}/Template:Icon`, {
     waitUntil: 'networkidle',
-    timeout: 30000
+    timeout: 30000,
   });
 
   const templateIconMappings = await page.evaluate(() => {
     const tables = document.querySelectorAll('table');
-    const mappings = new Map();
+    const mappings = new Map<string, string>();
 
     for (const table of tables) {
       const rows = table.querySelectorAll('tr');
@@ -277,7 +315,7 @@ async function downloadModifierIcons(page) {
 
           if (identifiers && img && img.src) {
             // Each cell can have multiple comma-separated identifiers
-            const idList = identifiers.split(',').map(id => id.trim());
+            const idList = identifiers.split(',').map((id) => id.trim());
             for (const id of idList) {
               if (id && !mappings.has(id)) {
                 // Use the URL as provided by the wiki
@@ -299,24 +337,24 @@ async function downloadModifierIcons(page) {
   console.log('Fetching modifier icons from Modifier_list...');
   await page.goto(`${CONFIG.WIKI_BASE_URL}/Modifier_list#Icons`, {
     waitUntil: 'networkidle',
-    timeout: 30000
+    timeout: 30000,
   });
 
   const modifierIconMappings = await page.evaluate(() => {
-    const results = [];
+    const results: { identifier: string; url: string }[] = [];
     const rows = document.querySelectorAll('table.wikitable tr');
 
     for (const row of rows) {
       const cells = row.querySelectorAll('td');
       if (cells.length >= 2) {
-        const name1 = cells[0].textContent.trim();
+        const name1 = cells[0].textContent?.trim() || '';
         const img1 = cells[1].querySelector('img');
         if (img1 && img1.src) {
           // Use URL as provided by wiki
           results.push({ identifier: name1, url: img1.src });
         }
         if (cells.length >= 4) {
-          const name2 = cells[2].textContent.trim();
+          const name2 = cells[2].textContent?.trim() || '';
           const img2 = cells[3].querySelector('img');
           if (img2 && img2.src) {
             // Use URL as provided by wiki
@@ -362,10 +400,10 @@ async function downloadModifierIcons(page) {
 
     // First, try to find in regular icon mappings (from Template:Icon and Modifier_list)
     // Try both the exact name and with underscores replaced by spaces
-    let mapping = allIconMappings.find(m => m.identifier === iconName);
+    let mapping = allIconMappings.find((m) => m.identifier === iconName);
     if (!mapping && iconName.includes('_')) {
       const nameWithSpaces = iconName.replace(/_/g, ' ');
-      mapping = allIconMappings.find(m => m.identifier === nameWithSpaces);
+      mapping = allIconMappings.find((m) => m.identifier === nameWithSpaces);
     }
 
     if (mapping) {
@@ -379,7 +417,8 @@ async function downloadModifierIcons(page) {
           failed++;
         }
       } catch (error) {
-        console.log(`✗ ${filename}: ${error.message}`);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.log(`✗ ${filename}: ${errorMessage}`);
         failed++;
       }
       await page.waitForTimeout(200);
@@ -387,7 +426,7 @@ async function downloadModifierIcons(page) {
     }
 
     // Second, try iconify mappings (trait/title icons with thumbnail URLs)
-    const iconifyMapping = iconifyMappings.find(m => m.iconifyName === iconName);
+    const iconifyMapping = iconifyMappings.find((m) => m.iconifyName === iconName);
 
     if (iconifyMapping) {
       // Download 48px version with resize fallback
@@ -409,7 +448,8 @@ async function downloadModifierIcons(page) {
           failed++;
         }
       } catch (error) {
-        console.log(`✗ ${filename}: ${error.message}`);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.log(`✗ ${filename}: ${errorMessage}`);
         failed++;
       }
       await page.waitForTimeout(200);
@@ -454,16 +494,19 @@ async function downloadModifierIcons(page) {
         notFound++;
       }
     } catch (error) {
-      console.log(`✗ ${filename}: API error - ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.log(`✗ ${filename}: API error - ${errorMessage}`);
       notFound++;
     }
     await page.waitForTimeout(200);
   }
 
-  console.log(`✓ Downloaded: ${success}, Skipped: ${skipped}, Not found: ${notFound}, Failed: ${failed}`);
+  console.log(
+    `✓ Downloaded: ${success}, Skipped: ${skipped}, Not found: ${notFound}, Failed: ${failed}`
+  );
 }
 
-async function downloadWikiImages(page) {
+async function downloadWikiImages(page: Page): Promise<void> {
   console.log('\n=== Downloading Wiki Images ===');
 
   // Create images directory
@@ -505,29 +548,35 @@ async function downloadWikiImages(page) {
       await page.goto(filePageUrl, { waitUntil: 'networkidle', timeout: 30000 });
 
       // Get both full image URL and thumbnail URL BEFORE navigating away
-      const { fullImageUrl, thumbnailUrl } = await page.evaluate((targetSize) => {
-        const fullLink = document.querySelector('.fullImageLink a');
-        if (!fullLink || !fullLink.href) {
-          return { fullImageUrl: null, thumbnailUrl: null };
-        }
-
-        const fullUrl = fullLink.href;
-        let thumbUrl = null;
-
-        if (targetSize) {
-          // Look for thumbnail with target size
-          const thumbLink = document.querySelector(`img[width="${targetSize}"]`);
-          if (thumbLink && thumbLink.src) {
-            thumbUrl = thumbLink.src;
-          } else {
-            // Construct thumbnail URL from full image
-            const filename = fullUrl.split('/').pop();
-            thumbUrl = fullUrl.replace('/images/', '/images/thumb/') + `/${targetSize}px-${filename}`;
+      const { fullImageUrl, thumbnailUrl } = await page.evaluate(
+        (targetSize: number | null) => {
+          const fullLink = document.querySelector('.fullImageLink a') as HTMLAnchorElement | null;
+          if (!fullLink || !fullLink.href) {
+            return { fullImageUrl: null, thumbnailUrl: null };
           }
-        }
 
-        return { fullImageUrl: fullUrl, thumbnailUrl: thumbUrl };
-      }, size ? Math.max(size, 48) : null);
+          const fullUrl = fullLink.href;
+          let thumbUrl: string | null = null;
+
+          if (targetSize) {
+            // Look for thumbnail with target size
+            const thumbLink = document.querySelector(
+              `img[width="${targetSize}"]`
+            ) as HTMLImageElement | null;
+            if (thumbLink && thumbLink.src) {
+              thumbUrl = thumbLink.src;
+            } else {
+              // Construct thumbnail URL from full image
+              const filename = fullUrl.split('/').pop();
+              thumbUrl =
+                fullUrl.replace('/images/', '/images/thumb/') + `/${targetSize}px-${filename}`;
+            }
+          }
+
+          return { fullImageUrl: fullUrl, thumbnailUrl: thumbUrl };
+        },
+        size ? Math.max(size, 48) : null
+      );
 
       if (!fullImageUrl) {
         console.log(`✗ ${localFilename}: No image link found`);
@@ -540,11 +589,14 @@ async function downloadWikiImages(page) {
         const targetSize = Math.max(size, 48);
 
         // Try to navigate to thumbnail
-        let response = await page.goto(thumbnailUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        let response = await page.goto(thumbnailUrl!, {
+          waitUntil: 'networkidle',
+          timeout: 30000,
+        });
 
         // If thumbnail gives HTML (blocked) or 404, get full image and resize
-        const contentType = response.headers()['content-type'] || '';
-        if (contentType.includes('text/html') || response.status() === 404) {
+        const contentType = response?.headers()['content-type'] || '';
+        if (contentType.includes('text/html') || response?.status() === 404) {
           response = await page.goto(fullImageUrl, { waitUntil: 'networkidle', timeout: 30000 });
         }
 
@@ -557,7 +609,7 @@ async function downloadWikiImages(page) {
             const resized = await sharp(buffer)
               .resize(targetSize, targetSize, {
                 fit: 'contain',
-                background: { r: 0, g: 0, b: 0, alpha: 0 }
+                background: { r: 0, g: 0, b: 0, alpha: 0 },
               })
               .png()
               .toBuffer();
@@ -572,7 +624,10 @@ async function downloadWikiImages(page) {
         }
       } else {
         // No size specified - download full image without resizing
-        const response = await page.goto(fullImageUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        const response = await page.goto(fullImageUrl, {
+          waitUntil: 'networkidle',
+          timeout: 30000,
+        });
 
         if (response && response.ok()) {
           const buffer = await response.body();
@@ -583,9 +638,9 @@ async function downloadWikiImages(page) {
           failed++;
         }
       }
-
     } catch (error) {
-      console.log(`✗ ${localFilename}: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.log(`✗ ${localFilename}: ${errorMessage}`);
       failed++;
     }
 
@@ -596,7 +651,7 @@ async function downloadWikiImages(page) {
   console.log(`✓ Downloaded: ${success}, Skipped: ${skipped}, Failed: ${failed}`);
 }
 
-async function downloadAssets(browser) {
+async function downloadAssets(browser: Browser): Promise<void> {
   const page = await browser.newPage();
 
   try {
@@ -609,4 +664,4 @@ async function downloadAssets(browser) {
   }
 }
 
-module.exports = { downloadAssets };
+export { downloadAssets };

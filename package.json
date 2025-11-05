@@ -1,6 +1,7 @@
 {
   "name": "ck3-modding-wiki",
   "version": "1.20251104.4",
+  "type": "module",
   "description": "Complete Crusader Kings 3 modding documentation from Paradox Wiki in Markdown format",
   "files": [
     "wiki_pages/**/*.md",
@@ -9,15 +10,18 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node --test tests/**/*.test.js",
-    "download": "node index.js download",
-    "download-assets": "node index.js download-assets",
-    "convert": "node index.js convert && node lib/generate-master-toc.js",
-    "master-toc": "node lib/generate-master-toc.js",
+    "start": "node index.ts",
+    "test": "node --test tests/**/*.test.ts",
+    "check-types": "tsgo --noEmit",
+    "lint": "oxlint .",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --check \"**/*.ts\"",
+    "download": "node index.ts download",
+    "download-assets": "node index.ts download-assets",
+    "convert": "node index.ts convert && node lib/generate-master-toc.ts",
+    "master-toc": "node lib/generate-master-toc.ts",
     "push-wiki": "bash lib/push-to-wiki.sh",
-    "update": "node index.js download && node index.js convert && node lib/generate-master-toc.js",
-    "publish:npm": "npm publish",
-    "publish:all": "npm run update && git add wiki_pages && git commit -m \"chore: update wiki content\" && git push && npm publish"
+    "update": "node index.ts download && node index.ts convert && node lib/generate-master-toc.ts"
   },
   "repository": {
     "type": "git",
@@ -39,9 +43,14 @@
   },
   "homepage": "https://github.com/jesec/ck3-modding-wiki#readme",
   "devDependencies": {
+    "@prettier/plugin-oxc": "^0.0.4",
+    "@types/jsdom": "^27.0.0",
+    "@types/node": "^24.10.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251104.1",
     "jsdom": "^27.1.0",
-    "marked": "^16.4.1",
+    "oxlint": "^1.25.0",
     "playwright": "^1.56.1",
+    "prettier": "^3.6.2",
     "sharp": "^0.33.5",
     "wikiparser-node": "^1.29.2"
   }

@@ -1,0 +1,7 @@
+node_modules
+dist
+wiki_exports
+wiki_pages
+assets
+*.md
+*.json

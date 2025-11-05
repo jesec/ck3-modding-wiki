@@ -1,5 +1,6 @@
 # XML source files (intermediate format, not needed for reading the wiki)
-wiki_exports/
+wiki_exports/*
+!wiki_exports/Scopes.xml
 
 # Conversion tool dependencies
 node_modules/
