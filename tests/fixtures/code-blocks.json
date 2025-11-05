@@ -14,7 +14,7 @@
     {
       "name": "Single-line pre tag after colon",
       "wikitext": "When used in a character [[scope]], it is also the same thing as using the confusingly named <code>add_character_flag</code> effect:\n<pre>add_character_flag = X</pre>",
-      "expected": "When used in a character [scope](Scopes.md), it is also the same thing as using the confusingly named ``add_character_flag`` effect:\n\n\n```\nadd_character_flag = X\n```"
+      "expected": "When used in a character [scope](https://ck3.paradoxwikis.com/scope), it is also the same thing as using the confusingly named ``add_character_flag`` effect:\n\n\n```\nadd_character_flag = X\n```"
     },
     {
       "name": "Single-line pre tag at end of sentence",
