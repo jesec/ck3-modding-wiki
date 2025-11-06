@@ -465,100 +465,100 @@ Traits that do not follow this pattern have been listed below for reference.
 
 | **Trait (education)** | **Tag** |
 | --- | --- |
-| ![Naive Appeaser](../assets/icons/Naive_Appeaser.png) | education_diplomacy_1 |
-| ![Adequate Bargainer](../assets/icons/Adequate_Bargainer.png) | education_diplomacy_2 |
-| ![Charismatic Negotiator](../assets/icons/Charismatic_Negotiator.png) | education_diplomacy_3 |
-| ![Grey Eminence](../assets/icons/Grey_Eminence.png) | education_diplomacy_4 |
-| ![Virtuoso Arbitrator](../assets/icons/Virtuoso_Arbitrator.png) | education_diplomacy_5 |
-| ![Misguided Warrior](../assets/icons/Misguided_Warrior.png) | education_martial_1 |
-| ![Tough Soldier](../assets/icons/Tough_Soldier.png) | education_martial_2 |
-| ![Skilled Tactician](../assets/icons/Skilled_Tactician.png) | education_martial_3 |
-| ![Brilliant Strategist](../assets/icons/Brilliant_Strategist.png) | education_martial_4 |
-| ![Exalted Warlord](../assets/icons/Exalted_Warlord.png) | education_martial_5 |
-| ![Indulgent Wastrel](../assets/icons/Indulgent_Wastrel.png) | education_stewardship_1 |
-| ![Thrifty Clerk](../assets/icons/Thrifty_Clerk.png) | education_stewardship_2 |
-| ![Fortune Builder](../assets/icons/Fortune_Builder.png) | education_stewardship_3 |
-| ![Midas Touched](../assets/icons/Midas_Touched.png) | education_stewardship_4 |
-| ![Golden Sovereign](../assets/icons/Golden_Sovereign.png) | education_stewardship_5 |
-| ![Amateurish Plotter](../assets/icons/Amateurish_Plotter.png) | education_intrigue_1 |
-| ![Flamboyant Trickster](../assets/icons/Flamboyant_Trickster.png) | education_intrigue_2 |
-| ![Intricate Webweaver](../assets/icons/Intricate_Webweaver.png) | education_intrigue_3 |
-| ![Elusive Shadow](../assets/icons/Elusive_Shadow.png) | education_intrigue_4 |
-| ![Conniving Puppetmaster](../assets/icons/Conniving_Puppetmaster.png) | education_intrigue_5 |
-| ![Conscientious Scribe](../assets/icons/Conscientious_Scribe.png) | education_learning_1 |
-| ![Insightful Thinker](../assets/icons/Insightful_Thinker.png) | education_learning_2 |
-| ![Astute Intellectual](../assets/icons/Astute_Intellectual.png) | education_learning_3 |
-| ![Mastermind Philosopher](../assets/icons/Mastermind_Philosopher.png) | education_learning_4 |
-| ![Erudite Oracle](../assets/icons/Erudite_Oracle.png) | education_learning_5 |
-| ![Bumbling Squire](../assets/icons/Bumbling_Squire.png) | education_martial_prowess_1 |
-| ![Confident Knight](../assets/icons/Confident_Knight.png) | education_martial_prowess_2 |
-| ![Formidable Banneret](../assets/icons/Formidable_Banneret.png) | education_martial_prowess_3 |
-| ![Famous Champion](../assets/icons/Famous_Champion.png) | education_martial_prowess_4 |
-| ![Town Dweller](../assets/icons/Town_Dweller.png) | education_republican_knowledge_1 |
-| ![Mayor Trainee](../assets/icons/Mayor_Trainee.png) | education_republican_knowledge_2 |
-| ![Town Maven](../assets/icons/Town_Maven.png) | education_republican_knowledge_3 |
-| ![Republican Heir](../assets/icons/Republican_Heir.png) | education_republican_knowledge_4 |
+| ![Naive Appeaser](../assets/icons/naive_appeaser.png) | education_diplomacy_1 |
+| ![Adequate Bargainer](../assets/icons/adequate_bargainer.png) | education_diplomacy_2 |
+| ![Charismatic Negotiator](../assets/icons/charismatic_negotiator.png) | education_diplomacy_3 |
+| ![Grey Eminence](../assets/icons/grey_eminence.png) | education_diplomacy_4 |
+| ![Virtuoso Arbitrator](../assets/icons/virtuoso_arbitrator.png) | education_diplomacy_5 |
+| ![Misguided Warrior](../assets/icons/misguided_warrior.png) | education_martial_1 |
+| ![Tough Soldier](../assets/icons/tough_soldier.png) | education_martial_2 |
+| ![Skilled Tactician](../assets/icons/skilled_tactician.png) | education_martial_3 |
+| ![Brilliant Strategist](../assets/icons/brilliant_strategist.png) | education_martial_4 |
+| ![Exalted Warlord](../assets/icons/exalted_warlord.png) | education_martial_5 |
+| ![Indulgent Wastrel](../assets/icons/indulgent_wastrel.png) | education_stewardship_1 |
+| ![Thrifty Clerk](../assets/icons/thrifty_clerk.png) | education_stewardship_2 |
+| ![Fortune Builder](../assets/icons/fortune_builder.png) | education_stewardship_3 |
+| ![Midas Touched](../assets/icons/midas_touched.png) | education_stewardship_4 |
+| ![Golden Sovereign](../assets/icons/golden_sovereign.png) | education_stewardship_5 |
+| ![Amateurish Plotter](../assets/icons/amateurish_plotter.png) | education_intrigue_1 |
+| ![Flamboyant Trickster](../assets/icons/flamboyant_trickster.png) | education_intrigue_2 |
+| ![Intricate Webweaver](../assets/icons/intricate_webweaver.png) | education_intrigue_3 |
+| ![Elusive Shadow](../assets/icons/elusive_shadow.png) | education_intrigue_4 |
+| ![Conniving Puppetmaster](../assets/icons/conniving_puppetmaster.png) | education_intrigue_5 |
+| ![Conscientious Scribe](../assets/icons/conscientious_scribe.png) | education_learning_1 |
+| ![Insightful Thinker](../assets/icons/insightful_thinker.png) | education_learning_2 |
+| ![Astute Intellectual](../assets/icons/astute_intellectual.png) | education_learning_3 |
+| ![Mastermind Philosopher](../assets/icons/mastermind_philosopher.png) | education_learning_4 |
+| ![Erudite Oracle](../assets/icons/erudite_oracle.png) | education_learning_5 |
+| ![Bumbling Squire](../assets/icons/bumbling_squire.png) | education_martial_prowess_1 |
+| ![Confident Knight](../assets/icons/confident_knight.png) | education_martial_prowess_2 |
+| ![Formidable Banneret](../assets/icons/formidable_banneret.png) | education_martial_prowess_3 |
+| ![Famous Champion](../assets/icons/famous_champion.png) | education_martial_prowess_4 |
+| ![Town Dweller](../assets/icons/town_dweller.png) | education_republican_knowledge_1 |
+| ![Mayor Trainee](../assets/icons/mayor_trainee.png) | education_republican_knowledge_2 |
+| ![Town Maven](../assets/icons/town_maven.png) | education_republican_knowledge_3 |
+| ![Republican Heir](../assets/icons/republican_heir.png) | education_republican_knowledge_4 |
 
 
 | **Trait (congenital)** | **Tag** |
 | --- | --- |
-| ![Homely](../assets/icons/Homely.png) | beauty_bad_1 |
-| ![Ugly](../assets/icons/Ugly.png) | beauty_bad_2 |
-| ![Hideous](../assets/icons/Hideous.png) | beauty_bad_3 |
-| ![Comely](../assets/icons/Comely.png) | beauty_good_1 |
-| ![Handsome](../assets/icons/Handsome.png) / Pretty | beauty_good_2 |
-| ![Beautiful](../assets/icons/Beautiful.png) | beauty_good_3 |
-| ![Slow](../assets/icons/Slow.png) | intellect_bad_1 |
-| ![Stupid](../assets/icons/Stupid.png) | intellect_bad_2 |
-| ![Imbecile](../assets/icons/Imbecile.png) | intellect_bad_3 |
-| ![Quick](../assets/icons/Quick.png) | intellect_good_1 |
-| ![Intelligent](../assets/icons/Intelligent.png) | intellect_good_2 |
-| ![Genius](../assets/icons/Genius.png) | intellect_good_3 |
-| ![Delicate](../assets/icons/Delicate.png) | physique_bad_1 |
-| ![Frail](../assets/icons/Frail.png) | physique_bad_2 |
-| ![Feeble](../assets/icons/Feeble.png) | physique_bad_3 |
-| ![Hale](../assets/icons/Hale.png) | physique_good_1 |
-| ![Robust](../assets/icons/Robust.png) | physique_good_2 |
-| ![Amazonian](../assets/icons/Amazonian.png) / Herculean | physique_good_3 |
-| ![Melancholic](../assets/icons/Melancholic.png) | depressed_1 / depressed_genetic |
-| ![Lunatic](../assets/icons/Lunatic.png) | lunatic_1 / lunatic_genetic |
-| ![Possessed](../assets/icons/Possessed.png) | possessed_1 / possessed_genetic |
-| ![Sterile](../assets/icons/Sterile.png) / Barren | infertile |
+| ![Homely](../assets/icons/homely.png) | beauty_bad_1 |
+| ![Ugly](../assets/icons/ugly.png) | beauty_bad_2 |
+| ![Hideous](../assets/icons/hideous.png) | beauty_bad_3 |
+| ![Comely](../assets/icons/comely.png) | beauty_good_1 |
+| ![Handsome](../assets/icons/handsome.png) / Pretty | beauty_good_2 |
+| ![Beautiful](../assets/icons/beautiful.png) | beauty_good_3 |
+| ![Slow](../assets/icons/slow.png) | intellect_bad_1 |
+| ![Stupid](../assets/icons/stupid.png) | intellect_bad_2 |
+| ![Imbecile](../assets/icons/imbecile.png) | intellect_bad_3 |
+| ![Quick](../assets/icons/quick.png) | intellect_good_1 |
+| ![Intelligent](../assets/icons/intelligent.png) | intellect_good_2 |
+| ![Genius](../assets/icons/genius.png) | intellect_good_3 |
+| ![Delicate](../assets/icons/delicate.png) | physique_bad_1 |
+| ![Frail](../assets/icons/frail.png) | physique_bad_2 |
+| ![Feeble](../assets/icons/feeble.png) | physique_bad_3 |
+| ![Hale](../assets/icons/hale.png) | physique_good_1 |
+| ![Robust](../assets/icons/robust.png) | physique_good_2 |
+| ![Amazonian](../assets/icons/amazonian.png) / Herculean | physique_good_3 |
+| ![Melancholic](../assets/icons/melancholic.png) | depressed_1 / depressed_genetic |
+| ![Lunatic](../assets/icons/lunatic.png) | lunatic_1 / lunatic_genetic |
+| ![Possessed](../assets/icons/possessed.png) | possessed_1 / possessed_genetic |
+| ![Sterile](../assets/icons/sterile.png) / Barren | infertile |
 
 
 | **Trait (other)** | **Tag** |
 | --- | --- |
-| ![Blademaster](../assets/icons/Blademaster.png) | lifestyle_blademaster |
-| ![Hunter](../assets/icons/Hunter.png) | lifestyle_hunter |
-| ![Wise Man](../assets/icons/Wise_Man.png) / Wise Woman | lifestyle_mystic |
-| ![Eager Reveler](../assets/icons/Eager_Reveler.png) | lifestyle_reveler |
-| ![Novice Physician](../assets/icons/Novice_Physician.png) | lifestyle_physician |
-| ![Herbalist](../assets/icons/Herbalist.png) | lifestyle_herbalist |
-| ![Gardener](../assets/icons/Gardener.png) | lifestyle_gardener |
-| ![Patriarch](../assets/icons/Patriarch.png) / Matriarch | family_first |
-| ![Dynastic Kinslayer](../assets/icons/Dynastic_Kinslayer.png) | kinslayer_1 |
-| ![Familial Kinslayer](../assets/icons/Familial_Kinslayer.png) | kinslayer_2 |
-| ![Kinslayer](../assets/icons/Kinslayer.png) | kinslayer_3 |
-| ![Wounded](../assets/icons/Wounded.png) | wounded_1 |
-| ![Severely Injured](../assets/icons/Severely_Injured.png) | wounded_2 |
-| ![Brutally Mauled](../assets/icons/Brutally_Mauled.png) | wounded_3 |
-| ![Monk](../assets/icons/Monk.png) / Nun | devoted |
-| ![Crusader](../assets/icons/Crusader.png)<br>![Mujahid](../assets/icons/Mujahid.png)<br>![Warrior of the Faith](../assets/icons/Warrior_of_the_Faith.png) | faith_warrior |
-| ![Holy Monarch](../assets/icons/Holy_Monarch.png) | crusader_king |
-| ![Bloody Flux](../assets/icons/Bloody_Flux.png) | dysentery |
-| ![Club-footed](../assets/icons/Club-footed.png) | clubfooted |
-| ![Holy Fire](../assets/icons/Holy_Fire.png) | ergotism |
-| ![Pneumonia](../assets/icons/Pneumonia.png) | pneumonic |
-| ![The Savior](../assets/icons/The_Savior.png) | savior |
-| ![Raider](../assets/icons/Raider.png) / Viking | viking |
-| ![Child of Concubine](../assets/icons/Child_of_Concubine.png) | child_of_concubine_female |
-| ![Child of Consort](../assets/icons/Child_of_Consort.png) | child_of_concubine_male |
-| ![Venerated Ancestor](../assets/icons/Venerated_Ancestor.png) / Saint | saint |
+| ![Blademaster](../assets/icons/blademaster.png) | lifestyle_blademaster |
+| ![Hunter](../assets/icons/hunter.png) | lifestyle_hunter |
+| ![Wise Man](../assets/icons/wise_man.png) / Wise Woman | lifestyle_mystic |
+| ![Eager Reveler](../assets/icons/eager_reveler.png) | lifestyle_reveler |
+| ![Novice Physician](../assets/icons/novice_physician.png) | lifestyle_physician |
+| ![Herbalist](../assets/icons/herbalist.png) | lifestyle_herbalist |
+| ![Gardener](../assets/icons/gardener.png) | lifestyle_gardener |
+| ![Patriarch](../assets/icons/patriarch.png) / Matriarch | family_first |
+| ![Dynastic Kinslayer](../assets/icons/dynastic_kinslayer.png) | kinslayer_1 |
+| ![Familial Kinslayer](../assets/icons/familial_kinslayer.png) | kinslayer_2 |
+| ![Kinslayer](../assets/icons/kinslayer.png) | kinslayer_3 |
+| ![Wounded](../assets/icons/wounded.png) | wounded_1 |
+| ![Severely Injured](../assets/icons/severely_injured.png) | wounded_2 |
+| ![Brutally Mauled](../assets/icons/brutally_mauled.png) | wounded_3 |
+| ![Monk](../assets/icons/monk.png) / Nun | devoted |
+| ![Crusader](../assets/icons/crusader.png)<br>![Mujahid](../assets/icons/mujahid.png)<br>![Warrior of the Faith](../assets/icons/warrior_of_the_faith.png) | faith_warrior |
+| ![Holy Monarch](../assets/icons/holy_monarch.png) | crusader_king |
+| ![Bloody Flux](../assets/icons/bloody_flux.png) | dysentery |
+| ![Club-footed](../assets/icons/club-footed.png) | clubfooted |
+| ![Holy Fire](../assets/icons/holy_fire.png) | ergotism |
+| ![Pneumonia](../assets/icons/pneumonia.png) | pneumonic |
+| ![The Savior](../assets/icons/the_savior.png) | savior |
+| ![Raider](../assets/icons/raider.png) / Viking | viking |
+| ![Child of Concubine](../assets/icons/child_of_concubine.png) | child_of_concubine_female |
+| ![Child of Consort](../assets/icons/child_of_consort.png) | child_of_concubine_male |
+| ![Venerated Ancestor](../assets/icons/venerated_ancestor.png) / Saint | saint |
 | ![Trait the wake](../assets/images/trait_the_wake.png) Exiled | the_wake |
-| ![Accused of Decadence](../assets/icons/Accused_of_Decadence.png) | decadent |
-| ![Extolled by House](../assets/icons/Extolled_by_House.png) | extolled |
+| ![Accused of Decadence](../assets/icons/accused_of_decadence.png) | decadent |
+| ![Extolled by House](../assets/icons/extolled_by_house.png) | extolled |
 | ![adventurer](../assets/icons/adventurer.png) Former Adventurer | adventurer |
-| ![Follower](../assets/icons/Follower.png) | adventurer_follower |
+| ![Follower](../assets/icons/follower.png) | adventurer_follower |
 | ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
 | ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
 | ![Warlike court 1](../assets/images/warlike_court_1.png) Warlike Courtier | warlike_court_1 |
@@ -569,12 +569,12 @@ Traits that do not follow this pattern have been listed below for reference.
 | ![Intrigue court 1](../assets/images/intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
 | ![Scholarly court 1](../assets/images/scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
 | ![Scholarly court 1](../assets/images/scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
-| ![Hastiluder](../assets/icons/Hastiluder.png) | tourney_participant |
-| ![Detractor of the Caliphate](../assets/icons/Detractor_of_the_Caliphate.png) | fp3_struggle_detractor |
-| ![Supporter of Caliphal Authority](../assets/icons/Supporter_of_Caliphal_Authority.png) | fp3_struggle_supporter |
-| ![Inspector](../assets/icons/Inspector.png) | lifestyle_surveyor |
-| ![Wayfarer](../assets/icons/Wayfarer.png) | lifestyle_wayfarer |
-| ![Voyager](../assets/icons/Voyager.png) | lifestyle_voyager |
+| ![Hastiluder](../assets/icons/hastiluder.png) | tourney_participant |
+| ![Detractor of the Caliphate](../assets/icons/detractor_of_the_caliphate.png) | fp3_struggle_detractor |
+| ![Supporter of Caliphal Authority](../assets/icons/supporter_of_caliphal_authority.png) | fp3_struggle_supporter |
+| ![Inspector](../assets/icons/inspector.png) | lifestyle_surveyor |
+| ![Wayfarer](../assets/icons/wayfarer.png) | lifestyle_wayfarer |
+| ![Voyager](../assets/icons/voyager.png) | lifestyle_voyager |
 
 
 ## Innovation tags
@@ -617,11 +617,11 @@ All titles have an internal title tag that can be found in ``game\common\landed_
 
 | **Rank** | **Prefix** | **Example** |
 | --- | --- | --- |
-| ![Barony](../assets/icons/Barony.png) | `b_` | `Wigmore -> b_wigmore` |
-| ![County](../assets/icons/County.png) | `c_` | `Sundgau -> c_sundgau` |
-| ![Duchy](../assets/icons/Duchy.png) | `d_` | `Sicily -> d_sicily` |
-| ![Kingdom](../assets/icons/Kingdom.png) | `k_` | `Denmark -> k_denmark` |
-| ![Empire](../assets/icons/Empire.png) | `e_` | `Persia -> e_persia` |
+| ![Barony](../assets/icons/barony.png) | `b_` | `Wigmore -> b_wigmore` |
+| ![County](../assets/icons/county.png) | `c_` | `Sundgau -> c_sundgau` |
+| ![Duchy](../assets/icons/duchy.png) | `d_` | `Sicily -> d_sicily` |
+| ![Kingdom](../assets/icons/kingdom.png) | `k_` | `Denmark -> k_denmark` |
+| ![Empire](../assets/icons/empire.png) | `e_` | `Persia -> e_persia` |
 
 
 Title Tags can also be seen in their respective title lists:
