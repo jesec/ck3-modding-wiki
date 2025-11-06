@@ -4,7 +4,7 @@
     {
       "name": "Image with HTML in unnamed caption parameter",
       "wikitext": "[[File:Example.png|thumb|<b>Bold caption</b>]]",
-      "expected": "<figure>\n\n![Example](../assets/images/Example.png)\n<figcaption><b>Bold caption</b></figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Example](../assets/images/example.png)\n<figcaption><b>Bold caption</b></figcaption>\n</figure>"
     },
     {
       "name": "Standalone list marker",

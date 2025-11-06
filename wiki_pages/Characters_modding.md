@@ -120,7 +120,7 @@ right_portrait = {
 
 <figure>
 
-![modding portrait editor button and UI sample](../assets/images/modding_portrait_editor_button_and_UI_sample.jpg)
+![modding portrait editor button and UI sample](../assets/images/modding_portrait_editor_button_and_ui_sample.jpg)
 <figcaption>Image showcasing how to open and use the portrait editor.</figcaption>
 </figure>
 Before we get to scripting anything, we're going to want to preview the clothes in the portrait editor so we can get an idea of what it is that we want to add an outfit tag to.

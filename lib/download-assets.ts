@@ -164,10 +164,15 @@ function extractImageReferences(): ImageReference[] {
         }
       }
 
+      // Normalize filename to lowercase for consistent filesystem handling
+      // This prevents duplicate files on case-sensitive filesystems (Linux)
+      // where "Errorhoof.jpg" and "errorhoof.jpg" would be separate files
+      const normalizedFilename = filename.toLowerCase();
+
       // Store filename with its size (prefer smaller size if multiple references exist)
-      const existingSize = imagesMap.get(filename);
+      const existingSize = imagesMap.get(normalizedFilename);
       if (!existingSize || (size && size < existingSize)) {
-        imagesMap.set(filename, size);
+        imagesMap.set(normalizedFilename, size);
       }
     }
   }

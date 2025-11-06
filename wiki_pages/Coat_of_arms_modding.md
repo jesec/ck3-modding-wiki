@@ -106,7 +106,7 @@ two_emblems_scaled_and_positioned = {
 ```
 
 
-![Emblem examples](../assets/images/Emblem_examples.png)
+![Emblem examples](../assets/images/emblem_examples.png)
 
 
 ## Inheritance and subs

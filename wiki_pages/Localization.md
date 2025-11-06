@@ -89,7 +89,7 @@ A few more are defined in ``Crusader Kings III/jomini/gui/jomini/basetextformatt
 
 <figure>
 
-![Text formatting 1.11](../assets/images/Text_formatting_1.11.png)
+![Text formatting 1.11](../assets/images/text_formatting_1.11.png)
 <figcaption>Example of all formatting styles in the game</figcaption>
 </figure>
 Localization strings can contain formatting directives. Text formatting should begin with a ``#`` character and end with ``#!``.
@@ -446,7 +446,7 @@ Note that the value is **always** rounded down.
 
 ## Icons
 
-![Example image for icons in modded loc](../assets/images/Example_image_for_icons_in_modded_loc.png)Icons can be displayed in loc keys by using `@icon_name!` to render them.
+![Example image for icons in modded loc](../assets/images/example_image_for_icons_in_modded_loc.png)Icons can be displayed in loc keys by using `@icon_name!` to render them.
 
 
 ```
@@ -544,7 +544,7 @@ A common issue with Chinese text in earlier versions of the game is that lines w
 
 Sadly an engine fix was impossible, so to ensure proper line breaking in Chinese text, you need to use a half-width versions of the punctiation, followed by a space. Using the right character substitutions, the visual change should be minimal and the line breaks do end up in the proper places.
 
-![Chinese text issue](../assets/images/Chinese_text_issue.png)
+![Chinese text issue](../assets/images/chinese_text_issue.png)
 
 
 | **Original** | **Codepoint** | **Substitution** | **Codepoint** | **Note** |

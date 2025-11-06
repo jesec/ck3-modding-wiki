@@ -16,7 +16,7 @@
     {
       "name": "File namespace becomes image",
       "wikitext": "Image: [[File:Example.png]]",
-      "expected": "Image: ![Example](../assets/images/Example.png)",
+      "expected": "Image: ![Example](../assets/images/example.png)",
       "availablePages": []
     },
     {

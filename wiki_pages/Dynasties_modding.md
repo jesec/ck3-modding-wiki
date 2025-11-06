@@ -127,7 +127,7 @@ house_lyon = {
 
 
 When every step is done, the final result ingame should look like this:
-![Modded Lyon-Dynasty](../assets/images/Modded_Lyon-Dynasty.jpg)
+![Modded Lyon-Dynasty](../assets/images/modded_lyon-dynasty.jpg)
 
 
 Category:Modding

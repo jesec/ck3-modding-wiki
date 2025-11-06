@@ -51,7 +51,7 @@ To open the map editor:
 
 <figure>
 
-![Heightmap example](../assets/images/Heightmap_example.png)
+![Heightmap example](../assets/images/heightmap_example.png)
 <figcaption>An example heightmap of Ireland and part of Britain</figcaption>
 </figure>
 
@@ -76,7 +76,7 @@ The heightmap dimensions must match the "original_heightmap_size" definition def
 
 Along with "heightmap.png", there are also two important **automatically generated** heightmap files, "indirection_heightmap.png" and "packed_heightmap.png". These will be created by the CK3 map editor when a heightmap is repacked and saved.
 
-![Repack](../assets/images/Repack.png)
+![Repack](../assets/images/repack.png)
 
 #### Repacking
 
@@ -87,7 +87,7 @@ Any time the main heightmap.png is changed, you must "repack" in the map editor 
 
 <figure>
 
-![Rivermap example](../assets/images/Rivermap_example.png)
+![Rivermap example](../assets/images/rivermap_example.png)
 <figcaption>An example river map of Ireland and part of Britain</figcaption>
 </figure>
 
@@ -100,7 +100,7 @@ If the river map refuses to export properly when using Gimp, **close Gimp**, cop
 
 ### Understanding river map colors
 
-![River map color table](../assets/images/River_map_color_table.png)
+![River map color table](../assets/images/river_map_color_table.png)
 River maps should be color indexed, which means they're saved with special encoding that indicates only certain specific colors can be used.
 
 Each color has a specific meaning, which is translated by the game engine into nice looking rivers.
@@ -115,12 +115,12 @@ The rest of the colors are a gradient of light blue to dark blue, where the dark
 
 ### Pixel perfect
 
-![River validity](../assets/images/River_validity.png) Each river pixel must be orthogonally adjacent to no more than 2 other river pixels, and splits and joins must be adjacent to no more than 3 other river pixels. Two-pixel wide rivers and rivers connected using only diagonal pixels will fail to render.
+![River validity](../assets/images/river_validity.png) Each river pixel must be orthogonally adjacent to no more than 2 other river pixels, and splits and joins must be adjacent to no more than 3 other river pixels. Two-pixel wide rivers and rivers connected using only diagonal pixels will fail to render.
 
 
 ### Draw procedure
 
-![River special pixels](../assets/images/River_special_pixels.png)
+![River special pixels](../assets/images/river_special_pixels.png)
 You can think of the CK3 river-drawing algorithm as basically taking one of the three special pixel colors (red, yellow, or green) and using those as the starting points to draw river sections, with the green one being the starting point for the whole river system. Each river section should have one of the three pixel types at one end and none at the other. That means a river cannot leave and rejoin its parent, as often happens in real life. Red and yellow pixels on the side of river sections are separate from this limit, as they generate new river sections. Each of the three river types also dictates flow direction for the river section it generates: Green and yellow pixels cause the river to flow away from them, red pixels cause the river to flow towards them.
 
 
@@ -140,7 +140,7 @@ This is also helpful it you have complicated river systems which also go through
 
 <figure>
 
-![Province map example](../assets/images/Province_map_example.png)
+![Province map example](../assets/images/province_map_example.png)
 <figcaption>An example province map of Ireland and part of Britain</figcaption>
 </figure>
 

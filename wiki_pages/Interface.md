@@ -73,7 +73,7 @@ To edit or save .dds files use either Photoshop with [Intel plugin](https://soft
 
 <figure>
 
-![screenshot of launch options in Steam](../assets/images/Debug_launch_options.png)
+![screenshot of launch options in Steam](../assets/images/debug_launch_options.png)
 <figcaption>Steam launch options for auto-reloading files</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ To do it quickly, make and run a .bat file in the data_types folder with this co
 
 <figure>
 
-![screenshot of the error counter](../assets/images/Errorhoof.jpg)
+![screenshot of the error counter](../assets/images/errorhoof.jpg)
 <figcaption>Error counter</figcaption>
 </figure>
 
@@ -152,7 +152,7 @@ After this you can launch the game and quickly open .gui files. The path can als
 gui.debug is a console command that enables the inspector.
 <figure>
 
-![a screenshot of the tweaker menu for gui.debug with extra options unchecked except for gui.debug](../assets/images/Tweak_gui.debug.png)
+![a screenshot of the tweaker menu for gui.debug with extra options unchecked except for gui.debug](../assets/images/tweak_gui.debug.png)
 <figcaption>gui.debug tweaker</figcaption>
 </figure>
 
@@ -170,7 +170,7 @@ To use it:
 
 <figure>
 
-![a screenshot of a gui.debug tooltip showing what file the character of the week is defined in](../assets/images/Gui.debug.png)
+![a screenshot of a gui.debug tooltip showing what file the character of the week is defined in](../assets/images/gui.debug.png)
 <figcaption>gui.debug tooltip</figcaption>
 </figure>
 
@@ -195,7 +195,7 @@ You can also make your own button with a hotkey that would fire gui.debug and sp
 
 <figure>
 
-![a screenshot of GUI Editor showing the structure of the frontend gui file](../assets/images/GUI_editor.png)
+![a screenshot of GUI Editor showing the structure of the frontend gui file](../assets/images/gui_editor.png)
 <figcaption>GUI Editor</figcaption>
 </figure>
 
@@ -459,8 +459,8 @@ On the screenshots below, hboxes have black background. All of the examples are 
 |    |    |
 | --- | --- |
 | By default, an hbox works similar to a flowcontainer: it orders children horizontally and resizes to fit them.<br><code style="white-space: pre">hbox = {<br>    button_round = {}<br>    button_round = {}<br>}</code> | ![simple hbox wide](../assets/images/simple_hbox_wide.jpg) |
-| With ``layoutpolicy_horizontal = expanding`<code style="white-space: pre"> it expands to the width of its parent and spreads its chilren out<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>}` | ![Expanded hbox](../assets/images/Expanded_hbox.jpg) |
-| To group its children, we can use `expand={}` to push them to one side. ``expand`<code style="white-space: pre"> is a template widget with layout policies set to "growing" (defined in gui/shared/windows.gui)<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>    expand = {}<br>}` | ![Ordered hbox](../assets/images/Ordered_hbox.jpg) |
+| With ``layoutpolicy_horizontal = expanding`<code style="white-space: pre"> it expands to the width of its parent and spreads its chilren out<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>}` | ![Expanded hbox](../assets/images/expanded_hbox.jpg) |
+| To group its children, we can use `expand={}` to push them to one side. ``expand`<code style="white-space: pre"> is a template widget with layout policies set to "growing" (defined in gui/shared/windows.gui)<br></code>hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_round = {}<br>    button_round = {}<br>    expand = {}<br>}` | ![Ordered hbox](../assets/images/ordered_hbox.jpg) |
 | With "expanding" policy on children, it also resizes them<br><br>This is useful for creating tabs, without needing to manually set their size<br><code style="white-space: pre">hbox = {<br>    layoutpolicy_horizontal = expanding<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>    button_standard = { layoutpolicy_horizontal = expanding }<br>}</code> | ![tabs hbox 2](../assets/images/tabs_hbox_2.jpg) |
 | With "expanding" horizontal and vertical policy, the hbox and its children will resize in both directions<br><code style="white-space: pre">hbox = {<br>    layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>    button_standard = {<br>        layoutpolicy_horizontal = expanding   layoutpolicy_vertical = expanding<br>    }<br>}</code> | ![big hbox](../assets/images/big_hbox.png) |
 
@@ -562,7 +562,7 @@ States can also trigger automatically when a condition is met.
 Note that ``trigger_when`` doesn't prevent the state from firing when triggered manually, it doesn't work like a trigger in an event. It's more like its own on_action.
 <figure>
 
-![a curve that starts with a small dip and grows to a large hump](../assets/images/Bezier_curve.png)
+![a curve that starts with a small dip and grows to a large hump](../assets/images/bezier_curve.png)
 <figcaption>Bezier curve of Animation_Curve_Default</figcaption>
 </figure>
 

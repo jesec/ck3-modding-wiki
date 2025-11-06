@@ -4,47 +4,47 @@
     {
       "name": "Simple image",
       "wikitext": "[[File:Example.png]]",
-      "expected": "![Example](../assets/images/Example.png)"
+      "expected": "![Example](../assets/images/example.png)"
     },
     {
       "name": "Image with alt text",
       "wikitext": "[[File:Screenshot.png|alt=A game screenshot]]",
-      "expected": "![A game screenshot](../assets/images/Screenshot.png)"
+      "expected": "![A game screenshot](../assets/images/screenshot.png)"
     },
     {
       "name": "Image with caption (unnamed parameter)",
       "wikitext": "[[File:Chart.png|This is the caption]]",
-      "expected": "![Chart](../assets/images/Chart.png)"
+      "expected": "![Chart](../assets/images/chart.png)"
     },
     {
       "name": "Thumbnail image with caption",
       "wikitext": "[[File:Example.png|thumb|This is a thumbnail]]",
-      "expected": "<figure>\n\n![Example](../assets/images/Example.png)\n<figcaption>This is a thumbnail</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Example](../assets/images/example.png)\n<figcaption>This is a thumbnail</figcaption>\n</figure>"
     },
     {
       "name": "Image with spaces in filename",
       "wikitext": "[[File:My Screenshot.png]]",
-      "expected": "![My Screenshot](../assets/images/My_Screenshot.png)"
+      "expected": "![My Screenshot](../assets/images/my_screenshot.png)"
     },
     {
       "name": "Image with sizing parameters (ignored)",
       "wikitext": "[[File:Example.png|200px|center]]",
-      "expected": "![Example](../assets/images/Example.png)"
+      "expected": "![Example](../assets/images/example.png)"
     },
     {
       "name": "Thumbnail with alt and caption",
       "wikitext": "[[File:Example.png|thumbnail|alt=Alt text|Caption text]]",
-      "expected": "<figure>\n\n![Alt text](../assets/images/Example.png)\n<figcaption>Caption text</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Alt text](../assets/images/example.png)\n<figcaption>Caption text</figcaption>\n</figure>"
     },
     {
       "name": "Image with formatting directives (ignored)",
       "wikitext": "[[File:Example.png|200px|left|border|frameless]]",
-      "expected": "![Example](../assets/images/Example.png)"
+      "expected": "![Example](../assets/images/example.png)"
     },
     {
       "name": "Thumbnail without caption (no figure)",
       "wikitext": "[[File:Example.png|thumb]]",
-      "expected": "![Example](../assets/images/Example.png)"
+      "expected": "![Example](../assets/images/example.png)"
     }
   ]
 }

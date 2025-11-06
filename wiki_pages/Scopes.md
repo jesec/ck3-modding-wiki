@@ -5,14 +5,14 @@
 
 <figure>
 
-![CK3 Scopes](../assets/images/CK3_Scopes.png)
+![CK3 Scopes](../assets/images/ck3_scopes.png)
 <figcaption>CK3 Scope Overview Chart</figcaption>
 </figure>
 
 **Scopes** are used in [scripting](Scripting.md) to select entities in order to check [triggers](Triggers.md) or execute [effects](Effects.md).
 <figure>
 
-![Exportedscopes190](../assets/images/Exportedscopes190.png)
+![Exportedscopes190](../assets/images/exportedscopes190.png)
 <figcaption>These are the color-coded direct scopes as of 1.8.0, generated via automated export from the game files.</figcaption>
 </figure>
 

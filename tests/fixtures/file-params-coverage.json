@@ -4,17 +4,17 @@
     {
       "name": "File with frame parameter and caption",
       "wikitext": "[[File:Test.png|frame|This is a caption]]",
-      "expected": "![Test](../assets/images/Test.png)"
+      "expected": "![Test](../assets/images/test.png)"
     },
     {
       "name": "File with thumb and caption as unnamed param",
       "wikitext": "[[File:Example.png|thumb|Caption text here]]",
-      "expected": "<figure>\n\n![Example](../assets/images/Example.png)\n<figcaption>Caption text here</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Example](../assets/images/example.png)\n<figcaption>Caption text here</figcaption>\n</figure>"
     },
     {
       "name": "File with frameless and unnamed caption",
       "wikitext": "[[File:Icon.png|frameless|Icon description]]",
-      "expected": "![Icon](../assets/images/Icon.png)"
+      "expected": "![Icon](../assets/images/icon.png)"
     }
   ]
 }

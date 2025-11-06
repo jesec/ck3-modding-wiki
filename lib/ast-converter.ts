@@ -475,8 +475,9 @@ function convertNode(node: AstNodes, context: ConversionContext = {}): string {
         }
       }
 
-      // Convert spaces to underscores to match saved filenames
-      const localFilename = filename.replace(/ /g, '_');
+      // Convert spaces to underscores and normalize to lowercase to match saved filenames
+      // This ensures consistency across case-sensitive filesystems
+      const localFilename = filename.replace(/ /g, '_').toLowerCase();
 
       // If thumb directive present and caption exists, create figure with caption
       if (hasThumb && caption) {

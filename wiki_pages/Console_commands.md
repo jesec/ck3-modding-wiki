@@ -5,7 +5,7 @@
 
 <figure>
 
-![Commands console](../assets/images/Commands_console.png)
+![Commands console](../assets/images/commands_console.png)
 <figcaption>The console</figcaption>
 </figure>
 
@@ -554,21 +554,21 @@ Traits that do not follow this pattern have been listed below for reference.
 | ![Child of Concubine](../assets/icons/Child_of_Concubine.png) | child_of_concubine_female |
 | ![Child of Consort](../assets/icons/Child_of_Consort.png) | child_of_concubine_male |
 | ![Venerated Ancestor](../assets/icons/Venerated_Ancestor.png) / Saint | saint |
-| ![Trait the wake](../assets/images/Trait_the_wake.png) Exiled | the_wake |
+| ![Trait the wake](../assets/images/trait_the_wake.png) Exiled | the_wake |
 | ![Accused of Decadence](../assets/icons/Accused_of_Decadence.png) | decadent |
 | ![Extolled by House](../assets/icons/Extolled_by_House.png) | extolled |
 | ![adventurer](../assets/icons/adventurer.png) Former Adventurer | adventurer |
 | ![Follower](../assets/icons/Follower.png) | adventurer_follower |
-| ![Diplomatic court 1](../assets/images/Diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
-| ![Diplomatic court 1](../assets/images/Diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
-| ![Warlike court 1](../assets/images/Warlike_court_1.png) Warlike Courtier | warlike_court_1 |
-| ![Warlike court 1](../assets/images/Warlike_court_1.png) Valued Warlike Courtier | warlike_court_2 |
-| ![Administrative court 1](../assets/images/Administrative_court_1.png) Administrative Courtier | administrative_court_1 |
-| ![Administrative court 1](../assets/images/Administrative_court_1.png) Valued Administrative Courtier | administrative_court_2 |
-| ![Intrigue court 1](../assets/images/Intrigue_court_1.png) Intrigue Courtier | intrigue_court_1 |
-| ![Intrigue court 1](../assets/images/Intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
-| ![Scholarly court 1](../assets/images/Scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
-| ![Scholarly court 1](../assets/images/Scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
+| ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
+| ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
+| ![Warlike court 1](../assets/images/warlike_court_1.png) Warlike Courtier | warlike_court_1 |
+| ![Warlike court 1](../assets/images/warlike_court_1.png) Valued Warlike Courtier | warlike_court_2 |
+| ![Administrative court 1](../assets/images/administrative_court_1.png) Administrative Courtier | administrative_court_1 |
+| ![Administrative court 1](../assets/images/administrative_court_1.png) Valued Administrative Courtier | administrative_court_2 |
+| ![Intrigue court 1](../assets/images/intrigue_court_1.png) Intrigue Courtier | intrigue_court_1 |
+| ![Intrigue court 1](../assets/images/intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
+| ![Scholarly court 1](../assets/images/scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
+| ![Scholarly court 1](../assets/images/scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
 | ![Hastiluder](../assets/icons/Hastiluder.png) | tourney_participant |
 | ![Detractor of the Caliphate](../assets/icons/Detractor_of_the_Caliphate.png) | fp3_struggle_detractor |
 | ![Supporter of Caliphal Authority](../assets/icons/Supporter_of_Caliphal_Authority.png) | fp3_struggle_supporter |
@@ -587,24 +587,24 @@ Innovation IDs usually match their name. The following innovations use a differe
 
 | **Innovation** | **Tag** |
 | --- | --- |
-| ![Innovation majesty 02](../assets/images/Innovation_majesty_02.png) Currency | innovation_currency_01 |
-| ![Innovation civil construction 01](../assets/images/Innovation_civil_construction_01.png) Public Works | innovation_development_01 |
-| ![Innovation siege weapons](../assets/images/Innovation_siege_weapons.png) Onager | innovation_catapult |
-| ![Innovation special maa 02](../assets/images/Innovation_special_maa_02.png) Chu-ko-nu | innovation_repeating_crossbow |
-| ![Innovation special maa 01](../assets/images/Innovation_special_maa_01.png) Defensive Tactics | innovation_mobile_guards |
-| ![Innovation special maa 01](../assets/images/Innovation_special_maa_01.png) Konni Raids | innovation_hussar_raids |
-| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Longships | innovation_longboats |
-| ![Innovation majesty 01](../assets/images/Innovation_majesty_01.png) West African Canoes | innovation_african_canoes |
-| ![Innovation nobility 01](../assets/images/Innovation_nobility_01.png) Coinage | innovation_currency_02 |
-| ![Innovation nobility 03](../assets/images/Innovation_nobility_03.png) Communal Development | innovation_development_02 |
-| ![Innovation maa 01](../assets/images/Innovation_maa_01.png) Household Soldiers | innovation_house_soldiers |
-| ![Innovation maa 02](../assets/images/Innovation_maa_02.png) Desert Mountain Practices | innovation_desert_mountain_herding |
-| ![Innovation majesty 03](../assets/images/Innovation_majesty_03.png) Stammesherzogtum | innovation_stem_duchies |
-| ![Innovation majesty 02](../assets/images/Innovation_majesty_02.png) Banking | innovation_currency_03 |
-| ![Innovation civil construction 01](../assets/images/Innovation_civil_construction_01.png) Urbanization | innovation_development_03 |
-| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Ostsiedlung | innovation_east_settling |
-| ![Innovation administration 01](../assets/images/Innovation_administration_01.png) Promissory Notes | innovation_currency_04 |
-| ![Innovation misc inventions](../assets/images/Innovation_misc_inventions.png) Renaissance Thought | innovation_development_04 |
+| ![Innovation majesty 02](../assets/images/innovation_majesty_02.png) Currency | innovation_currency_01 |
+| ![Innovation civil construction 01](../assets/images/innovation_civil_construction_01.png) Public Works | innovation_development_01 |
+| ![Innovation siege weapons](../assets/images/innovation_siege_weapons.png) Onager | innovation_catapult |
+| ![Innovation special maa 02](../assets/images/innovation_special_maa_02.png) Chu-ko-nu | innovation_repeating_crossbow |
+| ![Innovation special maa 01](../assets/images/innovation_special_maa_01.png) Defensive Tactics | innovation_mobile_guards |
+| ![Innovation special maa 01](../assets/images/innovation_special_maa_01.png) Konni Raids | innovation_hussar_raids |
+| ![Innovation misc inventions](../assets/images/innovation_misc_inventions.png) Longships | innovation_longboats |
+| ![Innovation majesty 01](../assets/images/innovation_majesty_01.png) West African Canoes | innovation_african_canoes |
+| ![Innovation nobility 01](../assets/images/innovation_nobility_01.png) Coinage | innovation_currency_02 |
+| ![Innovation nobility 03](../assets/images/innovation_nobility_03.png) Communal Development | innovation_development_02 |
+| ![Innovation maa 01](../assets/images/innovation_maa_01.png) Household Soldiers | innovation_house_soldiers |
+| ![Innovation maa 02](../assets/images/innovation_maa_02.png) Desert Mountain Practices | innovation_desert_mountain_herding |
+| ![Innovation majesty 03](../assets/images/innovation_majesty_03.png) Stammesherzogtum | innovation_stem_duchies |
+| ![Innovation majesty 02](../assets/images/innovation_majesty_02.png) Banking | innovation_currency_03 |
+| ![Innovation civil construction 01](../assets/images/innovation_civil_construction_01.png) Urbanization | innovation_development_03 |
+| ![Innovation misc inventions](../assets/images/innovation_misc_inventions.png) Ostsiedlung | innovation_east_settling |
+| ![Innovation administration 01](../assets/images/innovation_administration_01.png) Promissory Notes | innovation_currency_04 |
+| ![Innovation misc inventions](../assets/images/innovation_misc_inventions.png) Renaissance Thought | innovation_development_04 |
 
 
 ## Title Tags

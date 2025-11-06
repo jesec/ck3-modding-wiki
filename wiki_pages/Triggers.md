@@ -5,7 +5,7 @@
 
 <figure>
 
-![a screenshot of the in-game tool to check triggers showing multiple triggers being false or true](../assets/images/Trigger_runner.png)
+![a screenshot of the in-game tool to check triggers showing multiple triggers being false or true](../assets/images/trigger_runner.png)
 <figcaption>trigger runner</figcaption>
 </figure>
 

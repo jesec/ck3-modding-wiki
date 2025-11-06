@@ -4,27 +4,27 @@
     {
       "name": "File link with thumb and unnamed caption parameter",
       "wikitext": "[[File:Example event.png|thumb|left|Portrait Positions]]",
-      "expected": "<figure>\n\n![Example event](../assets/images/Example_event.png)\n<figcaption>Portrait Positions</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Example event](../assets/images/example_event.png)\n<figcaption>Portrait Positions</figcaption>\n</figure>"
     },
     {
       "name": "Simple file link without parameters",
       "wikitext": "[[File:Emblem examples.png]]",
-      "expected": "![Emblem examples](../assets/images/Emblem_examples.png)"
+      "expected": "![Emblem examples](../assets/images/emblem_examples.png)"
     },
     {
       "name": "File link with size parameter only",
       "wikitext": "[[File:Trait the wake.png|24px]]",
-      "expected": "![Trait the wake](../assets/images/Trait_the_wake.png)"
+      "expected": "![Trait the wake](../assets/images/trait_the_wake.png)"
     },
     {
       "name": "File link with thumb and complex caption",
       "wikitext": "[[File:Artifact unique lance of longius.png|thumb|The original \"artifact_unique_lance_of_longius.dds\" file from CK3 open in paint.net]]",
-      "expected": "<figure>\n\n![Artifact unique lance of longius](../assets/images/Artifact_unique_lance_of_longius.png)\n<figcaption>The original \"artifact_unique_lance_of_longius.dds\" file from CK3 open in paint.net</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![Artifact unique lance of longius](../assets/images/artifact_unique_lance_of_longius.png)\n<figcaption>The original \"artifact_unique_lance_of_longius.dds\" file from CK3 open in paint.net</figcaption>\n</figure>"
     },
     {
       "name": "File link with thumb and multiple unnamed params",
       "wikitext": "[[File:modding_portrait_editor_button_and_UI_sample.jpg|thumb|Image showcasing how to open and use the portrait editor.|x144px]]",
-      "expected": "<figure>\n\n![modding portrait editor button and UI sample](../assets/images/modding_portrait_editor_button_and_UI_sample.jpg)\n<figcaption>Image showcasing how to open and use the portrait editor.</figcaption>\n</figure>"
+      "expected": "<figure>\n\n![modding portrait editor button and UI sample](../assets/images/modding_portrait_editor_button_and_ui_sample.jpg)\n<figcaption>Image showcasing how to open and use the portrait editor.</figcaption>\n</figure>"
     }
   ]
 }

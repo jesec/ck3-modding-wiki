@@ -9,7 +9,7 @@
     {
       "name": "Operator in File link parameters",
       "wikitext": "See [[File:Test.png|width<=|100]]",
-      "expected": "See ![Test](../assets/images/Test.png)"
+      "expected": "See ![Test](../assets/images/test.png)"
     }
   ]
 }

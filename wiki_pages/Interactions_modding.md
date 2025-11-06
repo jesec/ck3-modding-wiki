@@ -28,7 +28,7 @@ basic_interaction = {
 ```
 
 
-![an interaction that gives the player 100 gold and removes 100 gold from the selected character](../assets/images/Basic_interaction.png)
+![an interaction that gives the player 100 gold and removes 100 gold from the selected character](../assets/images/basic_interaction.png)
 Interactions expect the recipient to accept it and then an effect happens. auto_accept makes it instant, which is nice for testing.
 
 We can also use on_send instead, but that won't create a preview of the effects.

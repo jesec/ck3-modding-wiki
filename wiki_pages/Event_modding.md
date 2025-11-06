@@ -153,7 +153,7 @@ In Crusader Kings III, portraits are now in 3D, and can now be animated as well!
 
 <figure>
 
-![Example event](../assets/images/Example_event.png)
+![Example event](../assets/images/example_event.png)
 <figcaption>Portrait Positions</figcaption>
 </figure>
 

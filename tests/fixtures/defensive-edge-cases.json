@@ -4,12 +4,12 @@
     {
       "name": "File link with Image: prefix",
       "wikitext": "See [[Image:Test.png]] for details",
-      "expected": "See ![Image:Test](../assets/images/Image:Test.png) for details"
+      "expected": "See ![Image:Test](../assets/images/image:test.png) for details"
     },
     {
       "name": "File link with File: prefix",
       "wikitext": "Check [[File:Example.png]] here",
-      "expected": "Check ![Example](../assets/images/Example.png) here"
+      "expected": "Check ![Example](../assets/images/example.png) here"
     },
     {
       "name": "Multiple cells presentation table",

@@ -38,22 +38,22 @@ We also cannot reload audio files while the game is running, we have to restart.
 
 We have an FMOD template where everything is set up for you. This is the easiest way to do this.<figure>
 
-![screenshot of FMOD, creating an event with Windows XP error sound](../assets/images/FMOD_creating_an_event.png)
+![screenshot of FMOD, creating an event with Windows XP error sound](../assets/images/fmod_creating_an_event.png)
 <figcaption>Creating an event</figcaption>
 </figure>
 <figure>
 
-![Screenshot of FMOD, assigning a new Windows XP error event to a Master bank](../assets/images/FMOD_assigning_an_event.png)
+![Screenshot of FMOD, assigning a new Windows XP error event to a Master bank](../assets/images/fmod_assigning_an_event.png)
 <figcaption>Assign an Event to a Bank</figcaption>
 </figure>
 <figure>
 
-![Screenshot of FMOD, a Windows XP bank with Windows XP error event](../assets/images/FMOD_bank.png)
+![Screenshot of FMOD, a Windows XP bank with Windows XP error event](../assets/images/fmod_bank.png)
 <figcaption>Bank with our event</figcaption>
 </figure>
 <figure>
 
-![Screenshot of a mod with new sound files, with two banks inside sound/banks folder](../assets/images/Sound_mod_files.png)
+![Screenshot of a mod with new sound files, with two banks inside sound/banks folder](../assets/images/sound_mod_files.png)
 <figcaption>Mod file structure</figcaption>
 </figure>
 
@@ -232,7 +232,7 @@ Below it, Stealing option will determine the behavior. "Oldest" will interrupt t
 
 <figure>
 
-![FMOD Distance Automation](../assets/images/FMOD_Distance_Automation.png)
+![FMOD Distance Automation](../assets/images/fmod_distance_automation.png)
 <figcaption>Distance is a built-in parameter in FMOD that can be used to automate sound effects. (EQ, Volume, Reverb, Delay, etc.)</figcaption>
 </figure>
 
@@ -256,7 +256,7 @@ To automate effects (in this case a Multiband EQ) based on the distance paramete
 
 <figure>
 
-![Sound Parameter](../assets/images/Sound_Parameter.png)
+![Sound Parameter](../assets/images/sound_parameter.png)
 <figcaption>The 'Add Parameter' window in FMOD.</figcaption>
 </figure>
 
@@ -295,7 +295,7 @@ start_sound = {
 
 <figure>
 
-![Event Folders](../assets/images/Event_Folders.png)
+![Event Folders](../assets/images/event_folders.png)
 <figcaption>Right-click and press 'New Folder' to organize your events.</figcaption>
 </figure>
 
