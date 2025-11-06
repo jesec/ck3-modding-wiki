@@ -392,8 +392,8 @@ async function downloadModifierIcons(page: Page): Promise<void> {
   let notFound = 0;
 
   for (const iconName of referencedIcons) {
-    // Normalize filename: replace spaces with underscores
-    const normalizedName = iconName.replace(/ /g, '_');
+    // Normalize filename: replace spaces with underscores and lowercase for consistency
+    const normalizedName = iconName.replace(/ /g, '_').toLowerCase();
     const filename = `${normalizedName}.png`;
     const filepath = path.join(ICONS_DIR, filename);
 

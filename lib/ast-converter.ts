@@ -192,8 +192,8 @@ function convertTemplate(node: Token, context: ConversionContext = {}): string {
   if (nameLower === 'icon' || nameLower === 'iconify') {
     if (args.length > 0) {
       const iconName = args[0].trim();
-      // Normalize path: replace spaces with underscores
-      const normalizedPath = iconName.replace(/ /g, '_');
+      // Normalize path: replace spaces with underscores and lowercase for consistency
+      const normalizedPath = iconName.replace(/ /g, '_').toLowerCase();
       // Use icon name as alt text
       return `![${iconName}](../assets/icons/${normalizedPath}.png)`;
     }

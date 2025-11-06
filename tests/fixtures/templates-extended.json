@@ -34,7 +34,7 @@
     {
       "name": "Icon with spaces in name",
       "wikitext": "The {{icon|Skilled Tactician}} trait",
-      "expected": "The ![Skilled Tactician](../assets/icons/Skilled_Tactician.png) trait"
+      "expected": "The ![Skilled Tactician](../assets/icons/skilled_tactician.png) trait"
     },
     {
       "name": "Hatnote template",
