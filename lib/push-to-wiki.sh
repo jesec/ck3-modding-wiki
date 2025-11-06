@@ -56,9 +56,21 @@ for file in *.md; do
     fi
 done
 
-# Add and commit
+# Create .gitignore to prevent accidental commits of unwanted files
+cat > .gitignore << 'EOF'
+# Exclude everything by default
+*
+
+# Include only wiki content
+!.gitignore
+!*.md
+!assets/
+!assets/**
+EOF
+
+# Add and commit (gitignore will prevent unwanted files)
 echo "Committing to orphan branch..."
-git add .
+git add .gitignore *.md assets/ 2>/dev/null || true
 
 if git diff --staged --quiet; then
     echo "✓ No changes to commit"
