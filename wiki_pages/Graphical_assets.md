@@ -11,7 +11,6 @@
 Palettes should be 256x256 pixels, and should be saved with the **8.8.8 BGR 24bpp .dds** format, without mipmaps.
 
 Palettes are located at 
-
 ```
 gfx/portraits
 ```

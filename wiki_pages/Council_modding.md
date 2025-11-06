@@ -11,7 +11,6 @@ Council tasks are defined in the */common/council_tasks/* folder.
 
 New council positions can be added via the following format:
 
-
 ```
 name_of_the_position = {
 	# Main skill to look into the character list. If none the best sumk of all the skills will be at the top.

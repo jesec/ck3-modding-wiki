@@ -20,7 +20,6 @@ Vanilla defines are set in *game\common\defines\00_defines.txt*.
 
 To modify defines, it is best not to modify the original file, but rather to use a mod. To do so, [create a mod](Mod_structure.md#creating_initial_files), then create a text file in *Documents\Paradox Interactive\mod\[mod name]\common\defines*. To change a define, use the following format in the following example, which changes the end date to 1800:
 
-
 ```
 NGame = {
     END_DATE = "1800.1.1"

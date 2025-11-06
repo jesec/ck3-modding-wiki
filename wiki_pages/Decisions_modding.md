@@ -29,7 +29,6 @@ Decisions belong in .txt files in the mod's `/Crusader Kings III/game/common\dec
 
 Decisions may be defined like so:
 
-
 ```
 my_decision = {
 	effect = {

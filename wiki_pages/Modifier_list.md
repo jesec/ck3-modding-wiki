@@ -28,7 +28,6 @@ Character modifiers are defined in .txt files in the directory: ../common/modifi
 
 A character modifier is defined as given below:
 
-
 ```
 my_new_modifier = {
 	icon = icon_name

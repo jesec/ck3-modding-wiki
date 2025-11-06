@@ -64,7 +64,6 @@ Is the "coat_of_arms_name" identical to an title, house or dynasty keyname (like
 
 Here follows a few examples with their corresponding coat of arms.
 
-
 ```
 flag_with_emblem = {
     pattern = "pattern_vertical_split_01"
