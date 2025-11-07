@@ -2,16 +2,16 @@
 
 ## Basics of the Developer Console & Enabling Debugging
 
+![errorhoof](../assets/images/errorhoof.jpg)
+
+
+Debugging is easy! <sup><span class="plainlinks">[[Citation Needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed)]</span></sup> This page will help you understand how to debug and fix issues with your script.
+
 <figure>
 
 ![ck3 debug shortcut example](../assets/images/ck3_debug_shortcut_example.jpg)
 <figcaption>A screenshot of a shortcut created from the CK3 steam build binary.<br><sup>Note: if you are using the Steam version of the game, you can right click on the title in your library, click "properties" and add <code>-debug_mode startup</code> to your launch options.</sup>|x480px</figcaption>
 </figure>
-
-![errorhoof](../assets/images/errorhoof.jpg)
-
-
-Debugging is easy! <sup><span class="plainlinks">[[Citation Needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed)]</span></sup> This page will help you understand how to debug and fix issues with your script.
 
 
 ### Getting Access to the Debug Tools
