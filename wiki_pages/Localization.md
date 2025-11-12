@@ -453,6 +453,7 @@ Note that the value is **always** rounded down.
 Careful! @warning_icon!, you are going to drop all your @gold_icon! gold if you keep running like that! @piety_icon_islam! Allah will judge you for that!
 ```
 
+If you want to try customizing icons, go game/gui/texticons.gui 
 
 <details>
 <summary>Show/Hide</summary>
