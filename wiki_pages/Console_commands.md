@@ -298,6 +298,7 @@ Most artifacts are randomly generated through complex scripts and cannot be spaw
 | effect create_artifact_sculpture_ark_of_covenant_effect = { OWNER = this } | Ark of the Covenant |
 | effect create_artifact_ascalon_effect = { OWNER = this } | Ascalon |
 | effect create_artifact_sculpture_babr_e_bayan_effect = { OWNER = this } | Babr-e Bayan |
+| effect create_artifact_pedestal_sakanoue_sword_effect = { OWNER = this } | Banke no Hōken |
 | effect create_artifact_wall_banner_thankfulness_effect = { OWNER = this } | Banner of Thankfulness |
 | effect create_artifact_various_bells_santiago = { OWNER = this } | Bells of Santiago |
 | effect create_artifact_pedestal_branch_relic_boog_effect = { OWNER = this } | Branch of Somb, the First Tree on Earth |
@@ -320,15 +321,21 @@ Most artifacts are randomly generated through complex scripts and cannot be spaw
 | effect create_artifact_dhammapada_effect = { OWNER = this } | Dhammapada |
 | effect create_artifact_dragvandil_effect = { OWNER = this } | Dragvandil |
 | effect create_artifact_durendal_effect = { OWNER = this } | Durendal |
+| effect create_artifact_eight_fold_chest_effect = { OWNER = this } | Eight-fold Chest |
+| effect create_artifact_military_classics_effect = { OWNER = this } | Essentials for the Military Classics |
 | effect create_artifact_excalibur_effect = { OWNER = this } | Excalibur |
+| effect create_artifact_pedestal_gyerimro_dagger_effect = { OWNER = this } | Exotic Dagger |
 | effect create_artifact_various_aquamanile_santiago = { OWNER = this } | Former Bells of Santiago |
 | effect create_artifact_fp2_4p_chess_board_effect = { OWNER = this } | Four-Player Chess Board |
+| effect create_artifact_pedestal_baekje_incense_burner_effect = { OWNER = this } | Gilt-Bronze Incense Burner |
 | effect create_artifact_pedestal_great_diamond_effect = { OWNER = this } | Great Diamond |
 | effect create_artifact_edmund_head_effect = { OWNER = this } | Head of St. Edmund |
+| effect create_artifact_heirloom_seal_effect = { OWNER = this } | Heirloom Seal |
 | effect create_artifact_hydraulic_organ_effect = { OWNER = this } | Hydraulic Organ |
 | effect create_artifact_ibeji_effect = { OWNER = this } | Ibeji |
 | effect create_artifact_pedestal_ikenga_effect = { OWNER = this } | Ikenga |
 | effect create_artifact_wall_banner_edessa_effect = { OWNER = this } | Image of Edessa |
+| effect create_artifact_chinese_armillary_sphere_effect = { OWNER = this } | Imperial Armillary Sphere |
 | effect create_artifact_pedestal_crown_iron_effect = { OWNER = this } | Iron Crown of Lombardy |
 | effect create_artifact_jewelled_danda_effect = { OWNER = this } | Jeweled Danda |
 | effect create_artifact_joyeuse_effect = { OWNER = this } | Joyeuse |
@@ -358,6 +365,7 @@ Most artifacts are randomly generated through complex scripts and cannot be spaw
 | effect create_artifact_illustrious_sassanian_sword_effect = { OWNER = this } | Sassanian Sword |
 | effect create_artifact_zomorrodnegar_effect = { OWNER = this } | Shamshir-e Zomorrodnegar |
 | effect create_artifact_pedestal_shankha_conch_effect = { OWNER = this } | Shankha Conch |
+| effect create_artifact_pedestal_seven_branched_sword_effect = { OWNER = this } | Shichishitō |
 | effect create_artifact_siddhachakra_effect = { OWNER = this } | Siddhachakra |
 | effect create_artifact_skull_cap_charlemagne_effect = { OWNER = this } | Skull Cap of Charlemagne |
 | effect create_artifact_sledovik_effect = { OWNER = this } | Sledovik |
@@ -369,6 +377,7 @@ Most artifacts are randomly generated through complex scripts and cannot be spaw
 | effect create_artifact_throne_scone_effect = { OWNER = this } | Stone of Scone |
 | effect create_artifact_sutta_pitaka_effect = { OWNER = this } | Sutta Pitaka |
 | effect create_artifact_wall_sword_attila_effect = { OWNER = this } | Sword of God |
+| effect create_artifact_sword_goujian_effect = { OWNER = this } | Sword of Gujian |
 | effect create_artifact_wall_muhammad_sword_effect = { OWNER = this } | Sword of Muhammad |
 | effect create_artifact_szczerbiec_effect = { OWNER = this } | Szczerbiec |
 | effect create_artifact_throne_charlemagne_effect = { OWNER = this } | Throne of Charlemagne |
