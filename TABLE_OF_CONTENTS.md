@@ -433,6 +433,11 @@ Complete index of all pages and their sections.
 - [Holy sites](wiki_pages/Religions_modding.md#holy-sites)
 - [Tenet ID](wiki_pages/Religions_modding.md#tenet-id)
 
+## [Resources modding](wiki_pages/Resources_modding.md)
+
+- [Piety](wiki_pages/Resources_modding.md#piety)
+- [References](wiki_pages/Resources_modding.md#references)
+
 ## [Scopes](wiki_pages/Scopes.md)
 
 - [Definition](wiki_pages/Scopes.md#definition)
