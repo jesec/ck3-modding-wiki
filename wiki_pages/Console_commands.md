@@ -430,6 +430,7 @@ Script commands are typically more involved, and mostly used for setting up even
 
 | **Script** | **Effect** | **Parameters** | **Example** |
 | --- | --- | --- | --- |
+| effect gok_world_conquest_generic_rewards_effect | Creates a custom hegemony, it will have no de jure land (can be solved with another console above mentioned earlier) and a randomized name and coat-of-arms (can be changed manually at any point) |  | effect gok_world_conquest_generic_rewards_effect |
 | effect spawn_army = { men_at_arms = { type = (men at arms type) = (amount) } location = capital_province } | Adds special soldiers | (men at arms type), (amount) | effect spawn_army = { men_at_arms = { type = huscarl men = 500 } location = capital_province } |
 | effect add_trait_xp = { trait = [x] value=[y] } | increases one-path leveled lifestyle trait experiences | [x]: leveled trait tag,[y]: experiences | effect add_trait_xp = { trait = lifestyle_blademaster value = 100 }<br>leveled trait tag:<br>lifestyle_blademaster,lifestyle_reveler,lifestyle_physician,pilgrim,<br>lifestyle_mystic,lifestyle_hunter,lifestyle_traveler,tourney_participant,<br>peasant_leader |
 | effect add_trait_xp = { trait = [x] track=[y] value=[z] } | increases multiple-path leveled lifestyle trait experiences | [x]: leveled trait tag,[y]:trait path name ,[z]: experiences | effect add_trait_xp = { trait = lifestyle_hunter track=venator value=100 }<br>lifestyle_hunter path name: venator,falconer<br><br>lifestyle_traveler path name: travel,danger<br><br>tourney_participant path name: bow,foot,horse,wit |
