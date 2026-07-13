@@ -395,12 +395,10 @@ Most artifacts are randomly generated through complex scripts and cannot be spaw
 
 ### Converting commands
 
-The following commands can be used to convert the realm to a faith, culture, government or title hierarchy.
+The following commands can be used to convert the realm to a faith, culture, government or title hierarchy. Conversion limited to the character's domain can be done via debug interactions (Take Action In Every County).
 
 | **Command** | **Conversion** |
 | --- | --- |
-| Converts every domain county to the character's culture |  |
-| Converts every domain county to the character's faith |  |
 | Converts every realm county to the character's culture |  |
 | Converts every realm county to the character's faith |  |
 | Converts every vassal and sub-vassal to the character's culture |  |
