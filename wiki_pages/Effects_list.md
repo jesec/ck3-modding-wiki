@@ -383,7 +383,7 @@ Some effects have been deprecated, and some effects added after launch are missi
 | random_involved_ruler | Iterate through all characters that are involved in a struggle. | `random_involved_ruler = { limit = { <triggers> } (optional) weight = { mtth } <effects> }` | struggle | character |
 | set_culture_as_involved | Set a culture as involved in the scoped Struggle. | `` | struggle | culture |
 | set_culture_as_uninvolved | Set a culture as uninvolved in the scoped Struggle. | `` | struggle | culture |
-| set_faith_as_involved | Set a faith as involved in the scoped Struggle. | `` | struggle | faith |
+| set_faith_as_involved | Set a faith as involved in the scoped Struggle. | struggle:iberian_struggle = { set_faith_as_involved = root.faith } | struggle | faith |
 | set_faith_as_uninvolved | Set a faith as uninvolved in the scoped Struggle. | `` | struggle | faith |
 | add_scheme_modifier | adds the specified scheme modifier, add_scheme_modifier = { type = X days = Y } (days are optional, the modifier will expire in Y days if specified) | `` | scheme |  |
 | add_scheme_progress | Add progress to the scope scheme. (progress is in 0.0 - 100.0 range) | `` | scheme |  |
