@@ -1167,6 +1167,7 @@ Some effects have been deprecated, and some effects added after launch are missi
 | ordered_faith | Iterate through all faiths within a religion | <code style="white-space: pre">ordered_faith = {<br>limit = { &lt;triggers&gt; }<br>order_by = script_value<br>position = int<br>min = int<br>max = script_value<br>check_range_bounds = no # If you don't want an error logged if the list is smaller than the min/max<br>&lt;effects&gt; }</code> | religion | faith |
 | random_faith | Iterate through all faiths within a religion | `random_faith = { limit = { <triggers> } (optional) weight = { mtth } <effects> }` | religion | faith |
 | add_legitimacy | gives (or takes) legitimacy to a character |  | character |  |
+| end_diarchy | ends the power sharing situation for a character | end_diarchy = yes | character |  |
 
 
 Category:Modding
