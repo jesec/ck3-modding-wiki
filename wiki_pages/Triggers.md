@@ -297,7 +297,7 @@ It is true if the comparison is mathematically correct.
 Numerical values in a value comparison can be:
 - a number
 - a named value
-- a [script_value](https://ck3.paradoxwikis.com/script_value)
+- a [script_value](Script_values.md)
 - a saved scope value
 - a [variable](Variables.md) storing a number
 

@@ -82,7 +82,7 @@ set_variable = {
 ```
 
 
-... or set to a [script value](https://ck3.paradoxwikis.com/script_values) directly
+... or set to a [script value](Script_values.md) directly
 
 ```
 set_variable = {

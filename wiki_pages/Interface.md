@@ -325,7 +325,7 @@ l_english:
  number_to_string: "[SCOPE.GetValue('number')|0]"
 ```
 
-And this will be passed to UI as a string.  Localization number_to_string essentially replaces our whole line in the second step. Read more about [customizable localization here](https://ck3.paradoxwikis.com/Customizable_localization).
+And this will be passed to UI as a string.  Localization number_to_string essentially replaces our whole line in the second step. Read more about [customizable localization here](Customizable_localization.md).
 
 The function in the second step can be replaced by a macro to make it shorter and easier to reuse.
 

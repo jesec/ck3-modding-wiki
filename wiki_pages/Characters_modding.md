@@ -5,6 +5,7 @@
 
 Modding characters involves changing their appearance, data and behaviour. This can vary from small tweaks like adding gold or piety, to complex changes like scripting new visual effects and more.
 
+See also: [Interactions modding](Interactions_modding.md)
 
 - [Changing appearance through scripts](#changing-appearance-through-scripts)
 - [Outfit Tags](#outfit-tags)

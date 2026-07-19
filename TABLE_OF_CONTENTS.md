@@ -16,6 +16,13 @@ Complete index of all pages and their sections.
 - [Tutorial: Getting them on the map](wiki_pages/3D_models.md#tutorial-getting-them-on-the-map)
   - [Holdings](wiki_pages/3D_models.md#holdings)
 
+## [AI modding](wiki_pages/AI_modding.md)
+
+- [Defines](wiki_pages/AI_modding.md#defines)
+- [Chance](wiki_pages/AI_modding.md#chance)
+- [AI personality](wiki_pages/AI_modding.md#ai-personality)
+- [Script](wiki_pages/AI_modding.md#script)
+
 ## [Artifact modding](wiki_pages/Artifact_modding.md)
 
 - [Location](wiki_pages/Artifact_modding.md#location)
@@ -91,6 +98,11 @@ Complete index of all pages and their sections.
 - [Cultures](wiki_pages/Culture_modding.md#cultures)
 - [Culture group ID](wiki_pages/Culture_modding.md#culture-group-id)
 - [Culture ID](wiki_pages/Culture_modding.md#culture-id)
+
+## [Customizable localization](wiki_pages/Customizable_localization.md)
+
+- [Game files](wiki_pages/Customizable_localization.md#game-files)
+- [Modding customizable localization](wiki_pages/Customizable_localization.md#modding-customizable-localization)
 
 ## [Data types](wiki_pages/Data_types.md)
 
@@ -277,6 +289,25 @@ Complete index of all pages and their sections.
 - [Troubleshooting](wiki_pages/Interface.md#troubleshooting)
   - [Known crash reasons](wiki_pages/Interface.md#known-crash-reasons)
 - [Useful links](wiki_pages/Interface.md#useful-links)
+
+## [Lifestyles modding](wiki_pages/Lifestyles_modding.md)
+
+- [Lifestyles](wiki_pages/Lifestyles_modding.md#lifestyles)
+  - [Scripting](wiki_pages/Lifestyles_modding.md#scripting)
+  - [Graphics](wiki_pages/Lifestyles_modding.md#graphics)
+  - [Localization](wiki_pages/Lifestyles_modding.md#localization)
+- [Lifestyle focuses](wiki_pages/Lifestyles_modding.md#lifestyle-focuses)
+  - [Scripting](wiki_pages/Lifestyles_modding.md#scripting)
+  - [Graphics](wiki_pages/Lifestyles_modding.md#graphics)
+  - [Localization](wiki_pages/Lifestyles_modding.md#localization)
+- [Lifestyle perks](wiki_pages/Lifestyles_modding.md#lifestyle-perks)
+  - [Scripting](wiki_pages/Lifestyles_modding.md#scripting)
+  - [Graphics](wiki_pages/Lifestyles_modding.md#graphics)
+  - [Localization](wiki_pages/Lifestyles_modding.md#localization)
+- [Vanilla list](wiki_pages/Lifestyles_modding.md#vanilla-list)
+
+## [List of baronies](wiki_pages/List_of_baronies.md)
+
 
 ## [Lists](wiki_pages/Lists.md)
 
@@ -477,6 +508,18 @@ Complete index of all pages and their sections.
 - [Faction](wiki_pages/Scopes_list.md#faction)
 - [Activity](wiki_pages/Scopes_list.md#activity)
 - [Primitive scopes](wiki_pages/Scopes_list.md#primitive-scopes)
+
+## [Script values](wiki_pages/Script_values.md)
+
+  - [Formulas](wiki_pages/Script_values.md#formulas)
+  - [Execution order](wiki_pages/Script_values.md#execution-order)
+  - [Inlining](wiki_pages/Script_values.md#inlining)
+  - [Chaining](wiki_pages/Script_values.md#chaining)
+  - [Ranges](wiki_pages/Script_values.md#ranges)
+  - [Lists](wiki_pages/Script_values.md#lists)
+  - [Scoping](wiki_pages/Script_values.md#scoping)
+  - [Saving current value](wiki_pages/Script_values.md#saving-current-value)
+  - [Displaying in UI](wiki_pages/Script_values.md#displaying-in-ui)
 
 ## [Scripted effects](wiki_pages/Scripted_effects.md)
 
