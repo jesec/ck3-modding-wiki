@@ -407,6 +407,11 @@ Complete index of all pages and their sections.
 ## [Modding](wiki_pages/Modding.md)
 
 - [Tips & guidelines](wiki_pages/Modding.md#tips-guidelines)
+  - [Must know](wiki_pages/Modding.md#must-know)
+  - [File reloading](wiki_pages/Modding.md#file-reloading)
+  - [Text editor and tools](wiki_pages/Modding.md#text-editor-and-tools)
+  - [Logs](wiki_pages/Modding.md#logs)
+  - [Other tips](wiki_pages/Modding.md#other-tips)
   - [Localization Files](wiki_pages/Modding.md#localization-files)
   - [Launch options](wiki_pages/Modding.md#launch-options)
 - [Creating a mod](wiki_pages/Modding.md#creating-a-mod)
