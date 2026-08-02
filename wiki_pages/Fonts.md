@@ -63,6 +63,9 @@ And, voilà, our map is now in a beautiful, vaguely soviet font.
 </figure>
 
 
+NB: Since the Vanilla font is unicameral, the developers did not use the capitalisation function on the realm names on the map, so if you use a bicameral font, the nomadic realms will display as "the Mongols" or "the Khazars" rather than "The Mongols" and "The Khazars"
+
+
 Category:Modding
 
 ---
