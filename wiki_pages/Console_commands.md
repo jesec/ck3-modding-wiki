@@ -577,7 +577,7 @@ Traits that do not follow this pattern have been listed below for reference.
 | ![Raider](../assets/icons/raider.png) / Viking | viking |
 | ![Child of Concubine](../assets/icons/child_of_concubine.png) | child_of_concubine_female |
 | ![Child of Consort](../assets/icons/child_of_consort.png) | child_of_concubine_male |
-| ![Venerated Ancestor](../assets/icons/venerated_ancestor.png) / Saint | saint |
+| ![Venerated Ancestor](../assets/icons/venerated_ancestor.png) | saint |
 | ![Trait the wake](../assets/images/trait_the_wake.png) Exiled | the_wake |
 | ![Accused of Decadence](../assets/icons/accused_of_decadence.png) | decadent |
 | ![Extolled by House](../assets/icons/extolled_by_house.png) | extolled |
@@ -599,6 +599,7 @@ Traits that do not follow this pattern have been listed below for reference.
 | ![Inspector](../assets/icons/inspector.png) | lifestyle_surveyor |
 | ![Wayfarer](../assets/icons/wayfarer.png) | lifestyle_wayfarer |
 | ![Voyager](../assets/icons/voyager.png) | lifestyle_voyager |
+| ![Way of the Nomad](../assets/icons/way_of_the_nomad.png) | nomadic_philosophy |
 
 
 ## Innovation tags
