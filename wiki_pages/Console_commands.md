@@ -584,15 +584,15 @@ Traits that do not follow this pattern have been listed below for reference.
 | ![adventurer](../assets/icons/adventurer.png) Former Adventurer | adventurer |
 | ![Follower](../assets/icons/follower.png) | adventurer_follower |
 | ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Diplomatic Courtier | diplomatic_court_1 |
-| ![Diplomatic court 1](../assets/images/diplomatic_court_1.png) Valued Diplomatic Courtier | diplomatic_court_2 |
+| ![Diplomatic court 2](../assets/images/diplomatic_court_2.png) Valued Diplomatic Courtier | diplomatic_court_2 |
 | ![Warlike court 1](../assets/images/warlike_court_1.png) Warlike Courtier | warlike_court_1 |
-| ![Warlike court 1](../assets/images/warlike_court_1.png) Valued Warlike Courtier | warlike_court_2 |
+| ![Warlike court 2](../assets/images/warlike_court_2.png) Valued Warlike Courtier | warlike_court_2 |
 | ![Administrative court 1](../assets/images/administrative_court_1.png) Administrative Courtier | administrative_court_1 |
-| ![Administrative court 1](../assets/images/administrative_court_1.png) Valued Administrative Courtier | administrative_court_2 |
+| ![Administrative court 2](../assets/images/administrative_court_2.png) Valued Administrative Courtier | administrative_court_2 |
 | ![Intrigue court 1](../assets/images/intrigue_court_1.png) Intrigue Courtier | intrigue_court_1 |
-| ![Intrigue court 1](../assets/images/intrigue_court_1.png) Valued Intrigue Courtier | intrigue_court_2 |
+| ![Intrigue court 2](../assets/images/intrigue_court_2.png) Valued Intrigue Courtier | intrigue_court_2 |
 | ![Scholarly court 1](../assets/images/scholarly_court_1.png) Scholarly Courtier | scholarly_court_1 |
-| ![Scholarly court 1](../assets/images/scholarly_court_1.png) Valued Scholarly Courtier | scholarly_court_2 |
+| ![Scholarly court 2](../assets/images/scholarly_court_2.png) Valued Scholarly Courtier | scholarly_court_2 |
 | ![Hastiluder](../assets/icons/hastiluder.png) | tourney_participant |
 | ![Detractor of the Caliphate](../assets/icons/detractor_of_the_caliphate.png) | fp3_struggle_detractor |
 | ![Supporter of Caliphal Authority](../assets/icons/supporter_of_caliphal_authority.png) | fp3_struggle_supporter |
